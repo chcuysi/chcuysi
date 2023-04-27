@@ -708,7 +708,7 @@ banner
 }
 
 .main-banner .right-content .right-first-image .thumb .inner-content h4 {
-  color: #fff;
+  color: #3a19bf;
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 15px;
@@ -1576,7 +1576,8 @@ Products Page
 .page-heading {
   margin-top: 160px;
   margin-bottom: 30px;
-  background-image: url(../images/products-page-heading.jpg);
+  background-color:black;
+  /* background-image: url(../images/singsing2.png); */
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1746,6 +1747,24 @@ Single Product Page
   color: #2a2a2a;
   font-weight: 700;
   margin-bottom: 0px;
+}
+/* 장바구니 최종 결제란 부분 ----------------------------------------------------- */
+#product2 .total > h4 {
+  font-size: 22px;
+  color: #2a2a2a;
+  font-weight: 700;
+  margin-bottom: 0px;
+  margin-top: 40px;
+  margin-left: 800px;
+}
+
+#product2 .total a {
+  font-size: 22px;
+  color: #2a2a2a;
+  font-weight: 700;
+  margin-bottom: 0px;
+  margin-top: 40px;
+  margin-right: 850px;
 }
 
 #product .right-content span.price {
@@ -2377,3 +2396,9 @@ responsive
     opacity: 0;
   }
 }
+
+/* -------------------zz------------------------------------------------------------------------------ */
+
+#bot {color:white;   
+      font-size: 14px;
+      transition: all .3s;}
