@@ -1,3 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    
+    
+    <% 
+    
+    request.setCharacterEncoding("UTF-8");
+    
+    
+    
+    String name = request.getParameter("name");
+    String name2 = request.getParameter("name2"); 
+    String price = request.getParameter("price");  
+    String detail = request.getParameter("detail"); 
+    String say = request.getParameter("say");  
+    
+    String type = request.getParameter("type");
+    
+    %>
+    
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -128,14 +150,17 @@ window.onload =function () {
             <div class="row">
                 <div class="col-lg-8">
                 <div class="left-images">
-                    <img src="assets/images/bae2.png" alt="">
+                    <img src="assets/images/<%= type%>.png" alt="">
                 </div>
            
             </div>
             <div class="col-lg-4">
                 <div class="right-content">
-                    <h4>상품 2</h4>
-                    <span class="price">$75.00</span>
+                    <h4><%= name %></h4>
+                    <% if(name2 != null) {  %>
+                    <h4><%= name2 %></h4>
+                     <% }  %>
+                    <span class="price"><%= price %></span>
                     <ul class="stars">
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
@@ -143,9 +168,9 @@ window.onload =function () {
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
                     </ul>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod kon tempor incididunt ut labore.</span>
+                    <span><%= detail%></span>
                     <div class="quote">
-                        <i class="fa fa-quote-left"></i><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuski smod.</p>
+                        <i class="fa fa-quote-left"></i><p><%= say%></p>
                     </div>
                     <div class="quantity-content">
                         <div class="left-content">
@@ -277,7 +302,6 @@ window.onload =function () {
             }, 500);
                 
             });
-            
             
             
             

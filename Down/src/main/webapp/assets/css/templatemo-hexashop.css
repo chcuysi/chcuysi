@@ -706,9 +706,9 @@ banner
   width: 100%;
   text-align: center;
 }
-
+/* 카테고리 부분/////////////////////////////////////////////////////////////// */
 .main-banner .right-content .right-first-image .thumb .inner-content h4 {
-  color: #3a19bf;
+  color: #fff700;
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 15px;
@@ -2397,8 +2397,19 @@ responsive
   }
 }
 
-/* -------------------zz------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------- */
 
 #bot {color:white;   
       font-size: 14px;
       transition: all .3s;}
+      
+      
+.section-copylight .row .section-heading {margin-left: 177px;}
+
+.section-copylight .row .section-heading > h2 {width:777px;}
+
+.section-copylight .down-content > h4 {text-align: center; }
+
+.section-copylight .down-content > h5 {text-align: center; color:gray;}
+
+      
