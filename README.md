@@ -1,4 +1,10 @@
-### Hi there 👋
+### 
+
+v.1  변경사항 
+
+＊ 재구매율 높은 상품 상세보기 (눈 아이콘) 클릭 시 상세 페이지에서 클릭한 상품 출력하기
+＊ [ SAJO와 못난이 식재료들의 신선한 지구 프로젝트! ] 세션 추가 ( 카피라이트 + 그림 아이콘 포함 부분 )
+＊ 카테고리 부분 폰트 색상 노란색으로 변경
 
 <!--
 **chcuysi/chcuysi** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
