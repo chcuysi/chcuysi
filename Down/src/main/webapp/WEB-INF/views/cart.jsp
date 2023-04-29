@@ -1,25 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    
-    
-    <% 
-    
-    request.setCharacterEncoding("UTF-8");
-    
-    
-    
-    String name = request.getParameter("name");
-    String name2 = request.getParameter("name2"); 
-    String price = request.getParameter("price");  
-    String detail = request.getParameter("detail"); 
-    String say = request.getParameter("say");  
-    
-    String type = request.getParameter("type");
-    
-    %>
-    
-    
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,19 +12,19 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>Hexashop - Product Detail Page</title>
+    <title>소중한 식재료들이 담긴 고객님의 장바구니입니다</title>
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/font-awesome.css">
 
-    <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/templatemo-hexashop.css">
 
-    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl-carousel.css">
 
-    <link rel="stylesheet" href="assets/css/lightbox.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/lightbox.css">
 <!--
 
 TemplateMo 571 Hexashop
@@ -51,12 +32,15 @@ TemplateMo 571 Hexashop
 https://templatemo.com/tm-571-hexashop
 
 -->
+
 <script type="text/javascript">
+
 window.onload =function () {
 	
 	alert("장바구니 아직 미완성 (임의의 상품들이 담겼다고 가정)");
 	
 }
+
 </script>
     </head>
     
@@ -80,8 +64,8 @@ window.onload =function () {
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
-                            <img src="assets/images/LOGO2.png">
+                        <a href="sajo" class="logo">
+                            <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -134,7 +118,8 @@ window.onload =function () {
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>상품 상세정보</h2>
+                        <h2>소중한 식재료들이 담긴</h2> 
+                        <h2>고객님의 장바구니입니다</h2>
                         <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span>
                     </div>
                 </div>
@@ -145,22 +130,23 @@ window.onload =function () {
 
 
     <!-- ***** Product Area Starts ***** -->
-     <section class="section" id="product">
+    <c:if test=""></c:if>
+    <section class="section" id="product">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                 <div class="left-images">
-                    <img src="assets/images/<%= type%>.png" alt="">
+                    <img src="${pageContext.request.contextPath}/resources/images/${type}.png" alt="">
                 </div>
            
             </div>
             <div class="col-lg-4">
                 <div class="right-content">
-                    <h4><%= name %></h4>
-                    <% if(name2 != null) {  %>
-                    <h4><%= name2 %></h4>
-                     <% }  %>
-                    <span class="price"><%= price %></span>
+                    <h4>  ${name} </h4>
+                    <c:if test="${name2 ne null}">  
+                    <h4>${name2}</h4>
+                    </c:if>
+                     <span class="price">${price}</span>
                     <ul class="stars">
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
@@ -168,9 +154,9 @@ window.onload =function () {
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
                     </ul>
-                    <span><%= detail%></span>
+                    <span>${detail}</span>
                     <div class="quote">
-                        <i class="fa fa-quote-left"></i><p><%= say%></p>
+                        <i class="fa fa-quote-left"></i><p>${say}</p>
                     </div>
                     <div class="quantity-content">
                         <div class="left-content">
@@ -184,13 +170,14 @@ window.onload =function () {
                     </div>
                     <div class="total">
                         <h4>총 금액: $210.00</h4>
-                        <div class="main-border-button"><a href="cart.html">구매하기</a></div>
+                        <div class="main-border-button"><a href="#">장바구니에 담기</a></div>
                     </div>
                 </div>
             </div>
             </div>
         </div>
     </section>
+    
     <!-- ***** Product Area Ends ***** -->
     
     <!-- ***** Footer Start ***** -->
@@ -200,7 +187,7 @@ window.onload =function () {
                 <div class="col-lg-3">
                     <div class="first-item">
                         <div class="logo">
-                            <img src="assets/images/LOGO2.png" alt="hexashop ecommerce templatemo">
+                            <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
                         </div>
                          <span id="bot">통신판매업 신고번호 : 2021-화성동부-0302</span> <br/>
                          <ul>
@@ -266,27 +253,27 @@ window.onload =function () {
     
 
     <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.0.min.js"></script>
 
     <!-- Bootstrap -->
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/popper.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 
     <!-- Plugins -->
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/accordions.js"></script>
-    <script src="assets/js/datepicker.js"></script>
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script> 
-    <script src="assets/js/slick.js"></script> 
-    <script src="assets/js/lightbox.js"></script> 
-    <script src="assets/js/isotope.js"></script> 
-    <script src="assets/js/quantity.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/owl-carousel.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/accordions.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/datepicker.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/scrollreveal.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/waypoints.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.counterup.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/imgfix.min.js"></script> 
+    <script src="${pageContext.request.contextPath}/resources/js/slick.js"></script> 
+    <script src="${pageContext.request.contextPath}/resources/js/lightbox.js"></script> 
+    <script src="${pageContext.request.contextPath}/resources/js/isotope.js"></script> 
+    <script src="${pageContext.request.contextPath}/resources/js/quantity.js"></script>
     
     <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
 
     <script>
 
@@ -302,9 +289,6 @@ window.onload =function () {
             }, 500);
                 
             });
-            
-            
-            
         });
 
     </script>
