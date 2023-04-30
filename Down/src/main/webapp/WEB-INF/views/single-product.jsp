@@ -40,6 +40,7 @@ https://templatemo.com/tm-571-hexashop
     </head>
     
     <body>
+          <input type="hidden" id="pageType" value="single-product">
     
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -95,6 +96,26 @@ https://templatemo.com/tm-571-hexashop
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
+                            
+                            <!-- ***************************************************로그인****************************************************************** -->
+                              <c:choose>
+                            
+                            <c:when test="${sessionScope.logName ne null}">
+                             <li class="submenu">
+                               <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
+                                 <ul>
+                                    <li><a href="logOut"><b>로그아웃</b></a></li>
+                                </ul>
+                             </li>
+                                
+                            </c:when>
+                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=single-product&type=${type}">로그인하기</a></li>
+                            </c:otherwise>
+                            
+                            </c:choose>
+                            
+                             <!-- ***************************************************로그인****************************************************************** -->
+                            
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -130,12 +151,13 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-8">
                 <div class="left-images">
                     <img src="${pageContext.request.contextPath}/resources/images/${type}.png" alt="">
+                    <input type="hidden" id="type" value="${type}"/>
                 </div>
            
             </div>
             <div class="col-lg-4">
                 <div class="right-content">
-                    <h4>  ${name} </h4>
+                    <h4 id="name">${name}</h4>
                     <c:if test="${name2 ne null}">  
                     <h4>${name2}</h4>
                     </c:if>
@@ -270,6 +292,9 @@ https://templatemo.com/tm-571-hexashop
     <script>
 
         $(function() {
+        	
+        	
+        	
             var selectedClass = "";
             $("p").click(function(){
             selectedClass = $(this).attr("data-rel");
@@ -284,11 +309,19 @@ https://templatemo.com/tm-571-hexashop
             
             
            $('.main-border-button').click(function() {
-        	   alert('상품을 장바구니에 담았습니다');
+        	  
         	   
-        	   if( confirm("장바구니로 이동하시겠습니까?"))
+        	   <% if(session.getAttribute("logName") == null ) { %> 
+        	   if(confirm('장바구니에 담기 위해선 로그인이 필요합니다. 로그인 하시겠습니까?') )
         	   {
-        		   location.href="cart?name=${name}";
+        		   location.href="loginForm?pageType="+$('#pageType').val()+"&type="+$('#type').val();
+        	   }else { location.href="#"; }
+        	   <% } %>
+        	   
+        	   <% if(session.getAttribute("logName") != null ) { %> 
+        	   if( confirm("상품을 장바구니에 담았습니다. 장바구니로 이동하시겠습니까?"))
+        	   {
+        		   location.href="cart?type="+$('#type').val();
         		   
         	   }else {
         		   
@@ -298,7 +331,7 @@ https://templatemo.com/tm-571-hexashop
             	   }
         	   
         	   }
-        	   
+        	   <% } %>
            });
             
            

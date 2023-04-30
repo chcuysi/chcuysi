@@ -1,8 +1,8 @@
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  
-  
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
   
     
     
@@ -94,8 +94,26 @@ https://templatemo.com/tm-571-hexashop
                                     <li><a href="#"><b>Q/A</b></a></li>
                                     <li><a href="#"><b>공지사항</b></a></li>
                                 </ul>
-                            </li>
+                            </li>                         <!-- session.invalidate(); -->
+                            
                             <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
+                            
+                            <c:choose>
+                            
+                            <c:when test="${sessionScope.logName ne null}">
+                             <li class="submenu">
+                               <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
+                                 <ul>
+                                    <li><a href="logOut"><b>로그아웃</b></a></li>
+                                </ul>
+                             </li>
+                                
+                            </c:when>
+                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
+                            </c:otherwise>
+                            
+                            </c:choose>
+                            
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -934,6 +952,11 @@ https://templatemo.com/tm-571-hexashop
             }, 500);
                 
             });
+            
+            
+            if( )
+            
+           
         });
 
     </script>

@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+    
+ 
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +16,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>소중한 식재료들이 담긴 고객님의 장바구니입니다</title>
+    <title>Hexashop - Product Detail Page</title>
 
 
     <!-- Additional CSS Files -->
@@ -33,15 +37,6 @@ https://templatemo.com/tm-571-hexashop
 
 -->
 
-<script type="text/javascript">
-
-window.onload =function () {
-	
-	alert("장바구니 아직 미완성 (임의의 상품들이 담겼다고 가정)");
-	
-}
-
-</script>
     </head>
     
     <body>
@@ -100,26 +95,16 @@ window.onload =function () {
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
-                            <!-- ***************************************************로그인****************************************************************** -->
-                              <c:choose>
                             
+                              <c:choose>
                             <c:when test="${sessionScope.logName ne null}">
-                             <li class="submenu">
-                               <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
-                                 <ul>
-                                    <li><a href="logOut"><b>로그아웃</b></a></li>
-                                </ul>
-                             </li>
-                                
+                            <li class="scroll-to-section"><a id="logOut" href="logOut">${sessionScope.logName}</a></li>
                             </c:when>
-                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=cart">로그인하기</a></li>
+                            <c:otherwise>  <li class="scroll-to-section"><a id="login" href="loginForm">로그인하기</a></li>
                             </c:otherwise>
                             
                             </c:choose>
                             
-                             <!-- ***************************************************로그인****************************************************************** -->
-                             
-                             
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -138,9 +123,8 @@ window.onload =function () {
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>소중한 식재료들이 담긴</h2> 
-                        <h2>고객님의 장바구니입니다</h2>
-                        <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span>
+                        <h2> 로그인 하기</h2>
+                        <span>SAJO의 더 많은 서비스를 이용하기 위해 로그인하는 단계입니다.</span>
                     </div>
                 </div>
             </div>
@@ -150,64 +134,88 @@ window.onload =function () {
 
 
     <!-- ***** Product Area Starts ***** -->
-   <!--********************************************************************** 장바구니 세션**************************************************************************** -->
-   
-   <c:forEach items="${products}" var="i">
-    <section class="section" id="product">
+    
+      <div class="subscribe">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                <div class="left-images">
-                    <img src="${pageContext.request.contextPath}/resources/images/${i.type}.png" alt="">
-                </div>
-           
-            </div>
-            <div class="col-lg-4">
-                <div class="right-content">
-                    <h4>  ${i.name} </h4>
-                    <c:if test="${i.name2 ne null}">  
-                    <h4>${i.name2}</h4>
-                    </c:if>
-                     <span class="price">${i.price}</span>
-                    <ul class="stars">
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                    </ul>
-                    <span>${i.detail}</span>
-                    <div class="quote">
-                        <i class="fa fa-quote-left"></i><p>${i.say}</p>
+                    <div class="section-heading">
+                        <h2>로그인하여 더 많은 서비스를 이용해보세요.</h2>
+                        <span>많은 고객님들이 아쉽게 버려질 위기에 처한 식재료들을 찾고 있습니다!</span>
                     </div>
-                    <div class="quantity-content">
-                        <div class="left-content">
-                            <h6>수량</h6>
+                    <form id="subscribe" action="login" method="get">
+                        <div class="row">
+                          <div class="col-lg-5">
+                            <fieldset>
+                              <input name="id" type="text" id="id" placeholder="회원님의 ID를 입력해주세요" required>
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-5">
+                            <fieldset>
+                              <input name="password" type="text" id="password" pattern="^[0-9]*$" placeholder="회원님의 비밀번호를 입력해주세요" required>
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-2">
+                            <fieldset>
+                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
+
+									<c:if test="${checkLogin ne null}">
+										<input type="hidden" id="checkLogin" value="${checkLogin}">
+									</c:if>
+
+									<c:if test="${param.pageType ne null}">
+										<input type="hidden" id="pageType" name="pageType" value="${param.pageType}">
+									</c:if>
+									
+									<c:if test="${param.type ne null}">
+										<input type="hidden" id="type" name="type" value="${param.type}">
+									</c:if>
+									
+									<c:if test="${moPageType ne null}">
+										<input type="hidden" id="moPageType" value="${moPageType}">
+									</c:if>
+									
+										<c:if test="${moType ne null}">
+										<input type="hidden" id="moType" value="${moType}">
+									</c:if>
+									
+								</fieldset>
+                          </div>
                         </div>
-                        <div class="right-content">
-                            <div class="quantity buttons_added">
-                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
-                            </div>
+                    </form>
+                </div>
+            
+            
+       
+                              
+                <div class="col-lg-4">
+                    <div class="row">
+                        <div class="col-6">
+                            <ul>
+                                <li>본사 위치:<br><span>서울특별시 강남구 테헤란로 123-123</span></li>
+                                <li>관리자 전화번호:<br><span>010-123-4567</span></li>
+                                <li>지점 위치:<br><span>서울특별시 가산동 123-123</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul>
+                                <li>근무 시간:<br><span>오전 07:30 - 오후 9:30</span></li>
+                                <li>관리자 이메일:<br><span>sajo@sajo.com</span></li>
+                                <li>소셜 미디어:<br><span><a href="#">Facebook</a>, <a href="#">Instagram</a>, <a href="#">Behance</a>, <a href="#">Linkedin</a></span></li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="total">
-                        <h4>총 금액: $210.00</h4>
-                        <div class="main-border-button"><a href="#">구매하기</a></div>
-                    </div>
                 </div>
-            </div>
             </div>
         </div>
-    </section>
-    
-    <hr/>
+    </div>
     
     
-    </c:forEach>
-    <!--********************************************************************** 장바구니 세션**************************************************************************** -->
-   
     
-      <!--********************************************************************** 하단**************************************************************************** -->
+    
+    <!-- ***** Product Area Ends ***** -->
+    
+    <!-- ***** Footer Start ***** -->
     <footer>
         <div class="container">
             <div class="row">
@@ -277,7 +285,7 @@ window.onload =function () {
             </div>
         </div>
     </footer>
-    <!--********************************************************************** 하단**************************************************************************** -->
+    
 
     <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.0.min.js"></script>
@@ -305,6 +313,7 @@ window.onload =function () {
     <script>
 
         $(function() {
+        	
             var selectedClass = "";
             $("p").click(function(){
             selectedClass = $(this).attr("data-rel");
@@ -316,6 +325,41 @@ window.onload =function () {
             }, 500);
                 
             });
+      
+ 
+  
+            if($('#checkLogin').val() == "성공" ) {
+            	alert('로그인에 성공하셨습니다.');
+            	
+            	
+            	/* 이전 페이지 타입이   개별 상품 화면일 경우 */
+            	if( $('#moPageType').val() == "single-product" ) {
+            		
+            		switch( $('#moType').val()  ) {
+            		case "goSingProduct" : location.href= "go"; break;
+            		case "appleSingProduct" : location.href="apple"; break;
+            		case "baeSingProduct" : location.href="bae"; break;
+            		case "bananaSingProduct" : location.href="banana"; break;
+            		case "buSingProduct" : location.href="bu"; break;
+            		case "chamSingProduct" : location.href="cham"; break;
+            		case "poteSingProduct" : location.href="pote"; break;
+            		
+            		}
+            	} /* 이전 페이지 타입이   개별 상품 화면일 경우 닫는 괄호 */
+            	
+            	/* 이전 페이지 타입이   메인 화면일 경우  */
+            	if ( $('#moPageType').val() == "index" ) {		
+                        location.href="sajo";
+                } /* 이전 페이지 타입이   메인 화면일 경우 닫는 괄호 */
+            	
+                
+            } /*  로그인 성공 시 괄호 */
+            
+            if ( $('#checkLogin').val() == "실패" )  {
+            	alert('로그인에 실패하셨습니다.');
+            	}
+           
+           
         });
 
     </script>
