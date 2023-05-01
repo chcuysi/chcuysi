@@ -1748,14 +1748,14 @@ Single Product Page
   font-weight: 700;
   margin-bottom: 0px;
 }
-/* 장바구니 최종 결제란 부분 ----------------------------------------------------- */
+/* 장바구니 최종 결제란 부분 ------------------------------------------------------------------------------------------------------------------- */
 #product2 .total > h4 {
   font-size: 22px;
   color: #2a2a2a;
   font-weight: 700;
   margin-bottom: 0px;
   margin-top: 40px;
-  margin-left: 800px;
+  margin-left: 460px;
 }
 
 #product2 .total a {
@@ -1764,7 +1764,7 @@ Single Product Page
   font-weight: 700;
   margin-bottom: 0px;
   margin-top: 40px;
-  margin-right: 850px;
+  margin-right: 500px;
 }
 
 #product .right-content span.price {
