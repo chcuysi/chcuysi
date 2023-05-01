@@ -565,7 +565,7 @@ https://templatemo.com/tm-571-hexashop
                           
                                         </ul>
                                     </div>
-                                    <img src="${pageContext.request.contextPath}/resources/images/gofood.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/resources/images/goSingProduct1.png" alt="">
                                 </div>
                                 <div class="down-content">
                                     <h4>고구마 칩</h4>
@@ -583,7 +583,7 @@ https://templatemo.com/tm-571-hexashop
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                             <li><a href="bufood"><i class="fa fa-eye"></i></a></li>
+                                             <li><a href="gofood"><i class="fa fa-eye"></i></a></li>
                                 
                                         </ul>
                                     </div>
@@ -605,7 +605,7 @@ https://templatemo.com/tm-571-hexashop
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                             <li><a href="appleFood"><i class="fa fa-eye"></i></a></li>
+                                             <li><a href="gofood"><i class="fa fa-eye"></i></a></li>
                                  
                                         </ul>
                                     </div>
@@ -627,7 +627,7 @@ https://templatemo.com/tm-571-hexashop
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="potefood"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="gofood"><i class="fa fa-eye"></i></a></li>
                                    
                                         </ul>
                                     </div>

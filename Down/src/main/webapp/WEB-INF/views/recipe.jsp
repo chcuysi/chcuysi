@@ -155,7 +155,7 @@ https://templatemo.com/tm-571-hexashop
 				<div class="col-lg-8">
 					<div class="left-images">
 						<img
-							src="${pageContext.request.contextPath}/resources/images/${type}.png"
+							src="${pageContext.request.contextPath}/resources/images/${type}2.png"
 							alt=""> <input type="hidden" id="type" value="${type}" />
 					</div>
 
@@ -197,7 +197,7 @@ https://templatemo.com/tm-571-hexashop
 		<h4 class="recipe">1. 재료:고구마,감자,슈가파우더,허브솔트</h4>
 
 		<img class="recipePicture" alt=""
-			src="${pageContext.request.contextPath}/resources/images/gore1.PNG">
+			src="${pageContext.request.contextPath}/resources/images/${type}3.PNG">
 
 		<hr />
 <!-- *********************************************************************** -->
@@ -205,68 +205,68 @@ https://templatemo.com/tm-571-hexashop
 			준비합니다.</h4>
 
 		<img class="recipePicture" alt=""
-			src="${pageContext.request.contextPath}/resources/images/gore2.PNG">
+			src="${pageContext.request.contextPath}/resources/images/${type}4.PNG">
 		<hr />
 <!-- *********************************************************************** -->
 		<h4 class="recipe">3.채칼말고 슬라이스 칼이라고 있어요 오늘은 요걸로 쉽게 만들어 볼께요.</h4>
 		<img class="recipePicture" alt=""
-			src="${pageContext.request.contextPath}/resources/images/gore3.PNG">
+			src="${pageContext.request.contextPath}/resources/images/${type}5.PNG">
 		<hr />
 		<!-- *********************************************************************** -->
 		<h4 class="recipe">4.슬라이스칼을 이용해서 감자를 슬라이스해줍니다.</h4>
 		<img class="recipePicture" alt=""
-			src="${pageContext.request.contextPath}/resources/images/gore4.PNG">
+			src="${pageContext.request.contextPath}/resources/images/${type}6.PNG">
 		<hr />
 		<!-- *********************************************************************** -->
 		<h4 class="recipe">5.슬라이스칼로 썬 감자는 찬물에 10분정도 담구어서 전문을 빼줍니다.</h4>
 		<img class="recipePicture" alt=""
-			src="${pageContext.request.contextPath}/resources/images/gore5.PNG">
+			src="${pageContext.request.contextPath}/resources/images/${type}7.PNG">
 		<hr />
 		<!-- *********************************************************************** -->
 		<h4 class="recipe">6.고구마도 슬라이스칼을 이용해서 슬라이스해줍니다.</h4>
 		<img class="recipePicture" alt=""
-			src="${pageContext.request.contextPath}/resources/images/gore6.PNG">
+			src="${pageContext.request.contextPath}/resources/images/${type}8.PNG">
 		<hr />
 		<!-- *********************************************************************** -->
 		<h4 class="recipe">7.고구마도 찬물에 10분정도 담구어 전분을 빼주세요.</h4>
 		<img class="recipePicture" alt=""
-			src="${pageContext.request.contextPath}/resources/images/gore7.PNG">
+			src="${pageContext.request.contextPath}/resources/images/${type}9.PNG">
 		<hr />
 		<!-- *********************************************************************** -->
 		<h4 class="recipe">8.찬물에 담구었던 감자와 고구마는 체에 걸러서 물기를 제거해주시고 남은 물기는
 			키친타올을 이용해서 남은 물기를 빼줍니다.</h4>
 		<img class="recipePicture" alt=""
-			src="${pageContext.request.contextPath}/resources/images/gore8.PNG">
+			src="${pageContext.request.contextPath}/resources/images/${type}10.PNG">
 		<hr />
 		<!-- *********************************************************************** -->
 		<h4 class="recipe">9.슬라이스한 감자와 고구마를 오븐틀에 올린후 감자는 허브솔트를! 고구마는
 			슈가파우더를 뿌려줍니다.</h4>
 		<img class="recipePicture" alt=""
-			src="${pageContext.request.contextPath}/resources/images/gore9.PNG">
+			src="${pageContext.request.contextPath}/resources/images/${type}11.PNG">
 		<img class="recipePicture" alt=""
-			src="${pageContext.request.contextPath}/resources/images/gore10.PNG">
+			src="${pageContext.request.contextPath}/resources/images/${type}12.PNG">
 		<img class="recipePicture" alt=""
-			src="${pageContext.request.contextPath}/resources/images/gore11.PNG">
+			src="${pageContext.request.contextPath}/resources/images/${type}13.PNG">
 		<hr />
 		<!-- *********************************************************************** -->
 
 		<h4 class="recipe">10.오븐에 넣고 200도 온도에서 15분정도 돌려줍니다. 15분후 다시뒤집어서
 			2-3분 돌려줍니다.</h4>
 		<img class="recipePicture" alt=""
-			src="${pageContext.request.contextPath}/resources/images/gore12.PNG">
+			src="${pageContext.request.contextPath}/resources/images/${type}14.PNG">
 		<img class="recipePicture" alt=""
-			src="${pageContext.request.contextPath}/resources/images/gore13.PNG">
+			src="${pageContext.request.contextPath}/resources/images/${type}15.PNG">
 		<hr />
 		<!-- *********************************************************************** -->
 		<h4 class="recipe">11.오븐으로 바삭하게 구웠어요^^.</h4> 
 		<img class="recipePicture" alt=""
-			src="${pageContext.request.contextPath}/resources/images/gore14.PNG">
+			src="${pageContext.request.contextPath}/resources/images/${type}16.PNG">
 		<hr />
 	
 		<!-- *********************************************************************** -->
 		<h4 class="recipe">12.요렇게 해서 감자칩과 고구마칩이 완성이 되었어요^^</h4>
 		
-		<img class="recipePictureFooter" src="${pageContext.request.contextPath}/resources/images/${type}.png" alt="">
+		<img class="recipePictureFooter" src="${pageContext.request.contextPath}/resources/images/${type}17.PNG" alt="">
 	  <!-- *********************************************************************** -->
 	</section>
 
