@@ -65,7 +65,7 @@ https://templatemo.com/tm-571-hexashop
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                            <li class="scroll-to-section"><a href="sajo" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#men">미션</a></li>
                              <li class="submenu">
                                 <a href="javascript:;">싱싱마켓</a>
@@ -95,16 +95,26 @@ https://templatemo.com/tm-571-hexashop
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
+                            <!-- ***************************************** 로그인 ******************************************** -->
+                                <c:choose>
                             
-                              <c:choose>
                             <c:when test="${sessionScope.logName ne null}">
-                            <li class="scroll-to-section"><a id="logOut" href="logOut">${sessionScope.logName}</a></li>
+                             <li class="submenu">
+                               <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
+                                 <ul>
+                                    <li><a href="logOut"><b>로그아웃</b></a></li>
+                                      <li><a href="#"><b>회원정보수정</b></a></li>
+                                    <li><a href="#"><b>회원탈퇴</b></a></li>
+                                    <li><a href="#"><b>구매내역</b></a></li>
+                                </ul>
+                             </li>
+                                
                             </c:when>
-                            <c:otherwise>  <li class="scroll-to-section"><a id="login" href="loginForm">로그인하기</a></li>
+                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=single-product&type=${type}">로그인하기</a></li>
                             </c:otherwise>
                             
                             </c:choose>
-                            
+                               <!-- ***************************************** 로그인 ******************************************** -->
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>

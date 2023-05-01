@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+    
+ 
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +16,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>소중한 식재료들이 담긴 고객님의 장바구니입니다</title>
+    <title>Hexashop - Product Detail Page</title>
 
 
     <!-- Additional CSS Files -->
@@ -33,13 +37,10 @@ https://templatemo.com/tm-571-hexashop
 
 -->
 
-<script type="text/javascript">
-
-
-</script>
     </head>
     
     <body>
+          <input type="hidden" id="pageType" value="single-product">
     
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -95,6 +96,7 @@ https://templatemo.com/tm-571-hexashop
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
+                            
                             <!-- ***************************************************로그인****************************************************************** -->
                               <c:choose>
                             
@@ -110,14 +112,13 @@ https://templatemo.com/tm-571-hexashop
                              </li>
                                 
                             </c:when>
-                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=cart">로그인하기</a></li>
+                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=single-product&type=${type}">로그인하기</a></li>
                             </c:otherwise>
                             
                             </c:choose>
                             
                              <!-- ***************************************************로그인****************************************************************** -->
-                             
-                             
+                            
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -136,9 +137,8 @@ https://templatemo.com/tm-571-hexashop
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>소중한 식재료들이 담긴</h2> 
-                        <h2>고객님의 장바구니입니다</h2>
-                        <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span>
+                        <h2>레시피 정보</h2>
+                        <span>식재료의 변신은 무궁무진! 맛있는 음식을 만들어보세요!</span>
                     </div>
                 </div>
             </div>
@@ -148,25 +148,23 @@ https://templatemo.com/tm-571-hexashop
 
 
     <!-- ***** Product Area Starts ***** -->
-   <!--********************************************************************** 장바구니 세션**************************************************************************** -->
-   
-   <c:forEach items="${products}" var="i">
-    <section class="section" id="product">
+     <section class="section" id="product">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                 <div class="left-images">
-                    <img src="${pageContext.request.contextPath}/resources/images/${i.type}.png" alt="">
+                    <img src="${pageContext.request.contextPath}/resources/images/${type}.png" alt="">
+                    <input type="hidden" id="type" value="${type}"/>
                 </div>
            
             </div>
             <div class="col-lg-4">
                 <div class="right-content">
-                    <h4>  ${i.name} </h4>
-                    <c:if test="${i.name2 ne null}">  
-                    <h4>${i.name2}</h4>
+                    <h4 id="name">${name}</h4>
+                    <c:if test="${name2 ne null}">  
+                    <h4>${name2}</h4>
                     </c:if>
-                     <span class="price">${i.price}</span>
+             
                     <ul class="stars">
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
@@ -174,13 +172,13 @@ https://templatemo.com/tm-571-hexashop
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
                     </ul>
-                    <span>${i.detail}</span>
+                    <span>${detail}</span>
                     <div class="quote">
-                        <i class="fa fa-quote-left"></i><p>${i.say}</p>
+                        <i class="fa fa-quote-left"></i><p>${say}</p>
                     </div>
                     <div class="quantity-content">
                         <div class="left-content">
-                            <h6>수량</h6>
+                           
                         </div>
                         <div class="right-content">
                             <div class="quantity buttons_added">
@@ -188,37 +186,19 @@ https://templatemo.com/tm-571-hexashop
                             </div>
                         </div>
                     </div>
-                    <div class="total">
-                        <h4>총 금액: $210.00</h4>
-                        <div class="main-border-button"><a href="#">구매하기</a></div>
-                    </div>
                 </div>
             </div>
             </div>
         </div>
     </section>
     
-    <hr/>
     
+     <header class="header-area header-sticky">
+        아아아아아아
+    </header>
+    <!-- ***** Product Area Ends ***** -->
     
-    </c:forEach>
-    <!--********************************************************************** 장바구니 세션**************************************************************************** -->
-    
-      <!-- ***********************************************************최종 결제******************************************************************************* -->
-          <section class="section" id="product2">
-        <div class="container">
-  
-                    <div class="total">
-                        <h4>총 금액: $210.00</h4>
-                        <div class="main-border-button"><a href="#">결제하기</a></div>
-                    </div>
-         
-        </div>
-    </section>
-    
-   
-      <!-- ***********************************************************최종 결제******************************************************************************* -->
-      <!--********************************************************************** 하단**************************************************************************** -->
+    <!-- ***** Footer Start ***** -->
     <footer>
         <div class="container">
             <div class="row">
@@ -288,7 +268,7 @@ https://templatemo.com/tm-571-hexashop
             </div>
         </div>
     </footer>
-    <!--********************************************************************** 하단**************************************************************************** -->
+    
 
     <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.0.min.js"></script>
@@ -316,6 +296,9 @@ https://templatemo.com/tm-571-hexashop
     <script>
 
         $(function() {
+        	
+        	
+        	
             var selectedClass = "";
             $("p").click(function(){
             selectedClass = $(this).attr("data-rel");
@@ -327,6 +310,36 @@ https://templatemo.com/tm-571-hexashop
             }, 500);
                 
             });
+            
+            
+           <%-- $('.main-border-button').click(function() {
+        	  
+        	   
+        	   <% if(session.getAttribute("logName") == null ) { %> 
+        	   if(confirm('장바구니에 담기 위해선 로그인이 필요합니다. 로그인 하시겠습니까?') )
+        	   {
+        		   location.href="loginForm?pageType="+$('#pageType').val()+"&type="+$('#type').val();
+        	   }else { location.href="#"; }
+        	   <% } %>
+        	   
+        	   <% if(session.getAttribute("logName") != null ) { %> 
+        	   if( confirm("상품을 장바구니에 담았습니다. 장바구니로 이동하시겠습니까?"))
+        	   {
+        		   location.href="cart?type="+$('#type').val();
+        		   
+        	   }else {
+        		   
+        		   if( confirm("이전 화면으로 돌아가시겠습니까?"))
+            	   {
+        			   location.href="sajo";
+            	   }
+        	   
+        	   }
+        	   <% } %>
+           }); --%>
+            
+           
+           
         });
 
     </script>

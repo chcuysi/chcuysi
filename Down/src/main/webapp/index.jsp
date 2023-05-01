@@ -66,7 +66,7 @@ https://templatemo.com/tm-571-hexashop
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                            <li class="scroll-to-section"><a href="sajo" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#men">미션</a></li>
                              <li class="submenu">
                                 <a href="javascript:;">싱싱마켓</a>
@@ -105,6 +105,9 @@ https://templatemo.com/tm-571-hexashop
                                <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
                                  <ul>
                                     <li><a href="logOut"><b>로그아웃</b></a></li>
+                                    <li><a href="#"><b>회원정보수정</b></a></li>
+                                    <li><a href="#"><b>회원탈퇴</b></a></li>
+                                    <li><a href="#"><b>구매내역</b></a></li>
                                 </ul>
                              </li>
                                 
@@ -324,7 +327,7 @@ https://templatemo.com/tm-571-hexashop
                                             <li><a href="apple"><i class="fa fa-eye"></i></a></li>
                                           
                                           
-                                            <li><a href="cart.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a class="cart" href="#"><input id="type" type="hidden" value="appleSingProduct"/><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/apple.png" alt="">
@@ -347,7 +350,7 @@ https://templatemo.com/tm-571-hexashop
                                         <ul>
                                              <li><a href="go"><i class="fa fa-eye"></i></a></li>
                                  
-                                            <li><a href="cart.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                             <li><a class="cart" href="#"><input id="type" type="hidden" value="goSingProduct"/><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/go.png" alt="">
@@ -371,7 +374,7 @@ https://templatemo.com/tm-571-hexashop
                                         <ul>
                                               <li><a href="bu"><i class="fa fa-eye"></i></a></li>
                                 
-                                            <li><a href="cart.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                           <li><a class="cart" href="#"><input id="type" type="hidden" value="buSingProduct"/><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/bu.png" alt="">
@@ -395,7 +398,7 @@ https://templatemo.com/tm-571-hexashop
                                         <ul>
                                              <li><a href="pote"><i class="fa fa-eye"></i></a></li>
                                   
-                                            <li><a href="cart.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a class="cart" href="#"><input id="type" type="hidden" value="poteSingProduct"/><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/pote.png" alt="">
@@ -443,7 +446,7 @@ https://templatemo.com/tm-571-hexashop
                                         <ul>
                                              <li><a href="apple"><i class="fa fa-eye"></i></a></li>
                                  
-                                            <li><a href="cart.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a class="cart" href="#"><input id="type" type="hidden" value="appleSingProduct"/><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/apple.png" alt="">
@@ -466,7 +469,7 @@ https://templatemo.com/tm-571-hexashop
                                         <ul>
                                              <li><a href="bae"><i class="fa fa-eye"></i></a></li>
                                      
-                                            <li><a href="cart.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                             <li><a class="cart" href="#"><input id="type" type="hidden" value="baeSingProduct"/><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/bae.png" alt="">
@@ -489,7 +492,7 @@ https://templatemo.com/tm-571-hexashop
                                         <ul>
                                              <li><a href="cham"><i class="fa fa-eye"></i></a></li>
                                    
-                                            <li><a href="cart.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a class="cart" href="#"><input id="type" type="hidden" value="chamSingProduct"/><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/cham.png" alt="">
@@ -512,7 +515,7 @@ https://templatemo.com/tm-571-hexashop
                                         <ul>
                                             <li><a href="banana"><i class="fa fa-eye"></i></a></li>
                                    
-                                            <li><a href="cart.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a class="cart" href="#"><input id="type" type="hidden" value="bananaSingProduct"/><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/banana.png" alt="">
@@ -558,9 +561,8 @@ https://templatemo.com/tm-571-hexashop
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                       
-                                            <li><a href="cart.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                           <li><a href="gofood"><i class="fa fa-eye"></i></a></li>
+                          
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/gofood.png" alt="">
@@ -581,9 +583,8 @@ https://templatemo.com/tm-571-hexashop
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
+                                             <li><a href="bufood"><i class="fa fa-eye"></i></a></li>
                                 
-                                            <li><a href="cart.html"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/bufood.png" alt="">
@@ -604,9 +605,8 @@ https://templatemo.com/tm-571-hexashop
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                       
-                                            <li><a href="cart.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                             <li><a href="appleFood"><i class="fa fa-eye"></i></a></li>
+                                 
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/appleFood.png" alt="">
@@ -627,9 +627,8 @@ https://templatemo.com/tm-571-hexashop
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    
-                                            <li><a href="cart.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href="potefood"><i class="fa fa-eye"></i></a></li>
+                                   
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/potefood.png" alt="">
@@ -954,7 +953,32 @@ https://templatemo.com/tm-571-hexashop
             });
             
             
-            if( )
+            $('.cart').click(function() {
+            	alert('호호');
+            	
+            	 <% if(session.getAttribute("logName") == null ) { %> 
+          	   if(confirm('장바구니에 담기 위해선 로그인이 필요합니다. 로그인 하시겠습니까?') )
+          	   {
+          		   location.href="loginForm?pageType=index&type="+$(this).find('#type').val();
+          	   }else { location.href="#"; }
+          	   <% } %>
+          	   
+          	   <% if(session.getAttribute("logName") != null ) { %> 
+          	   if( confirm("상품을 장바구니에 담았습니다. 장바구니로 이동하시겠습니까?"))
+          	   {
+          		   location.href="cart?pageType=index&type="+$(this).find('#type').val();
+          		   
+          	   }else {
+          		   
+          		   if( confirm("이전 화면으로 돌아가시겠습니까?"))
+              	   {
+          			   location.href="sajo";
+              	   }
+          	   
+          	   }
+          	   <% } %>
+            	
+            });
             
            
         });

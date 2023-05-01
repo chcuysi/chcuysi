@@ -66,7 +66,7 @@ https://templatemo.com/tm-571-hexashop
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                            <li class="scroll-to-section"><a href="sajo" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#men">미션</a></li>
                              <li class="submenu">
                                 <a href="javascript:;">싱싱마켓</a>
@@ -105,6 +105,9 @@ https://templatemo.com/tm-571-hexashop
                                <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
                                  <ul>
                                     <li><a href="logOut"><b>로그아웃</b></a></li>
+                                      <li><a href="#"><b>회원정보수정</b></a></li>
+                                    <li><a href="#"><b>회원탈퇴</b></a></li>
+                                    <li><a href="#"><b>구매내역</b></a></li>
                                 </ul>
                              </li>
                                 
