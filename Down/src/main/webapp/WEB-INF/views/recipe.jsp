@@ -63,73 +63,79 @@ https://templatemo.com/tm-571-hexashop
 
 	<!-- ***** Header Area Start ***** -->
 	<header class="header-area header-sticky">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<nav class="main-nav">
-						<!-- ***** Logo Start ***** -->
-						<a href="sajo" class="logo"> <img
-							src="${pageContext.request.contextPath}/resources/images/LOGO2.png">
-						</a>
-						<!-- ***** Logo End ***** -->
-						<!-- ***** Menu Start ***** -->
-						<ul class="nav">
-							<li class="scroll-to-section"><a href="sajo" class="active">Home</a></li>
-							<li class="scroll-to-section"><a href="#men">미션</a></li>
-							<li class="submenu"><a href="javascript:;">싱싱마켓</a>
-								<ul>
-									<li><a href="about.html"><b>과일</b></a></li>
-									<li><a href="products.html"><b>채소</b></a></li>
-									<li><a href="contact.html"><b>기타</b></a></li>
-								</ul></li>
-							<li class="scroll-to-section"><a href="#kids">레시피</a></li>
-
-							<li class="submenu"><a href="javascript:;">회사소개</a>
-								<ul>
-									<li><a href="about.html"><b>우리 SAJO는</b></a></li>
-									<li><a href="products.html"><b>연혁</b></a></li>
-									<li><a href="single-product.html"><b>경영 방침/경영 철학</b></a></li>
-									<li><a href="contact.html"><b>오시는 길</b></a></li>
-								</ul></li>
-							<li class="submenu"><a href="javascript:;">고객센터</a>
-								<ul>
-									<li><a href="#"><b>자주 묻는 질문</b></a></li>
-									<li><a href="#"><b>Q/A</b></a></li>
-									<li><a href="#"><b>공지사항</b></a></li>
-								</ul></li>
-							<li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
-
-							<!-- ***************************************************로그인****************************************************************** -->
-							<c:choose>
-
-								<c:when test="${sessionScope.logName ne null}">
-									<li class="submenu"><a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
-										<ul>
-											<li><a href="logOut"><b>로그아웃</b></a></li>
-											<li><a href="#"><b>회원정보수정</b></a></li>
-											<li><a href="#"><b>회원탈퇴</b></a></li>
-											<li><a href="#"><b>구매내역</b></a></li>
-										</ul></li>
-
-								</c:when>
-								<c:otherwise>
-									<li class="scroll-to-section"><a
-										href="loginForm?pageType=single-product&type=${type}">로그인하기</a></li>
-								</c:otherwise>
-
-							</c:choose>
-
-							<!-- ***************************************************로그인****************************************************************** -->
-
-						</ul>
-						<a class='menu-trigger'> <span>Menu</span>
-						</a>
-						<!-- ***** Menu End ***** -->
-					</nav>
-				</div>
-			</div>
-		</div>
-	</header>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="sajo" class="logo">
+                            <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="sajo" class="active">Home</a></li>
+                            <li class="scroll-to-section"><a href="#men">미션</a></li>
+                             <li class="submenu">
+                                <a href="javascript:;">싱싱마켓</a>
+                                <ul>
+                                <li><a href="market"><b>전체</b></a></li>
+                                    <li><a href="fl"><b>과일</b></a></li>
+                                    <li><a href="va"><b>채소</b></a></li>
+                                    <li><a href="market"><b>기타</b></a></li>
+                                </ul>
+                            </li>
+                            <li class="scroll-to-section"><a href="#kids">레시피</a></li>
+                            
+                            <li class="submenu">
+                                <a href="javascript:;">회사소개</a>
+                                <ul>
+                                    <li><a href="about.html"><b>우리 SAJO는</b></a></li>
+                                    <li><a href="products.html"><b>연혁</b></a></li>
+                                    <li><a href="single-product.html"><b>경영 방침/경영 철학</b></a></li>
+                                    <li><a href="contact.html"><b>오시는 길</b></a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:;">고객센터</a>
+                                <ul>
+                                    <li><a href="#"><b>자주 묻는 질문</b></a></li>
+                                    <li><a href="#"><b>Q/A</b></a></li>
+                                    <li><a href="#"><b>공지사항</b></a></li>
+                                </ul>
+                            </li>                         <!-- session.invalidate(); -->
+                            
+                            <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
+                            
+                            <c:choose>
+                            
+                            <c:when test="${sessionScope.logName ne null}">
+                             <li class="submenu">
+                               <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
+                                 <ul>
+                                    <li><a href="logOut"><b>로그아웃</b></a></li>
+                                    <li><a href="#"><b>회원정보수정</b></a></li>
+                                    <li><a href="#"><b>회원탈퇴</b></a></li>
+                                    <li><a href="#"><b>구매내역</b></a></li>
+                                </ul>
+                             </li>
+                                
+                            </c:when>
+                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
+                            </c:otherwise>
+                            
+                            </c:choose>
+                            
+                        </ul>        
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
 	<!-- ***** Header Area End ***** -->
 
 	<!-- ***** Main Banner Area Start ***** -->

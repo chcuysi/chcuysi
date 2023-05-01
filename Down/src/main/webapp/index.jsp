@@ -54,7 +54,7 @@ https://templatemo.com/tm-571-hexashop
     
     
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
+   <header id="mainHeader" class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -71,9 +71,10 @@ https://templatemo.com/tm-571-hexashop
                              <li class="submenu">
                                 <a href="javascript:;">싱싱마켓</a>
                                 <ul>
-                                    <li><a href="about.html"><b>과일</b></a></li>
-                                    <li><a href="products.html"><b>채소</b></a></li>
-                                    <li><a href="contact.html"><b>기타</b></a></li>
+                                <li><a href="market"><b>전체</b></a></li>
+                                    <li><a href="fl"><b>과일</b></a></li>
+                                    <li><a href="va"><b>채소</b></a></li>
+                                    <li><a href="market"><b>기타</b></a></li>
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="#kids">레시피</a></li>
@@ -130,7 +131,7 @@ https://templatemo.com/tm-571-hexashop
     <!-- ***** Header Area End ***** -->
 
     <!-- ***** Main Banner Area Start ***** -->
-    <div class="main-banner" id="top">
+    <div class="main-banner" id="mainTop">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6">
@@ -145,7 +146,7 @@ https://templatemo.com/tm-571-hexashop
                                     <a href="#">SAJO 이용 가이드 받기!</a>
                                 </div>
                             </div>
-                            <img src="${pageContext.request.contextPath}/resources/images/base.png" alt="">
+                            <img id="base" src="${pageContext.request.contextPath}/resources/images/base.jpg" alt="">
                         </div>
                     </div>
                 </div>
@@ -168,7 +169,7 @@ https://templatemo.com/tm-571-hexashop
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="${pageContext.request.contextPath}/resources/images/mission.png">
+                                        <img src="${pageContext.request.contextPath}/resources/images/mession.jpg">
                                     </div>
                                 </div>
                             </div>
@@ -184,11 +185,11 @@ https://templatemo.com/tm-571-hexashop
                                                 <h4>싱싱마켓</h4>
                                                 <p>못났지만 싱싱한 상품들을 만나보세요!</p>
                                                 <div class="main-border-button">
-                                                    <a href="#">자세히 보기</a>
+                                                    <a href="market">자세히 보기</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="${pageContext.request.contextPath}/resources/images/singsing.png">
+                                        <img src="${pageContext.request.contextPath}/resources/images/singsing.jpg">
                                     </div>
                                 </div>
                             </div>
@@ -208,7 +209,7 @@ https://templatemo.com/tm-571-hexashop
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="${pageContext.request.contextPath}/resources/images/re1.png">
+                                        <img src="${pageContext.request.contextPath}/resources/images/recipe.jpg">
                                     </div>
                                 </div>
                             </div>
@@ -321,13 +322,13 @@ https://templatemo.com/tm-571-hexashop
                     <div class="men-item-carousel">
                         <div class="owl-men-item owl-carousel">
                             <div class="item">
-                                <div class="thumb">
+                                <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="apple"><i class="fa fa-eye"></i></a></li>
+                                            <li> <a href="apple"> 자세히 보기 </a> </li>
                                           
                                           
-                                            <li><a class="cart" href="#"><input id="type" type="hidden" value="appleSingProduct"/><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a class="cart" href="#"><input id="type" type="hidden" value="appleSingProduct"/> 장바구니</a></li>
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/apple.png" alt="">
@@ -345,12 +346,12 @@ https://templatemo.com/tm-571-hexashop
                                 </div>
                             </div>
                             <div class="item">
-                                <div class="thumb">
+                                <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                             <li><a href="go"><i class="fa fa-eye"></i></a></li>
+                                             <li><a href="go">자세히 보기</a></li>
                                  
-                                             <li><a class="cart" href="#"><input id="type" type="hidden" value="goSingProduct"/><i class="fa fa-shopping-cart"></i></a></li>
+                                             <li><a class="cart" href="#"><input id="type" type="hidden" value="goSingProduct"/>장바구니</a></li>
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/go.png" alt="">
@@ -369,12 +370,12 @@ https://templatemo.com/tm-571-hexashop
                                 </div>
                             </div>
                             <div class="item">
-                                <div class="thumb">
+                                <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                              <li><a href="bu"><i class="fa fa-eye"></i></a></li>
+                                              <li><a href="bu">자세히 보기</a></li>
                                 
-                                           <li><a class="cart" href="#"><input id="type" type="hidden" value="buSingProduct"/><i class="fa fa-shopping-cart"></i></a></li>
+                                           <li><a class="cart" href="#"><input id="type" type="hidden" value="buSingProduct"/>장바구니</a></li>
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/bu.png" alt="">
@@ -393,12 +394,12 @@ https://templatemo.com/tm-571-hexashop
                                 </div>
                             </div>
                             <div class="item">
-                                <div class="thumb">
+                                <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                             <li><a href="pote"><i class="fa fa-eye"></i></a></li>
+                                             <li><a href="pote">자세히 보기</a></li>
                                   
-                                            <li><a class="cart" href="#"><input id="type" type="hidden" value="poteSingProduct"/><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a class="cart" href="#"><input id="type" type="hidden" value="poteSingProduct"/>장바구니</a></li>
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/pote.png" alt="">
@@ -441,12 +442,13 @@ https://templatemo.com/tm-571-hexashop
                     <div class="women-item-carousel">
                         <div class="owl-women-item owl-carousel">
                             <div class="item">
-                                <div class="thumb">
+                                <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                             <li><a href="apple"><i class="fa fa-eye"></i></a></li>
+                                    
+                                             <li><a href="apple">자세히 보기</a></li>
                                  
-                                            <li><a class="cart" href="#"><input id="type" type="hidden" value="appleSingProduct"/><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a class="cart" href="#"><input id="type" type="hidden" value="appleSingProduct"/>장바구니</a></li>
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/apple.png" alt="">
@@ -464,12 +466,12 @@ https://templatemo.com/tm-571-hexashop
                                 </div>
                             </div>
                             <div class="item">
-                                <div class="thumb">
+                                <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                             <li><a href="bae"><i class="fa fa-eye"></i></a></li>
+                                             <li><a href="bae">자세히 보기</a></li>
                                      
-                                             <li><a class="cart" href="#"><input id="type" type="hidden" value="baeSingProduct"/><i class="fa fa-shopping-cart"></i></a></li>
+                                             <li><a class="cart" href="#"><input id="type" type="hidden" value="baeSingProduct"/>장바구니</a></li>
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/bae.png" alt="">
@@ -487,12 +489,12 @@ https://templatemo.com/tm-571-hexashop
                                 </div>
                             </div>
                             <div class="item">
-                                <div class="thumb">
+                                <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                             <li><a href="cham"><i class="fa fa-eye"></i></a></li>
+                                             <li><a href="cham">자세히 보기</a></li>
                                    
-                                            <li><a class="cart" href="#"><input id="type" type="hidden" value="chamSingProduct"/><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a class="cart" href="#"><input id="type" type="hidden" value="chamSingProduct"/>장바구니</a></li>
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/cham.png" alt="">
@@ -510,12 +512,12 @@ https://templatemo.com/tm-571-hexashop
                                 </div>
                             </div>
                             <div class="item">
-                                <div class="thumb">
+                                <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="banana"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="banana">자세히 보기</a></li>
                                    
-                                            <li><a class="cart" href="#"><input id="type" type="hidden" value="bananaSingProduct"/><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a class="cart" href="#"><input id="type" type="hidden" value="bananaSingProduct"/>장바구니</a></li>
                                         </ul>
                                     </div>
                                     <img src="${pageContext.request.contextPath}/resources/images/banana.png" alt="">
@@ -558,10 +560,10 @@ https://templatemo.com/tm-571-hexashop
                     <div class="kid-item-carousel">
                         <div class="owl-kid-item owl-carousel">
                             <div class="item">
-                                <div class="thumb">
+                                <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                           <li><a href="gofood"><i class="fa fa-eye"></i></a></li>
+                                           <li><a href="gofood">자세히 보기</a></li>
                           
                                         </ul>
                                     </div>
@@ -580,10 +582,10 @@ https://templatemo.com/tm-571-hexashop
                                 </div>
                             </div>
                             <div class="item">
-                                <div class="thumb">
+                                <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                             <li><a href="gofood"><i class="fa fa-eye"></i></a></li>
+                                             <li><a href="gofood">자세히 보기</a></li>
                                 
                                         </ul>
                                     </div>
@@ -602,10 +604,10 @@ https://templatemo.com/tm-571-hexashop
                                 </div>
                             </div>
                             <div class="item">
-                                <div class="thumb">
+                                <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                             <li><a href="gofood"><i class="fa fa-eye"></i></a></li>
+                                             <li><a href="gofood">자세히 보기</a></li>
                                  
                                         </ul>
                                     </div>
@@ -624,10 +626,10 @@ https://templatemo.com/tm-571-hexashop
                                 </div>
                             </div>
                             <div class="item">
-                                <div class="thumb">
+                                <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="gofood"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="gofood">자세히 보기</a></li>
                                    
                                         </ul>
                                     </div>

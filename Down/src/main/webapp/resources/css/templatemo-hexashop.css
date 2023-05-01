@@ -719,7 +719,7 @@ banner
   color: #fff;
   font-style: italic;
 }
-
+/***********************************************************************************************  헤더부분 hover */
 .main-banner .right-content .right-first-image .thumb .hover-content {
   position: absolute;
   top: 15px;
@@ -818,6 +818,8 @@ Men
   opacity: 0;
   visibility: hidden;
   transition: all .5s;
+
+   
 }
 
 #men .item .thumb:hover .hover-content {
@@ -834,15 +836,35 @@ Men
   display: inline;
   margin: 0px 10px;
 }
-
+/* ************************************************** 메인험 리스트 hover 시   출력  a태그 ************************* */
 #men .item .thumb .hover-content ul li a {
-  width: 50px;
+  width: 100px;
   height: 50px;
   text-align: center;
   line-height: 50px;
   display: inline-block;
-  color: #2a2a2a;
-  background-color: #fff;
+  color: black;
+  border:1px solid;
+  border-color: #1992df;
+  background-color: #fff; 
+  font-size: 12px;
+  font-weight: 800;
+  
+}
+
+#men .item .thumb .hover-content ul li a:hover {
+  width: 100px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  display: inline-block;
+  color: #fff;
+  border:1px solid;
+  border-color: #1992df;
+  background-color: #1992df; 
+  font-size: 12px;
+  font-weight: 800;
+  
 }
 
 
@@ -997,13 +1019,33 @@ Women
 }
 
 #women .item .thumb .hover-content ul li a {
-  width: 50px;
+  width: 100px;
   height: 50px;
   text-align: center;
   line-height: 50px;
   display: inline-block;
-  color: #2a2a2a;
-  background-color: #fff;
+  color: black;
+  border:1px solid;
+  border-color: #1992df;
+  background-color: #fff; 
+  font-size: 12px;
+  font-weight: 800;
+  
+}
+
+#women .item .thumb .hover-content ul li a:hover {
+  width: 100px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  display: inline-block;
+  color: #fff;
+  border:1px solid;
+  border-color: #1992df;
+  background-color: #1992df; 
+  font-size: 12px;
+  font-weight: 800;
+  
 }
 
 
@@ -1157,13 +1199,33 @@ Kids
 }
 
 #kids .item .thumb .hover-content ul li a {
-  width: 50px;
+  width: 100px;
   height: 50px;
   text-align: center;
   line-height: 50px;
   display: inline-block;
-  color: #2a2a2a;
-  background-color: #fff;
+  color: black;
+  border:1px solid;
+  border-color: #1992df;
+  background-color: #fff; 
+  font-size: 12px;
+  font-weight: 800;
+  
+}
+
+#kids .item .thumb .hover-content ul li a:hover {
+  width: 100px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  display: inline-block;
+  color: #fff;
+  border:1px solid;
+  border-color: #1992df;
+  background-color: #1992df; 
+  font-size: 12px;
+  font-weight: 800;
+  
 }
 
 
@@ -1577,7 +1639,7 @@ Products Page
   margin-top: 160px;
   margin-bottom: 30px;
   background-color:black;
-  /* background-image: url(../images/singsing2.png); */
+  background-image: url(../images/productHeader.jpg); 
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1676,13 +1738,33 @@ Products Page
 }
 
 #products .item .thumb .hover-content ul li a {
-  width: 50px;
+  width: 100px;
   height: 50px;
   text-align: center;
   line-height: 50px;
   display: inline-block;
-  color: #2a2a2a;
-  background-color: #fff;
+  color: black;
+  border:1px solid;
+  border-color: #1992df;
+  background-color: #fff; 
+  font-size: 12px;
+  font-weight: 800;
+  
+}
+
+#products .item .thumb .hover-content ul li a:hover {
+  width: 100px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  display: inline-block;
+  color: #fff;
+  border:1px solid;
+  border-color: #1992df;
+  background-color: #1992df; 
+  font-size: 12px;
+  font-weight: 800;
+  
 }
 
 #products .pagination {
@@ -2397,7 +2479,7 @@ responsive
   }
 }
 
-/* ------------------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------생성한  css 부분 --------------------------------------------- */
 
 #bot {color:white;   
       font-size: 14px;
@@ -2426,4 +2508,26 @@ responsive
 .recipePicture { margin: auto;  display: block; padding-bottom: 30px;}
 
 .recipePictureFooter { margin: auto;  display: block; padding-bottom: 30px;}
+
+
+
+#CategoryHeader {margin-bottom:50px; margin-top:50px;}
+
+
+
+/* ------------------------------------------상품 카테고리 선택 박스  css ---------------------------------------- */
+
+#Category {margin-top:50px; margin-bottom: 50px; margin-left: 9px; margin-right:9px;}
+
+
+.cateborder > a {font-size:12px; color:#333;  border-color: #E1E1E1; margin:0 3px; padding: 9px 16px 10px; /* 9px 16px 10px */; font-weight: 600; }
+.cateborder > a:hover { background: green; cursor: pointer; color:white; }
+
+.cateborder {display:inline; }
+
+
+
+
+/* 이미지 hover 테두리 ***************************************************************************************** */
+#listView:hover, .products:hover { border:7px solid; border-color:#1992df;}
 

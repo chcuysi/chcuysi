@@ -2,9 +2,6 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
-    
- 
-    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +13,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>Hexashop - Product Detail Page</title>
+    <title>싱싱마켓</title>
 
 
     <!-- Additional CSS Files -->
@@ -36,11 +33,9 @@ TemplateMo 571 Hexashop
 https://templatemo.com/tm-571-hexashop
 
 -->
-
     </head>
     
     <body>
-          <input type="hidden" id="pageType" value="single-product">
     
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -54,7 +49,7 @@ https://templatemo.com/tm-571-hexashop
     
     
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
+     <header class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -71,9 +66,10 @@ https://templatemo.com/tm-571-hexashop
                              <li class="submenu">
                                 <a href="javascript:;">싱싱마켓</a>
                                 <ul>
-                                    <li><a href="about.html"><b>과일</b></a></li>
-                                    <li><a href="products.html"><b>채소</b></a></li>
-                                    <li><a href="contact.html"><b>기타</b></a></li>
+                                <li><a href="market"><b>전체</b></a></li>
+                                    <li><a href="fl"><b>과일</b></a></li>
+                                    <li><a href="va"><b>채소</b></a></li>
+                                    <li><a href="market"><b>기타</b></a></li>
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="#kids">레시피</a></li>
@@ -94,30 +90,28 @@ https://templatemo.com/tm-571-hexashop
                                     <li><a href="#"><b>Q/A</b></a></li>
                                     <li><a href="#"><b>공지사항</b></a></li>
                                 </ul>
-                            </li>
+                            </li>                         <!-- session.invalidate(); -->
+                            
                             <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
                             
-                            <!-- ***************************************************로그인****************************************************************** -->
-                              <c:choose>
+                            <c:choose>
                             
                             <c:when test="${sessionScope.logName ne null}">
                              <li class="submenu">
                                <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
                                  <ul>
                                     <li><a href="logOut"><b>로그아웃</b></a></li>
-                                      <li><a href="#"><b>회원정보수정</b></a></li>
+                                    <li><a href="#"><b>회원정보수정</b></a></li>
                                     <li><a href="#"><b>회원탈퇴</b></a></li>
                                     <li><a href="#"><b>구매내역</b></a></li>
                                 </ul>
                              </li>
                                 
                             </c:when>
-                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=single-product&type=${type}">로그인하기</a></li>
+                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
                             </c:otherwise>
                             
                             </c:choose>
-                            
-                             <!-- ***************************************************로그인****************************************************************** -->
                             
                         </ul>        
                         <a class='menu-trigger'>
@@ -133,12 +127,13 @@ https://templatemo.com/tm-571-hexashop
 
     <!-- ***** Main Banner Area Start ***** -->
     <div class="page-heading" id="top">
+    
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>레시피 정보</h2>
-                        <span>식재료의 변신은 무궁무진! 맛있는 음식을 만들어보세요!</span>
+                        <h2>싱싱마켓에 오신 것을 환영합니다.</h2>
+                        <span>다양한 종류의 신선한 과일을 만나보세요!</span>
                     </div>
                 </div>
             </div>
@@ -147,59 +142,110 @@ https://templatemo.com/tm-571-hexashop
     <!-- ***** Main Banner Area End ***** -->
 
 
-    <!-- ***** Product Area Starts ***** -->
-     <section class="section" id="product">
+    <!-- ***** Products Area Starts ***** -->
+    <section class="section" id="products">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
-                <div class="left-images">
-                    <img src="${pageContext.request.contextPath}/resources/images/${type}.png" alt="">
-                    <input type="hidden" id="type" value="${type}"/>
-                </div>
-           
-            </div>
-            <div class="col-lg-4">
-                <div class="right-content">
-                    <h4 id="name">${name}</h4>
-                    <c:if test="${name2 ne null}">  
-                    <h4>${name2}</h4>
-                    </c:if>
-             
-                    <ul class="stars">
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                    </ul>
-                    <span>${detail}</span>
-                    <div class="quote">
-                        <i class="fa fa-quote-left"></i><p>${say}</p>
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                    
+                   
+                        <hr/>
+                    
+                    
+                         <h3 id="CategoryHeader">${viewType}</h3>
+                         
+                         
+                            <hr/>
+                            
+                            
+                          <div id="Category">
+                          
+                          <div class="main-border-button cateborder">
+                            <a id="all" href="#">전체</a>
+                         </div>
+                         
+                        <div class="main-border-button cateborder">
+                            <a id="va" href="#">채소</a>
+                         </div>
+
+                         <div class="main-border-button cateborder">
+                              <a id="fl" href="#">과일</a>
+                         </div> 
+                         <div class="main-border-button cateborder">
+                            <a id="banana" href="#">기타</a>
+                         </div>   
                     </div>
-                    <div class="quantity-content">
-                        <div class="left-content">
-                           
-                        </div>
-                        <div class="right-content">
-                            <div class="quantity buttons_added">
-                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
+                    
+                     
+                    </div>
+                </div>
+            </div>
+      </div>
+      
+      
+        <div class="container">
+            <div class="row"> 
+            
+      <c:forEach items="${products}" var="i">   
+      
+            
+                <div id="${i.category}" class="col-lg-4">
+                    <div class="item">
+                        <div class="thumb">
+                            <div class="hover-content">
+                                <ul>
+                                    <li><a href="single-product.html">자세히 보기</a></li>
+
+                                    <li><a href="single-product.html">장바구니</a></li>
+                                </ul>
                             </div>
+                            <img class="products" src="${pageContext.request.contextPath}/resources/images/${i.type}.png" alt="">
+                        </div>
+                        <div class="down-content">
+                            <h4>${i.name}</h4>
+                            <span>${i.price}</span>
+                            <ul class="stars">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </div>
+                
+            </c:forEach>
+                
+                <div class="col-lg-12">
+                    <div class="pagination">
+                        <ul>
+                            <li>
+                                <a href="#">1</a>
+                            </li>
+                            <li class="active">
+                                <a href="#">2</a>
+                            </li>
+                            <li>
+                                <a href="#">3</a>
+                            </li>
+                            <li>
+                                <a href="#">4</a>
+                            </li>
+                            <li>
+                                <a href="#">></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    
-    
-     <header class="header-area header-sticky">
-        아아아아아아
-    </header>
-    <!-- ***** Product Area Ends ***** -->
+    <!-- ***** Products Area Ends ***** -->
     
     <!-- ***** Footer Start ***** -->
-    <footer>
+   <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -288,17 +334,13 @@ https://templatemo.com/tm-571-hexashop
     <script src="${pageContext.request.contextPath}/resources/js/slick.js"></script> 
     <script src="${pageContext.request.contextPath}/resources/js/lightbox.js"></script> 
     <script src="${pageContext.request.contextPath}/resources/js/isotope.js"></script> 
-    <script src="${pageContext.request.contextPath}/resources/js/quantity.js"></script>
     
     <!-- Global Init -->
     <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
 
     <script>
-
+    
         $(function() {
-        	
-        	
-        	
             var selectedClass = "";
             $("p").click(function(){
             selectedClass = $(this).attr("data-rel");
@@ -311,35 +353,56 @@ https://templatemo.com/tm-571-hexashop
                 
             });
             
+            $('.cart').click(function() {
+            	alert('호호');
+            	
+            	 <% if(session.getAttribute("logName") == null ) { %> 
+          	   if(confirm('장바구니에 담기 위해선 로그인이 필요합니다. 로그인 하시겠습니까?') )
+          	   {
+          		   location.href="loginForm?pageType=index&type="+$(this).find('#type').val();
+          	   }else { location.href="#"; }
+          	   <% } %>
+          	   
+          	   <% if(session.getAttribute("logName") != null ) { %> 
+          	   if( confirm("상품을 장바구니에 담았습니다. 장바구니로 이동하시겠습니까?"))
+          	   {
+          		   location.href="cart?pageType=index&type="+$(this).find('#type').val();
+          		   
+          	   }else {
+          		   
+          		   if( confirm("이전 화면으로 돌아가시겠습니까?"))
+              	   {
+          			   location.href="sajo";
+              	   }
+          	   
+          	   }
+          	   <% } %>
+            	
+            });
             
-           <%-- $('.main-border-button').click(function() {
-        	  
-        	   
-        	   <% if(session.getAttribute("logName") == null ) { %> 
-        	   if(confirm('장바구니에 담기 위해선 로그인이 필요합니다. 로그인 하시겠습니까?') )
-        	   {
-        		   location.href="loginForm?pageType="+$('#pageType').val()+"&type="+$('#type').val();
-        	   }else { location.href="#"; }
-        	   <% } %>
-        	   
-        	   <% if(session.getAttribute("logName") != null ) { %> 
-        	   if( confirm("상품을 장바구니에 담았습니다. 장바구니로 이동하시겠습니까?"))
-        	   {
-        		   location.href="cart?type="+$('#type').val();
-        		   
-        	   }else {
-        		   
-        		   if( confirm("이전 화면으로 돌아가시겠습니까?"))
-            	   {
-        			   location.href="sajo";
-            	   }
-        	   
-        	   }
-        	   <% } %>
-           }); --%>
+            $('#all').click(function(event) {
+           	 event.preventDefault();
+               $('#채소').css('display','inline-block');
+           	$('#과일').css('display','inline-block');
+           	$('#CategoryHeader').text("상품 전체 목록");
+           })
             
-           
-           
+            $('#va').click(function(event) {
+            	 event.preventDefault();
+                $('#채소').css('display','inline-block');
+            	$('#과일').css('display','none');
+            	$('#CategoryHeader').text("채소 목록");
+            })
+            
+            $('#fl').click(function(event) {
+            	 event.preventDefault();
+            	$('#과일').css('display','inline-block');
+            	$('#채소').css('display','none');
+            	$('#CategoryHeader').text("과일 목록");     	
+            })
+            
+
+               
         });
 
     </script>

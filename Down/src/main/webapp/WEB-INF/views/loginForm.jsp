@@ -53,7 +53,7 @@ https://templatemo.com/tm-571-hexashop
     
     
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
+   <header class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -70,9 +70,10 @@ https://templatemo.com/tm-571-hexashop
                              <li class="submenu">
                                 <a href="javascript:;">싱싱마켓</a>
                                 <ul>
-                                    <li><a href="about.html"><b>과일</b></a></li>
-                                    <li><a href="products.html"><b>채소</b></a></li>
-                                    <li><a href="contact.html"><b>기타</b></a></li>
+                                <li><a href="market"><b>전체</b></a></li>
+                                    <li><a href="fl"><b>과일</b></a></li>
+                                    <li><a href="va"><b>채소</b></a></li>
+                                    <li><a href="market"><b>기타</b></a></li>
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="#kids">레시피</a></li>
@@ -93,28 +94,29 @@ https://templatemo.com/tm-571-hexashop
                                     <li><a href="#"><b>Q/A</b></a></li>
                                     <li><a href="#"><b>공지사항</b></a></li>
                                 </ul>
-                            </li>
+                            </li>                         <!-- session.invalidate(); -->
+                            
                             <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
-                            <!-- ***************************************** 로그인 ******************************************** -->
-                                <c:choose>
+                            
+                            <c:choose>
                             
                             <c:when test="${sessionScope.logName ne null}">
                              <li class="submenu">
                                <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
                                  <ul>
                                     <li><a href="logOut"><b>로그아웃</b></a></li>
-                                      <li><a href="#"><b>회원정보수정</b></a></li>
+                                    <li><a href="#"><b>회원정보수정</b></a></li>
                                     <li><a href="#"><b>회원탈퇴</b></a></li>
                                     <li><a href="#"><b>구매내역</b></a></li>
                                 </ul>
                              </li>
                                 
                             </c:when>
-                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=single-product&type=${type}">로그인하기</a></li>
+                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
                             </c:otherwise>
                             
                             </c:choose>
-                               <!-- ***************************************** 로그인 ******************************************** -->
+                            
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
