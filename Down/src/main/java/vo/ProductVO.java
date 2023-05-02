@@ -13,7 +13,29 @@ public class ProductVO {
 	private String say;
 	private String type;
 	private String category;
+	private String category2;
+	private String imgName;
+	private String type2;   // production 용  카트넘길 파라미터           // 모르고 기존 식별하는 type값을 잘못건드렸음..
 	
+	
+	public String getType2() {
+		return type2;
+	}
+	public void setType2(String type2) {
+		this.type2 = type2;
+	}
+	public String getImgName() {
+		return imgName;
+	}
+	public void setImgName(String imgName) {
+		this.imgName = imgName;
+	}
+	public String getCategory2() {
+		return category2;
+	}
+	public void setCategory2(String category2) {
+		this.category2 = category2;
+	}
 	public String getCategory() {
 		return category;
 	}

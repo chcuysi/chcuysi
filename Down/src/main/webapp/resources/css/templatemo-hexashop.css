@@ -1775,6 +1775,7 @@ Products Page
 #products .pagination ul {
   text-align: center;
   width: 100%;
+  display:none; /* ******************************************************************************************************************** */
 }
 
 #products .pagination ul li {
@@ -2531,3 +2532,16 @@ responsive
 /* 이미지 hover 테두리 ***************************************************************************************** */
 #listView:hover, .products:hover { border:7px solid; border-color:#1992df;}
 
+        
+        
+        
+        /* ***************************************************************************************** */
+
+
+
+#CategorySub {  font-weight:200;  text-align: center; color: gray;}
+        
+        
+#loginform { margin-left: 220px;}
+
+  

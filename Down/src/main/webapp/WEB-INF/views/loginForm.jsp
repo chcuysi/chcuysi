@@ -150,7 +150,7 @@ https://templatemo.com/tm-571-hexashop
       <div class="subscribe">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <div id="loginform" class="col-lg-8">
                     <div class="section-heading">
                         <h2>로그인하여 더 많은 서비스를 이용해보세요.</h2>
                         <span>많은 고객님들이 아쉽게 버려질 위기에 처한 식재료들을 찾고 있습니다!</span>
@@ -190,7 +190,7 @@ https://templatemo.com/tm-571-hexashop
 										<c:if test="${moType ne null}">
 										<input type="hidden" id="moType" value="${moType}">
 									</c:if>
-									
+									<!-- 로그인 성공 시 이전 화면으로 전환하기 위한 값들 ***************************************************** -->
 								</fieldset>
                           </div>
                         </div>
@@ -200,24 +200,9 @@ https://templatemo.com/tm-571-hexashop
             
        
                               
-                <div class="col-lg-4">
-                    <div class="row">
-                        <div class="col-6">
-                            <ul>
-                                <li>본사 위치:<br><span>서울특별시 강남구 테헤란로 123-123</span></li>
-                                <li>관리자 전화번호:<br><span>010-123-4567</span></li>
-                                <li>지점 위치:<br><span>서울특별시 가산동 123-123</span></li>
-                            </ul>
-                        </div>
-                        <div class="col-6">
-                            <ul>
-                                <li>근무 시간:<br><span>오전 07:30 - 오후 9:30</span></li>
-                                <li>관리자 이메일:<br><span>sajo@sajo.com</span></li>
-                                <li>소셜 미디어:<br><span><a href="#">Facebook</a>, <a href="#">Instagram</a>, <a href="#">Behance</a>, <a href="#">Linkedin</a></span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+              
+              
+              
             </div>
         </div>
     </div>
@@ -363,7 +348,12 @@ https://templatemo.com/tm-571-hexashop
             	if ( $('#moPageType').val() == "index" ) {		
                         location.href="sajo";
                 } /* 이전 페이지 타입이   메인 화면일 경우 닫는 괄호 */
-            	
+                
+                
+                /* 이전 페이지 타입이  전체상품 카테고리일 경우  */
+            	if ( $('#moPageType').val() == "products" ) {	
+            		location.href="products";
+            	 }
                 
             } /*  로그인 성공 시 괄호 */
             

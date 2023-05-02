@@ -316,7 +316,7 @@ https://templatemo.com/tm-571-hexashop
         	   <% if(session.getAttribute("logName") == null ) { %> 
         	   if(confirm('장바구니에 담기 위해선 로그인이 필요합니다. 로그인 하시겠습니까?') )
         	   {
-        		   location.href="loginForm?pageType="+$('#pageType').val()+"&type="+$('#type').val();
+        		   location.href="loginForm?pageType="+$('#pageType').val()+"&type="+$('#type').val();  // 개별 상품에는    hover 장바구니 기능이 없어서   코딩이 다름
         	   }else { location.href="#"; }
         	   <% } %>
         	   

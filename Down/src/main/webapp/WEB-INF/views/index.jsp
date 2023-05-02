@@ -956,7 +956,7 @@ https://templatemo.com/tm-571-hexashop
             
             
             $('.cart').click(function() {
-            	
+            
             	
             	 <% if(session.getAttribute("logName") == null ) { %> 
           	   if(confirm('장바구니에 담기 위해선 로그인이 필요합니다. 로그인 하시겠습니까?') )
