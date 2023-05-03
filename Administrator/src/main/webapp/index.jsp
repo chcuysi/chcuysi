@@ -28,6 +28,8 @@
   </head>
   <body>  
     <!-- Left column -->
+    
+    <!-- 로고 -->
     <div class="templatemo-flex-row">
       <div class="templatemo-sidebar">
         <header class="templatemo-site-header">
@@ -37,10 +39,11 @@
 
         </header>
          
-       
         <div class="mobile-menu-icon">
             <i class="fa fa-bars"></i>
         </div>
+        
+        <!-- 왼쪽 메뉴 탭 -->
         <nav class="templatemo-left-nav">          
           <ul>
             <li><a href="#" class="active"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
@@ -50,9 +53,11 @@
           </ul>  
         </nav>
       </div>
-      <!-- Main content --> 
-      
+     	 
+	<!-- 표 + footer --> 
       <div class="templatemo-content col-1 light-gray-bg">
+      
+      <!-- 상단 메뉴 탭 --> 
         <div class="templatemo-top-nav-container">
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
@@ -64,8 +69,8 @@
           </div>
         </div>
         
-        
-        <div class="templatemo-content-container">
+        <!-- 판매물품승인 테이블 --> 
+        <div id="table_iok" class="templatemo-content-container">
           <div class="templatemo-content-widget no-padding">
             <div class="panel panel-default table-responsive">
               <table class="table table-striped table-bordered templatemo-user-table">
@@ -175,6 +180,8 @@
               </table>    
             </div>                          
           </div>          
+          
+          <!-- 페이지 이동 버튼 -->
           <div class="pagination-wrap">
             <ul class="pagination">
               <li><a href="#">1</a></li>
@@ -189,7 +196,12 @@
               </li>
             </ul>
           </div>     
-          <iframe id="iframe" class="iframe" name="iframe" width="1500" height="800" src="iframe?pageType=index"></iframe>
+          
+          <!-- 판매물품승인 테이블 클릭 시 나오는 상세정보창 -->
+          <form id = 'detail_iok'>
+          
+          
+          </form>
         
           <footer class="text-right">
             <p>Copyright &copy; 2084 Company Name 
@@ -197,6 +209,7 @@
           </footer>         
         </div>
       </div>
+      
     </div>
     
     <!-- JS -->
