@@ -59,6 +59,7 @@ $(function(){
     		url: 'getIokMenuList.do/' + pid,
     		data: { pid: pid, iok: iok },
 	  		success: function(result) {
+	  			location.reload();
       			$('form#detailInfo_iok').css('display', 'none');
     		},
     		error: function(err) {
