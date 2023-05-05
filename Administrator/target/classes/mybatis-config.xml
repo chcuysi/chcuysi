@@ -6,7 +6,7 @@
 
 	<!-- Alias 설정 -->
 	<typeAliases>
-		<typeAlias alias="iokMenu" type="vo.IokMenuVO" />		
+		<typeAlias alias="iokMenu" type="vo.IokMenuVO" />			
 	</typeAliases>
 
 

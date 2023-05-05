@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="iokMenuService">
+<mapper namespace="IokMenuDao">
 
-	<select id="getIokMenuList" resultType="iokMenu" >
+	<select id="getIokMenuList" resultType="vo.IokMenuVO" parameterType="hashmap" >
 		select ps.pid AS pid, ps.pname AS pname, p.category AS category, p.category2 AS category2, p.name AS name, p.name2 AS name2, p.price AS price, p.startdate AS startdate, p.enddate AS enddate, p.stock AS stock, p.iok AS iok
 		from products p FULL OUTER JOIN psale ps
 		ON p.pid = ps.pid
 	</select> 
+	
+	<update	id='updateIokMenu' parameterType="vo.IokMenuVO">
+		UPDATE products SET iok=#{iok} WHERE pid=#{pid}
+	</update>
 	
 </mapper>

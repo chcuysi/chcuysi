@@ -2,7 +2,7 @@ package vo;
 
 public class IokMenuVO {
 	
-    private int pid;
+    private String pid;
     private String pname;
     private String category;
     private String category2;
@@ -15,10 +15,10 @@ public class IokMenuVO {
     private String iok;
     
     
-	public int getPid() {
+	public String getPid() {
 		return pid;
 	}
-	public void setPid(int pid) {
+	public void setPid(String pid) {
 		this.pid = pid;
 	}
 	public String getPname() {

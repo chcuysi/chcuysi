@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">  
-    <title>Visual Admin Dashboard - Home</title>
+    <title>SAJO</title>
     <meta name="description" content="">
     <meta name="author" content="templatemo">
     <!-- 
@@ -32,11 +32,11 @@
     
 <!-- 로고 -->
 <div class="templatemo-flex-row">
-   <div class="templatemo-sidebar">
-      <header class="templatemo-site-header">
-         <div class="logo">
-               <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
-             </div>
+	<div class="templatemo-sidebar">
+		<header class="templatemo-site-header">
+			<div class="logo">
+         		<img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
+          	</div>
 
         </header>
          
@@ -54,8 +54,8 @@
           </ul>  
         </nav>
       </div>
-         
-   <!-- 표 + footer --> 
+     	 
+	<!-- 표 + footer --> 
       <div class="templatemo-content col-1 light-gray-bg">
       
       <!-- 상단 메뉴 탭 --> 
@@ -88,18 +88,18 @@
                   </tr>
                 </thead>
                 <tbody>
-                   <c:forEach items="${iokMenuList}" var="iokMenu">
-                        <tr>
-                          <td>${iokMenu.pid}</td>
-                          <td>${iokMenu.pname}</td>
-                          <td>${iokMenu.category} > ${iokMenu.category2}</td>
-                          <td>${iokMenu.name} ${iokMenu.name2}</td>
-                          <td>${iokMenu.price}원</td>
-                          <td>${iokMenu.startdate} ~ ${iokMenu.startdate}</td>
-                          <td>${iokMenu.stock}</td>
-                          <td>${iokMenu.iok}</td>
-                        </tr>
-                     </c:forEach>    
+                	<c:forEach items="${iokMenuList}" var="iokMenu">
+                  		<tr>
+		                    <td>${iokMenu.pid}</td>
+		                    <td>${iokMenu.pname}</td>
+		                    <td>${iokMenu.category} > ${iokMenu.category2}</td>
+		                    <td>${iokMenu.name} ${iokMenu.name2}</td>
+		                    <td>${iokMenu.price}원</td>
+		                    <td>${iokMenu.startdate} ~ ${iokMenu.startdate}</td>
+		                    <td>${iokMenu.stock}</td>
+		                    <td>${iokMenu.iok}</td>
+                  		</tr>
+                  	</c:forEach>    
                 </tbody>
               </table>    
             </div>                          
@@ -126,66 +126,65 @@
           
 <!-- 상세정보창 테이블 --> 
 <div class="templatemo-content-container">
-   <div class="templatemo-content-widget no-padding">
-      <div class="panel panel-default table-responsive">
-         <table id="table_detailInfo" class="table table-striped table-bordered cate_detail">
-            <tbody>
-               <tr>
-                  <td><a class="white-text templatemo-sort-by">판매자번호</a></td>
-                       <td>1</td>
-                       <td><a class="white-text templatemo-sort-by">판매자</a></td>
-                       <td>1</td>
-                     </tr>
-                     <tr>
-                       <td><a class="white-text templatemo-sort-by">카테고리</a></td>
-                       <td>1</td>
-                       <td><a class="white-text templatemo-sort-by">상품명</a></td>
-                       <td>1</td>
-                     </tr>
-                     <tr>
-                       <td><a class="white-text templatemo-sort-by">판매가</a></td>
-                       <td>1</td>
-                       <td><a class="white-text templatemo-sort-by">판매기간</a></td>
-                       <td>1</td>
-                     </tr>
-                     <tr>
-                       <td><a class="white-text templatemo-sort-by">재고수량</a></td>
-                       <td>1</td>
-                       <td><a class="white-text templatemo-sort-by">승인여부</a></td>
-                       <td style="position: relative;">             
-                           <select class="select_detail_non_colored">
-                             <option value="html">O</option>
-                             <option value="plain">X</option>   
-                             <option value="plain">-</option>                   
-                           </select>
-                        </td>
-                     </tr>
-                     <tr>
-                       <td style="vertical-align: middle;" height='200px'><a class="white-text templatemo-sort-by">승인거부사유</a></td>
-                       <td height='200px' colspan='3' style="position: relative;">
-                     <textarea class="text_detail_colored"></textarea>
-                     <!-- rows="20" cols="20" -->
-                  </td>
-                    </tr>
+	<div class="templatemo-content-widget no-padding">
+		<div class="panel panel-default table-responsive">
+			<table id="table_detailInfo" class="table table-striped table-bordered cate_detail">
+				<tbody>
+					<tr>
+						<td><a class="white-text templatemo-sort-by">판매자번호</a></td>
+                    	<td></td>
+                    	<td><a class="white-text templatemo-sort-by">판매자</a></td>
+                    	<td></td>
+                  	</tr>
+                  	<tr>
+                    	<td><a class="white-text templatemo-sort-by">카테고리</a></td>
+                    	<td></td>
+                    	<td><a class="white-text templatemo-sort-by">상품명</a></td>
+                    	<td></td>
+                  	</tr>
+                  	<tr>
+                    	<td><a class="white-text templatemo-sort-by">판매가</a></td>
+                    	<td></td>
+                    	<td><a class="white-text templatemo-sort-by">판매기간</a></td>
+                    	<td></td>
+                  	</tr>
+                  	<tr>
+                    	<td><a class="white-text templatemo-sort-by">재고수량</a></td>
+                    	<td></td>
+                    	<td><a class="white-text templatemo-sort-by">승인여부</a></td>
+                    	<td style="position: relative;">             
+                  			<select class="select_detail_non_colored">
+                    			<option value="O">O</option>
+                    			<option value="X">X</option>   
+                    			<option value="-">-</option>                   
+	                  		</select>
+                  		</td>
+                  	</tr>
+                  	<tr>
+                    	<td style="vertical-align: middle;" height='200px'><a class="white-text templatemo-sort-by">승인거부사유</a></td>
+                    	<td height='200px' colspan='3' style="position: relative;">
+							<textarea class="text_detail_colored"></textarea>
+						</td>
+                 	</tr>
                 </tbody>
-         </table> 
-      </div>                          
-   </div>
-   <div style="width:100px; text-align: center;margin:auto;">
-       <!-- 상세정보창 내용 수정 -->
+			</table> 
+		</div>                          
+	</div>
+	<div style="width:100px; text-align: center;margin:auto;">
+    	<!-- 상세정보창 내용 수정 -->
         <button type="button" class="btn_modify">수정</button>
         <!-- 상세정보창 내용 수정사항 취소 -->
-         <button  type="button" class="btn_cancel">취소</button>
+	   	<button type="button" class="btn_cancel">취소</button>
     </div>         
 </form>
         
-<footer class="text-right">
-   <p>Copyright &copy; 2084 Company Name 
-   Design: Template Mo</p>
-</footer>         
+    
         </div>
       </div>
-      
+<footer class="text-right">
+	<p>Copyright &copy; 2084 Company Name 
+	Design: Template Mo</p>
+</footer>           
     </div>
     
     <!-- JS -->

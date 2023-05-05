@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -14,8 +15,12 @@ public class IokMenuDaoImpl implements IokMenuDao {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 
-	public List<IokMenuVO> getIokMenuList(IokMenuVO ivo) {
-		return mybatis.selectList("IokMenuDao.getIokMenuList", ivo);
+	public List<IokMenuVO> getIokMenuList(HashMap map) {
+		return mybatis.selectList("IokMenuDao.getIokMenuList", map);
+	}
+	
+	public void updateIokMenu(IokMenuVO ivo) {
+		mybatis.update("IokMenuDao.updateIokMenu", ivo);
 	}
 
 }

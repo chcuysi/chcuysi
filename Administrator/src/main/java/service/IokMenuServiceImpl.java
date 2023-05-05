@@ -1,5 +1,6 @@
 package service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,12 @@ public class IokMenuServiceImpl implements IokMenuService {
 	private IokMenuDaoImpl iokMenuDao;
 
 	 
-	public List<IokMenuVO> getIokMenuList(IokMenuVO ivo) {
-	    return iokMenuDao.getIokMenuList(ivo);
+	public List<IokMenuVO> getIokMenuList(HashMap map) {
+	    return iokMenuDao.getIokMenuList(map);
+	}
+	
+	public void updateIokMenu(IokMenuVO ivo) {
+		iokMenuDao.updateIokMenu(ivo);
 	}
 	
 }
