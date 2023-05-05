@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,20 +28,23 @@
 
   </head>
   <body>  
-    <!-- Left column -->
-    <div class="templatemo-flex-row">
-      <div class="templatemo-sidebar">
-        <header class="templatemo-site-header">
-          <div class="logo">
-         	 <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
-          </div>
+<!-- Left column -->
+    
+<!-- 로고 -->
+<div class="templatemo-flex-row">
+   <div class="templatemo-sidebar">
+      <header class="templatemo-site-header">
+         <div class="logo">
+               <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
+             </div>
 
         </header>
          
-       
         <div class="mobile-menu-icon">
             <i class="fa fa-bars"></i>
         </div>
+        
+        <!-- 왼쪽 메뉴 탭 -->
         <nav class="templatemo-left-nav">          
           <ul>
             <li><a href="#" class="active"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
@@ -50,9 +54,11 @@
           </ul>  
         </nav>
       </div>
-      <!-- Main content --> 
-      
+         
+   <!-- 표 + footer --> 
       <div class="templatemo-content col-1 light-gray-bg">
+      
+      <!-- 상단 메뉴 탭 --> 
         <div class="templatemo-top-nav-container">
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
@@ -64,11 +70,11 @@
           </div>
         </div>
         
-        
+        <!-- 판매물품승인 테이블 --> 
         <div class="templatemo-content-container">
           <div class="templatemo-content-widget no-padding">
             <div class="panel panel-default table-responsive">
-              <table class="table table-striped table-bordered templatemo-user-table">
+              <table id="table_iok" class="table table-striped table-bordered templatemo-user-table">
                 <thead>
                   <tr>
                     <td><a href="" class="white-text templatemo-sort-by">판매자번호<span class="caret"></span></a></td>
@@ -78,103 +84,28 @@
                     <td><a href="" class="white-text templatemo-sort-by">판매가<span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">판매기간<span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">재고수량<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">승인거부<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">승인거부사유<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">승인여부<span class="caret"></span></a></td>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>PM000079</td>
-                    <td>봉준호</td>
-                    <td>채소 > 당근</td>
-                    <td>맛있는 무농약 당근 3kg</td>
-                    <td>30000원</td>
-                    <td><a href="" class="templatemo-edit-btn">2023.07.15.~2023.08.30.</a></td>
-                    <td><a href="" class="templatemo-link">6</a></td>
-                    <td><a href="" class="templatemo-link">-</a></td>
-                    <td><a href="" class="templatemo-link"></a></td>
-                  </tr>
-                  <tr>
-                    <td>2.</td>
-                    <td>Bill</td>
-                    <td>Jones</td>
-                    <td>@bJ</td>
-                    <td>bj@company.com</td>
-                    <td><a href="" class="templatemo-edit-btn">Edit</a></td>
-                    <td><a href="" class="templatemo-link">Action</a></td>
-                    <td><a href="" class="templatemo-link">Delete</a></td>
-                    <td><a href="" class="templatemo-link"></a></td>
-                  </tr>
-                  <tr>
-                    <td>3.</td>
-                    <td>Mary</td>
-                    <td>James</td>
-                    <td>@mJ</td>
-                    <td>mj@company.com</td>
-                    <td><a href="" class="templatemo-edit-btn">Edit</a></td>
-                    <td><a href="" class="templatemo-link">Action</a></td>
-                    <td><a href="" class="templatemo-link">Delete</a></td>
-                    <td><a href="" class="templatemo-link"></a></td>
-                  </tr>
-                  <tr>
-                    <td>4.</td>
-                    <td>Steve</td>
-                    <td>Bride</td>
-                    <td>@sB</td>
-                    <td>sb@company.com</td>
-                    <td><a href="" class="templatemo-edit-btn">Edit</a></td>
-                    <td><a href="" class="templatemo-link">Action</a></td>
-                    <td><a href="" class="templatemo-link">Delete</a></td>
-                    <td><a href="" class="templatemo-link"></a></td>
-                  </tr>
-                  <tr>
-                    <td>5.</td>
-                    <td>Paul</td>
-                    <td>Richard</td>
-                    <td>@pR</td>
-                    <td>pr@company.com</td>
-                    <td><a href="" class="templatemo-edit-btn">Edit</a></td>
-                    <td><a href="" class="templatemo-link">Action</a></td>
-                    <td><a href="" class="templatemo-link">Delete</a></td>
-                    <td><a href="" class="templatemo-link"></a></td>
-                  </tr>  
-                   <tr>
-                    <td>6.</td>
-                    <td>Will</td>
-                    <td>Brad</td>
-                    <td>@wb</td>
-                    <td>wb@company.com</td>
-                    <td><a href="" class="templatemo-edit-btn">Edit</a></td>
-                    <td><a href="" class="templatemo-link">Action</a></td>
-                    <td><a href="" class="templatemo-link">Delete</a></td>
-                    <td><a href="" class="templatemo-link"></a></td>
-                  </tr>  
-                   <tr>
-                    <td>7.</td>
-                    <td>Steven</td>
-                    <td>Eric</td>
-                    <td>@sE</td>
-                    <td>se@company.com</td>
-                    <td><a href="" class="templatemo-edit-btn">Edit</a></td>
-                    <td><a href="" class="templatemo-link">Action</a></td>
-                    <td><a href="" class="templatemo-link">Delete</a></td>
-                    <td><a href="" class="templatemo-link"></a></td>
-                  </tr>  
-                   <tr>
-                    <td>8.</td>
-                    <td>Landi</td>
-                    <td>Susan</td>
-                    <td>@lS</td>
-                    <td>ls@company.com</td>
-                    <td><a href="" class="templatemo-edit-btn">Edit</a></td>
-                    <td><a href="" class="templatemo-link">Action</a></td>
-                    <td><a href="" class="templatemo-link">Delete</a></td>
-                    <td><a href="" class="templatemo-link"></a></td>
-                  </tr>     
+                   <c:forEach items="${iokMenuList}" var="iokMenu">
+                        <tr>
+                          <td>${iokMenu.pid}</td>
+                          <td>${iokMenu.pname}</td>
+                          <td>${iokMenu.category} > ${iokMenu.category2}</td>
+                          <td>${iokMenu.name} ${iokMenu.name2}</td>
+                          <td>${iokMenu.price}원</td>
+                          <td>${iokMenu.startdate} ~ ${iokMenu.startdate}</td>
+                          <td>${iokMenu.stock}</td>
+                          <td>${iokMenu.iok}</td>
+                        </tr>
+                     </c:forEach>    
                 </tbody>
               </table>    
             </div>                          
           </div>          
+          
+          <!-- 페이지 이동 버튼 -->
           <div class="pagination-wrap">
             <ul class="pagination">
               <li><a href="#">1</a></li>
@@ -188,15 +119,73 @@
                 </a>
               </li>
             </ul>
-          </div>     
-          <iframe id="iframe" class="iframe" name="iframe" width="1500" height="800" src="iframe?pageType=index"></iframe>
+          </div>
+
+<!-- 판매물품승인 테이블 클릭 시 나오는 상세정보창 -->
+<form id = 'detailInfo_iok' action="updateIok" method = 'post'> <!-- 'updateIok.do를 줄여씀' -->
+          
+<!-- 상세정보창 테이블 --> 
+<div class="templatemo-content-container">
+   <div class="templatemo-content-widget no-padding">
+      <div class="panel panel-default table-responsive">
+         <table id="table_detailInfo" class="table table-striped table-bordered cate_detail">
+            <tbody>
+               <tr>
+                  <td><a class="white-text templatemo-sort-by">판매자번호</a></td>
+                       <td>1</td>
+                       <td><a class="white-text templatemo-sort-by">판매자</a></td>
+                       <td>1</td>
+                     </tr>
+                     <tr>
+                       <td><a class="white-text templatemo-sort-by">카테고리</a></td>
+                       <td>1</td>
+                       <td><a class="white-text templatemo-sort-by">상품명</a></td>
+                       <td>1</td>
+                     </tr>
+                     <tr>
+                       <td><a class="white-text templatemo-sort-by">판매가</a></td>
+                       <td>1</td>
+                       <td><a class="white-text templatemo-sort-by">판매기간</a></td>
+                       <td>1</td>
+                     </tr>
+                     <tr>
+                       <td><a class="white-text templatemo-sort-by">재고수량</a></td>
+                       <td>1</td>
+                       <td><a class="white-text templatemo-sort-by">승인여부</a></td>
+                       <td style="position: relative;">             
+                           <select class="select_detail_non_colored">
+                             <option value="html">O</option>
+                             <option value="plain">X</option>   
+                             <option value="plain">-</option>                   
+                           </select>
+                        </td>
+                     </tr>
+                     <tr>
+                       <td style="vertical-align: middle;" height='200px'><a class="white-text templatemo-sort-by">승인거부사유</a></td>
+                       <td height='200px' colspan='3' style="position: relative;">
+                     <textarea class="text_detail_colored"></textarea>
+                     <!-- rows="20" cols="20" -->
+                  </td>
+                    </tr>
+                </tbody>
+         </table> 
+      </div>                          
+   </div>
+   <div style="width:100px; text-align: center;margin:auto;">
+       <!-- 상세정보창 내용 수정 -->
+        <button type="button" class="btn_modify">수정</button>
+        <!-- 상세정보창 내용 수정사항 취소 -->
+         <button  type="button" class="btn_cancel">취소</button>
+    </div>         
+</form>
         
-          <footer class="text-right">
-            <p>Copyright &copy; 2084 Company Name 
-            	Design: Template Mo</p>
-          </footer>         
+<footer class="text-right">
+   <p>Copyright &copy; 2084 Company Name 
+   Design: Template Mo</p>
+</footer>         
         </div>
       </div>
+      
     </div>
     
     <!-- JS -->
@@ -261,6 +250,8 @@
       
     </script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/templatemo-script.js"></script>      <!-- Templatemo Script -->
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/admin.js"></script>
+
 
   </body>
 </html>

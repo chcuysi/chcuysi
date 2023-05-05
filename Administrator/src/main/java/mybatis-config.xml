@@ -6,7 +6,7 @@
 
 	<!-- Alias 설정 -->
 	<typeAliases>
-		<typeAlias alias="board" type="com.javassem.domain.BoardVO" />		
+		<typeAlias alias="iokMenu" type="vo.IokMenuVO" />		
 	</typeAliases>
 
 
