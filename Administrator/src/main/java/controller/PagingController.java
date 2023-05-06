@@ -17,7 +17,14 @@ public class PagingController {
 	public String getDeliveryMenuList () {
 		return "getDeliveryMenuList";
 	}
-	
+	@RequestMapping("/getExchangeMenuList")
+	public String getExchangeMenuList () {
+		return "getExchangeMenuList";
+	}
+	@RequestMapping("/getRefundMenuList")
+	public String getRefundMenuList () {
+		return "getRefundMenuList";
+	}
 	
 	@RequestMapping("/getCalculateMenuList")
 	public String dataVisualization () {

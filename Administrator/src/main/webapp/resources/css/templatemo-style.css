@@ -483,7 +483,7 @@ input[type="radio"]:checked + label span {
 }
 /* O/X/-  */
 .cate_detail td .select_detail_non_colored {
-  position: absolute; width: 15%; height: 100%;
+  position: absolute; width: 20%; height: 100%;
   border: 0px;
   background-color:#ffffff;
   top: 0px;
@@ -499,7 +499,7 @@ input[type="radio"]:checked + label span {
 }
 
 .cate_detail td .select_detail_colored {
-  position: absolute; width: 15%; height: 100%;
+  position: absolute; width: 20%; height: 100%;
   border: 0px;
   background-color:#f9f9f9;
   top: 0px;
@@ -627,12 +627,18 @@ input[type="radio"]:checked + label span {
 #table_iok tbody > tr:hover {background: lightyellow; }
 #table_calculate tbody > tr:hover {background: lightyellow; }
 #table_delivery tbody > tr:hover {background: lightyellow; }
+#table_exchange tbody > tr:hover {background: lightyellow; }
+#table_refund tbody > tr:hover {background: lightyellow; }
+
 
 
 /* 테이블 숨기기*/
 form#detailInfo_iok{display: none;}
 form#detailInfo_calculate{display: none;}
 form#detailInfo_delivery{display: none;}
+form#detailInfo_exchange{display: none;}
+form#detailInfo_refund{display: none;}
+
 
 
 /* 7. Preferences
