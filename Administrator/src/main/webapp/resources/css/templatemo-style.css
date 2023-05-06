@@ -313,26 +313,101 @@ footer { padding: 15px; }
 	border-color: #E9E8E8;
 }
 
+
+
+
 .btn_modify {
+  appearance: none;
+  background-color: #2ea44f;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
   color: #fff;
-  background-color: #5cb85c;
-  border-color: #4cae4c;
-  text-align: center;
+  cursor: pointer;
   display: inline-block;
-  margin-right: 10px; /* 버튼 간격 조절 */
-  
+  margin-right: 15px;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.btn_modify:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+.btn_modify:hover {
+  background-color: #2c974b;
+}
+.btn_modify:focus {
+  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+  outline: none;
+}
+.btn_modify:disabled {
+  background-color: #94d3a2;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+.btn_modify:active {
+  background-color: #298e46;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
 }
 
 .btn_cancel {
+  appearance: none;
+  background-color: #ff0006;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
   color: #fff;
-  background-color: #d9534f;
-  border-color: #d43f3a;
-  text-align: center;
+  cursor: pointer;
   display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
 }
-
-
-
+.btn_cancel:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+.btn_cancel:hover {
+  background-color: #e80005;
+}
+.btn_cancel:focus {
+  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+  outline: none;
+}
+.btn_cancel:disabled {
+  background-color: #d59393;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+.btn_cancel:active {
+  background-color: #b92037;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
 
 .table { margin-bottom: 0; }
 .table>tbody>tr>td { padding: 10px 15px; }

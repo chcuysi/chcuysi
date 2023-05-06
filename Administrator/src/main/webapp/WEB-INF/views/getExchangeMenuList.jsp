@@ -165,7 +165,7 @@
 			</table> 
 		</div>                          
 	</div>
-	<div style="width:100px; text-align: center;margin:auto;">
+	<div style="width:100px; text-align: center;margin:auto;display: flex;">
     	<!-- 상세정보창 내용 수정 -->
         <button type="button" class="btn_modify">수정</button>
         <!-- 상세정보창 내용 수정사항 취소 -->
