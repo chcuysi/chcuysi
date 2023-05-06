@@ -48,10 +48,10 @@
         <!-- 왼쪽 메뉴 탭 -->
         <nav class="templatemo-left-nav">          
           <ul>
-            <li><a href="getIokMenuList.do" class="active"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
+            <li><a href="getIokMenuList.do"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
             <li><a href="getDeliveryMenuList?pageType=index"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
             <li><a href="maps?pageType=index"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
-            <li><a href="getMemberMenuList?pageType=index"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
+            <li><a href="getMemberMenuList?pageType=index" class="active"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
           </ul>  
         </nav>
       </div>
@@ -64,8 +64,8 @@
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
-                <li><a href="getIokMenuList.do">판매승인</a></li>
-                <li><a href="getCalculateMenuList?pageType=index" class="active">정산</a></li>
+                <li><a href="getIokMenuList.do" class="active">일반회원</a></li>
+                <li><a href="getPsaleMenuList?pageType=index">판매자회원</a></li>
               </ul>  
             </nav> 
           </div>
@@ -78,34 +78,28 @@
         <div class="templatemo-content-container">
           <div class="templatemo-content-widget no-padding">
             <div class="panel panel-default table-responsive">
-              <table id="table_calculate" class="table table-striped table-bordered templatemo-user-table">
+              <table id="table_member" class="table table-striped table-bordered templatemo-user-table">
                 <thead>
                   <tr>
-                    <td><a href="" class="white-text templatemo-sort-by">판매자번호<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">판매자<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">상품명<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">상품판매금액<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">배송비<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">수수료<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">총정산금액<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">정산상태<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">입금일<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">회원번호<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">ID<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">주소<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">전화번호<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">이메일<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">가입일<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">탈퇴여부<span class="caret"></span></a></td>
                   </tr>
                 </thead>
                 <tbody>
-                	
                   		<tr>
-		                    <td>판매자번호</td>
-		                    <td>판매자</td>
-		                    <td>상품명</td>
-		                    <td>상품판매금액</td>
-		                    <td>배송비</td>
-		                    <td>수수료</td>
-		                    <td>총정산금액</td>
-		                    <td>-</td>
+		                    <td>1234</td>
+		                    <td>many_people</td>
+		                    <td>서울시 금천구 무슨로24길 8 무슨아파트 A동 101호</td>
+		                    <td>010-2222-1333</td>
+		                    <td>many_people@naver.com</td>
 		                    <td>2023-01-01</td>
-                  		</tr>  
-                  		
+		                    <td>-</td>
+                  		</tr> 
                 </tbody>
               </table>    
             </div>                          
@@ -128,37 +122,35 @@
           </div>
 
 <!-- 판매물품승인 테이블 클릭 시 나오는 상세정보창 -->
-<form id = 'detailInfo_calculate' action="updateCalculate" method = 'post'> <!-- 'updateCalculate.do를 줄여씀' -->
+<form id = 'detailInfo_member' action="updateMember"> <!-- 'updateMember.do를 줄여씀' -->
           
 <!-- 상세정보창 테이블 --> 
 <div class="templatemo-content-container">
 	<div class="templatemo-content-widget no-padding">
 		<div class="panel panel-default table-responsive">
-			<table id="table_detailCalculate" class="table table-striped table-bordered cate_detail">
+			<table id="table_detailMember" class="table table-striped table-bordered cate_detail">
 				<tbody>
 					<tr>
-						<td><a class="white-text templatemo-sort-by">판매자번호</a></td>
+						<td><a class="white-text templatemo-sort-by">회원번호</a></td>
                     	<td></td>
-                    	<td><a class="white-text templatemo-sort-by">판매자</a></td>
-                    	<td></td>
-                  	</tr>
-                  	<tr>
-                    	<td><a class="white-text templatemo-sort-by">상품명</a></td>
-                    	<td></td>
-                    	<td><a class="white-text templatemo-sort-by">상품판매금액</a></td>
+                    	<td><a class="white-text templatemo-sort-by">ID</a></td>
                     	<td></td>
                   	</tr>
                   	<tr>
-                    	<td><a class="white-text templatemo-sort-by">배송비</a></td>
+                    	<td><a class="white-text templatemo-sort-by">주소</a></td>
                     	<td></td>
-                    	<td><a class="white-text templatemo-sort-by">수수료</a></td>
+                    	<td><a class="white-text templatemo-sort-by">전화번호</a></td>
                     	<td></td>
                   	</tr>
                   	<tr>
-                    	<td><a class="white-text templatemo-sort-by">총정산금액</a></td>
+                    	<td><a class="white-text templatemo-sort-by">이메일</a></td>
                     	<td></td>
-                    	<td><a class="white-text templatemo-sort-by">정산상태</a></td>
-                    	<td style="position: relative;">             
+                    	<td><a class="white-text templatemo-sort-by">가입일</a></td>
+                    	<td></td>
+                  	</tr>
+                  	<tr>
+                    	<td><a class="white-text templatemo-sort-by">탈퇴여부</a></td>
+                    	<td style="position: relative;" colspan='3'>             
                   			<select class="select_detail_non_colored">
                     			<option value="O">O</option>
                     			<option value="X">X</option>   
@@ -167,9 +159,9 @@
                   		</td>
                   	</tr>
                   	<tr>
-                    	<td style="vertical-align: middle;"><a class="white-text templatemo-sort-by">입금일</a></td>
-                    	<td colspan='3'>
-							<input type='date' class="select_date_colored">
+                    	<td style="vertical-align: middle;" height='200px'><a class="white-text templatemo-sort-by">탈퇴사유</a></td>
+                    	<td height='200px' colspan='3' style="position: relative;">
+							<textarea class="text_detail_colored"></textarea>
 						</td>
                  	</tr>
                 </tbody>

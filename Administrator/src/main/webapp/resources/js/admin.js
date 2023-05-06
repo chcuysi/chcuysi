@@ -270,5 +270,99 @@ $(function(){
     });
     
     //수정버튼
+    
+    
+    
+    //************ 일반회원****************
+	
+	// 초기 로딩 시 홀수 행에는 #f9f9f9, 짝수 행에는 #ffffff 색상 적용
+	$('#table_member tbody > tr:odd').addClass('odd');
+	$('#table_member tbody > tr:even').addClass('even');
+	
+	// 행 클릭 시 색상 변경
+	$('#table_member tbody > tr').click(function() {
+  		highlightRow($(this));
+	});
+	
+	$('#table_member tbody > tr').click(function() {
+      // 클릭된 td의 값을 가져와서 변수에 저장
+    	var value = $(this).text();      
+        $('form#detailInfo_member').css('display', 'block');
+
+	    // 클릭한 tr의 td값을 저장, table_detailInfo의 tr의 td에 해당 값을 넣음
+		var clickedMnum = $(this).find("td:first").text();
+		$("#table_detailMember tbody tr:first td:eq(1)").text(clickedMnum);
+		var clickedMid = $(this).find("td:eq(1)").text();
+		$("#table_detailMember tbody tr:first td:eq(3)").text(clickedMid);
+		var clickedMaddr = $(this).find("td:eq(2)").text();
+		$("#table_detailMember tbody tr:eq(1) td:eq(1)").text(clickedMaddr);
+		var clickedMtel = $(this).find("td:eq(3)").text();
+		$("#table_detailMember tbody tr:eq(1) td:eq(3)").text(clickedMtel);
+		var clickedMemail = $(this).find("td:eq(4)").text();
+		$("#table_detailMember tbody tr:eq(2) td:eq(1)").text(clickedMemail);
+		var clickedMdate = $(this).find("td:eq(5)").text();
+		$("#table_detailMember tbody tr:eq(2) td:eq(3)").text(clickedMdate);
+		var clickedMout = $(this).find("td:eq(6)").text();
+ 		$("#table_detailMember .select_detail_non_colored option").each(function() {
+   			if ($(this).val() === clickedMout) {
+      			$(this).prop("selected", true);
+      			return false; // 일치하는 옵션을 찾았으므로 반복문을 종료합니다.
+    		}
+  		});
+    });
+    
+    //취소버튼
+    $('button.btn_cancel').click(function() {
+    	$('form#detailInfo_member').css('display', 'none');
+    });
+    
+    //수정버튼
+    
+    
+    
+     //************ 판매자회원****************
+	
+	// 초기 로딩 시 홀수 행에는 #f9f9f9, 짝수 행에는 #ffffff 색상 적용
+	$('#table_psale tbody > tr:odd').addClass('odd');
+	$('#table_psale tbody > tr:even').addClass('even');
+	
+	// 행 클릭 시 색상 변경
+	$('#table_psale tbody > tr').click(function() {
+  		highlightRow($(this));
+	});
+	
+	$('#table_psale tbody > tr').click(function() {
+      // 클릭된 td의 값을 가져와서 변수에 저장
+    	var value = $(this).text();      
+        $('form#detailInfo_psale').css('display', 'block');
+
+	    // 클릭한 tr의 td값을 저장, table_detailInfo의 tr의 td에 해당 값을 넣음
+		var clickedPnum = $(this).find("td:first").text();
+		$("#table_detailPsale tbody tr:first td:eq(1)").text(clickedPnum);
+		var clickedPid = $(this).find("td:eq(1)").text();
+		$("#table_detailPsale tbody tr:first td:eq(3)").text(clickedPid);
+		var clickedPaddr = $(this).find("td:eq(2)").text();
+		$("#table_detailPsale tbody tr:eq(1) td:eq(1)").text(clickedPaddr);
+		var clickedPtel = $(this).find("td:eq(3)").text();
+		$("#table_detailPsale tbody tr:eq(1) td:eq(3)").text(clickedPtel);
+		var clickedPemail = $(this).find("td:eq(4)").text();
+		$("#table_detailPsale tbody tr:eq(2) td:eq(1)").text(clickedPemail);
+		var clickedPdate = $(this).find("td:eq(5)").text();
+		$("#table_detailPsale tbody tr:eq(2) td:eq(3)").text(clickedPdate);
+		var clickedPout = $(this).find("td:eq(6)").text();
+ 		$("#table_detailPsale .select_detail_non_colored option").each(function() {
+   			if ($(this).val() === clickedPout) {
+      			$(this).prop("selected", true);
+      			return false; // 일치하는 옵션을 찾았으므로 반복문을 종료합니다.
+    		}
+  		});
+    });
+    
+    //취소버튼
+    $('button.btn_cancel').click(function() {
+    	$('form#detailInfo_psale').css('display', 'none');
+    });
+    
+    //수정버튼
 
 });

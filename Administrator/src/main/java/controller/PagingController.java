@@ -27,8 +27,16 @@ public class PagingController {
 	}
 	
 	@RequestMapping("/getCalculateMenuList")
-	public String dataVisualization () {
+	public String getCalculateMenuList () {
 		return "getCalculateMenuList";
+	}
+	@RequestMapping("/getMemberMenuList")
+	public String getMemberMenuList () {
+		return "getMemberMenuList";
+	}
+	@RequestMapping("/getPsaleMenuList")
+	public String getPsaleMenuList () {
+		return "getPsaleMenuList";
 	}
 	
 	@RequestMapping("/login")
