@@ -7,7 +7,7 @@
 </head>
 <body>
 
-		<h1>게시판 프로그램</h1>
+		<h1>관리자화면</h1>
 		<hr>
 		<br> <a href="getIokMenuList.do">글 목록 바로가기</a>
 

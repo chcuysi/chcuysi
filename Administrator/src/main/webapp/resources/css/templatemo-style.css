@@ -218,13 +218,18 @@ footer { padding: 15px; }
 }
 
 /* Main Content Area */
+#category_menu{
+	padding: 40px 60px;
+	white-space: pre;
+}
+
 .templatemo-content {
   margin-top: 0px;
   min-height: 600px;
   padding: 0;  
   overflow-x: hidden;
 }
-.templatemo-content-container {	padding: 40px 50px; }
+.templatemo-content-container {	padding: 10px 50px; }
 .templatemo-flex-row {
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -476,7 +481,7 @@ input[type="radio"]:checked + label span {
 	background-color: #003ac2;
 	color: white;
 }
-
+/* O/X/-  */
 .cate_detail td .select_detail_non_colored {
   position: absolute; width: 15%; height: 100%;
   border: 0px;
@@ -493,6 +498,15 @@ input[type="radio"]:checked + label span {
   left: 11.5px;
 }
 
+/* 날짜 */
+.cate_detail td .select_date_colored {
+  border: 0px;
+  background-color:#f9f9f9;
+  top: 0px;
+  left: 0px;
+}
+
+/* 텍스트 입력 */
 .cate_detail td .text_detail_non_colored {
   position: absolute; width: 100%; height: 100%;
   border: 0px;
@@ -502,7 +516,6 @@ input[type="radio"]:checked + label span {
 }
 
 .cate_detail td .text_detail_colored {
- /*  resize: none; 사용자가 크기를 조절하지 못하도록 함 */
   overflow: hidden; /* 내용이 넘치면 숨기기 */
   position: absolute; width: 100%; height: 100%;
   border: 0px;
@@ -604,12 +617,18 @@ input[type="radio"]:checked + label span {
 
 /* 테이블 호버 */
 #table_iok tbody > tr:hover {background: lightyellow; }
+#table_calculate tbody > tr:hover {background: lightyellow; }
+
 
 /* 테이블 숨기기*/
 form#detailInfo_iok{
 	display: none;
-	
 }
+
+form#detailInfo_calculate{
+	display: none;
+}
+
 
 /* 7. Preferences
 -------------------------------*/

@@ -19,9 +19,9 @@ public class PagingController {
 	}
 	
 	
-	@RequestMapping("/data-visualization")
+	@RequestMapping("/getCalculateMenuList")
 	public String dataVisualization () {
-		return "data-visualization";
+		return "getCalculateMenuList";
 	}
 	
 	@RequestMapping("/login")
