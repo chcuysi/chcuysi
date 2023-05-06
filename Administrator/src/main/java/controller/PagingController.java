@@ -38,6 +38,18 @@ public class PagingController {
 	public String getPsaleMenuList () {
 		return "getPsaleMenuList";
 	}
+	@RequestMapping("/salesCategory")
+	public String salesCategory () {
+		return "salesCategory";
+	}
+	@RequestMapping("/salesPeriod")
+	public String salesPeriod () {
+		return "salesPeriod";
+	}
+	@RequestMapping("/salesProducts")
+	public String salesProducts () {
+		return "salesProducts";
+	}
 	
 	@RequestMapping("/login")
 	public String login () {

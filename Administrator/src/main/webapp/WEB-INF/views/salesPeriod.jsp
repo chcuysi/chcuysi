@@ -49,8 +49,8 @@
         <nav class="templatemo-left-nav">          
           <ul>
             <li><a href="getIokMenuList.do"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
-            <li><a href="getDeliveryMenuList?pageType=index" class="active"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
-            <li><a href="salesProducts?pageType=index"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
+            <li><a href="getDeliveryMenuList?pageType=index"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
+            <li><a href="salesProducts?pageType=index"class="active"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
             <li><a href="getMemberMenuList?pageType=index"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
           </ul>  
         </nav>
@@ -64,9 +64,9 @@
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
-                <li><a href="getDeliveryMenuList?pageType=index">배송</a></li>
-                <li><a href="getExchangeMenuList?pageType=index">교환</a></li>
-                <li><a href="getRefundMenuList?pageType=index" class="active">환불</a></li>
+                <li><a href="salesProducts?pageType=index">상품별 매출</a></li>
+                <li><a href="salesCategory?pageType=index">카테고리별 매출</a></li>
+                <li><a href="salesPeriod?pageType=index"class="active">기간별 매출</a></li>
               </ul>  
             </nav> 
           </div>
@@ -75,112 +75,12 @@
         <!-- 메뉴 카테고리 (왼쪽메뉴 > 상단메뉴) -->
         <h2 id="category_menu"></h2>
         
-        <!-- 판매물품승인 테이블 --> 
-        <div class="templatemo-content-container">
-          <div class="templatemo-content-widget no-padding">
-            <div class="panel panel-default table-responsive">
-              <table id="table_refund" class="table table-striped table-bordered templatemo-user-table">
-                <thead>
-                  <tr>
-                    <td><a href="" class="white-text templatemo-sort-by">배송번호<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">주문번호<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">배송주소<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">배송상태<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">배송일<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">환불여부<span class="caret"></span></a></td>
-                  </tr>
-                </thead>
-                <tbody>
-                  		<tr>
-		                    <td>배송번호</td>
-		                    <td>주문번호</td>
-		                    <td>배송주소</td>
-		                    <td>배송완료</td>
-		                    <td>2023-02-27</td>
-		                    <td>-</td>
-                  		</tr>
-                </tbody>
-              </table>    
-            </div>                          
-          </div>          
-          
-          <!-- 페이지 이동 버튼 -->
-          <div class="pagination-wrap">
-            <ul class="pagination">
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li class="active"><a href="#">3 <span class="sr-only">(current)</span></a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li>
-                <a href="#" aria-label="Next">
-                  <span aria-hidden="true"><i class="fa fa-play"></i></span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-<!-- 판매물품승인 테이블 클릭 시 나오는 상세정보창 -->
-<form id = 'detailInfo_refund' action="updateRefund"> <!-- 'updateRefund.do를 줄여씀' -->
-          
-<!-- 상세정보창 테이블 --> 
-<div class="templatemo-content-container">
-	<div class="templatemo-content-widget no-padding">
-		<div class="panel panel-default table-responsive">
-			<table id="table_detailRefund" class="table table-striped table-bordered cate_detail">
-				<tbody>
-					<tr>
-						<td><a class="white-text templatemo-sort-by">배송번호</a></td>
-                    	<td></td>
-                    	<td><a class="white-text templatemo-sort-by">주문번호</a></td>
-                    	<td></td>
-                  	</tr>
-                  	<tr>
-                    	<td><a class="white-text templatemo-sort-by">배송주소</a></td>
-                    	<td></td>
-                    	<td><a class="white-text templatemo-sort-by">배송상태</a></td>
-                    	<td style="position: relative;">             
-                  			
-                  		</td>
-                  	</tr>
-                  	<tr>
-                    	<td style="vertical-align: middle;"><a class="white-text templatemo-sort-by">배송일</a></td>
-                    	<td><input type='date' class="select_date_colored"></td>
-                    	<td><a class="white-text templatemo-sort-by">환불여부</a></td>
-                    	<td style="position: relative;"> 
-                    		<select class="select_detail_non_colored">
-                    			<option value="O">O</option>
-                    			<option value="X">X</option>   
-                    			<option value="-">-</option>                  
-	                  		</select>
-	                  	</td>
-                  	</tr>
-                  	<tr>
-                    	<td style="vertical-align: middle;" height='200px'><a class="white-text templatemo-sort-by">환불(거부)사유</a></td>
-                    	<td height='200px' colspan='3' style="position: relative;">
-							<textarea class="text_detail_non_colored"></textarea>
-						</td>
-                  	</tr>
-                </tbody>
-			</table> 
-		</div>                          
-	</div>
-	<div style="width:100px; text-align: center;margin:auto;display: flex;">
-    	<!-- 상세정보창 내용 수정 -->
-        <button type="button" class="btn_modify">수정</button>
-        <!-- 상세정보창 내용 수정사항 취소 -->
-	   	<button type="button" class="btn_cancel">취소</button>
-    </div>         
-</form>
         
-    
-        </div>
-      </div>
 <footer class="text-right">
 	<p>Copyright &copy; 2084 Company Name 
 	Design: Template Mo</p>
 </footer>           
-    </div>
+</div>
     
     <!-- JS -->
     <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
