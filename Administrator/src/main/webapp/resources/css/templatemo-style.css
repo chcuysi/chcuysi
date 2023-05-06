@@ -490,6 +490,14 @@ input[type="radio"]:checked + label span {
   left: 11.5px;
 }
 
+.cate_detail td .select_detail_non_colored_delivery {
+  position: absolute; width: 40%; height: 100%;
+  border: 0px;
+  background-color:#ffffff;
+  top: 0px;
+  left: 11.5px;
+}
+
 .cate_detail td .select_detail_colored {
   position: absolute; width: 15%; height: 100%;
   border: 0px;
@@ -618,16 +626,13 @@ input[type="radio"]:checked + label span {
 /* 테이블 호버 */
 #table_iok tbody > tr:hover {background: lightyellow; }
 #table_calculate tbody > tr:hover {background: lightyellow; }
+#table_delivery tbody > tr:hover {background: lightyellow; }
 
 
 /* 테이블 숨기기*/
-form#detailInfo_iok{
-	display: none;
-}
-
-form#detailInfo_calculate{
-	display: none;
-}
+form#detailInfo_iok{display: none;}
+form#detailInfo_calculate{display: none;}
+form#detailInfo_delivery{display: none;}
 
 
 /* 7. Preferences

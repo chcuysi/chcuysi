@@ -8,7 +8,7 @@ $(function(){
 	category_menu.textContent = selectedMenu_left.textContent + "   >   " + selectedMenu_top.textContent;
 	
 
-	//************ getIokMenuList****************
+	//************ 판매승인****************
 	
 	// 클릭한 행의 색을 lightyellow로 변경하고, 다른 행의 색을 원래 색으로 돌리는 함수
 	function highlightRow($row) {
@@ -85,15 +85,8 @@ $(function(){
 	
 	
 	
-	//************ getCalculateMenuList****************
-	// 클릭한 행의 색을 lightyellow로 변경하고, 다른 행의 색을 원래 색으로 돌리는 함수
-	function highlightRow($row) {
- 			$row.siblings().css('background-color', function() {
-   			return $(this).hasClass('even') ? '#f9f9f9' : '#ffffff';
-  		});
-  		$row.css('background-color', 'lightyellow');
-	}	
-	
+	//************ 정산****************
+
 	// 초기 로딩 시 홀수 행에는 #f9f9f9, 짝수 행에는 #ffffff 색상 적용
 	$('#table_calculate tbody > tr:odd').addClass('odd');
 	$('#table_calculate tbody > tr:even').addClass('even');
@@ -137,6 +130,52 @@ $(function(){
     //취소버튼
     $('button.btn_cancel').click(function() {
     	$('form#detailInfo_calculate').css('display', 'none');
+    });
+    
+    //수정버튼
+
+
+	//************ 배송 ****************
+
+	// 초기 로딩 시 홀수 행에는 #f9f9f9, 짝수 행에는 #ffffff 색상 적용
+	$('#table_delivery tbody > tr:odd').addClass('odd');
+	$('#table_delivery tbody > tr:even').addClass('even');
+	
+	// 행 클릭 시 색상 변경
+	$('#table_delivery tbody > tr').click(function() {
+  		highlightRow($(this));
+	});
+	
+	$('#table_delivery tbody > tr').click(function() {
+    	// 클릭된 td의 값을 가져와서 변수에 저장
+    	var value = $(this).text();      
+        $('form#detailInfo_delivery').css('display', 'block');
+
+	    // 클릭한 tr의 td값을 저장, table_detailInfo의 tr의 td에 해당 값을 넣음
+		var clickedDnum = $(this).find("td:first").text();
+		$("#table_detailDelivery tbody tr:first td:eq(1)").text(clickedDnum);
+		var clickedOnum = $(this).find("td:eq(1)").text();
+		$("#table_detailDelivery tbody tr:first td:eq(3)").text(clickedOnum);
+		var clickedDaddr = $(this).find("td:eq(2)").text();
+		$("#table_detailDelivery tbody tr:eq(1) td:eq(1)").text(clickedDaddr);
+		var clickedDok = $(this).find("td:eq(3)").text();
+		$("#table_detailDelivery .select_detail_non_colored_delivery option").each(function() {
+   			if ($(this).val() === clickedDok) {
+      			$(this).prop("selected", true);
+      			return false; // 일치하는 옵션을 찾았으므로 반복문을 종료합니다.
+    		}
+  		});
+		var clickedDdate = $(this).find("td:eq(4)").text();
+  		$("#table_detailDelivery .select_date_colored").val(clickedDdate);
+		var clickedEok = $(this).find("td:eq(5)").text();
+		$("#table_detailDelivery tbody tr:eq(2) td:eq(3)").text(clickedEok);
+		var clickedRok = $(this).find("td:eq(6)").text();
+		$("#table_detailDelivery tbody tr:eq(3) td:eq(1)").text(clickedRok);
+    });
+    
+    //취소버튼
+    $('button.btn_cancel').click(function() {
+    	$('form#detailInfo_delivery').css('display', 'none');
     });
     
     //수정버튼

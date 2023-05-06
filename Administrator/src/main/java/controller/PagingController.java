@@ -13,9 +13,9 @@ public class PagingController {
 		return "index";
 	}
 	
-	@RequestMapping("/iframe")
-	public String iframe () {
-		return "iframe";
+	@RequestMapping("/getDeliveryMenuList")
+	public String getDeliveryMenuList () {
+		return "getDeliveryMenuList";
 	}
 	
 	
