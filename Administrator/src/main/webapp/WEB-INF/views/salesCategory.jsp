@@ -76,6 +76,28 @@
         <h2 id="category_menu"></h2>
         
         
+                <!-- 그래프 -->
+        <div class="templatemo-flex-row flex-content-row templatemo-overflow-hidden"> <!-- overflow hidden for iPad mini landscape view-->
+            <div class="col-1 templatemo-overflow-hidden">
+              <div class="templatemo-content-widget white-bg templatemo-overflow-hidden">
+				<select class="select_year_non_colored" style="font-size: 16px; z-index:1;">
+				  <option value="2023">2023</option>
+				  <option value="2022">2022</option>   
+				  <option value="2021">2021</option>                  
+				</select>
+                <div class="templatemo-flex-row flex-content-row">
+                  <div class="col-1 col-lg-6 col-md-12">
+                    <h2 class="text-center">2023</h2>
+                    <div id="pie_chart_div" class="templatemo-chart"></div> <!-- Pie chart div -->
+                  </div>
+                </div>                
+              </div>
+            </div>
+          </div>
+        
+        
+        
+        
 <footer class="text-right">
 	<p>Copyright &copy; 2084 Company Name 
 	Design: Template Mo</p>

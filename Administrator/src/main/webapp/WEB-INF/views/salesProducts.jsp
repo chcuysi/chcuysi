@@ -75,6 +75,21 @@
         <!-- 메뉴 카테고리 (왼쪽메뉴 > 상단메뉴) -->
         <h2 id="category_menu"></h2>
         
+        <!-- 그래프 -->
+        <div class="templatemo-flex-row flex-content-row templatemo-overflow-hidden"> <!-- overflow hidden for iPad mini landscape view-->
+            <div class="col-1 templatemo-overflow-hidden">
+              <div class="templatemo-content-widget white-bg templatemo-overflow-hidden">
+                <div class="templatemo-flex-row flex-content-row">
+                  <div class="col-1 col-lg-6 col-md-12">
+                    <h2 class="text-center">2023</h2>
+                    <div id="bar_chart_div" class="templatemo-chart"></div> <!-- Bar chart div -->
+                  </div>  
+                </div>                
+              </div>
+            </div>
+          </div>
+          
+        
         
 <footer class="text-right">
 	<p>Copyright &copy; 2084 Company Name 
@@ -116,9 +131,6 @@
           var options = {'title':'How Much Pizza I Ate Last Night'};
 
           // Instantiate and draw our chart, passing in some options.
-          var pieChart = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
-          pieChart.draw(data, options);
-
           var barChart = new google.visualization.BarChart(document.getElementById('bar_chart_div'));
           barChart.draw(data, options);
       }
