@@ -16,9 +16,11 @@ public class IokMenuServiceImpl implements IokMenuService {
 	private IokMenuDaoImpl iokMenuDao;
 
 	 
-	public List<IokMenuVO> getIokMenuList(HashMap map) {
-	    return iokMenuDao.getIokMenuList(map);
-	}
+	
+	  public List<IokMenuVO> getIokMenuList(HashMap map) { 
+	  		return iokMenuDao.getIokMenuList(map); 
+	  }
+	
 	
 	public void updateIokMenu(IokMenuVO ivo) {
 		iokMenuDao.updateIokMenu(ivo);

@@ -81,13 +81,65 @@
               <div class="templatemo-content-widget white-bg templatemo-overflow-hidden">
                 <div class="templatemo-flex-row flex-content-row">
                   <div class="col-1 col-lg-6 col-md-12">
-                    <h2 class="text-center">2023</h2>
                     <div id="bar_chart_div" class="templatemo-chart"></div> <!-- Bar chart div -->
                   </div>  
                 </div>                
               </div>
             </div>
           </div>
+          
+     <!-- 판매물품승인 테이블 --> 
+        <div class="templatemo-content-container">
+          <div class="templatemo-content-widget no-padding">
+            <div class="panel panel-default table-responsive">
+              <table id="table_calculate" class="table table-striped table-bordered templatemo-user-table">
+                <thead>
+                  <tr>
+                    <td><a href="" class="white-text templatemo-sort-by">판매자번호<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">판매자<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">상품명<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">상품판매금액<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">배송비<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">수수료<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">총정산금액<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">정산상태<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">입금일<span class="caret"></span></a></td>
+                  </tr>
+                </thead>
+                <tbody>
+                	
+                  		<tr>
+		                    <td>판매자번호</td>
+		                    <td>판매자</td>
+		                    <td>상품명</td>
+		                    <td>상품판매금액</td>
+		                    <td>배송비</td>
+		                    <td>수수료</td>
+		                    <td>총정산금액</td>
+		                    <td>-</td>
+		                    <td>2023-01-01</td>
+                  		</tr>  
+                  		
+                </tbody>
+              </table>    
+            </div>                          
+          </div>          
+          
+          <!-- 페이지 이동 버튼 -->
+          <div class="pagination-wrap">
+            <ul class="pagination">
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li class="active"><a href="#">3 <span class="sr-only">(current)</span></a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li>
+                <a href="#" aria-label="Next">
+                  <span aria-hidden="true"><i class="fa fa-play"></i></span>
+                </a>
+              </li>
+            </ul>
+          </div>     
           
         
         
@@ -121,14 +173,14 @@
           data.addColumn('number', 'Slices');
           data.addRows([
             ['Mushrooms', 3],
-            ['Onions', 1],
-            ['Olives', 1],
+            ['Onions', 5],
+            ['Olives', 3],
             ['Zucchini', 1],
             ['Pepperoni', 2]
           ]);
 
           // Set chart options
-          var options = {'title':'How Much Pizza I Ate Last Night'};
+          var options = {'title':'매출 Top5'};
 
           // Instantiate and draw our chart, passing in some options.
           var barChart = new google.visualization.BarChart(document.getElementById('bar_chart_div'));

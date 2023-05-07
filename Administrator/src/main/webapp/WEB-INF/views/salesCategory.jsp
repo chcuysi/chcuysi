@@ -80,14 +80,14 @@
         <div class="templatemo-flex-row flex-content-row templatemo-overflow-hidden"> <!-- overflow hidden for iPad mini landscape view-->
             <div class="col-1 templatemo-overflow-hidden">
               <div class="templatemo-content-widget white-bg templatemo-overflow-hidden">
-				<select class="select_year_non_colored" style="font-size: 16px; z-index:1;">
-				  <option value="2023">2023</option>
-				  <option value="2022">2022</option>   
-				  <option value="2021">2021</option>                  
+				<select id="categorySelect" class="select_category_non_colored" style="font-size: 16px; z-index:1;">
+				  <option value="과일">과일</option>
+				  <option value="채소">채소</option>   
+				  <option value="기타">기타</option>                  
 				</select>
                 <div class="templatemo-flex-row flex-content-row">
                   <div class="col-1 col-lg-6 col-md-12">
-                    <h2 class="text-center">2023</h2>
+                    <h2 id="selectedOption" class="text-center"></h2>
                     <div id="pie_chart_div" class="templatemo-chart"></div> <!-- Pie chart div -->
                   </div>
                 </div>                
@@ -162,6 +162,19 @@
             drawChart();
           });  
         }   
+        
+        const selectElement = document.getElementById("categorySelect");
+	    const h2Element = document.getElementById("selectedOption");
+
+	    selectElement.addEventListener("change", (event) => {
+	        const selectedOption = event.target.value;
+	        h2Element.innerText = selectedOption;
+	    });
+
+	    // 초기값 설정
+	    const defaultOption = selectElement.options[selectElement.selectedIndex].value;
+	    h2Element.innerText = defaultOption;
+        
       });
       
     </script>

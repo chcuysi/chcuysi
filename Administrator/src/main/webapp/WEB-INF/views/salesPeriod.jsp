@@ -75,6 +75,29 @@
         <!-- 메뉴 카테고리 (왼쪽메뉴 > 상단메뉴) -->
         <h2 id="category_menu"></h2>
         
+        <!-- 그래프 -->
+        <div class="templatemo-flex-row flex-content-row templatemo-overflow-hidden"> <!-- overflow hidden for iPad mini landscape view-->
+            <div class="col-1 templatemo-overflow-hidden">
+              <div class="templatemo-content-widget white-bg templatemo-overflow-hidden">
+				<select id="yearSelect" class="select_category_non_colored" style="font-size: 16px; z-index:1;">
+				  <option value="2023" selected>2023</option>
+				  <option value="2022">2022</option>   
+				  <option value="2021">2021</option>                  
+				</select>
+                <div class="panel-body">              
+                <div class="templatemo-flex-row flex-content-row">
+                  <div class="col-1 col-lg-6 col-md-12">
+                  <h2 id="selectedOption" class="text-center"></h2>
+                    <div id="area_chart_div" class="templatemo-chart"></div>
+                  </div>              
+                </div>
+              </div>                
+              </div>
+            </div>
+          </div>
+        
+        
+        
         
 <footer class="text-right">
 	<p>Copyright &copy; 2084 Company Name 
@@ -86,63 +109,71 @@
     <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
     <script src="https://www.google.com/jsapi"></script> <!-- Google Chart -->
+
     <script>
-      /* Google Chart 
-      -------------------------------------------------------------------*/
-      // Load the Visualization API and the piechart package.
-      google.load('visualization', '1.0', {'packages':['corechart']});
 
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.setOnLoadCallback(drawChart); 
-      
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
+      var areaData;
+      var areaOptions;
+      var areaChart;
+
+      /* Gauage 
+      --------------------------------------------------*/
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+
+      /* Area Chart 
+      --------------------------------------------------*/
       function drawChart() {
+        areaData = google.visualization.arrayToDataTable([
+          ['월', '총매출', '순매출'],
+          ['1',  1000,      400],
+          ['2',  1170,      460],
+          ['3',  660,       300],
+          ['4',  1030,      240],
+          ['5',  1280,      640],
+          ['6',  430,      340],
+          ['7',  1030,      540],
+          ['8',  1900,      900],
+          ['9',  790,      100],
+          ['10',  2600,      1040],
+          ['11',  420,      140],
+          ['12',  630,      120]
+        ]);
 
-          // Create the data table.
-          var data = new google.visualization.DataTable();
-          data.addColumn('string', 'Topping');
-          data.addColumn('number', 'Slices');
-          data.addRows([
-            ['Mushrooms', 3],
-            ['Onions', 1],
-            ['Olives', 1],
-            ['Zucchini', 1],
-            ['Pepperoni', 2]
-          ]);
+        areaOptions = {
+          title: '월별 매출',
+          hAxis: {title: '월',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0}
+        };
 
-          // Set chart options
-          var options = {'title':'How Much Pizza I Ate Last Night'};
+        areaChart = new google.visualization.AreaChart(document.getElementById('area_chart_div'));
+        areaChart.draw(areaData, areaOptions);
+      } // End function drawChart
 
-          // Instantiate and draw our chart, passing in some options.
-          var pieChart = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
-          pieChart.draw(data, options);
-
-          var barChart = new google.visualization.BarChart(document.getElementById('bar_chart_div'));
-          barChart.draw(data, options);
+      function drawCharts () {
+          gaugeChart.draw(gaugeData, gaugeOptions);
+          timelineChart.draw(timelineDataTable, timelineOptions);
+          areaChart.draw(areaData, areaOptions);
       }
-
-      $(document).ready(function(){
-        if($.browser.mozilla) {
-          //refresh page on browser resize
-          // http://www.sitepoint.com/jquery-refresh-page-browser-resize/
-          $(window).bind('resize', function(e)
-          {
-            if (window.RT) clearTimeout(window.RT);
-            window.RT = setTimeout(function()
-            {
-              this.location.reload(false); /* false to get page from cache */
-            }, 200);
-          });      
-        } else {
-          $(window).resize(function(){
-            drawChart();
-          });  
-        }   
-      });
       
+      $(document).ready(function(){
+    	  const selectElement = document.getElementById("yearSelect");
+    	    const h2Element = document.getElementById("selectedOption");
+
+    	    selectElement.addEventListener("change", (event) => {
+    	        const selectedOption = event.target.value;
+    	        h2Element.innerText = selectedOption;
+    	    });
+
+    	    // 초기값 설정
+    	    const defaultOption = selectElement.options[selectElement.selectedIndex].value;
+    	    h2Element.innerText = defaultOption;
+      });
+
     </script>
+
+
+
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/templatemo-script.js"></script>      <!-- Templatemo Script -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/admin.js"></script>
 

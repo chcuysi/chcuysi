@@ -103,7 +103,7 @@
 		                    <td>${iokMenu.stock}</td>
 		                    <td>${iokMenu.iok}</td>
                   		</tr>
-                  	</c:forEach>    
+                  	</c:forEach> 
                 </tbody>
               </table>    
             </div>                          
