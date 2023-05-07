@@ -53,7 +53,7 @@ https://templatemo.com/tm-571-hexashop
     
     
     <!-- ***** Header Area Start ***** -->
-   <header class="header-area header-sticky">
+   <header id="mainHeader" class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -97,26 +97,42 @@ https://templatemo.com/tm-571-hexashop
                             </li>                         <!-- session.invalidate(); -->
                             
                             <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
-                            
+                            <!-- ******************************************************************************************* -->
                             <c:choose>
                             
-                            <c:when test="${sessionScope.logName ne null}">
+                            <c:when test='${sessionScope.logName ne null && sessionScope.logType eq "판매자"}'>
+                                     
                              <li class="submenu">
                                <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
                                  <ul>
                                     <li><a href="logOut"><b>로그아웃</b></a></li>
-                                    <li><a href="#"><b>회원정보수정</b></a></li>
-                                    <li><a href="#"><b>회원탈퇴</b></a></li>
-                                    <li><a href="#"><b>구매내역</b></a></li>
+                                    <li><a href="UpdateMember"><b>회원정보수정</b></a></li>
+                                    <li><a href="memberOut"><b>회원탈퇴</b></a></li>
+                                      <li><a href="insertProduct"><b>판매등록</b></a></li>
+                                         <li><a href="iokCheck"><b>판매등록 승인여부</b></a></li>
+                                       <li><a href="#"><b>판매내역</b></a></li>
                                 </ul>
                              </li>
-                                
-                            </c:when>
-                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
+                             
+                                </c:when>
+                                <c:when test='${sessionScope.logName ne null && sessionScope.logType eq "일반"}'>
+                                 <li class="submenu">
+                               <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
+                                 <ul>
+                                    <li><a href="logOut"><b>로그아웃</b></a></li>
+                                    <li><a href="UpdateMember"><b>회원정보수정</b></a></li>
+                                    <li><a href="memberOut"><b>회원탈퇴</b></a></li>
+                                    <li><a href="#"><b>구매내역</b></a></li>                                   
+                                </ul>
+                             </li>
+                                </c:when>
+                             
+                        
+                            <c:otherwise>  
+                            <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
                             </c:otherwise>
                             
                             </c:choose>
-                            
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -155,7 +171,7 @@ https://templatemo.com/tm-571-hexashop
                         <h2>로그인하여 더 많은 서비스를 이용해보세요.</h2>
                         <span>많은 고객님들이 아쉽게 버려질 위기에 처한 식재료들을 찾고 있습니다!</span>
                     </div>
-                    <form id="subscribe" action="login" method="get">
+                    <form id="subscribe" action="loginCustomer" method="get">
                         <div class="row">
                           <div class="col-lg-5">
                             <fieldset>
@@ -190,6 +206,9 @@ https://templatemo.com/tm-571-hexashop
 										<c:if test="${moType ne null}">
 										<input type="hidden" id="moType" value="${moType}">
 									</c:if>
+									
+									
+								
 									<!-- 로그인 성공 시 이전 화면으로 전환하기 위한 값들 ***************************************************** -->
 								</fieldset>
                           </div>
@@ -311,6 +330,7 @@ https://templatemo.com/tm-571-hexashop
 
         $(function() {
         	
+     
             var selectedClass = "";
             $("p").click(function(){
             selectedClass = $(this).attr("data-rel");
@@ -333,13 +353,13 @@ https://templatemo.com/tm-571-hexashop
             	if( $('#moPageType').val() == "single-product" ) {
             		
             		switch( $('#moType').val()  ) {
-            		case "goSingProduct" : location.href= "go"; break;
-            		case "appleSingProduct" : location.href="apple"; break;
-            		case "baeSingProduct" : location.href="bae"; break;
-            		case "bananaSingProduct" : location.href="banana"; break;
-            		case "buSingProduct" : location.href="bu"; break;
-            		case "chamSingProduct" : location.href="cham"; break;
-            		case "poteSingProduct" : location.href="pote"; break;
+            		case "goSingProduct" : location.href= "detailView?imgName=go"; break;
+            		case "appleSingProduct" : location.href="detailView?imgName=apple"; break;
+            		case "baeSingProduct" : location.href="detailView?imgName=bae"; break;
+            		case "bananaSingProduct" : location.href="detailView?imgName=banana"; break;
+            		case "buSingProduct" : location.href="detailView?imgName=bu"; break;
+            		case "chamSingProduct" : location.href="detailView?imgName=cham"; break;
+            		case "poteSingProduct" : location.href="detailView?imgName=pote"; break;
             		
             		}
             	} /* 이전 페이지 타입이   개별 상품 화면일 경우 닫는 괄호 */
@@ -351,14 +371,28 @@ https://templatemo.com/tm-571-hexashop
                 
                 
                 /* 이전 페이지 타입이  전체상품 카테고리일 경우  */
+                
+                // 미구현
             	if ( $('#moPageType').val() == "products" ) {	
             		location.href="products";
             	 }
+   
+            	if ( $('#moPageType').val() == "insertProduct" ) {	
+            		location.href="insertProduct";
+            	 }
+            	
+            	
+            	/*??????????????????????????????????????????????????????????????????????????????????????????????????아   괄호 개씨발 진짜 씨발 좆같네 씨발  */
+            	/*     )  <- 이거 안붙여서 오류 */
+            	/* if ( $('#mopageType').val() == "logOutType=index" ) {
+            		location.href="sajo";
+            	} */
                 
             } /*  로그인 성공 시 괄호 */
             
             if ( $('#checkLogin').val() == "실패" )  {
             	alert('로그인에 실패하셨습니다.');
+            	
             	}
            
            

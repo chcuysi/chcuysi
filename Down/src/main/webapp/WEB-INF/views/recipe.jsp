@@ -62,7 +62,7 @@ https://templatemo.com/tm-571-hexashop
 
 
 	<!-- ***** Header Area Start ***** -->
-	<header class="header-area header-sticky">
+	 <header id="mainHeader" class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -106,26 +106,41 @@ https://templatemo.com/tm-571-hexashop
                             </li>                         <!-- session.invalidate(); -->
                             
                             <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
-                            
+                            <!-- ******************************************************************************************* -->
                             <c:choose>
                             
-                            <c:when test="${sessionScope.logName ne null}">
+                            <c:when test='${sessionScope.logName ne null && sessionScope.logType eq "판매자"}'>
+                                     
                              <li class="submenu">
                                <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
                                  <ul>
                                     <li><a href="logOut"><b>로그아웃</b></a></li>
                                     <li><a href="#"><b>회원정보수정</b></a></li>
                                     <li><a href="#"><b>회원탈퇴</b></a></li>
-                                    <li><a href="#"><b>구매내역</b></a></li>
+                                      <li><a href="insertProduct"><b>판매등록</b></a></li>
+                                       <li><a href="#"><b>판매내역</b></a></li>
                                 </ul>
                              </li>
-                                
-                            </c:when>
-                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
+                             
+                                </c:when>
+                                <c:when test='${sessionScope.logName ne null && sessionScope.logType eq "일반"}'>
+                                 <li class="submenu">
+                               <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
+                                 <ul>
+                                    <li><a href="logOut"><b>로그아웃</b></a></li>
+                                    <li><a href="#"><b>회원정보수정</b></a></li>
+                                    <li><a href="#"><b>회원탈퇴</b></a></li>
+                                    <li><a href="#"><b>구매내역</b></a></li>                                   
+                                </ul>
+                             </li>
+                                </c:when>
+                             
+                        
+                            <c:otherwise>  
+                            <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
                             </c:otherwise>
                             
                             </c:choose>
-                            
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>

@@ -22,7 +22,10 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="controller,vo" />
+	<context:component-scan base-package="controller,DAO,Service" />
+	
+	 <beans:bean id="multipartResolver"  
+			class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 	
 	
 	

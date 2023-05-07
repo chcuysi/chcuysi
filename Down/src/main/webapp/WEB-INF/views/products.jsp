@@ -49,7 +49,7 @@ https://templatemo.com/tm-571-hexashop
     
     
     <!-- ***** Header Area Start ***** -->
-     <header class="header-area header-sticky">
+  <header id="mainHeader" class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -93,22 +93,39 @@ https://templatemo.com/tm-571-hexashop
                             </li>                         <!-- session.invalidate(); -->
                             
                             <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
-                            
+                            <!-- ******************************************************************************************* -->
                             <c:choose>
                             
-                            <c:when test="${sessionScope.logName ne null}">
+                            <c:when test='${sessionScope.logName ne null && sessionScope.logType eq "판매자"}'>
+                                     
                              <li class="submenu">
                                <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
                                  <ul>
                                     <li><a href="logOut"><b>로그아웃</b></a></li>
-                                    <li><a href="#"><b>회원정보수정</b></a></li>
-                                    <li><a href="#"><b>회원탈퇴</b></a></li>
-                                    <li><a href="#"><b>구매내역</b></a></li>
+                                    <li><a href="UpdateMember"><b>회원정보수정</b></a></li>
+                                    <li><a href="memberOut"><b>회원탈퇴</b></a></li>
+                                      <li><a href="insertProduct"><b>판매등록</b></a></li>
+                                         <li><a href="iokCheck"><b>판매등록 승인여부</b></a></li>
+                                       <li><a href="#"><b>판매내역</b></a></li>
                                 </ul>
                              </li>
-                                
-                            </c:when>
-                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
+                             
+                                </c:when>
+                                <c:when test='${sessionScope.logName ne null && sessionScope.logType eq "일반"}'>
+                                 <li class="submenu">
+                               <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
+                                 <ul>
+                                    <li><a href="logOut"><b>로그아웃</b></a></li>
+                                    <li><a href="UpdateMember"><b>회원정보수정</b></a></li>
+                                    <li><a href="memberOut"><b>회원탈퇴</b></a></li>
+                                    <li><a href="#"><b>구매내역</b></a></li>                                   
+                                </ul>
+                             </li>
+                                </c:when>
+                             
+                        
+                            <c:otherwise>  
+                            <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
                             </c:otherwise>
                             
                             </c:choose>
@@ -261,13 +278,24 @@ https://templatemo.com/tm-571-hexashop
                         <div class="thumb">
                             <div class="hover-content">
                                 <ul>
-                                    <li><a href="${i.imgName}.png">자세히 보기</a></li>
+                                    <li><a href="detailView?imgName=${i.imgName}">자세히 보기</a></li>
 
                                     <li><a class="cart" href="#"><input id="type" type="hidden" value="${i.type}"/>장바구니</a></li>
                                 </ul>
                             </div>
-                            <img class="products" src="${pageContext.request.contextPath}/resources/images/${i.type2}.png" alt="">
+                         <c:choose>
+                         
+                          <c:when test="${i.frealfname ne null}">
+                            <img class="products"  width="350" height="368" src="${pageContext.request.contextPath}/resources/images/${i.frealfname}" alt="">
+                           </c:when>
                            
+                           <c:otherwise>
+                            <img class="products"  width="350" height="368"  src="${pageContext.request.contextPath}/resources/images/${i.type2}.png" alt="">
+                       </c:otherwise>
+                      
+                           
+                           
+                           </c:choose>
                         </div>
                         <div class="down-content">
                             <h4>${i.name}</h4>
@@ -422,6 +450,20 @@ https://templatemo.com/tm-571-hexashop
             
             $('.cart').click(function() {
             	
+            	 <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "판매자" ) {      %>
+                 
+            		if ( confirm('판매자는 이용할 수 없는 서비스입니다. 일반 계정으로 로그인 하시겠습니까?.')  ) {
+            		
+            		 location.href="logOut?pageType=index";
+            		
+            		}else { 
+            		
+            			 location.href="#";
+            		}
+            
+            	<% } %>
+            	
+            	
             	
             	 <% if(session.getAttribute("logName") == null ) { %> 
           	   if(confirm('장바구니에 담기 위해선 로그인이 필요합니다. 로그인 하시겠습니까?') )
@@ -430,7 +472,7 @@ https://templatemo.com/tm-571-hexashop
           	   }else { location.href="#"; }
           	   <% } %>
           	   
-          	   <% if(session.getAttribute("logName") != null ) { %> 
+          	   <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "일반"  ) { %> 
           	   if( confirm("상품을 장바구니에 담았습니다. 장바구니로 이동하시겠습니까?"))
           	   {
           		   location.href="cart?pageType=products&type="+$(this).find('#type').val();

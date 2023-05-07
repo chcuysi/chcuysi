@@ -98,26 +98,43 @@ https://templatemo.com/tm-571-hexashop
                             </li>                         <!-- session.invalidate(); -->
                             
                             <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
-                            
+                            <!-- ******************************************************************************************* -->
                             <c:choose>
                             
-                            <c:when test="${sessionScope.logName ne null}">
+                            <c:when test='${sessionScope.logName ne null && sessionScope.logType eq "판매자"}'>
+                                     
                              <li class="submenu">
                                <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
                                  <ul>
                                     <li><a href="logOut"><b>로그아웃</b></a></li>
-                                    <li><a href="#"><b>회원정보수정</b></a></li>
-                                    <li><a href="#"><b>회원탈퇴</b></a></li>
-                                    <li><a href="#"><b>구매내역</b></a></li>
+                                    <li><a href="UpdateMember"><b>회원정보수정</b></a></li>
+                                    <li><a href="memberOut"><b>회원탈퇴</b></a></li>
+                                      <li><a href="insertProduct"><b>판매등록</b></a></li>
+                                         <li><a href="iokCheck"><b>판매등록 승인여부</b></a></li>
+                                       <li><a href="#"><b>판매내역</b></a></li>
                                 </ul>
                              </li>
-                                
-                            </c:when>
-                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
+                             
+                                </c:when>
+                                <c:when test='${sessionScope.logName ne null && sessionScope.logType eq "일반"}'>
+                                 <li class="submenu">
+                               <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
+                                 <ul>
+                                    <li><a href="logOut"><b>로그아웃</b></a></li>
+                                    <li><a href="UpdateMember"><b>회원정보수정</b></a></li>
+                                    <li><a href="memberOut"><b>회원탈퇴</b></a></li>
+                                    <li><a href="#"><b>구매내역</b></a></li>                                   
+                                </ul>
+                             </li>
+                                </c:when>
+                             
+                        
+                            <c:otherwise>  
+                            <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
                             </c:otherwise>
                             
                             </c:choose>
-                            
+                                <!-- ******************************************************************************************* -->
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -325,7 +342,7 @@ https://templatemo.com/tm-571-hexashop
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li> <a href="apple"> 자세히 보기 </a> </li>
+                                            <li> <a href="detailView?imgName=apple"> 자세히 보기 </a> </li>
                                           
                                           
                                             <li><a class="cart" href="#"><input id="type" type="hidden" value="appleSingProduct"/> 장바구니</a></li>
@@ -349,7 +366,7 @@ https://templatemo.com/tm-571-hexashop
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                             <li><a href="go">자세히 보기</a></li>
+                                             <li><a href="detailView?imgName=go">자세히 보기</a></li>
                                  
                                              <li><a class="cart" href="#"><input id="type" type="hidden" value="goSingProduct"/>장바구니</a></li>
                                         </ul>
@@ -373,7 +390,7 @@ https://templatemo.com/tm-571-hexashop
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                              <li><a href="bu">자세히 보기</a></li>
+                                              <li><a href="detailView?imgName=bu">자세히 보기</a></li>
                                 
                                            <li><a class="cart" href="#"><input id="type" type="hidden" value="buSingProduct"/>장바구니</a></li>
                                         </ul>
@@ -397,7 +414,7 @@ https://templatemo.com/tm-571-hexashop
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                             <li><a href="pote">자세히 보기</a></li>
+                                             <li><a href="detailView?imgName=pote">자세히 보기</a></li>
                                   
                                             <li><a class="cart" href="#"><input id="type" type="hidden" value="poteSingProduct"/>장바구니</a></li>
                                         </ul>
@@ -446,7 +463,7 @@ https://templatemo.com/tm-571-hexashop
                                     <div class="hover-content">
                                         <ul>
                                     
-                                             <li><a href="apple">자세히 보기</a></li>
+                                             <li><a href="detailView?imgName=apple">자세히 보기</a></li>
                                  
                                             <li><a class="cart" href="#"><input id="type" type="hidden" value="appleSingProduct"/>장바구니</a></li>
                                         </ul>
@@ -469,7 +486,7 @@ https://templatemo.com/tm-571-hexashop
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                             <li><a href="bae">자세히 보기</a></li>
+                                             <li><a href="detailView?imgName=bae">자세히 보기</a></li>
                                      
                                              <li><a class="cart" href="#"><input id="type" type="hidden" value="baeSingProduct"/>장바구니</a></li>
                                         </ul>
@@ -492,7 +509,7 @@ https://templatemo.com/tm-571-hexashop
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                             <li><a href="cham">자세히 보기</a></li>
+                                             <li><a href="detailView?imgName=cham">자세히 보기</a></li>
                                    
                                             <li><a class="cart" href="#"><input id="type" type="hidden" value="chamSingProduct"/>장바구니</a></li>
                                         </ul>
@@ -515,7 +532,7 @@ https://templatemo.com/tm-571-hexashop
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="banana">자세히 보기</a></li>
+                                            <li><a href="detailView?imgName=banana">자세히 보기</a></li>
                                    
                                             <li><a class="cart" href="#"><input id="type" type="hidden" value="bananaSingProduct"/>장바구니</a></li>
                                         </ul>
@@ -802,16 +819,16 @@ https://templatemo.com/tm-571-hexashop
                         <h2>지금 바로 'SAJO'에 상품을 등록해보시겠어요?</h2>
                         <span>많은 고객님들이 아쉽게 버려질 위기에 처한 식재료들을 찾고 있습니다!</span>
                     </div>
-                    <form id="subscribe" action="" method="get">
+                    <form id="subscribe" action="loginSales" method="get">
                         <div class="row">
                           <div class="col-lg-5">
                             <fieldset>
-                              <input name="name" type="text" id="name" placeholder="판매자님의 ID를 입력해주세요" required="">
+                              <input name="id" type="text" id="id" placeholder="판매자님의 ID를 입력해주세요" required="">
                             </fieldset>
                           </div>
                           <div class="col-lg-5">
                             <fieldset>
-                              <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="판매자님의 비밀번호를 압력해주세요" required="">
+                              <input name="password" type="text" id="password" pattern="^[0-9]*$" placeholder="판매자님의 비밀번호를 입력해주세요" required="">
                             </fieldset>
                           </div>
                           <div class="col-lg-2">
@@ -820,6 +837,13 @@ https://templatemo.com/tm-571-hexashop
                             </fieldset>
                           </div>
                         </div>
+                        
+
+										<input type="hidden" id="pageType" name="pageType" value="insertProduct"/>
+							
+									
+									
+									
                     </form>
                 </div>
                 <div class="col-lg-4">
@@ -956,7 +980,21 @@ https://templatemo.com/tm-571-hexashop
             
             
             $('.cart').click(function() {
-            
+     
+
+            	/*   세션은 자바단과  body 태그에서 인식 ,   스크립트단에선 인식 못함? */
+             	 <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "판매자" ) {      %>
+             
+        		if ( confirm('판매자는 이용할 수 없는 서비스입니다. 일반 계정으로 로그인 하시겠습니까?.')  ) {
+        		
+        		 location.href="logOut?pageType=index";
+        		
+        		}else { 
+        		
+        			 location.href="#";
+        		}
+        
+        	<% } %>
             	
             	 <% if(session.getAttribute("logName") == null ) { %> 
           	   if(confirm('장바구니에 담기 위해선 로그인이 필요합니다. 로그인 하시겠습니까?') )
@@ -965,8 +1003,8 @@ https://templatemo.com/tm-571-hexashop
           	   }else { location.href="#"; }
           	   <% } %>
           	   
-          	   <% if(session.getAttribute("logName") != null ) { %> 
-          	   if( confirm("상품을 장바구니에 담았습니다. 장바구니로 이동하시겠습니까?"))
+          	   <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "일반" ) { %> 
+          	   if( confirm("상품을 장바구니에 담으시겠습니까?"))
           	   {
           		   location.href="cart?pageType=index&type="+$(this).find('#type').val();
           		   
@@ -978,7 +1016,9 @@ https://templatemo.com/tm-571-hexashop
               	   }
           	   
           	   }
-          	   <% } %>
+          	   <% }    %> 
+           	
+     	
             	
             });
             
