@@ -49,7 +49,7 @@
         <nav class="templatemo-left-nav">          
           <ul>
             <li><a href="getIokMenuList.do"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
-            <li><a href="getDeliveryMenuList?pageType=index"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
+            <li><a href="getDeliveryMenuList.do"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
             <li><a href="salesProducts?pageType=index"class="active"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
             <li><a href="getMemberMenuList?pageType=index"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
           </ul>  

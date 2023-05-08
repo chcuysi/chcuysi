@@ -45,8 +45,8 @@ $(function(){
 		$("#table_detailInfo tbody tr:eq(2) td:eq(1)").text(clickedPrice);
 		var clickedDate = $(this).find("td:eq(5)").text();
 		$("#table_detailInfo tbody tr:eq(2) td:eq(3)").text(clickedDate);
-		var clickedStock = $(this).find("td:eq(6)").text();
-		$("#table_detailInfo tbody tr:eq(3) td:eq(1)").text(clickedStock);
+		var clickedWarehoused = $(this).find("td:eq(6)").text();
+		$("#table_detailInfo tbody tr:eq(3) td:eq(1)").text(clickedWarehoused);
  		var clickedIok = $(this).find("td:eq(7)").text();
  		$("#table_detailInfo .select_detail_non_colored option").each(function() {
    			if ($(this).val() === clickedIok) {
@@ -123,7 +123,7 @@ $(function(){
       			return false; // 일치하는 옵션을 찾았으므로 반복문을 종료합니다.
     		}
   		});
-  		var clickedCalculateDate = $(this).find("td:eq(8)").text();
+  		var clickedCalculateDate = $(this).find("td:eq(8)").text().slice(0, 10);
   		$("#table_detailCalculate .select_date_colored").val(clickedCalculateDate);
     });
     
@@ -133,7 +133,30 @@ $(function(){
     });
     
     //수정버튼
-
+    $('button.btn_modify').on('click', function() {
+		var pid = $('#table_detailCalculate tr:first-child td:nth-child(2)').text(); // 선택한 테이블의 pid 값을 가져옴
+  		var jungsan = $('table#table_detailCalculate').find('tr:eq(3) td:eq(3) select').val(); // 선택한 값 가져오기
+  		$("#table_calculate tr[data-pid='" + pid + "'] td:eq(7)").text(jungsan); // 값 대입
+ 		
+  		$.ajax({
+    		type: 'post',
+    		url: 'getCalculateMenuList.do/' + pid,
+    		data: { pid: pid, jungsan: jungsan },
+	  		success: function(result) {
+	  			location.reload();
+      			$('form#detailInfo_calculate').css('display', 'none');
+    		},
+    		error: function(err) {
+      			alert('오류가 발생했습니다.');
+      			console.log(err);
+    		}
+  		});
+	});
+    
+    
+    
+    
+    
 
 	//************ 배송 ****************
 
@@ -208,7 +231,7 @@ $(function(){
 		var clickedDok = $(this).find("td:eq(3)").text();
 		$("#table_detailExchange tbody tr:eq(1) td:eq(3)").text(clickedDok);
 		var clickedDdate = $(this).find("td:eq(4)").text();
-  		$("#table_detailExchange tbody tr:eq(2) td:eq(1)").text(clickedDdate);
+  		$("#table_detailExchange .select_date_colored").val(clickedDdate);
 		var clickedEok = $(this).find("td:eq(5)").text();
 		$("#table_detailExchange .select_detail_non_colored option").each(function() {
    			if ($(this).val() === clickedEok) {

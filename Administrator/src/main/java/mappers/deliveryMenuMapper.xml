@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DeliveryMenuDao">
+
+	<select id="getDeliveryMenuList" resultType="vo.DeliveryMenuVO" parameterType="hashmap" >
+		SELECT d.dnum, d.onum, d.daddr, d.dok, d.ddate, e.eok, r.rok
+			FROM DELIVERY d
+			LEFT JOIN EXCHANGE e ON d.onum = e.onum
+			LEFT JOIN REFUND r ON d.onum = r.onum
+	</select>  
+</mapper>

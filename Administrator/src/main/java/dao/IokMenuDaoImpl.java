@@ -19,7 +19,6 @@ public class IokMenuDaoImpl implements IokMenuDao {
 	public List<IokMenuVO> getIokMenuList(HashMap map) {
 		return mybatis.selectList("IokMenuDao.getIokMenuList", map);
 	}
-	
 	public void updateIokMenu(IokMenuVO ivo) {
 		mybatis.update("IokMenuDao.updateIokMenu", ivo);
 	}

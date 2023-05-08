@@ -49,7 +49,7 @@
         <nav class="templatemo-left-nav">          
           <ul>
             <li><a href="getIokMenuList.do" class="active"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
-            <li><a href="getDeliveryMenuList?pageType=index"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
+            <li><a href="getDeliveryMenuList.do"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
             <li><a href="salesProducts?pageType=index"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
             <li><a href="getMemberMenuList?pageType=index"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
           </ul>  
@@ -65,7 +65,7 @@
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
                 <li><a href="getIokMenuList.do" class="active">판매승인</a></li>
-                <li><a href="getCalculateMenuList?pageType=index">정산</a></li>
+                <li><a href="getCalculateMenuList.do">정산</a></li>
               </ul>  
             </nav> 
           </div>
@@ -87,7 +87,7 @@
                     <td><a href="" class="white-text templatemo-sort-by">상품명<span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">판매가<span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">판매기간<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">재고수량<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">입고수량<span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">승인여부<span class="caret"></span></a></td>
                   </tr>
                 </thead>
@@ -100,7 +100,7 @@
 		                    <td>${iokMenu.name} ${iokMenu.name2}</td>
 		                    <td>${iokMenu.price}원</td>
 		                    <td>${iokMenu.startdate} ~ ${iokMenu.startdate}</td>
-		                    <td>${iokMenu.stock}</td>
+		                    <td>${iokMenu.warehoused}</td>
 		                    <td>${iokMenu.iok}</td>
                   		</tr>
                   	</c:forEach> 
@@ -153,7 +153,7 @@
                     	<td></td>
                   	</tr>
                   	<tr>
-                    	<td><a class="white-text templatemo-sort-by">재고수량</a></td>
+                    	<td><a class="white-text templatemo-sort-by">입고수량</a></td>
                     	<td></td>
                     	<td><a class="white-text templatemo-sort-by">승인여부</a></td>
                     	<td style="position: relative;">             

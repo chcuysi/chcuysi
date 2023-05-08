@@ -49,7 +49,7 @@
         <nav class="templatemo-left-nav">          
           <ul>
             <li><a href="getIokMenuList.do" class="active"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
-            <li><a href="getDeliveryMenuList?pageType=index"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
+            <li><a href="getDeliveryMenuList.do"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
             <li><a href="salesProducts?pageType=index"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
             <li><a href="getMemberMenuList?pageType=index"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
           </ul>  
@@ -65,7 +65,7 @@
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
                 <li><a href="getIokMenuList.do">판매승인</a></li>
-                <li><a href="getCalculateMenuList?pageType=index" class="active">정산</a></li>
+                <li><a href="getCalculateMenuList.do" class="active">정산</a></li>
               </ul>  
             </nav> 
           </div>
@@ -93,19 +93,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                	
+                	<c:forEach items="${calculateMenuList}" var="calculateMenu">
                   		<tr>
-		                    <td>판매자번호</td>
-		                    <td>판매자</td>
-		                    <td>상품명</td>
-		                    <td>상품판매금액</td>
-		                    <td>배송비</td>
-		                    <td>수수료</td>
-		                    <td>총정산금액</td>
-		                    <td>-</td>
-		                    <td>2023-01-01</td>
-                  		</tr>  
-                  		
+		                    <td>${calculateMenu.pid}</td>
+		                    <td>${calculateMenu.pname}</td>
+		                    <td>${calculateMenu.name} ${calculateMenu.name2}</td>
+		                    <td>${calculateMenu.sell_total}원</td>
+		                    <td>${calculateMenu.dcharge}원</td>
+		                    <td>${calculateMenu.ocharge}원</td>
+		                    <td>${calculateMenu.jungsanmoney}원</td>
+		                    <td>${calculateMenu.jungsan}</td>
+							<td>${calculateMenu.jungsandate}</td>
+                  		</tr>
+                  	</c:forEach> 	
                 </tbody>
               </table>    
             </div>                          
@@ -196,39 +196,7 @@
     <!-- JS -->
     <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
-    <script src="https://www.google.com/jsapi"></script> <!-- Google Chart -->
-    <script>
-      /* Google Chart 
-      -------------------------------------------------------------------*/
-      // Load the Visualization API and the piechart package.
-      google.load('visualization', '1.0', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.setOnLoadCallback(drawChart); 
-      
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      
-
-      $(document).ready(function(){
-        if($.browser.mozilla) {
-          //refresh page on browser resize
-          // http://www.sitepoint.com/jquery-refresh-page-browser-resize/
-          $(window).bind('resize', function(e)
-          {
-            if (window.RT) clearTimeout(window.RT);
-            window.RT = setTimeout(function()
-            {
-              this.location.reload(false); /* false to get page from cache */
-            }, 200);
-          });      
-        } else {
-          $(window).resize(function(){
-            drawChart();
-          });  
-        }   
-      });
+    
       
     </script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/templatemo-script.js"></script>      <!-- Templatemo Script -->

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CalculateMenuDao">
+
+	<select id="getCalculateMenuList" resultType="vo.CalculateMenuVO" parameterType="hashmap" >
+		select ps.pid pid, ps.pname pname, p.name name, p.name2 name2, (p.price*p.countsell) sell_total, (ps.pdcharge*p.countsell) dcharge, (p.price*p.countsell*0.15) AS ocharge, (p.price*p.countsell*0.85-ps.pdcharge*p.countsell) jungsanmoney, p.jungsan jungsan, p.jungsandate jungsandate
+    	FROM products p INNER JOIN psale ps 
+    	ON p.pid = ps.pid
+	</select>  
+	
+	<update	id='updateCalculateMenu' parameterType="vo.CalculateMenuVO">
+		UPDATE products SET jungsan=#{jungsan} WHERE pid=#{pid}
+	</update>
+	
+</mapper>

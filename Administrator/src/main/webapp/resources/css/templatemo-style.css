@@ -582,7 +582,7 @@ input[type="radio"]:checked + label span {
 }
 
 /* 날짜 */
-.cate_detail td .select_date_colored {
+input.select_date_colored {
   border: 0px;
   background-color:#f9f9f9;
   top: 0px;

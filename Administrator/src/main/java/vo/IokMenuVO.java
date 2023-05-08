@@ -11,7 +11,7 @@ public class IokMenuVO {
     private int price;
     private String startdate;
     private String enddate;
-    private int stock;
+    private int warehoused;
     private String iok;
     
     
@@ -69,11 +69,11 @@ public class IokMenuVO {
 	public void setEnddate(String enddate) {
 		this.enddate = enddate;
 	}
-	public int getStock() {
-		return stock;
+	public int getWarehoused() {
+		return warehoused;
 	}
-	public void setStock(int stock) {
-		this.stock = stock;
+	public void setWarehoused(int warehoused) {
+		this.warehoused = warehoused;
 	}
 	public String getIok() {
 		return iok;

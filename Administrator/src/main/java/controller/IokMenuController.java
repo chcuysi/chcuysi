@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import service.CalculateMenuService;
 import service.IokMenuService;
+import vo.CalculateMenuVO;
 import vo.IokMenuVO;
  
 
@@ -34,17 +36,20 @@ public class IokMenuController {	// 판매승인 컨트롤러
 		map.put("price", ivo.getPrice());
 		map.put("startdate", ivo.getStartdate());
 		map.put("enddate", ivo.getEnddate());
-		map.put("stock", ivo.getStock());
+		map.put("warehoused", ivo.getWarehoused());
 		map.put("iok", ivo.getIok());		
 		
 		List<IokMenuVO> list = iokMenuService.getIokMenuList(map);
 		m.addAttribute("iokMenuList", list);
 	}
 	
-	
 	@PostMapping("getIokMenuList.do/{pid}")
 	@ResponseBody
 	public void updateIokMenu(@ModelAttribute("iokMenu") IokMenuVO ivo) {
 	    iokMenuService.updateIokMenu(ivo);
 	}
+	
+	
+	
+	
 }

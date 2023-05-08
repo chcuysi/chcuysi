@@ -49,7 +49,7 @@
         <nav class="templatemo-left-nav">          
           <ul>
             <li><a href="getIokMenuList.do"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
-            <li><a href="getDeliveryMenuList?pageType=index" class="active"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
+            <li><a href="getDeliveryMenuList.do" class="active"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
             <li><a href="salesProducts?pageType=index"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
             <li><a href="getMemberMenuList?pageType=index"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
           </ul>  
@@ -96,7 +96,7 @@
 		                    <td>주문번호</td>
 		                    <td>배송주소</td>
 		                    <td>배송완료</td>
-		                    <td>2023-02-27</td>
+		                    <td></td>
 		                    <td>-</td>
                   		</tr>
                 </tbody>
@@ -144,11 +144,13 @@
                   		</td>
                   	</tr>
                   	<tr>
-                    	<td style="vertical-align: middle;"><a class="white-text templatemo-sort-by">배송일</a></td>
-                    	<td><input type='date' class="select_date_colored"></td>
+                    	<td style="vertical-align: middle;"><a class="white-text templatemo-sort-by">배송일2222</a></td>
+                    	<td>
+                    		<input type="date" class="select_date_colored">
+                    	</td>
                     	<td><a class="white-text templatemo-sort-by">교환여부</a></td>
                     	<td style="position: relative;"> 
-                    		<select class="select_detail_non_colored">
+                    		<select class="select_detail_colored">
                     			<option value="O">O</option>
                     			<option value="X">X</option>   
                     			<option value="-">-</option>                  

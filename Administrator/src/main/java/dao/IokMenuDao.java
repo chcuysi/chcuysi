@@ -11,7 +11,6 @@ import vo.IokMenuVO;
 public interface IokMenuDao {
 	
 	public List<IokMenuVO> getIokMenuList(HashMap map) ;
-	
 	public void updateIokMenu(IokMenuVO ivo);
 	
 }
