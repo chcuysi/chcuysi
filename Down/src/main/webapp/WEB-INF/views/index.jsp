@@ -1,4 +1,4 @@
-<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+	<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -17,7 +17,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>Hexashop Ecommerce HTML CSS Template</title>
+    <title>두번째 인덱스</title>
 
 
     <!-- Additional CSS Files -->
@@ -67,7 +67,7 @@ https://templatemo.com/tm-571-hexashop
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="sajo" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#men">미션</a></li>
+                            <li class="scroll-to-section"><a href="review.do">미션</a></li>
                              <li class="submenu">
                                 <a href="javascript:;">싱싱마켓</a>
                                 <ul>
@@ -79,15 +79,10 @@ https://templatemo.com/tm-571-hexashop
                             </li>
                             <li class="scroll-to-section"><a href="#kids">레시피</a></li>
                             
-                            <li class="submenu">
-                                <a href="javascript:;">회사소개</a>
-                                <ul>
-                                    <li><a href="about.html"><b>우리 SAJO는</b></a></li>
-                                    <li><a href="products.html"><b>연혁</b></a></li>
-                                    <li><a href="single-product.html"><b>경영 방침/경영 철학</b></a></li>
-                                    <li><a href="contact.html"><b>오시는 길</b></a></li>
-                                </ul>
+                            <li><a href="company.do">회사소개</a>           
                             </li>
+                            
+                            
                             <li class="submenu">
                                 <a href="javascript:;">고객센터</a>
                                 <ul>
@@ -143,7 +138,7 @@ https://templatemo.com/tm-571-hexashop
                                <span> 더 이상 헤매지 마십시오. SAJO에 다 있습니다.</span>
                                <span> SAJO가 처음이시라면 가이드를 받아보세요!</span>
                                 <div class="main-border-button">
-                                    <a href="#">SAJO 이용 가이드 받기!</a>
+                                    <a href="guideLine.do">SAJO 이용 가이드 받기!</a>
                                 </div>
                             </div>
                             <img id="base" src="${pageContext.request.contextPath}/resources/images/base.jpg" alt="">
@@ -225,7 +220,7 @@ https://templatemo.com/tm-571-hexashop
                                                 <h4>'SAJO'는?</h4>
                                                 <p>'SAJO'의 철학, 목표, 가치관 등에 대해 알아보세요!</p>
                                                 <div class="main-border-button">
-                                                    <a href="#">자세히 보기</a>
+                                                    <a href="company.do">자세히 보기</a>
                                                 </div>
                                             </div>
                                         </div>

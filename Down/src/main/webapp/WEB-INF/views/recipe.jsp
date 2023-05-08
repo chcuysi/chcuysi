@@ -87,15 +87,10 @@ https://templatemo.com/tm-571-hexashop
                             </li>
                             <li class="scroll-to-section"><a href="#kids">레시피</a></li>
                             
-                            <li class="submenu">
-                                <a href="javascript:;">회사소개</a>
-                                <ul>
-                                    <li><a href="about.html"><b>우리 SAJO는</b></a></li>
-                                    <li><a href="products.html"><b>연혁</b></a></li>
-                                    <li><a href="single-product.html"><b>경영 방침/경영 철학</b></a></li>
-                                    <li><a href="contact.html"><b>오시는 길</b></a></li>
-                                </ul>
+                            <li><a href="company.do">회사소개</a>           
                             </li>
+                            
+                            
                             <li class="submenu">
                                 <a href="javascript:;">고객센터</a>
                                 <ul>

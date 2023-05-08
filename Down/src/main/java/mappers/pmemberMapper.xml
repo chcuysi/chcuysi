@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PmemberDAO"> 
+
+
+<insert id="insertPmember" parameterType="pmember">
+	INSERT INTO pmember(PID,PPW,PNAME,PADDR,PDADDR,PTEL,PEMAIL,PDATE,PJNUM,PCODE,PNUM)
+	VALUES(#{pid},#{ppw},#{pname},#{paddr},#{pdaddr},#{ptel},#{pemail},sysdate,#{pjnum},#{pcode},#{pnum})
+</insert>
+
+
+<select id="selectPmember" parameterType="pmember" resultType="pmember">
+SELECT PID FROM pmember WHERE PID=#{pid}
+</select>
+ 
+
+
+</mapper>

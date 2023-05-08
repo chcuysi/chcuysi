@@ -9,9 +9,9 @@
 	
 
 
-<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	<property name="driverClassName" 	value="oracle.jdbc.driver.OracleDriver"></property>
-	<property name="url" 				value="jdbc:oracle:thin:@Localhost:1521/xe"></property>
+	<property name="url" 				value="jdbc:oracle:thin:@Localhost:1521:xe"></property>
 	<property name="username" 			value="scott"></property>
 	<property name="password" 			value="tiger"></property>
 </bean>	
@@ -20,12 +20,13 @@
  	<property name="dataSource" ref="dataSource" />
   <property name="configLocation" value="classpath:/mybatis-config.xml"></property>
   <property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>
-  추후에 여기서 별칭 지정!
  </bean>
  
  <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
    <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
- </bean> -->
+ </bean> 
+ 
+ 
  
    		
 </beans>

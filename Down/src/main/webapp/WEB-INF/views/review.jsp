@@ -1,25 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
-    
- 
     
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>리뷰 페이지</title>
 
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-
-    <title>메인 인덱스</title>
-
-
-    <!-- Additional CSS Files -->
+  <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/font-awesome.css">
@@ -29,31 +19,12 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl-carousel.css">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/lightbox.css">
-<!--
 
-TemplateMo 571 Hexashop
+</head>
+<body>
 
-https://templatemo.com/tm-571-hexashop
-
--->
-
-    </head>
-    
-    <body>
-    
-    <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>  
-    <!-- ***** Preloader End ***** -->
-    
-    
-    <!-- ***** Header Area Start ***** -->
-   <header class="header-area header-sticky">
+<!-- ***** Header Area Start ***** -->
+     <header class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -78,8 +49,9 @@ https://templatemo.com/tm-571-hexashop
                             </li>
                             <li class="scroll-to-section"><a href="#kids">레시피</a></li>
                             
-                            <li><a href="company.do">회사소개</a>           
+                           <li><a href="company.do">회사소개</a>           
                             </li>
+                            
                             
                             
                             
@@ -124,105 +96,135 @@ https://templatemo.com/tm-571-hexashop
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-
-    <!-- ***** Main Banner Area Start ***** -->
+    
+    
+    
+     <!-- ***** Main Banner Area Start ***** -->
     <div class="page-heading" id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2> 로그인 하기</h2>
-                        <span>SAJO의 더 많은 서비스를 이용하기 위해 로그인하는 단계입니다.</span>
+                        <h2>이용자들의 생생한 리뷰</h2>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- ***** Main Banner Area End ***** -->
-
-
-    <!-- ***** Product Area Starts ***** -->
     
-      <div class="subscribe">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+	<!-- ***** 카테고리 시작***** -->
+    <section class="section" id="products">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
-                    <div class="section-heading">
-                        <h2>로그인하여 더 많은 서비스를 이용해보세요.</h2>
-                        <span>많은 고객님들이 아쉽게 버려질 위기에 처한 식재료들을 찾고 있습니다!</span>
+                <div class="col-lg-12">
+                    <div class="section-heading">    
+                        <hr/>
+ 	         			 <h3 id="CategoryHeader">${viewType}</h3> 
+                            <hr/>
+                            
+                            
+                          <div id="Category">
+                          
+                          <div class="main-border-button cateborder">
+                            <a id="all" href="#">전체</a>
+                         </div>
+                         
+                        <div class="main-border-button cateborder">
+                            <a id="va" href="#">채소</a>
+                         </div>
+
+                         <div class="main-border-button cateborder">
+                              <a id="fl" href="#">과일</a>
+                         </div> 
+                         <div class="main-border-button cateborder">
+                            <a id="banana" href="#">기타</a>
+                         </div>   
                     </div>
-                    <form id="subscribe" action="login" method="get">
-                        <div class="row">
-                          <div class="col-lg-5">
-                            <fieldset>
-                              <input name="id" type="text" id="id" placeholder="회원님의 ID를 입력해주세요" required>
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-5">
-                            <fieldset>
-                              <input name="password" type="text" id="password" pattern="^[0-9]*$" placeholder="회원님의 비밀번호를 입력해주세요" required>
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-2">
-                            <fieldset>
-                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
-
-									<c:if test="${checkLogin ne null}">
-										<input type="hidden" id="checkLogin" value="${checkLogin}">
-									</c:if>
-
-									<c:if test="${param.pageType ne null}">
-										<input type="hidden" id="pageType" name="pageType" value="${param.pageType}">
-									</c:if>
-									
-									<c:if test="${param.type ne null}">
-										<input type="hidden" id="type" name="type" value="${param.type}">
-									</c:if>
-									
-									<c:if test="${moPageType ne null}">
-										<input type="hidden" id="moPageType" value="${moPageType}">
-									</c:if>
-									
-										<c:if test="${moType ne null}">
-										<input type="hidden" id="moType" value="${moType}">
-									</c:if>
-									
-								</fieldset>
-                          </div>
-                        </div>
-                    </form>
+                    
+                     
+                    </div>
                 </div>
-            
-            
-       
-                              
-                <div class="col-lg-4">
-                    <div class="row">
-                        <div class="col-6">
-                            <ul>
-                                <li>본사 위치:<br><span>서울특별시 강남구 테헤란로 123-123</span></li>
-                                <li>관리자 전화번호:<br><span>010-123-4567</span></li>
-                                <li>지점 위치:<br><span>서울특별시 가산동 123-123</span></li>
-                            </ul>
-                        </div>
-                        <div class="col-6">
-                            <ul>
-                                <li>근무 시간:<br><span>오전 07:30 - 오후 9:30</span></li>
-                                <li>관리자 이메일:<br><span>sajo@sajo.com</span></li>
-                                <li>소셜 미디어:<br><span><a href="#">Facebook</a>, <a href="#">Instagram</a>, <a href="#">Behance</a>, <a href="#">Linkedin</a></span></li>
-                            </ul>
-                        </div>
+            </div>
+      </div>
+      
+      <!-- ***** 카테고리 끝***** -->
+      
+      
+      
+      <!--리뷰 시작  -->
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    <!-- ***** 리뷰 끝 ***** -->
+
+
+<!-- 페이지 -->
+                <div class="col-lg-12">
+                    <div class="pagination">
+                        <ul>
+                            <li>
+                                <a href="#">1</a>
+                            </li>
+                            <li class="active">
+                                <a href="#">2</a>
+                            </li>
+                            <li>
+                                <a href="#">3</a>
+                            </li>
+                            <li>
+                                <a href="#">4</a>
+                            </li>
+                            <li>
+                                <a href="#">></a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+    <!-- ***** Products Area Ends ***** -->
+	
+	
+	
+	
     
-    
-    
-    
-    <!-- ***** Product Area Ends ***** -->
-    
+
     <!-- ***** Footer Start ***** -->
     <footer>
         <div class="container">
@@ -256,25 +258,7 @@ https://templatemo.com/tm-571-hexashop
                         <li><a href="#">1:1 문의 바로가기</a></li>
                     </ul>
                 </div>
-               <!-- 
-                <div class="col-lg-3">
-                    <h4>Useful Links</h4>
-                    <ul>
-                        <li><a href="#">Homepage</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h4>Help &amp; Information</h4>
-                    <ul>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">FAQ's</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Tracking ID</a></li>
-                    </ul>
-                </div> -->
+              
                 <div class="col-lg-12">
                     <div class="under-footer">
                         <p>SAJO Company는 통신판매중개자이며, 통신판매의 당사자가 아닙니다. 상품, 상품정보, 거래에 관한 의무와 책임은 판매자에게 있습니다.</p> 
@@ -292,10 +276,12 @@ https://templatemo.com/tm-571-hexashop
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> 
     
-
-    <!-- jQuery -->
+  <!--Footer End  -->
+    
+    
+     <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.0.min.js"></script>
 
     <!-- Bootstrap -->
@@ -317,58 +303,29 @@ https://templatemo.com/tm-571-hexashop
     
     <!-- Global Init -->
     <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
+	<script>
+	  
+    $('#all').click(function(event) {
+   	 event.preventDefault();
+       $('#채소').css('display','inline-block');
+   	$('#과일').css('display','inline-block');
+   	$('#CategoryHeader').text("상품 전체 리뷰 목록");
+   })
+    
+    $('#va').click(function(event) {
+    	 event.preventDefault();
+        $('#채소').css('display','inline-block');
+    	$('#과일').css('display','none');
+    	$('#CategoryHeader').text("채소 리뷰 목록");
+    })
+    
+    $('#fl').click(function(event) {
+    	 event.preventDefault();
+    	$('#과일').css('display','inline-block');
+    	$('#채소').css('display','none');
+    	$('#CategoryHeader').text("과일 리뷰 목록");     	
+    })	
 
-    <script>
-
-        $(function() {
-        	
-            var selectedClass = "";
-            $("p").click(function(){
-            selectedClass = $(this).attr("data-rel");
-            $("#portfolio").fadeTo(50, 0.1);
-                $("#portfolio div").not("."+selectedClass).fadeOut();
-            setTimeout(function() {
-              $("."+selectedClass).fadeIn();
-              $("#portfolio").fadeTo(50, 1);
-            }, 500);
-                
-            });
-            if($('#checkLogin').val() == "성공" ) {
-            	alert('로그인에 성공하셨습니다.');
-            	
-            	
-            	/* 이전 페이지 타입이   개별 상품 화면일 경우 */
-            	if( $('#moPageType').val() == "single-product" ) {
-            		
-            		switch( $('#moType').val()  ) {
-            		case "goSingProduct" : location.href= "go"; break;
-            		case "appleSingProduct" : location.href="apple"; break;
-            		case "baeSingProduct" : location.href="bae"; break;
-            		case "bananaSingProduct" : location.href="banana"; break;
-            		case "buSingProduct" : location.href="bu"; break;
-            		case "chamSingProduct" : location.href="cham"; break;
-            		case "poteSingProduct" : location.href="pote"; break;
-            		
-            		}
-            	} /* 이전 페이지 타입이   개별 상품 화면일 경우 닫는 괄호 */
-            	
-            	/* 이전 페이지 타입이   메인 화면일 경우  */
-            	if ( $('#moPageType').val() == "index" ) {		
-                        location.href="sajo";
-                } /* 이전 페이지 타입이   메인 화면일 경우 닫는 괄호 */
-            	
-                
-            } /*  로그인 성공 시 괄호 */
-            
-            if ( $('#checkLogin').val() == "실패" )  {
-            	alert('로그인에 실패하셨습니다.');
-            	}
-           
-           
-        });
-
-    </script>
-
-  </body>
-
+</script>
+</body>
 </html>

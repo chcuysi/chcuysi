@@ -6,7 +6,9 @@
 
 	<!-- Alias 설정 -->
 	<typeAliases>
-		<typeAlias alias="board" type="com.javassem.domain.BoardVO" />		
+		<typeAlias alias="product" type="vo.ProductVO" />
+		<typeAlias alias="member" type="vo.MemberVO"/>
+		<typeAlias alias="pmember" type="vo.PmemberVO"/>
 	</typeAliases>
 
 

@@ -1,25 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
-    
- 
     
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회사 소개 페이지</title>
 
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-
-    <title>메인 인덱스</title>
-
-
-    <!-- Additional CSS Files -->
+  <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/font-awesome.css">
@@ -29,31 +19,11 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl-carousel.css">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/lightbox.css">
-<!--
 
-TemplateMo 571 Hexashop
-
-https://templatemo.com/tm-571-hexashop
-
--->
-
-    </head>
-    
-    <body>
-    
-    <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>  
-    <!-- ***** Preloader End ***** -->
-    
-    
-    <!-- ***** Header Area Start ***** -->
-   <header class="header-area header-sticky">
+</head>
+<body>
+<!-- ***** Header Area Start ***** -->
+     <header class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -78,8 +48,9 @@ https://templatemo.com/tm-571-hexashop
                             </li>
                             <li class="scroll-to-section"><a href="#kids">레시피</a></li>
                             
-                            <li><a href="company.do">회사소개</a>           
+                           <li><a href="company.do">회사소개</a>           
                             </li>
+                            
                             
                             
                             
@@ -124,106 +95,89 @@ https://templatemo.com/tm-571-hexashop
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-
-    <!-- ***** Main Banner Area Start ***** -->
+ <!-- ***** Main Banner Area Start ***** -->
     <div class="page-heading" id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2> 로그인 하기</h2>
-                        <span>SAJO의 더 많은 서비스를 이용하기 위해 로그인하는 단계입니다.</span>
+                        <h2>SOJO 회사 소개 </h2>
                     </div>
                 </div>
             </div>
-        </div>
+      </div> 
     </div>
     <!-- ***** Main Banner Area End ***** -->
-
-
-    <!-- ***** Product Area Starts ***** -->
     
-      <div class="subscribe">
+    
+     <!-- 회사소개 시작  -->
+     <section class="section" id="explore">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
-                    <div class="section-heading">
-                        <h2>로그인하여 더 많은 서비스를 이용해보세요.</h2>
-                        <span>많은 고객님들이 아쉽게 버려질 위기에 처한 식재료들을 찾고 있습니다!</span>
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <h2> 회사 소개 </h2><br/>
+                        <h4>SOJO 회사의 연혁을 소개합니다</h4><br/>
+                                             
+                        <h6>저희 SOJO 회사는 고객 여러분들께 항상 못난 농수산물을 공급하기 위해서 여러 공급망을 가지고 있습니다</h6><br/>
+                        <dd class="content_box_right">
+						<table class="table">
+							<caption>COMPANY PROFILE 설명</caption>
+							<colgroup>
+								<col style="width: 160px">
+								<col style="max-width: 800px">
+							</colgroup>
+							<tbody>
+							<tr>
+								<th scope="row">설립연도</th>
+								<td>2023년 5월</td>
+							</tr>
+							<tr>
+								<th scope="row">본사 위치</th>
+								<td>서울 금천구 가산디지털2로 101</td>
+							</tr>
+							<tr>
+								<th scope="row">주요서비스</th>
+								<td>온라인 판매</td>
+							</tr>
+							<tr>
+								<th scope="row">주요사업</th>
+								<td>온라인 판매</td>
+							</tr>
+							<tr>
+								<th scope="row">해외 계열 법인</th>
+								<td>일본, 미국, 프랑스, 중국, 베트남, 대만, 태국, 인도네시아 외</td>
+							</tr>
+							<tr>
+								<th scope="row">매출액</th>
+								<td>8조 2,201억 원 (2022년)</td>
+							</tr>
+							<tr>
+								<th scope="row">전체인력</th>
+								<td>4,930명 (본사 기준, 2022년 기준)</td>
+							</tr>
+							</tbody>
+						</table>
+					</dd>
+                        
                     </div>
-                    <form id="subscribe" action="login" method="get">
-                        <div class="row">
-                          <div class="col-lg-5">
-                            <fieldset>
-                              <input name="id" type="text" id="id" placeholder="회원님의 ID를 입력해주세요" required>
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-5">
-                            <fieldset>
-                              <input name="password" type="text" id="password" pattern="^[0-9]*$" placeholder="회원님의 비밀번호를 입력해주세요" required>
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-2">
-                            <fieldset>
-                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
-
-									<c:if test="${checkLogin ne null}">
-										<input type="hidden" id="checkLogin" value="${checkLogin}">
-									</c:if>
-
-									<c:if test="${param.pageType ne null}">
-										<input type="hidden" id="pageType" name="pageType" value="${param.pageType}">
-									</c:if>
-									
-									<c:if test="${param.type ne null}">
-										<input type="hidden" id="type" name="type" value="${param.type}">
-									</c:if>
-									
-									<c:if test="${moPageType ne null}">
-										<input type="hidden" id="moPageType" value="${moPageType}">
-									</c:if>
-									
-										<c:if test="${moType ne null}">
-										<input type="hidden" id="moType" value="${moType}">
-									</c:if>
-									
-								</fieldset>
-                          </div>
-                        </div>
-                    </form>
                 </div>
-            
-            
-       
-                              
-                <div class="col-lg-4">
-                    <div class="row">
-                        <div class="col-6">
-                            <ul>
-                                <li>본사 위치:<br><span>서울특별시 강남구 테헤란로 123-123</span></li>
-                                <li>관리자 전화번호:<br><span>010-123-4567</span></li>
-                                <li>지점 위치:<br><span>서울특별시 가산동 123-123</span></li>
-                            </ul>
-                        </div>
-                        <div class="col-6">
-                            <ul>
-                                <li>근무 시간:<br><span>오전 07:30 - 오후 9:30</span></li>
-                                <li>관리자 이메일:<br><span>sajo@sajo.com</span></li>
-                                <li>소셜 미디어:<br><span><a href="#">Facebook</a>, <a href="#">Instagram</a>, <a href="#">Behance</a>, <a href="#">Linkedin</a></span></li>
-                            </ul>
+                <div class="col-lg-101">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-102">
+                                <h1>오시는 길</h1>
+                                      <div id="map" style="width:800px; height:800px;"></div>
+                         </div>                          
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    
-    
-    
-    <!-- ***** Product Area Ends ***** -->
-    
-    <!-- ***** Footer Start ***** -->
+    </section>
+    <!-- 회사소개 끝 -->
+
+<!-- ***** Footer Start ***** -->
     <footer>
         <div class="container">
             <div class="row">
@@ -256,25 +210,7 @@ https://templatemo.com/tm-571-hexashop
                         <li><a href="#">1:1 문의 바로가기</a></li>
                     </ul>
                 </div>
-               <!-- 
-                <div class="col-lg-3">
-                    <h4>Useful Links</h4>
-                    <ul>
-                        <li><a href="#">Homepage</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h4>Help &amp; Information</h4>
-                    <ul>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">FAQ's</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Tracking ID</a></li>
-                    </ul>
-                </div> -->
+              
                 <div class="col-lg-12">
                     <div class="under-footer">
                         <p>SAJO Company는 통신판매중개자이며, 통신판매의 당사자가 아닙니다. 상품, 상품정보, 거래에 관한 의무와 책임은 판매자에게 있습니다.</p> 
@@ -292,7 +228,7 @@ https://templatemo.com/tm-571-hexashop
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> 
     
 
     <!-- jQuery -->
@@ -314,61 +250,8 @@ https://templatemo.com/tm-571-hexashop
     <script src="${pageContext.request.contextPath}/resources/js/lightbox.js"></script> 
     <script src="${pageContext.request.contextPath}/resources/js/isotope.js"></script> 
     <script src="${pageContext.request.contextPath}/resources/js/quantity.js"></script>
-    
-    <!-- Global Init -->
-    <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
+       <script type="text/javascript" defer src="${pageContext.request.contextPath}/resources/js/company.js"></script>
+        <script type="text/javascript" defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqW6XCuy5VjTfx_x7OPXdHpolYDFv7ca4&callback=initMap"> </script>
 
-    <script>
-
-        $(function() {
-        	
-            var selectedClass = "";
-            $("p").click(function(){
-            selectedClass = $(this).attr("data-rel");
-            $("#portfolio").fadeTo(50, 0.1);
-                $("#portfolio div").not("."+selectedClass).fadeOut();
-            setTimeout(function() {
-              $("."+selectedClass).fadeIn();
-              $("#portfolio").fadeTo(50, 1);
-            }, 500);
-                
-            });
-            if($('#checkLogin').val() == "성공" ) {
-            	alert('로그인에 성공하셨습니다.');
-            	
-            	
-            	/* 이전 페이지 타입이   개별 상품 화면일 경우 */
-            	if( $('#moPageType').val() == "single-product" ) {
-            		
-            		switch( $('#moType').val()  ) {
-            		case "goSingProduct" : location.href= "go"; break;
-            		case "appleSingProduct" : location.href="apple"; break;
-            		case "baeSingProduct" : location.href="bae"; break;
-            		case "bananaSingProduct" : location.href="banana"; break;
-            		case "buSingProduct" : location.href="bu"; break;
-            		case "chamSingProduct" : location.href="cham"; break;
-            		case "poteSingProduct" : location.href="pote"; break;
-            		
-            		}
-            	} /* 이전 페이지 타입이   개별 상품 화면일 경우 닫는 괄호 */
-            	
-            	/* 이전 페이지 타입이   메인 화면일 경우  */
-            	if ( $('#moPageType').val() == "index" ) {		
-                        location.href="sajo";
-                } /* 이전 페이지 타입이   메인 화면일 경우 닫는 괄호 */
-            	
-                
-            } /*  로그인 성공 시 괄호 */
-            
-            if ( $('#checkLogin').val() == "실패" )  {
-            	alert('로그인에 실패하셨습니다.');
-            	}
-           
-           
-        });
-
-    </script>
-
-  </body>
-
+</body>
 </html>
