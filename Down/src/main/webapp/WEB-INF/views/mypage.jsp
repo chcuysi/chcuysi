@@ -16,7 +16,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>메인 인덱스</title>
+    <title>Hexashop - Product Detail Page</title>
 
 
     <!-- Additional CSS Files -->
@@ -78,11 +78,15 @@ https://templatemo.com/tm-571-hexashop
                             </li>
                             <li class="scroll-to-section"><a href="#kids">레시피</a></li>
                             
-                            <li><a href="company.do">회사소개</a>           
+                            <li class="submenu">
+                                <a href="javascript:;">회사소개</a>
+                                <ul>
+                                    <li><a href="about.html"><b>우리 SAJO는</b></a></li>
+                                    <li><a href="products.html"><b>연혁</b></a></li>
+                                    <li><a href="single-product.html"><b>경영 방침/경영 철학</b></a></li>
+                                    <li><a href="contact.html"><b>오시는 길</b></a></li>
+                                </ul>
                             </li>
-                            
-                            
-                            
                             <li class="submenu">
                                 <a href="javascript:;">고객센터</a>
                                 <ul>
@@ -147,8 +151,9 @@ https://templatemo.com/tm-571-hexashop
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2> 로그인 하기</h2>
-                        <span>SAJO의 더 많은 서비스를 이용하기 위해 로그인하는 단계입니다.</span>
+                        <h2>회원 정보 수정</h2>
+                        <span>쿠팡 판매까지 걸리는 시간 단 10분! </span>
+                        <span>쉽고 빠르게 판매를 시작할 수 있습니다.</span>
                     </div>
                 </div>
             </div>
@@ -158,30 +163,84 @@ https://templatemo.com/tm-571-hexashop
 
 
     <!-- ***** Product Area Starts ***** -->
-    
+
       <div class="subscribe">
         <div class="container">
             <div class="row">
                 <div id="loginform" class="col-lg-8">
                     <div class="section-heading">
-                        <h2>로그인하여 더 많은 서비스를 이용해보세요.</h2>
-                        <span>많은 고객님들이 아쉽게 버려질 위기에 처한 식재료들을 찾고 있습니다!</span>
+                        <h2>회원 정보</h2>
+                        <span>상품 정보를 양식에 맞게 기입해주세요.</span>
                     </div>
-                    <form id="subscribe" action="loginCustomer" method="get">
+                    <form id="insertProduct" action="insertProduct" method='post' enctype="multipart/form-data">
                         <div class="row">
+                      
                           <div class="col-lg-5">
                             <fieldset>
-                              <input name="id" type="text" id="id" placeholder="회원님의 ID를 입력해주세요" required>
+                            <label id="insertLabel"><b>이름</b></label> 
+                            <input name="name" type="text" placeholder="상품명" required>
                             </fieldset>
                           </div>
+                          
                           <div class="col-lg-5">
                             <fieldset>
-                              <input name="password" type="text" id="password" pattern="^[0-9]*$" placeholder="회원님의 비밀번호를 입력해주세요" required>
+                            <label  id="insertLabel"><b>비밀번호</b></label>
+                            <input name="price" type="text" pattern="^[0-9]*$" placeholder="상품 가격" required>
                             </fieldset>
                           </div>
-                          <div class="col-lg-2">
+
+               <div id="insertProduct-sectionHeading2" class="section-heading">
+                        <div  class="col-lg-5">
                             <fieldset>
-                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
+                            <label id="insertLabel"><b>주소</b></label> 
+                            <input name="say" type="text" id="productSay" placeholder="간단하게 한줄로 상품을 나타내주세요!" required>
+                            </fieldset>
+                          </div>
+                         </div> 
+                       
+                          
+                   
+                          
+                           <div class="col-lg-5">
+                            <fieldset>
+                            <label  id="insertLabel"><b>전화번호</b></label> 
+                            <input name="type" type="text"  placeholder="상품타입" value="" required>
+                            </fieldset>
+                          </div>
+ 
+                          
+                          
+                          
+                     
+                          
+                           <div class="col-lg-5">
+                            <fieldset>
+                            <label id="insertLabel"><b>이메일</b></label> 
+                            <input name="imgName"   class="Fileimg" type="text"  placeholder="상품명" value="" required>
+                            </fieldset>
+                          </div>
+              
+                          
+                           <div class="col-lg-5">
+                            <fieldset>
+                            <label id="insertLabel"><b>주민등록번호</b></label> 
+                            <input name="type2"   class="Fileimg" type="text" placeholder="상품명" value="" required>
+                            </fieldset>
+                          </div>
+                          
+                           <div class="col-lg-5">
+                            <fieldset>
+                            <label id="insertLabel"><b>가입일</b></label> 
+                            <input name="iok"   class="Fileimg" type="text" value="000" placeholder="상품명" required>
+                            </fieldset>
+                          </div>
+
+                          <div class="col-lg-5">
+                            <fieldset>
+                              <label  id="insertLabel"><b></b></label> 
+                             <div class="main-border-button">
+                               <a id="memberUpdate" href="#">수정하기</a>
+                             </div>
 
 									<c:if test="${checkLogin ne null}">
 										<input type="hidden" id="checkLogin" value="${checkLogin}">
@@ -338,59 +397,44 @@ https://templatemo.com/tm-571-hexashop
             }, 500);
                 
             });
-            if($('#checkLogin').val() == "성공" ) {
-            	alert('로그인에 성공하셨습니다.');
-            	
-            	
-            	/* 이전 페이지 타입이   개별 상품 화면일 경우 */
-            	if( $('#moPageType').val() == "single-product" ) {
-            		
-            		switch( $('#moType').val()  ) {
-            		case "goSingProduct" : location.href= "detailView?imgName=go"; break;
-            		case "appleSingProduct" : location.href="detailView?imgName=apple"; break;
-            		case "baeSingProduct" : location.href="detailView?imgName=bae"; break;
-            		case "bananaSingProduct" : location.href="detailView?imgName=banana"; break;
-            		case "buSingProduct" : location.href="detailView?imgName=bu"; break;
-            		case "chamSingProduct" : location.href="detailView?imgName=cham"; break;
-            		case "poteSingProduct" : location.href="detailView?imgName=pote"; break;
-            		
-            		}
-            	} /* 이전 페이지 타입이   개별 상품 화면일 경우 닫는 괄호 */
-            	
-            	/* 이전 페이지 타입이   메인 화면일 경우  */
-            	if ( $('#moPageType').val() == "index" ) {		
-                        location.href="sajo";
-                } /* 이전 페이지 타입이   메인 화면일 경우 닫는 괄호 */
-                
-                
-                /* 이전 페이지 타입이  전체상품 카테고리일 경우  */
-                
-                // 미구현
-            	if ( $('#moPageType').val() == "products" ) {	
-            		location.href="products";
-            	 }
-   
-            	if ( $('#moPageType').val() == "insertProduct" ) {	
-            		location.href="insertProduct";
-            	 }
-            	
-            	
-            	/*??????????????????????????????????????????????????????????????????????????????????????????????????아   괄호 개씨발 진짜 씨발 좆같네 씨발  */
-            	/*     )  <- 이거 안붙여서 오류 */
-            	/* if ( $('#mopageType').val() == "logOutType=index" ) {
-            		location.href="sajo";
-            	} */
-                
-            } /*  로그인 성공 시 괄호 */
             
-            if ( $('#checkLogin').val() == "실패" )  {
-            	alert('로그인에 실패하셨습니다.');
+            
+      
+            /* *************************************************************************** */ 
+            $('#insertProductSelect').change(function() {
             	
-            	}
-           
-           
-        });
-
+                if(  $('#insertProductSelect').val() == "채소" ) {
+            		 
+               		
+        			  
+        			  $('#insertProductSelect2 > option:eq(0)').text("감자/고구마");
+        			  $('#insertProductSelect2 > option:eq(1)').text("새송이/버섯류");
+        			  $('#insertProductSelect2 > option:eq(2)').text("미정");
+        	  }
+                /* *************************************************************************** */ 
+                if(  $('#insertProductSelect').val() == "과일" ) {
+             		 
+               		
+      			  
+      			  $('#insertProductSelect2 > option:eq(0)').text("사과/배");
+      			  $('#insertProductSelect2 > option:eq(1)').text("수박/참외");
+      			  $('#insertProductSelect2 > option:eq(2)').text("미정");
+      	  }
+           /* *************************************************************************** */     
+           	 
+         }); 
+            
+            $('#insertProduct').submit(function() {
+            	
+            	alert('상품 등록 신청이 완료되었습니다. 관리자의 승인 여부에 따라 상품 등록이 결정됩니다.')
+            });
+  
+ 
+            
+ 
+        });      
+            
+     
     </script>
 
   </body>

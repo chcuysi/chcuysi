@@ -49,7 +49,7 @@ https://templatemo.com/tm-571-hexashop
     
     
     <!-- ***** Header Area Start ***** -->
-     <header class="header-area header-sticky">
+  <header id="mainHeader" class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -88,22 +88,39 @@ https://templatemo.com/tm-571-hexashop
                             </li>                         <!-- session.invalidate(); -->
                             
                             <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
-                            
+                            <!-- ******************************************************************************************* -->
                             <c:choose>
                             
-                            <c:when test="${sessionScope.logName ne null}">
+                            <c:when test='${sessionScope.logName ne null && sessionScope.logType eq "판매자"}'>
+                                     
                              <li class="submenu">
                                <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
                                  <ul>
                                     <li><a href="logOut"><b>로그아웃</b></a></li>
-                                    <li><a href="#"><b>회원정보수정</b></a></li>
-                                    <li><a href="#"><b>회원탈퇴</b></a></li>
-                                    <li><a href="#"><b>구매내역</b></a></li>
+                                    <li><a href="UpdateMember"><b>회원정보수정</b></a></li>
+                                    <li><a href="memberOut"><b>회원탈퇴</b></a></li>
+                                      <li><a href="insertProduct"><b>판매등록</b></a></li>
+                                         <li><a href="iokCheck"><b>판매등록 승인여부</b></a></li>
+                                       <li><a href="#"><b>판매내역</b></a></li>
                                 </ul>
                              </li>
-                                
-                            </c:when>
-                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
+                             
+                                </c:when>
+                                <c:when test='${sessionScope.logName ne null && sessionScope.logType eq "일반"}'>
+                                 <li class="submenu">
+                               <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
+                                 <ul>
+                                    <li><a href="logOut"><b>로그아웃</b></a></li>
+                                    <li><a href="UpdateMember"><b>회원정보수정</b></a></li>
+                                    <li><a href="memberOut"><b>회원탈퇴</b></a></li>
+                                    <li><a href="#"><b>구매내역</b></a></li>                                   
+                                </ul>
+                             </li>
+                                </c:when>
+                             
+                        
+                            <c:otherwise>  
+                            <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
                             </c:otherwise>
                             
                             </c:choose>
@@ -148,7 +165,8 @@ https://templatemo.com/tm-571-hexashop
                         <hr/>
                     
                     
-                         <h3 id="CategoryHeader">${viewType}</h3>
+                         <h1 id="CategoryHeader">${viewType}</h1>
+                         <h5 id="CategorySub"></h5>
                          
                          
                             <hr/>
@@ -167,10 +185,74 @@ https://templatemo.com/tm-571-hexashop
                          <div class="main-border-button cateborder">
                               <a id="fl" href="#">과일</a>
                          </div> 
+                    
                          <div class="main-border-button cateborder">
-                            <a id="banana" href="#">기타</a>
+                            <a id="banana" href="#">미정</a>
                          </div>   
+                         
                     </div>
+                    <!-- *********************************************************************** -->
+                    <div id="Category2">
+                          
+                          <div class="main-border-button cateborder">
+                            <a id="allfl" href="#">과일전체</a>
+                         </div>
+                         
+                        <div class="main-border-button cateborder">
+                            <a id="appleBae" href="#">사과/배</a>
+                         </div>
+
+                         <div class="main-border-button cateborder">
+                              <a id="WaterCham" href="#">수박/참외</a>
+                         </div> 
+                    
+                         <div class="main-border-button cateborder">
+                            <a id="banana" href="#">미정</a>
+                         </div>   
+                         
+                    </div>
+                     <!-- *********************************************************************** -->
+                    <div id="Category3">
+                          
+                          <div class="main-border-button cateborder">
+                            <a id="allva" href="#">채소전체</a>
+                         </div>
+                         
+                        <div class="main-border-button cateborder">
+                            <a id="poteGo" href="#">감자/고구마</a>
+                         </div>
+
+                         <div class="main-border-button cateborder">
+                              <a id="Busut" href="#">새송이/버섯류</a>
+                         </div> 
+                    
+                         <div class="main-border-button cateborder">
+                            <a id="banana" href="#">당근/뿌리채소</a>
+                         </div>   
+                         
+                    </div>
+                     <!-- *********************************************************************** -->
+                    <div id="Category4">
+                          
+                          <div class="main-border-button cateborder">
+                            <a id="banana" href="#">미정</a>
+                         </div>
+                         
+                        <div class="main-border-button cateborder">
+                            <a id="banana" href="#">미정</a>
+                         </div>
+
+                         <div class="main-border-button cateborder">
+                              <a id="banana" href="#">미정</a>
+                         </div> 
+                    
+                         <div class="main-border-button cateborder">
+                            <a id="banana" href="#">미정</a>
+                         </div>   
+                         
+                    </div>
+                    
+                    
                     
                      
                     </div>
@@ -181,21 +263,34 @@ https://templatemo.com/tm-571-hexashop
       
         <div class="container">
             <div class="row"> 
-            
+            <!-- *************************************************************상품 리스트 불러오기 ************************************************************************************ -->
       <c:forEach items="${products}" var="i">   
       
+    
             
-                <div id="${i.category}" class="col-lg-4">
+                <div id="${i.category}" class="col-lg-4" name="${i.category2}">
                     <div class="item">
                         <div class="thumb">
                             <div class="hover-content">
                                 <ul>
-                                    <li><a href="single-product.html">자세히 보기</a></li>
+                                    <li><a href="detailView?imgName=${i.imgName}">자세히 보기</a></li>
 
-                                    <li><a href="single-product.html">장바구니</a></li>
+                                    <li><a class="cart" href="#"><input id="type" type="hidden" value="${i.type}"/>장바구니</a></li>
                                 </ul>
                             </div>
-                            <img class="products" src="${pageContext.request.contextPath}/resources/images/${i.type}.png" alt="">
+                         <c:choose>
+                         
+                          <c:when test="${i.frealfname ne null}">
+                            <img class="products"  width="350" height="368" src="${pageContext.request.contextPath}/resources/images/${i.frealfname}" alt="">
+                           </c:when>
+                           
+                           <c:otherwise>
+                            <img class="products"  width="350" height="368"  src="${pageContext.request.contextPath}/resources/images/${i.type2}.png" alt="">
+                       </c:otherwise>
+                      
+                           
+                           
+                           </c:choose>
                         </div>
                         <div class="down-content">
                             <h4>${i.name}</h4>
@@ -349,19 +444,33 @@ https://templatemo.com/tm-571-hexashop
             });
             
             $('.cart').click(function() {
-            	alert('호호');
+            	
+            	 <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "판매자" ) {      %>
+                 
+            		if ( confirm('판매자는 이용할 수 없는 서비스입니다. 일반 계정으로 로그인 하시겠습니까?.')  ) {
+            		
+            		 location.href="logOut?pageType=index";
+            		
+            		}else { 
+            		
+            			 location.href="#";
+            		}
+            
+            	<% } %>
+            	
+            	
             	
             	 <% if(session.getAttribute("logName") == null ) { %> 
           	   if(confirm('장바구니에 담기 위해선 로그인이 필요합니다. 로그인 하시겠습니까?') )
           	   {
-          		   location.href="loginForm?pageType=index&type="+$(this).find('#type').val();
+          		   location.href="loginForm?pageType=products&type="+$(this).find('#type').val();
           	   }else { location.href="#"; }
           	   <% } %>
           	   
-          	   <% if(session.getAttribute("logName") != null ) { %> 
+          	   <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "일반"  ) { %> 
           	   if( confirm("상품을 장바구니에 담았습니다. 장바구니로 이동하시겠습니까?"))
           	   {
-          		   location.href="cart?pageType=index&type="+$(this).find('#type').val();
+          		   location.href="cart?pageType=products&type="+$(this).find('#type').val();
           		   
           	   }else {
           		   
@@ -375,14 +484,17 @@ https://templatemo.com/tm-571-hexashop
             	
             });
             
+            /* *****************************************************************************************************전체 카테고리 */
             $('#all').click(function(event) {
            	 event.preventDefault();
                $('#채소').css('display','inline-block');
            	$('#과일').css('display','inline-block');
            	$('#CategoryHeader').text("상품 전체 목록");
+           	
            })
             
             $('#va').click(function(event) {
+            	
             	 event.preventDefault();
                 $('#채소').css('display','inline-block');
             	$('#과일').css('display','none');
@@ -390,14 +502,107 @@ https://templatemo.com/tm-571-hexashop
             })
             
             $('#fl').click(function(event) {
+            	
             	 event.preventDefault();
+            
+            	
             	$('#과일').css('display','inline-block');
             	$('#채소').css('display','none');
+            	
             	$('#CategoryHeader').text("과일 목록");     	
+
+            	 
+            	 })
+            	 
+/* *****************************************************************************************************과일 카테고리 */
+            	 $('#appleBae').click(function(event) {
+           	 event.preventDefault();
+           	 
+               $('div[name="사과/배"]').css('display','inline-block');
+           	$('div[name="수박/참외"]').css('display','none');
+            $('#CategorySub').text("사과/배");
+           })
+           
+            	 $('#allfl').click(function(event) {
+           	 event.preventDefault();
+           	 
+               $('div[name="사과/배"]').css('display','inline-block');
+           	$('div[name="수박/참외"]').css('display','inline-block');
+           	$('#CategorySub').text("과일 전체");
+           })
+            
+            $('#WaterCham').click(function(event) {
+            	
+            	 event.preventDefault();
+                $('div[name="수박/참외"]').css('display','inline-block');
+            	$('div[name="사과/배"]').css('display','none');
+            	$('#CategorySub').text("수박/참외");
             })
             
+            /* *****************************************************************************************************과일 카테고리 */
+            
+            
+              /* *****************************************************************************************************채소 카테고리 */
+              
+             
+                         
+                         
+            	 $('#allva').click(function(event) {
+           	 event.preventDefault();
+           	 
+               $('div[name="감자/고구마"]').css('display','inline-block');
+           	$('div[name="새송이/버섯류"]').css('display','inline-block');
+           	$('div[name="당근/뿌리채소"]').css('display','inline-block');
+           	$('#CategorySub').text("채소 전체");
+           })
+           
+           	 $('#poteGo').click(function(event) {
+           	 event.preventDefault();
+           	 $('div[name="감자/고구마"]').css('display','inline-block');
+               $('div[name="새송이/버섯류"]').css('display','none');
+           	$('div[name="수박/참외"]').css('display','none');
+           	$('#CategorySub').text("감자/고구마");
+       
+           })
+           
+           $('#Busut').click(function(event) {
+           	 event.preventDefault();
+           	 
+           	 $('div[name="새송이/버섯류"]').css('display','inline-block');
+               $('div[name="감자/고구마"]').css('display','none');
+           	$('div[name="수박/참외"]').css('display','none');
+           	$('#CategorySub').text("새송이/버섯류");
+       
+           })
+           
+           
+           
+            	 	 
+          if ( $('#CategoryHeader').text()  == "과일 목록"  ) {
+        	   
+        	   $('#Category2').css('display','inline-block');
+        	   $('#Category').css('display','none');
+        	   $('#Category3').css('display','none');
+        	   $('#Category4').css('display','none');
+                } 
+          if ( $('#CategoryHeader').text()  == "채소 목록"  ) {
+              	   
+              	   $('#Category3').css('display','inline-block');
+              	   $('#Category').css('display','none');
+              	   $('#Category2').css('display','none');
+              	   $('#Category4').css('display','none');
+                } 	 
+          if ( $('#CategoryHeader').text()  == "전체 상품 목록"  ) {
+              	   
+              	   $('#Category').css('display','inline-block');
+              	   $('#Category2').css('display','none');
+              	   $('#Category3').css('display','none');
+              	   $('#Category4').css('display','none');
+                } 	 
+            
+            
 
-               
+            
         });
 
     </script>

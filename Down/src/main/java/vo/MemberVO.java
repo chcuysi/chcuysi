@@ -74,7 +74,6 @@ public class MemberVO {
 	public void setMcode(String mcode) {
 		this.mcode = mcode;
 	}
-	
-	
-	
+
+
 }
