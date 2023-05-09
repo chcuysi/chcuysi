@@ -205,49 +205,49 @@ $(function(){
     
     
     
-    //************ 교환 ****************
+        //************ 교환 ****************
 
-	// 초기 로딩 시 홀수 행에는 #f9f9f9, 짝수 행에는 #ffffff 색상 적용
-	$('#table_exchange tbody > tr:odd').addClass('odd');
-	$('#table_exchange tbody > tr:even').addClass('even');
+	   // 초기 로딩 시 홀수 행에는 #f9f9f9, 짝수 행에는 #ffffff 색상 적용
+	   $('#table_exchange tbody > tr:odd').addClass('odd');
+	   $('#table_exchange tbody > tr:even').addClass('even');
+	   
+	   // 행 클릭 시 색상 변경
+	   $('#table_exchange tbody > tr').click(function() {
+	        highlightRow($(this));
+	   });
+	   
+	   $('#table_exchange tbody > tr').click(function() {
+	       // 클릭된 td의 값을 가져와서 변수에 저장
+	       var value = $(this).text();      
+	        $('form#detailInfo_exchange').css('display', 'block');
 	
-	// 행 클릭 시 색상 변경
-	$('#table_exchange tbody > tr').click(function() {
-  		highlightRow($(this));
-	});
-	
-	$('#table_exchange tbody > tr').click(function() {
-    	// 클릭된 td의 값을 가져와서 변수에 저장
-    	var value = $(this).text();      
-        $('form#detailInfo_exchange').css('display', 'block');
-
-	    // 클릭한 tr의 td값을 저장, table_detailInfo의 tr의 td에 해당 값을 넣음
-		var clickedDnum = $(this).find("td:first").text();
-		$("#table_detailExchange tbody tr:first td:eq(1)").text(clickedDnum);
-		var clickedOnum = $(this).find("td:eq(1)").text();
-		$("#table_detailExchange tbody tr:first td:eq(3)").text(clickedOnum);
-		var clickedDaddr = $(this).find("td:eq(2)").text();
-		$("#table_detailExchange tbody tr:eq(1) td:eq(1)").text(clickedDaddr);
-		var clickedDok = $(this).find("td:eq(3)").text();
-		$("#table_detailExchange tbody tr:eq(1) td:eq(3)").text(clickedDok);
-		var clickedDdate = $(this).find("td:eq(4)").text();
-  		$("#table_detailExchange .select_date_colored").val(clickedDdate);
-		var clickedEok = $(this).find("td:eq(5)").text();
-		$("#table_detailExchange .select_detail_non_colored option").each(function() {
-   			if ($(this).val() === clickedEok) {
-      			$(this).prop("selected", true);
-      			return false; // 일치하는 옵션을 찾았으므로 반복문을 종료합니다.
-    		}
-  		});
-		
-    });
-    
-    //취소버튼
-    $('button.btn_cancel').click(function() {
-    	$('form#detailInfo_exchange').css('display', 'none');
-    });
-    
-    //수정버튼
+	       // 클릭한 tr의 td값을 저장, table_detailInfo의 tr의 td에 해당 값을 넣음
+	      var clickedDnum = $(this).find("td:first").text();
+	      $("#table_detailExchange tbody tr:first td:eq(1)").text(clickedDnum);
+	      var clickedOnum = $(this).find("td:eq(1)").text();
+	      $("#table_detailExchange tbody tr:first td:eq(3)").text(clickedOnum);
+	      var clickedDaddr = $(this).find("td:eq(2)").text();
+	      $("#table_detailExchange tbody tr:eq(1) td:eq(1)").text(clickedDaddr);
+	      var clickedDok = $(this).find("td:eq(3)").text();
+	      $("#table_detailExchange tbody tr:eq(1) td:eq(3)").text(clickedDok);
+	      var clickedDdate = $(this).find("td:eq(4)").text().slice(0, 10);
+	        $("#table_detailExchange .select_date_colored").val(clickedDdate);
+	      var clickedEok = $(this).find("td:eq(5)").text();
+	      $("#table_detailExchange .select_detail_non_colored option").each(function() {
+	            if ($(this).val() === clickedEok) {
+	               $(this).prop("selected", true);
+	               return false; // 일치하는 옵션을 찾았으므로 반복문을 종료합니다.
+	          }
+	        });
+	      
+	    });
+	    
+	    //취소버튼
+	    $('button.btn_cancel').click(function() {
+	       $('form#detailInfo_exchange').css('display', 'none');
+	    });
+	    
+	    //수정버튼
     
     
     //************ 환불 ****************
@@ -275,7 +275,7 @@ $(function(){
 		$("#table_detailRefund tbody tr:eq(1) td:eq(1)").text(clickedDaddr);
 		var clickedDok = $(this).find("td:eq(3)").text();
 		$("#table_detailRefund tbody tr:eq(1) td:eq(3)").text(clickedDok);
-		var clickedDdate = $(this).find("td:eq(4)").text();
+		var clickedDdate = $(this).find("td:eq(4)").text().slice(0, 10);
   		$("#table_detailRefund tbody tr:eq(2) td:eq(1)").text(clickedDdate);
 		var clickedRok = $(this).find("td:eq(5)").text();
 		$("#table_detailRefund .select_detail_non_colored option").each(function() {

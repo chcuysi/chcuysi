@@ -51,7 +51,7 @@
             <li><a href="getIokMenuList.do"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
             <li><a href="getDeliveryMenuList.do"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
             <li><a href="salesProducts?pageType=index"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
-            <li><a href="getMemberMenuList?pageType=index" class="active"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
+            <li><a href="getMemberMenuList.do" class="active"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
           </ul>  
         </nav>
       </div>
@@ -64,8 +64,8 @@
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
-                <li><a href="getMemberMenuList?pageType=index">일반회원</a></li>
-                <li><a href="getPsaleMenuList?pageType=index" class="active">판매자회원</a></li>
+                <li><a href="getMemberMenuList.do">일반회원</a></li>
+                <li><a href="getPsaleMenuList.do" class="active">판매자회원</a></li>
               </ul>  
             </nav> 
           </div>
@@ -91,15 +91,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                  		<tr>
-		                    <td>1234</td>
-		                    <td>many_people</td>
-		                    <td>서울시 금천구 무슨로24길 8 무슨아파트 A동 101호</td>
-		                    <td>010-2222-1333</td>
-		                    <td>many_people@naver.com</td>
-		                    <td>2023-01-01</td>
-		                    <td>-</td>
-                  		</tr> 
+                  		<c:forEach items="${psaleMenuList}" var="psaleMenu">
+		                   <tr>
+		                       <td>${psaleMenu.pnum}</td>
+		                       <td>${psaleMenu.pid}</td>
+		                       <td>${psaleMenu.paddr} ${psaleMenu.pdaddr}</td>		                       
+		                       <td>${psaleMenu.ptel}</td>
+		                       <td>${psaleMenu.pemail}</td>
+		                       <td>${psaleMenu.pdate}</td>
+		                       <td>${psaleMenu.pout}</td>
+		                   </tr>
+		              	 </c:forEach>
                 </tbody>
               </table>    
             </div>                          

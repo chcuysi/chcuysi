@@ -51,7 +51,7 @@
             <li><a href="getIokMenuList.do"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
             <li><a href="getDeliveryMenuList.do" class="active"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
             <li><a href="salesProducts?pageType=index"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
-            <li><a href="getMemberMenuList?pageType=index"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
+            <li><a href="getMemberMenuList.do"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
           </ul>  
         </nav>
       </div>
@@ -64,9 +64,9 @@
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
-                <li><a href="getDeliveryMenuList?pageType=index" class="active">배송</a></li>
-                <li><a href="getExchangeMenuList?pageType=index">교환</a></li>
-                <li><a href="getRefundMenuList?pageType=index">환불</a></li>
+                <li><a href="getDeliveryMenuList.do" class="active">배송</a></li>
+                <li><a href="getExchangeMenuList.do">교환</a></li>
+                <li><a href="getRefundMenuList.do">환불</a></li>
               </ul>  
             </nav> 
           </div>

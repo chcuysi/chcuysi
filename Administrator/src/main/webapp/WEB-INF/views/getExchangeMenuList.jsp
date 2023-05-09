@@ -32,11 +32,11 @@
     
 <!-- 로고 -->
 <div class="templatemo-flex-row">
-	<div class="templatemo-sidebar">
-		<header class="templatemo-site-header">
-			<div class="logo">
-         		<img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
-          	</div>
+   <div class="templatemo-sidebar">
+      <header class="templatemo-site-header">
+         <div class="logo">
+               <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
+             </div>
 
         </header>
          
@@ -51,12 +51,12 @@
             <li><a href="getIokMenuList.do"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
             <li><a href="getDeliveryMenuList.do" class="active"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
             <li><a href="salesProducts?pageType=index"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
-            <li><a href="getMemberMenuList?pageType=index"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
+            <li><a href="getMemberMenuList.do"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
           </ul>  
         </nav>
       </div>
-     	 
-	<!-- 표 + footer --> 
+         
+   <!-- 표 + footer --> 
       <div class="templatemo-content col-1 light-gray-bg">
       
       <!-- 상단 메뉴 탭 --> 
@@ -64,9 +64,9 @@
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
-                <li><a href="getDeliveryMenuList?pageType=index">배송</a></li>
-                <li><a href="getExchangeMenuList?pageType=index" class="active">교환</a></li>
-                <li><a href="getRefundMenuList?pageType=index">환불</a></li>
+                <li><a href="getDeliveryMenuList.do">배송</a></li>
+                <li><a href="getExchangeMenuList.do" class="active">교환</a></li>
+                <li><a href="getRefundMenuList.do">환불</a></li>
               </ul>  
             </nav> 
           </div>
@@ -91,14 +91,16 @@
                   </tr>
                 </thead>
                 <tbody>
-                  		<tr>
-		                    <td>배송번호</td>
-		                    <td>주문번호</td>
-		                    <td>배송주소</td>
-		                    <td>배송완료</td>
-		                    <td></td>
-		                    <td>-</td>
-                  		</tr>
+                 <c:forEach items="${exchangeMenuList}" var="exchangeMenu">
+                   <tr>
+                       <td>${exchangeMenu.dnum}</td>
+                       <td>${exchangeMenu.onum}</td>
+                       <td>${exchangeMenu.daddr}</td>
+                       <td>${exchangeMenu.dok}</td>
+                       <td>${exchangeMenu.ddate}</td>
+                       <td>${exchangeMenu.eok}</td>
+                   </tr>
+              	 </c:forEach>
                 </tbody>
               </table>    
             </div>                          
@@ -125,53 +127,53 @@
           
 <!-- 상세정보창 테이블 --> 
 <div class="templatemo-content-container">
-	<div class="templatemo-content-widget no-padding">
-		<div class="panel panel-default table-responsive">
-			<table id="table_detailExchange" class="table table-striped table-bordered cate_detail">
-				<tbody>
-					<tr>
-						<td><a class="white-text templatemo-sort-by">배송번호</a></td>
-                    	<td></td>
-                    	<td><a class="white-text templatemo-sort-by">주문번호</a></td>
-                    	<td></td>
-                  	</tr>
-                  	<tr>
-                    	<td><a class="white-text templatemo-sort-by">배송주소</a></td>
-                    	<td></td>
-                    	<td><a class="white-text templatemo-sort-by">배송상태</a></td>
-                    	<td style="position: relative;">             
-                  			
-                  		</td>
-                  	</tr>
-                  	<tr>
-                    	<td style="vertical-align: middle;"><a class="white-text templatemo-sort-by">배송일2222</a></td>
-                    	<td>
-                    		<input type="date" class="select_date_colored">
-                    	</td>
-                    	<td><a class="white-text templatemo-sort-by">교환여부</a></td>
-                    	<td style="position: relative;"> 
-                    		<select class="select_detail_colored">
-                    			<option value="O">O</option>
-                    			<option value="X">X</option>   
-                    			<option value="-">-</option>                  
-	                  		</select>
-	                  	</td>
-                  	</tr>
-                  	<tr>
-                    	<td style="vertical-align: middle;" height='200px'><a class="white-text templatemo-sort-by">교환(거부)사유</a></td>
-                    	<td height='200px' colspan='3' style="position: relative;">
-							<textarea class="text_detail_non_colored"></textarea>
-						</td>
-                  	</tr>
+   <div class="templatemo-content-widget no-padding">
+      <div class="panel panel-default table-responsive">
+         <table id="table_detailExchange" class="table table-striped table-bordered cate_detail">
+            <tbody>
+               <tr>
+                  <td><a class="white-text templatemo-sort-by">배송번호</a></td>
+                       <td></td>
+                       <td><a class="white-text templatemo-sort-by">주문번호</a></td>
+                       <td></td>
+                     </tr>
+                     <tr>
+                       <td><a class="white-text templatemo-sort-by">배송주소</a></td>
+                       <td></td>
+                       <td><a class="white-text templatemo-sort-by">배송상태</a></td>
+                       <td style="position: relative;">             
+                           
+                        </td>
+                     </tr>
+                     <tr>
+                       <td style="vertical-align: middle;"><a class="white-text templatemo-sort-by">배송일</a></td>
+                       <td>
+                          <input type="date" class="select_date_colored">
+                       </td>
+                       <td><a class="white-text templatemo-sort-by">교환여부</a></td>
+                       <td style="position: relative;"> 
+                          <select class="select_detail_colored">
+                             <option value="O">O</option>
+                             <option value="X">X</option>   
+                             <option value="-">-</option>                  
+                           </select>
+                        </td>
+                     </tr>
+                     <tr>
+                       <td style="vertical-align: middle;" height='200px'><a class="white-text templatemo-sort-by">교환(거부)사유</a></td>
+                       <td height='200px' colspan='3' style="position: relative;">
+                     <textarea class="text_detail_non_colored"></textarea>
+                  </td>
+                     </tr>
                 </tbody>
-			</table> 
-		</div>                          
-	</div>
-	<div style="width:100px; text-align: center;margin:auto;display: flex;">
-    	<!-- 상세정보창 내용 수정 -->
+         </table> 
+      </div>                          
+   </div>
+   <div style="width:100px; text-align: center;margin:auto;display: flex;">
+       <!-- 상세정보창 내용 수정 -->
         <button type="button" class="btn_modify">수정</button>
         <!-- 상세정보창 내용 수정사항 취소 -->
-	   	<button type="button" class="btn_cancel">취소</button>
+         <button type="button" class="btn_cancel">취소</button>
     </div>         
 </form>
         
@@ -179,8 +181,8 @@
         </div>
       </div>
 <footer class="text-right">
-	<p>Copyright &copy; 2084 Company Name 
-	Design: Template Mo</p>
+   <p>Copyright &copy; 2084 Company Name 
+   Design: Template Mo</p>
 </footer>           
     </div>
     
