@@ -4,8 +4,13 @@
 <mapper namespace="RefundMenuDao">
 
    <select id="getRefundMenuList" resultType="vo.RefundMenuVO" parameterType="hashmap" >
-      SELECT d.dnum, d.onum, d.daddr, d.dok, d.ddate, r.rok
+      SELECT d.dnum, d.onum, d.daddr, d.dok, d.ddate, r.rok, r.rokwhy
          FROM DELIVERY d
          LEFT JOIN REFUND r ON d.onum = r.onum
    </select>  
+   
+   <update	id='updateRefundMenu' parameterType="vo.RefundMenuVO">
+		UPDATE refund SET rok=#{rok}, rokwhy=#{rokwhy} WHERE onum=#{onum}
+	</update>
+   
 </mapper>

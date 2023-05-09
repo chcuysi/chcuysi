@@ -8,6 +8,7 @@ public class RefundMenuVO {
     private String dok;
     private String ddate;
     private String rok;
+    private String rokwhy;
     
 	public String getDnum() {
 		return dnum;
@@ -44,6 +45,12 @@ public class RefundMenuVO {
 	}
 	public void setRok(String rok) {
 		this.rok = rok;
+	}
+	public String getRokwhy() {
+		return rokwhy;
+	}
+	public void setRokwhy(String rokwhy) {
+		this.rokwhy = rokwhy;
 	}
     
 }

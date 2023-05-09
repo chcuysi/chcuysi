@@ -352,12 +352,14 @@ $(function(){
 		var clickedDdate = $(this).find("td:eq(4)").text().slice(0, 10);
   		$("#table_detailRefund tbody tr:eq(2) td:eq(1)").text(clickedDdate);
 		var clickedRok = $(this).find("td:eq(5)").text();
-		$("#table_detailRefund .select_detail_non_colored option").each(function() {
+		$("#table_detailRefund .select_detail_colored option").each(function() {
    			if ($(this).val() === clickedRok) {
       			$(this).prop("selected", true);
       			return false; // 일치하는 옵션을 찾았으므로 반복문을 종료합니다.
     		}
   		});
+  		var clickedRokwhy = $(this).find("td:eq(6)").text();
+	$("#table_detailRefund tbody tr:eq(3) td:eq(1) textarea").val(clickedRokwhy);
 		
     });
     
@@ -367,8 +369,28 @@ $(function(){
     });
     
     //수정버튼
-    
-    
+    $('button.btn_modify').on('click', function() {
+		var onum = $('#table_detailRefund tr:first-child td:nth-child(4)').text(); // 선택한 테이블의 onum 값을 가져옴
+  		var rok = $('table#table_detailRefund').find('tr:eq(2) td:eq(3) select').val(); // 선택한 환불여부 가져오기
+  		$("#table_refund tr[data-onum='" + onum + "'] td:eq(5)").text(rok); // 값 대입
+  		
+		var rokwhy = $('table#table_detailRefund').find('tr:eq(3) td:eq(1) textarea').val(); // 선택한 승인거부사유값 가져오기
+  		$("#table_refund tr[data-onum='" + onum + "'] td:eq(6)").val(rokwhy); // 값 대입
+ 		
+  		$.ajax({
+    		type: 'post',
+    		url: 'getRefundMenuList.do/' + onum,
+    		data: { onum: onum, rok: rok, rokwhy: rokwhy },
+	  		success: function(result) {
+	  			location.reload();
+      			$('form#detailInfo_refund').css('display', 'none');
+    		},
+    		error: function(err) {
+      			alert('오류가 발생했습니다.');
+      			console.log(err);
+    		}
+  		});
+    });
     
     
     

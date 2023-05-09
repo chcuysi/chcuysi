@@ -97,8 +97,9 @@
 		                       <td>${refundMenu.onum}</td>
 		                       <td>${refundMenu.daddr}</td>
 		                       <td>${refundMenu.dok}</td>
-		                       <td>${refundMenu.ddate}</td>
+		                       <td>${refundMenu.ddate.substring(0, 10)}</td>
 		                       <td>${refundMenu.rok}</td>
+		                       <td style="display: none;">${refundMenu.rokwhy}</td>
 		                   </tr>
 		              	 </c:forEach>
                 </tbody>

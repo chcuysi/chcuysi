@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import vo.IokMenuVO;
 import vo.RefundMenuVO;
 
 
@@ -19,6 +20,10 @@ public class RefundMenuDaoImpl implements RefundMenuDao {
    public List<RefundMenuVO> getRefundMenuList(HashMap map) {
       return mybatis.selectList("RefundMenuDao.getRefundMenuList", map);
    }
+   
+   public void updateRefundMenu(RefundMenuVO rvo) {
+		mybatis.update("RefundMenuDao.updateRefundMenu", rvo);
+	}
    
 
 }
