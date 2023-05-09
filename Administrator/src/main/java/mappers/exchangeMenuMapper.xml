@@ -4,8 +4,13 @@
 <mapper namespace="ExchangeMenuDao">
 
    <select id="getExchangeMenuList" resultType="vo.ExchangeMenuVO" parameterType="hashmap" >
-      SELECT d.dnum, d.onum, d.daddr, d.dok, d.ddate, e.eok
+      SELECT d.dnum dnum, d.onum onum, d.daddr daddr, d.dok dok, d.ddate ddate, e.eok eok, e.eokwhy eokwhy
          FROM DELIVERY d
          LEFT JOIN EXCHANGE e ON d.onum = e.onum
    </select>  
+   
+   <update	id='updateExchangeMenu' parameterType="vo.ExchangeMenuVO">
+		UPDATE exchange SET eok=#{eok}, eokwhy=#{eokwhy} WHERE onum=#{onum}
+	</update>
+	
 </mapper>

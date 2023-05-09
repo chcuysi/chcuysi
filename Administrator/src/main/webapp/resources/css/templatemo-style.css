@@ -589,6 +589,13 @@ input.select_date_colored {
   left: 0px;
 }
 
+input.select_date_non_colored {
+  border: 0px;
+  background-color:#ffffff;
+  top: 0px;
+  left: 0px;
+}
+
 /* 텍스트 입력 */
 .cate_detail td .text_detail_non_colored {
   position: absolute; width: 100%; height: 100%;

@@ -6,9 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import service.DeliveryMenuService;
+import vo.CalculateMenuVO;
 import vo.DeliveryMenuVO;
 
 @Controller
@@ -31,4 +35,10 @@ public class DeliveryMenuController {
         List<DeliveryMenuVO> list = deliveryMenuService.getDeliveryMenuList(map);
         m.addAttribute("deliveryMenuList", list);
     }
+    
+    @PostMapping("getDeliveryMenuList.do/{dnum}")
+	@ResponseBody
+	public void updateDeliveryMenu(@ModelAttribute("deliveryMenu") DeliveryMenuVO dvo) {
+	    deliveryMenuService.updateDeliveryMenu(dvo);
+	}
 }

@@ -147,10 +147,10 @@
                   	</tr>
                   	<tr>
                     	<td style="vertical-align: middle;"><a class="white-text templatemo-sort-by">배송일</a></td>
-                    	<td><input type='date' class="select_date_colored"></td>
+                    	<td><input type='date' class="select_detail_colored"></td>
                     	<td><a class="white-text templatemo-sort-by">환불여부</a></td>
                     	<td style="position: relative;"> 
-                    		<select class="select_detail_non_colored">
+                    		<select class="select_detail_colored">
                     			<option value="O">O</option>
                     			<option value="X">X</option>   
                     			<option value="-">-</option>                  

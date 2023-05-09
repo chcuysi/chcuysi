@@ -10,4 +10,5 @@ import vo.DeliveryMenuVO;
 public interface DeliveryMenuDao {
 	
 	public List<DeliveryMenuVO> getDeliveryMenuList(HashMap map);
+	public void updateDeliveryMenu(DeliveryMenuVO dvo);
 }

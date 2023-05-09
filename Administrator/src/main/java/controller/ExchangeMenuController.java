@@ -6,7 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import service.ExchangeMenuService;
 import vo.DeliveryMenuVO;
@@ -27,8 +30,16 @@ public class ExchangeMenuController {
         map.put("dok", evo.getDok());
         map.put("ddate", evo.getDdate());
         map.put("eok", evo.getEok());
+        map.put("eokwhy", evo.getEokwhy());
 
         List<ExchangeMenuVO> list = exchangeMenuService.getExchangeMenuList(map);
         m.addAttribute("exchangeMenuList", list);
     }
+    
+    @PostMapping("getExchangeMenuList.do/{onum}")
+	@ResponseBody
+	public void updateExchangeMenu(@ModelAttribute("exchangeMenu") ExchangeMenuVO evo) {
+	    exchangeMenuService.updateExchangeMenu(evo);
+	}
+    
 }

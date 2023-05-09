@@ -19,5 +19,8 @@ public class DeliveryMenuDaoImpl implements DeliveryMenuDao {
 		return mybatis.selectList("DeliveryMenuDao.getDeliveryMenuList", map);
 	}
 	
+	public void updateDeliveryMenu(DeliveryMenuVO dvo) {
+		mybatis.update("DeliveryMenuDao.updateDeliveryMenu", dvo);
+	}
 
 }

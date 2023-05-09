@@ -220,6 +220,37 @@ $(function(){
     });
     
     //수정버튼
+    $('button.btn_modify').on('click', function() {
+		var dnum = $('#table_detailDelivery tr:first-child td:nth-child(2)').text(); // 선택한 테이블의 pid 값을 가져옴
+  		var dok = $('table#table_detailDelivery').find('tr:eq(1) td:eq(3) select').val(); // 선택한 정산상태값 가져오기
+  		$("#table_delivery tr[data-dnum='" + dnum + "'] td:eq(3)").text(dok); // 값 대입
+  		
+		var ddateInput = $('table#table_detailDelivery').find('tr:eq(2) td:eq(1) input');
+  		var ddate = ddateInput.val(); // 선택한 배송일값 가져오기
+	  
+		  // Date 객체에서 YYYY-MM-DD 형식의 문자열로 변환
+		  if (ddateInput.attr('type') === 'date') {
+		    var dateObj = new Date(ddate);
+		    var year = dateObj.getFullYear();
+		    var month = String(dateObj.getMonth() + 1).padStart(2, '0');
+		    var day = String(dateObj.getDate()).padStart(2, '0');
+		    ddate = year + '-' + month + '-' + day;
+		  }
+ 		
+  		$.ajax({
+    		type: 'post',
+    		url: 'getDeliveryMenuList.do/' + dnum,
+    		data: { dnum: dnum, dok: dok, ddate: ddate },
+	  		success: function(result) {
+	  			location.reload();
+      			$('form#detailInfo_delivery').css('display', 'none');
+    		},
+    		error: function(err) {
+      			alert('오류가 발생했습니다.');
+      			console.log(err);
+    		}
+  		});
+	});
     
     
     
@@ -248,15 +279,17 @@ $(function(){
 	      $("#table_detailExchange tbody tr:eq(1) td:eq(1)").text(clickedDaddr);
 	      var clickedDok = $(this).find("td:eq(3)").text();
 	      $("#table_detailExchange tbody tr:eq(1) td:eq(3)").text(clickedDok);
-	      var clickedDdate = $(this).find("td:eq(4)").text().slice(0, 10);
-	        $("#table_detailExchange .select_date_colored").val(clickedDdate);
+	      var clickedDdate = $(this).find("td:eq(4)").text();
+	      $("#table_detailExchange tbody tr:eq(2) td:eq(1)").text(clickedDdate);
 	      var clickedEok = $(this).find("td:eq(5)").text();
-	      $("#table_detailExchange .select_detail_non_colored option").each(function() {
+	      $("#table_detailExchange .select_detail_colored option").each(function() {
 	            if ($(this).val() === clickedEok) {
 	               $(this).prop("selected", true);
 	               return false; // 일치하는 옵션을 찾았으므로 반복문을 종료합니다.
 	          }
-	        });
+	      });
+	      var clickedEokwhy = $(this).find("td:eq(6)").text();
+		  $("#table_detailExchange tbody tr:eq(3) td:eq(1) textarea").val(clickedEokwhy);
 	      
 	    });
 	    
@@ -266,6 +299,29 @@ $(function(){
 	    });
 	    
 	    //수정버튼
+	    $('button.btn_modify').on('click', function() {
+		var onum = $('#table_detailExchange tr:first-child td:nth-child(4)').text(); // 선택한 테이블의 onum 값을 가져옴
+  		var eok = $('table#table_detailExchange').find('tr:eq(2) td:eq(3) select').val(); // 선택한 교환여부 가져오기
+  		$("#table_exchange tr[data-onum='" + onum + "'] td:eq(5)").text(eok); // 값 대입
+  		
+		var eokwhy = $('table#table_detailExchange').find('tr:eq(3) td:eq(1) textarea').val(); // 선택한 승인거부사유값 가져오기
+  		$("#table_exchange tr[data-onum='" + onum + "'] td:eq(6)").val(eokwhy); // 값 대입
+ 		
+  		$.ajax({
+    		type: 'post',
+    		url: 'getExchangeMenuList.do/' + onum,
+    		data: { onum: onum, eok: eok, eokwhy: eokwhy },
+	  		success: function(result) {
+	  			location.reload();
+      			$('form#detailInfo_exchange').css('display', 'none');
+    		},
+    		error: function(err) {
+      			alert('오류가 발생했습니다.');
+      			console.log(err);
+    		}
+  		});
+	});
+	    
     
     
     //************ 환불 ****************

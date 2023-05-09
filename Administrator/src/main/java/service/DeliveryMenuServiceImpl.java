@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dao.DeliveryMenuDaoImpl;
+import vo.CalculateMenuVO;
 import vo.DeliveryMenuVO;
 
 @Service("deliveryMenuService")
@@ -19,5 +20,9 @@ public class DeliveryMenuServiceImpl implements DeliveryMenuService {
 	public List<DeliveryMenuVO> getDeliveryMenuList(HashMap map) { 
 	  	return deliveryMenuDao.getDeliveryMenuList(map); 
 	} 
+	
+	public void updateDeliveryMenu(DeliveryMenuVO dvo) {
+		deliveryMenuDao.updateDeliveryMenu(dvo);
+	}
 	
 }

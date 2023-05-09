@@ -9,4 +9,9 @@
 			LEFT JOIN EXCHANGE e ON d.onum = e.onum
 			LEFT JOIN REFUND r ON d.onum = r.onum
 	</select>  
+	
+	<update	id='updateDeliveryMenu' parameterType="vo.DeliveryMenuVO">
+		UPDATE delivery SET dok=#{dok}, ddate=#{ddate} WHERE dnum=#{dnum}
+	</update>
+	
 </mapper>

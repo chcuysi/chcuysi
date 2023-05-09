@@ -97,8 +97,9 @@
                        <td>${exchangeMenu.onum}</td>
                        <td>${exchangeMenu.daddr}</td>
                        <td>${exchangeMenu.dok}</td>
-                       <td>${exchangeMenu.ddate}</td>
+                       <td>${exchangeMenu.ddate.substring(0, 10)}</td>
                        <td>${exchangeMenu.eok}</td>
+                        <td style="display: none;">${exchangeMenu.eokwhy}</td>
                    </tr>
               	 </c:forEach>
                 </tbody>
@@ -141,14 +142,13 @@
                        <td><a class="white-text templatemo-sort-by">배송주소</a></td>
                        <td></td>
                        <td><a class="white-text templatemo-sort-by">배송상태</a></td>
-                       <td style="position: relative;">             
+                       <td>             
                            
                         </td>
                      </tr>
                      <tr>
                        <td style="vertical-align: middle;"><a class="white-text templatemo-sort-by">배송일</a></td>
                        <td>
-                          <input type="date" class="select_date_colored">
                        </td>
                        <td><a class="white-text templatemo-sort-by">교환여부</a></td>
                        <td style="position: relative;"> 

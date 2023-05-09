@@ -8,6 +8,7 @@ public class ExchangeMenuVO {
     private String dok;
     private String ddate;
     private String eok;
+    private String eokwhy;
     
 	public String getDnum() {
 		return dnum;
@@ -45,6 +46,11 @@ public class ExchangeMenuVO {
 	public void setEok(String eok) {
 		this.eok = eok;
 	}
-    
+	public String getEokwhy() {
+		return eokwhy;
+	}
+	public void setEokwhy(String eokwhy) {
+		this.eokwhy = eokwhy;
+	}
     
 }
