@@ -15,6 +15,11 @@ import service.CalculateMenuService;
 import service.IokMenuService;
 import vo.CalculateMenuVO;
 import vo.IokMenuVO;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
  
 
 @Controller
@@ -37,7 +42,8 @@ public class IokMenuController {	// 판매승인 컨트롤러
 		map.put("startdate", ivo.getStartdate());
 		map.put("enddate", ivo.getEnddate());
 		map.put("warehoused", ivo.getWarehoused());
-		map.put("iok", ivo.getIok());		
+		map.put("iok", ivo.getIok());	 
+		map.put("iokwhy", ivo.getIokwhy());
 		
 		List<IokMenuVO> list = iokMenuService.getIokMenuList(map);
 		m.addAttribute("iokMenuList", list);

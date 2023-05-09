@@ -4,12 +4,12 @@
 <mapper namespace="IokMenuDao">
 
 	<select id="getIokMenuList" resultType="vo.IokMenuVO" parameterType="hashmap" >
-		select ps.pid AS pid, ps.pname AS pname, p.category AS category, p.category2 AS category2, p.name AS name, p.name2 AS name2, p.price AS price, p.startdate AS startdate, p.enddate AS enddate, p.warehoused AS warehoused, p.iok AS iok
+		select ps.pid AS pid, ps.pname AS pname, p.category AS category, p.category2 AS category2, p.name AS name, p.name2 AS name2, p.price AS price, p.startdate AS startdate, p.enddate AS enddate, p.warehoused AS warehoused, p.iok AS iok, p.iokwhy AS iokwhy
 		from products p FULL OUTER JOIN psale ps
 		ON p.pid = ps.pid
 	</select>  
 	
 	<update	id='updateIokMenu' parameterType="vo.IokMenuVO">
-		UPDATE products SET iok=#{iok} WHERE pid=#{pid}
+		UPDATE products SET iok=#{iok}, iokwhy=#{iokwhy} WHERE pid=#{pid}
 	</update>
 </mapper>

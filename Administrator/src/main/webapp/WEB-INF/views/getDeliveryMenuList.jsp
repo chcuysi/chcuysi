@@ -98,7 +98,7 @@
         <td>${deliveryMenu['onum']}</td>
         <td>${deliveryMenu['daddr']}</td>
         <td>${deliveryMenu['dok']}</td>
-        <td>${deliveryMenu['ddate']}</td>
+        <td>${deliveryMenu.ddate.substring(0, 10)}</td>
         <td>${deliveryMenu['eok']}</td>
         <td>${deliveryMenu['rok']}</td>
     </tr>

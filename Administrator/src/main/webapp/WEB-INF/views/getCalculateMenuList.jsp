@@ -103,7 +103,7 @@
 		                    <td>${calculateMenu.ocharge}원</td>
 		                    <td>${calculateMenu.jungsanmoney}원</td>
 		                    <td>${calculateMenu.jungsan}</td>
-							<td>${calculateMenu.jungsandate}</td>
+							<td>${calculateMenu.jungsandate.substring(0, 10)}</td>
                   		</tr>
                   	</c:forEach> 	
                 </tbody>

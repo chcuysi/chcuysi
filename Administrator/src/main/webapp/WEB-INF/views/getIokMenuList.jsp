@@ -99,9 +99,10 @@
 		                    <td>${iokMenu.category} > ${iokMenu.category2}</td>
 		                    <td>${iokMenu.name} ${iokMenu.name2}</td>
 		                    <td>${iokMenu.price}원</td>
-		                    <td>${iokMenu.startdate} ~ ${iokMenu.startdate}</td>
+		                    <td>${iokMenu.startdate.substring(0, 10)} ~ ${iokMenu.enddate.substring(0, 10)}</td>
 		                    <td>${iokMenu.warehoused}</td>
 		                    <td>${iokMenu.iok}</td>
+		                    <td style="display: none;">${iokMenu.iokwhy}</td>
                   		</tr>
                   	</c:forEach> 
                 </tbody>

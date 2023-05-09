@@ -10,7 +10,7 @@
 	</select>  
 	
 	<update	id='updateCalculateMenu' parameterType="vo.CalculateMenuVO">
-		UPDATE products SET jungsan=#{jungsan} WHERE pid=#{pid}
+		UPDATE products SET jungsan=#{jungsan}, jungsandate=#{jungsandate} WHERE pid=#{pid}
 	</update>
 	
 </mapper>

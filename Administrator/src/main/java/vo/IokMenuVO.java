@@ -13,7 +13,8 @@ public class IokMenuVO {
     private String enddate;
     private int warehoused;
     private String iok;
-    
+    private String iokwhy;
+    private String products_number;
     
 	public String getPid() {
 		return pid;
@@ -81,6 +82,19 @@ public class IokMenuVO {
 	public void setIok(String iok) {
 		this.iok = iok;
 	}
+	public String getIokwhy() {
+		return iokwhy;
+	}
+	public void setIokwhy(String iokwhy) {
+		this.iokwhy = iokwhy;
+	}
+	public String getProdcuts_number() {
+		return products_number;
+	}
+	public void setProdcuts_number(String products_number) {
+		this.products_number = products_number;
+	}
+	
 
     // getter, setter, 생성자 생략
 

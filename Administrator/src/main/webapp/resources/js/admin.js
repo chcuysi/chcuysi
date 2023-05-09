@@ -54,6 +54,8 @@ $(function(){
       			return false; // 일치하는 옵션을 찾았으므로 반복문을 종료합니다.
     		}
   		});
+  		var clickedIokwhy = $(this).find("td:eq(8)").text();
+		$("#table_detailInfo tbody tr:eq(4) td:eq(1) textarea").val(clickedIokwhy);
     });
     
     //취소버튼
@@ -64,14 +66,18 @@ $(function(){
     //수정버튼
 	$('button.btn_modify').on('click', function() {
 		var pid = $('#table_detailInfo tr:first-child td:nth-child(2)').text(); // 선택한 테이블의 pid 값을 가져옴
-  		var iok = $('table#table_detailInfo').find('tr:eq(3) td:eq(3) select').val(); // 선택한 값 가져오기
+
+  		var iok = $('table#table_detailInfo').find('tr:eq(3) td:eq(3) select').val(); // 선택한 승인여부값 가져오기
   		$("#table_iok tr[data-pid='" + pid + "'] td:eq(7)").text(iok); // 값 대입
+  		var iokwhy = $('table#table_detailInfo').find('tr:eq(4) td:eq(1) textarea').val(); // 선택한 승인거부사유값 가져오기
+  		$("#table_iok tr[data-pid='" + pid + "'] td:eq(8)").val(iokwhy); // 값 대입
+  		
  
   		
   		$.ajax({
     		type: 'post',
     		url: 'getIokMenuList.do/' + pid,
-    		data: { pid: pid, iok: iok },
+    		data: { pid: pid, iok: iok, iokwhy: iokwhy},
 	  		success: function(result) {
 	  			location.reload();
       			$('form#detailInfo_iok').css('display', 'none');
@@ -135,13 +141,25 @@ $(function(){
     //수정버튼
     $('button.btn_modify').on('click', function() {
 		var pid = $('#table_detailCalculate tr:first-child td:nth-child(2)').text(); // 선택한 테이블의 pid 값을 가져옴
-  		var jungsan = $('table#table_detailCalculate').find('tr:eq(3) td:eq(3) select').val(); // 선택한 값 가져오기
+  		var jungsan = $('table#table_detailCalculate').find('tr:eq(3) td:eq(3) select').val(); // 선택한 정산상태값 가져오기
   		$("#table_calculate tr[data-pid='" + pid + "'] td:eq(7)").text(jungsan); // 값 대입
+  		
+		var jungsandateInput = $('table#table_detailCalculate').find('tr:eq(4) td:eq(1) input');
+  		var jungsandate = jungsandateInput.val(); // 선택한 입금일값 가져오기
+	  
+		  // Date 객체에서 YYYY-MM-DD 형식의 문자열로 변환
+		  if (jungsandateInput.attr('type') === 'date') {
+		    var dateObj = new Date(jungsandate);
+		    var year = dateObj.getFullYear();
+		    var month = String(dateObj.getMonth() + 1).padStart(2, '0');
+		    var day = String(dateObj.getDate()).padStart(2, '0');
+		    jungsandate = year + '-' + month + '-' + day;
+		  }
  		
   		$.ajax({
     		type: 'post',
     		url: 'getCalculateMenuList.do/' + pid,
-    		data: { pid: pid, jungsan: jungsan },
+    		data: { pid: pid, jungsan: jungsan, jungsandate: jungsandate },
 	  		success: function(result) {
 	  			location.reload();
       			$('form#detailInfo_calculate').css('display', 'none');
