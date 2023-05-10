@@ -11,9 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import Service.LoginService;
 import vo.MemberVO;
+import vo.OrderVO;
 import vo.ProductVO;
 import vo.PsaleVO;
 
@@ -31,6 +34,7 @@ public class cartController {
 		System.out.println("카트 함수 실행");
 		
 		String type = HttpServletRequest.getParameter("type");
+		int Count = (Integer.parseInt(HttpServletRequest.getParameter("Count")));
 		
 		
 		List<ProductVO> list =  new ArrayList<ProductVO>();
@@ -40,12 +44,36 @@ public class cartController {
 		}
 
           ProductVO vo = (ProductVO)service.getProduct(type);
-		
+		vo.setiCount(Count);
+		// 수량 vo에 추가해서 리스트에 넣기
 		list.add(vo);
 
 		session.setAttribute("products", list);
 
 		return "cart";
+	}
+	
+	@RequestMapping("/sellHistory")
+	public String sellHistory(Model m, HttpSession session) {
+		String logName = (String)session.getAttribute("logName");
+		List<OrderVO> list = (List<OrderVO>)service.sellHistory(logName);
+		m.addAttribute("sellHistory",list);
+		return "sellHistory";
+	}
+	
+	@RequestMapping("/returnProduct")
+	public String returnProduct(OrderVO vo) {
+		
+		String onum =vo.getOnum();
+		service.returnProduct(onum);
+		service.insertReturnProduct(vo);
+		return "buyHistory";
+	}
+	
+	@RequestMapping("/loginForm2")
+	public String loginForm2() {
+		
+		return "loginForm2";
 	}
 
 	@RequestMapping("/UpdateMember")
@@ -69,16 +97,43 @@ public class cartController {
 		return "iokPage";
 	}
 	
+	@RequestMapping("/testBuy")
+	public String testBuy(HttpSession session) {
+		List<ProductVO> list = (List<ProductVO>)session.getAttribute("products");
+		String logName = (String) session.getAttribute("logName");
+		service.insertOrder(list,logName);
+   service.updateProductCount(list);
+		
+	
+		session.removeAttribute("products");
+		
+		
+		return "";
+	
+	}
+	
 	@RequestMapping("/memberOut")
 	public String memberOut() {
 		
 		return "memberOut";
 	}
 	
+	@RequestMapping("/buyHistory")
+	public String buyHistory(Model m, HttpSession session) {
+		String logName = (String)session.getAttribute("logName");
+		List<OrderVO> list = (List<OrderVO>)service.buyHistory(logName);
+		m.addAttribute("buyHistory",list);
+		return "buyHistory";
+	}
+	
 @RequestMapping("/insertProduct")
 public String insertProduct(Model apple, HttpSession session) {
-
+	/*
+	 * String logName = (String) session.getAttribute("logName");
+	 * System.out.println(logName);
+	 */
 	System.out.println("메인 화면 전환 성공");
+	/* session.setAttribute("logName", logName); */
 	return "insertProduct";
 }
 
@@ -97,6 +152,65 @@ public String insertProduct(Model apple, HttpSession session) {
 		return "index";	
 	}
 	
+	  @ResponseBody
+	  @RequestMapping("/delete") 
+	  public String delete(@RequestParam("param") String param, HttpSession session) {
+		  
+		  List<ProductVO> list = (List<ProductVO>) session.getAttribute("products");
+		
+		  for(int i=0; i<list.size(); i++) {
+			  ProductVO vo = list.get(i);
+			   if(vo.getiNum().equals(param)) {
+				   list.remove(i);
+				   session.setAttribute("products", list);
+			   }
+		  }
+		  
+		  return "#"; 
+	  }
+	  
+	  @ResponseBody
+	  @RequestMapping("/plusCount") 
+	  public String plusCount(@RequestParam("param") Integer param,@RequestParam("param2") String param2, HttpSession session) {
+		  List<ProductVO> list = (List<ProductVO>) session.getAttribute("products");
+		  for(int i=0; i<list.size(); i++) {
+			  ProductVO vo = list.get(i);
+			  if(vo.getiNum().equals(param2)) {
+				  vo.setiCount(param+1);
+				  list.add(vo);
+				  list.remove(i);
+				  session.setAttribute("products", list);
+			  }
+		  }
+		  return "#";
+	  }
+	  
+	  @ResponseBody
+	  @RequestMapping("/minusCount") 
+	  public String minusCount(@RequestParam("param") Integer param,@RequestParam("param2") String param2, HttpSession session) {
+		  List<ProductVO> list = (List<ProductVO>) session.getAttribute("products");
+		  for(int i=0; i<list.size(); i++) {
+			  ProductVO vo = list.get(i);
+			  if(vo.getiNum().equals(param2)) {
+				  vo.setiCount(param-1);
+				  list.add(vo);
+				  list.remove(i);
+				  session.setAttribute("products", list);
+			  }
+		  }
+		  return "#";
+	  }
+
+	  
+	  
+	  @RequestMapping("/buy") 
+	  public String buy(Model m,ProductVO vo) {
+		  m.addAttribute("iCount2",vo.getiCount2());
+	
+		  
+		  return "pay";
+		  }
+	 
 	
 	  @RequestMapping(value="/logOut",params="pageType=index") public String
 	  logOut2(HttpSession session) {
@@ -124,6 +238,11 @@ public String insertProduct(Model apple, HttpSession session) {
 		String password = HttpServletRequest.getParameter("password");
 		String moPageType = HttpServletRequest.getParameter("pageType");
 		String moType = HttpServletRequest.getParameter("type");
+		
+		if(session.getAttribute("logName") != null ) {
+			mo.addAttribute("Duplicate","Duplicate");
+			return "loginForm";
+		}
 	
 
 		System.out.println("개별 상품 창에서 로그인 매핑 스캔 성공 [파라미터 값] " + moPageType +" : " + moType);
@@ -140,6 +259,7 @@ public String insertProduct(Model apple, HttpSession session) {
 				 mo.addAttribute("moType",moType);
 				 session.setAttribute("logName", checkResult.getMid()); 
 				 session.setAttribute("logType", "일반");
+				 session.setAttribute("logPrice", 5000);
 				 
 				 return "loginForm";
 				 
@@ -152,6 +272,11 @@ public String insertProduct(Model apple, HttpSession session) {
 	// *********************************************************************판매자 계정 로그인
 			@RequestMapping(value="loginSales", method=RequestMethod.GET)
 			public String loginSales(HttpServletRequest HttpServletRequest,Model mo, HttpSession session) {
+				
+				if(session.getAttribute("logName") != null ) {
+					mo.addAttribute("Duplicate","Duplicate");
+					return "#";
+				}
 
 				String id = HttpServletRequest.getParameter("id");
 				String password = HttpServletRequest.getParameter("password");
@@ -172,6 +297,7 @@ public String insertProduct(Model apple, HttpSession session) {
 						 mo.addAttribute("moType",moType);
 						 session.setAttribute("logName", checkResult.getPid()); 
 						 session.setAttribute("logType", "판매자");
+						
 						 return "loginForm";
 						 
 						 } else mo.addAttribute("checkLogin","실패");

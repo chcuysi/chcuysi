@@ -80,18 +80,13 @@ https://templatemo.com/tm-571-hexashop
                             <li class="scroll-to-section"><a href="#kids">레시피</a></li>
                             
                             <li class="submenu">
-                                <a href="javascript:;">회사소개</a>
-                                <ul>
-                                    <li><a href="about.html"><b>우리 SAJO는</b></a></li>
-                                    <li><a href="products.html"><b>연혁</b></a></li>
-                                    <li><a href="single-product.html"><b>경영 방침/경영 철학</b></a></li>
-                                    <li><a href="contact.html"><b>오시는 길</b></a></li>
-                                </ul>
+                                <a href="company.do">회사소개</a>
+                               
                             </li>
                             <li class="submenu">
                                 <a href="javascript:;">고객센터</a>
                                 <ul>
-                                    <li><a href="#"><b>자주 묻는 질문</b></a></li>
+                                    <li><a href="http://192.168.0.79:8280/Administrator/getIokMenuList.do"><b>자주 묻는 질문</b></a></li>
                                     <li><a href="#"><b>Q/A</b></a></li>
                                     <li><a href="#"><b>공지사항</b></a></li>
                                 </ul>
@@ -111,7 +106,7 @@ https://templatemo.com/tm-571-hexashop
                                     <li><a href="memberOut"><b>회원탈퇴</b></a></li>
                                       <li><a href="insertProduct"><b>판매등록</b></a></li>
                                          <li><a href="iokCheck"><b>판매등록 승인여부</b></a></li>
-                                       <li><a href="#"><b>판매내역</b></a></li>
+                                       <li><a href="sellHistory"><b>판매내역</b></a></li>
                                 </ul>
                              </li>
                              
@@ -123,14 +118,22 @@ https://templatemo.com/tm-571-hexashop
                                     <li><a href="logOut"><b>로그아웃</b></a></li>
                                     <li><a href="UpdateMember"><b>회원정보수정</b></a></li>
                                     <li><a href="memberOut"><b>회원탈퇴</b></a></li>
-                                    <li><a href="#"><b>구매내역</b></a></li>                                   
+                                    <li><a href="buyHistory"><b>구매내역</b></a></li>                                   
                                 </ul>
                              </li>
                                 </c:when>
                              
                         
-                            <c:otherwise>  
-                            <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
+                         <c:otherwise>  
+                              <li class="submenu">
+                               <a id="scroll-to-section" href="javascript:;">로그인하기</a>
+                                <ul>
+                                    <li><a href="loginForm?pageType=index"><b>일반 회원 로그인</b></a></li>
+                                    <li><a href="loginForm2"><b>판매자 로그인</b></a></li>                                 
+                                </ul>
+                                
+                          <!--        <ul> -->
+                          <!--   <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li> -->
                             </c:otherwise>
                             
                             </c:choose>
@@ -160,7 +163,7 @@ https://templatemo.com/tm-571-hexashop
                                <span> 더 이상 헤매지 마십시오. SAJO에 다 있습니다.</span>
                                <span> SAJO가 처음이시라면 가이드를 받아보세요!</span>
                                 <div class="main-border-button">
-                                    <a href="#">SAJO 이용 가이드 받기!</a>
+                                    <a href="guideLine.do">SAJO 이용 가이드 받기!</a>
                                 </div>
                             </div>
                             <img id="base" src="${pageContext.request.contextPath}/resources/images/base.jpg" alt="">
@@ -242,7 +245,7 @@ https://templatemo.com/tm-571-hexashop
                                                 <h4>'SAJO'는?</h4>
                                                 <p>'SAJO'의 철학, 목표, 가치관 등에 대해 알아보세요!</p>
                                                 <div class="main-border-button">
-                                                    <a href="#">자세히 보기</a>
+                                                    <a href="company.do">자세히 보기</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -580,7 +583,7 @@ https://templatemo.com/tm-571-hexashop
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                           <li><a href="gofood">자세히 보기</a></li>
+                                           <li><a href="recipe?recipe=gofood">자세히 보기</a></li>
                           
                                         </ul>
                                     </div>
@@ -602,7 +605,7 @@ https://templatemo.com/tm-571-hexashop
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                             <li><a href="gofood">자세히 보기</a></li>
+                                             <li><a href="recipe?recipe=gofoods">자세히 보기</a></li>
                                 
                                         </ul>
                                     </div>
@@ -624,7 +627,7 @@ https://templatemo.com/tm-571-hexashop
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                             <li><a href="gofood">자세히 보기</a></li>
+                                             <li><a href="recipe?recipe=gofoo">자세히 보기</a></li>
                                  
                                         </ul>
                                     </div>
@@ -646,7 +649,7 @@ https://templatemo.com/tm-571-hexashop
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="gofood">자세히 보기</a></li>
+                                            <li><a href="recipe?recipe=good">자세히 보기</a></li>
                                    
                                         </ul>
                                     </div>
@@ -891,6 +894,11 @@ https://templatemo.com/tm-571-hexashop
                                사업자등록번호 : 572-81-02287<br/>
                                소재지 : 서울특별시 금천구 가산디지털로 302, 3층(가산동112)<br/>
                </span> 
+               
+               <!-- ********************************************************************************************************************** -->
+           <c:if test="${sessionScope.logName ne null}">
+			<input type="hidden" id="Duplicate" value="${Duplicate}">
+		</c:if>
                  </div>
                 <!-- 메인페이지 제일 하단 부분 -->
                 
@@ -1022,6 +1030,13 @@ https://templatemo.com/tm-571-hexashop
             	
             });
             
+         	
+            $('#form-submit').click(function() {
+            	if( $('#Duplicate').val() != null ) {
+            		alert('현재 접속중인 계정을 로그아웃하고 이용해주세요');
+            	}
+            });
+        	
            
         });
 

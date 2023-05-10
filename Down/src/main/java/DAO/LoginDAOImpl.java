@@ -2,12 +2,14 @@ package DAO;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import vo.MemberVO;
+import vo.OrderVO;
 import vo.ProductVO;
 import vo.PsaleVO;
 
@@ -85,4 +87,34 @@ import vo.PsaleVO;
 		
 		return session.selectList("login.getProductListIokCheck",logName);
 	}
+	
+	public void insertOrder(List<ProductVO> list,String logName) {
+	   Map m = new HashMap();
+	   m.put("list", list);
+	   m.put("logName", logName);
+	   session.insert("login.insertOrder",m);
+	}
+	
+	public List<OrderVO> buyHistory(String logName) {
+		
+		return session.selectList("login.buyHistory",logName);
+	}
+	
+	public List<OrderVO> sellHistory(String logName) {
+		return session.selectList("login.sellHistory", logName);
+	}
+	
+	public void updateProductCount(List<ProductVO> list) {
+		session.update("login.updateProductCount",list);
+	}
+	
+	public void returnProduct(String onum) {
+	session.delete("login.deleteProductOrder",onum);
+	}
+	
+	public void insertReturnProduct(OrderVO vo) {
+		
+		session.insert("login.insertReturnProduct",vo);
+	}
+	
 }

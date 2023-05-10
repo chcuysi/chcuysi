@@ -26,10 +26,48 @@ public class ProductVO {
 	private String frealfname; // 저장된 파일이름           등록된 상품 사진 명 ex)  apple.png
 	private String pid;
 	
+	private String iNum;
+	private String delivery;
+	private int iCount;
+	private String iCount2;
+	private String mid;
+	private String pdate;
+	
+	
     MultipartFile file;
 	
 	
 	
+	public String getPdate() {
+		return pdate;
+	}
+	public void setPdate(String pdate) {
+		this.pdate = pdate;
+	}
+	public String getiCount2() {
+		return iCount2;
+	}
+	public void setiCount2(String iCount2) {
+		this.iCount2 = iCount2;
+	}
+	public int getiCount() {
+		return iCount;
+	}
+	public void setiCount(int iCount) {
+		this.iCount = iCount;
+	}
+	public String getiNum() {
+		return iNum;
+	}
+	public void setiNum(String iNum) {
+		this.iNum = iNum;
+	}
+	public String getDelivery() {
+		return delivery;
+	}
+	public void setDelivery(String delivery) {
+		this.delivery = delivery;
+	}
 	public String getPid() {
 		return pid;
 	}

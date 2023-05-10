@@ -79,18 +79,13 @@ https://templatemo.com/tm-571-hexashop
                             <li class="scroll-to-section"><a href="#kids">레시피</a></li>
                             
                             <li class="submenu">
-                                <a href="javascript:;">회사소개</a>
-                                <ul>
-                                    <li><a href="about.html"><b>우리 SAJO는</b></a></li>
-                                    <li><a href="products.html"><b>연혁</b></a></li>
-                                    <li><a href="single-product.html"><b>경영 방침/경영 철학</b></a></li>
-                                    <li><a href="contact.html"><b>오시는 길</b></a></li>
-                                </ul>
+                                <a href="company.do">회사소개</a>
+                               
                             </li>
                             <li class="submenu">
                                 <a href="javascript:;">고객센터</a>
                                 <ul>
-                                    <li><a href="#"><b>자주 묻는 질문</b></a></li>
+                                    <li><a href="http://192.168.0.79:8280/Administrator/getIokMenuList.do"><b>자주 묻는 질문</b></a></li>
                                     <li><a href="#"><b>Q/A</b></a></li>
                                     <li><a href="#"><b>공지사항</b></a></li>
                                 </ul>
@@ -110,7 +105,7 @@ https://templatemo.com/tm-571-hexashop
                                     <li><a href="memberOut"><b>회원탈퇴</b></a></li>
                                       <li><a href="insertProduct"><b>판매등록</b></a></li>
                                          <li><a href="iokCheck"><b>판매등록 승인여부</b></a></li>
-                                       <li><a href="#"><b>판매내역</b></a></li>
+                                       <li><a href="sellHistory"><b>판매내역</b></a></li>
                                 </ul>
                              </li>
                              
@@ -122,17 +117,26 @@ https://templatemo.com/tm-571-hexashop
                                     <li><a href="logOut"><b>로그아웃</b></a></li>
                                     <li><a href="UpdateMember"><b>회원정보수정</b></a></li>
                                     <li><a href="memberOut"><b>회원탈퇴</b></a></li>
-                                    <li><a href="#"><b>구매내역</b></a></li>                                   
+                                    <li><a href="buyHistory"><b>구매내역</b></a></li>                                   
                                 </ul>
                              </li>
                                 </c:when>
                              
                         
-                            <c:otherwise>  
-                            <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
+                         <c:otherwise>  
+                              <li class="submenu">
+                               <a id="scroll-to-section" href="javascript:;">로그인하기</a>
+                                <ul>
+                                    <li><a href="loginForm?pageType=index"><b>일반 회원 로그인</b></a></li>
+                                    <li><a href="loginForm2"><b>판매자 로그인</b></a></li>                                 
+                                </ul>
+                                
+                          <!--        <ul> -->
+                          <!--   <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li> -->
                             </c:otherwise>
                             
                             </c:choose>
+                                <!-- ******************************************************************************************* -->
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -188,6 +192,32 @@ https://templatemo.com/tm-571-hexashop
                             <input name="price" type="text" pattern="^[0-9]*$" placeholder="상품 가격" required>
                             </fieldset>
                           </div>
+                          
+                          <!--  testing ************************************************************ -->
+                          
+                            <div class="col-lg-5">
+                            <fieldset>
+                            <label  id="insertLabel"><b>상품가격</b></label>
+                            <input name="iNum" type="text" pattern="^[0-9]*$" placeholder="inum" required>
+                            </fieldset>
+                          </div>
+                          
+                           <div class="col-lg-5">
+                            <fieldset>
+                            <label  id="insertLabel"><b>상품가격</b></label>
+                            <input name="delivery" type="text" pattern="^[0-9]*$" placeholder="delivery" required>
+                            </fieldset>
+                          </div>
+                          
+                          <div class="col-lg-5">
+                            <fieldset>
+                            <label  id="insertLabel"><b>상품가격</b></label>
+                            <input name="iCount" type="text" pattern="^[0-9]*$" placeholder="수량" required>
+                            </fieldset>
+                          </div>
+
+                          
+                          
                           
                            <div class="col-lg-5">
                             <fieldset>
@@ -288,6 +318,10 @@ https://templatemo.com/tm-571-hexashop
                           <div class="col-lg-2">
                             <fieldset>
                               <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
+                              
+                            
+										<input type="hidden" id="pid" name="pid" value="${sessionScope.logName}">
+								
 
 									<c:if test="${checkLogin ne null}">
 										<input type="hidden" id="checkLogin" value="${checkLogin}">
@@ -431,8 +465,7 @@ https://templatemo.com/tm-571-hexashop
     <script>
 
         $(function() {
-        	
-     
+        
             var selectedClass = "";
             $("p").click(function(){
             selectedClass = $(this).attr("data-rel");
@@ -477,6 +510,8 @@ https://templatemo.com/tm-571-hexashop
             });
   
  
+            
+            
             
  
         });      

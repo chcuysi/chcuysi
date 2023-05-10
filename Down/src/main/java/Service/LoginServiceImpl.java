@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import DAO.LoginDAO;
 import vo.MemberVO;
+import vo.OrderVO;
 import vo.ProductVO;
 import vo.PsaleVO;
 
@@ -59,4 +60,28 @@ public List<ProductVO> getProductListIokCheck(String logName) {
 		
 		return loginDAO.getProductListIokCheck(logName);
 	}
+
+public void insertOrder(List<ProductVO> list,String logName) {
+	   loginDAO.insertOrder(list,logName);
+	}
+
+public List<OrderVO> buyHistory(String logName) {
+	
+	return loginDAO.buyHistory(logName);
+}
+
+public List<OrderVO> sellHistory(String logName) {
+	return loginDAO.sellHistory(logName);
+}
+
+public void updateProductCount(List<ProductVO> list) {
+	loginDAO.updateProductCount(list);
+}
+
+public void returnProduct(String onum) {
+	loginDAO.returnProduct(onum);
+}
+public void insertReturnProduct(OrderVO vo) {
+	loginDAO.insertReturnProduct(vo);
+}
 }
