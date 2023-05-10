@@ -54,7 +54,7 @@ https://templatemo.com/tm-571-hexashop
     
     
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
+    <header id="mainHeader" class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -80,44 +80,64 @@ https://templatemo.com/tm-571-hexashop
                             <li class="scroll-to-section"><a href="#kids">레시피</a></li>
                             
                             <li class="submenu">
-                                <a href="javascript:;">회사소개</a>
-                                <ul>
-                                    <li><a href="about.html"><b>우리 SAJO는</b></a></li>
-                                    <li><a href="products.html"><b>연혁</b></a></li>
-                                    <li><a href="single-product.html"><b>경영 방침/경영 철학</b></a></li>
-                                    <li><a href="contact.html"><b>오시는 길</b></a></li>
-                                </ul>
+                                <a href="company.do">회사소개</a>
+                               
                             </li>
                             <li class="submenu">
                                 <a href="javascript:;">고객센터</a>
                                 <ul>
-                                    <li><a href="#"><b>자주 묻는 질문</b></a></li>
+                                    <li><a href="http://192.168.0.79:8280/Administrator/getIokMenuList.do"><b>자주 묻는 질문</b></a></li>
                                     <li><a href="#"><b>Q/A</b></a></li>
                                     <li><a href="#"><b>공지사항</b></a></li>
                                 </ul>
                             </li>                         <!-- session.invalidate(); -->
                             
                             <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
-                            
+                            <!-- ******************************************************************************************* -->
                             <c:choose>
                             
-                            <c:when test="${sessionScope.logName ne null}">
+                            <c:when test='${sessionScope.logName ne null && sessionScope.logType eq "판매자"}'>
+                                     
                              <li class="submenu">
                                <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
                                  <ul>
                                     <li><a href="logOut"><b>로그아웃</b></a></li>
-                                    <li><a href="#"><b>회원정보수정</b></a></li>
-                                    <li><a href="#"><b>회원탈퇴</b></a></li>
-                                    <li><a href="#"><b>구매내역</b></a></li>
+                                    <li><a href="UpdateMember"><b>회원정보수정</b></a></li>
+                                    <li><a href="memberOut"><b>회원탈퇴</b></a></li>
+                                      <li><a href="insertProduct"><b>판매등록</b></a></li>
+                                         <li><a href="iokCheck"><b>판매등록 승인여부</b></a></li>
+                                       <li><a href="sellHistory"><b>판매내역</b></a></li>
                                 </ul>
                              </li>
+                             
+                                </c:when>
+                                <c:when test='${sessionScope.logName ne null && sessionScope.logType eq "일반"}'>
+                                 <li class="submenu">
+                               <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
+                                 <ul>
+                                    <li><a href="logOut"><b>로그아웃</b></a></li>
+                                    <li><a href="UpdateMember"><b>회원정보수정</b></a></li>
+                                    <li><a href="memberOut"><b>회원탈퇴</b></a></li>
+                                    <li><a href="buyHistory"><b>구매내역</b></a></li>                                   
+                                </ul>
+                             </li>
+                                </c:when>
+                             
+                        
+                         <c:otherwise>  
+                              <li class="submenu">
+                               <a id="scroll-to-section" href="javascript:;">로그인하기</a>
+                                <ul>
+                                    <li><a href="loginForm?pageType=index"><b>일반 회원 로그인</b></a></li>
+                                    <li><a href="loginForm2"><b>판매자 로그인</b></a></li>                                 
+                                </ul>
                                 
-                            </c:when>
-                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
+                          <!--        <ul> -->
+                          <!--   <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li> -->
                             </c:otherwise>
                             
                             </c:choose>
-                            
+                                <!-- ******************************************************************************************* -->
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -151,9 +171,19 @@ https://templatemo.com/tm-571-hexashop
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                <div class="left-images">
-                    <img src="${pageContext.request.contextPath}/resources/images/${type}.png" alt="">
+                <div class="left-images">           
+                
+                <c:choose>
+                <c:when test="${frealfname eq null}">
+                    <img   width="730" height="378" src="${pageContext.request.contextPath}/resources/images/${type}.png" alt="">
                     <input type="hidden" id="type" value="${type}"/>
+                    </c:when>
+                   <c:otherwise>
+                    <img   width="730" height="378" src="${pageContext.request.contextPath}/resources/images/${frealfname}" alt="">
+                    <input type="hidden" id="type" value="${type}"/>
+                   </c:otherwise>
+                   
+                   </c:choose>
                 </div>
            
             </div>
@@ -163,7 +193,7 @@ https://templatemo.com/tm-571-hexashop
                     <c:if test="${name2 ne null}">  
                     <h4>${name2}</h4>
                     </c:if>
-                     <span class="price">${price}</span>
+                     <span class="price">${price}원</span>
                     <ul class="stars">
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
@@ -181,7 +211,17 @@ https://templatemo.com/tm-571-hexashop
                         </div>
                         <div class="right-content">
                             <div class="quantity buttons_added">
-                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
+                            <c:choose>
+                            <c:when test="${iCount ne 0}">
+                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="${iCount}" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
+                            </c:when>
+                            <c:otherwise>
+                            <input class="iCount" type="hidden" value="${iCount}">
+                            <div class="left-content">
+                            <h6>품절</h6>
+                            </div>
+                            </c:otherwise>
+                            </c:choose>
                             </div>
                         </div>
                     </div>
@@ -311,19 +351,38 @@ https://templatemo.com/tm-571-hexashop
             
             
            $('.main-border-button').click(function() {
+        	   
+        	   if ( $('.iCount').val() == 0 ) {
+        		   
+        		   alert('해당 상품은 품절입니다.'); 
+        	   } else {
+        	   
         	  
+        	   <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "판매자" ) {      %>
+               
+       		if ( confirm('판매자는 이용할 수 없는 서비스입니다. 일반 계정으로 로그인 하시겠습니까?.')  ) {
+       		
+       		 location.href="logOut?pageType=index";
+       		
+       		}else { 
+       		
+       			 location.href="#";
+       		}
+       
+       	<% } %>
+       	
         	   
         	   <% if(session.getAttribute("logName") == null ) { %> 
         	   if(confirm('장바구니에 담기 위해선 로그인이 필요합니다. 로그인 하시겠습니까?') )
         	   {
-        		   location.href="loginForm?pageType="+$('#pageType').val()+"&type="+$('#type').val();
+        		   location.href="loginForm?pageType="+$('#pageType').val()+"&type="+$('#type').val();  // 개별 상품에는    hover 장바구니 기능이 없어서   코딩이 다름
         	   }else { location.href="#"; }
         	   <% } %>
         	   
-        	   <% if(session.getAttribute("logName") != null ) { %> 
-        	   if( confirm("상품을 장바구니에 담았습니다. 장바구니로 이동하시겠습니까?"))
+        	   <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "일반" ) { %> 
+        	   if( confirm("상품을 장바구니에 담으시겠습니까?"))
         	   {
-        		   location.href="cart?type="+$('#type').val();
+        		   location.href="cart?type="+$('#type').val()+"&Count="+$('input[type="number"]').val();
         		   
         	   }else {
         		   
@@ -334,8 +393,10 @@ https://templatemo.com/tm-571-hexashop
         	   
         	   }
         	   <% } %>
+        	   }
            });
-            
+           
+          
            
            
         });

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReviewDAO"> 
+
+
+<insert id="insertReview"  parameterType="review">
+	INSERT INTO review(MID,INUM,RENUM,RECONTENT,REDATE,RETITLE,REPASSWORD,NAME,CATEGORY,CATEGORY2,FSIZE,FNAME,FREALFNAME,imgname,type,type2) 
+	VALUES(#{mid},review_renum_seq.nextval,products_inum_seq.nextval,#{recontent},sysdate,#{retitle},#{repassword},#{name},#{category},#{category2},#{fsize},#{fname},#{frealfname},#{imgName},#{type2},#{type} )
+</insert>
+
+
+<select id="showReview" parameterType="review" resultType="review">
+SELECT * FROM review
+
+</select>
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

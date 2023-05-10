@@ -19,7 +19,7 @@
 	href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
 	rel="stylesheet">
 
-<title>Hexashop - Product Detail Page</title>
+<title>레시피 페이지</title>
 
 
 <!-- Additional CSS Files -->
@@ -62,7 +62,7 @@ https://templatemo.com/tm-571-hexashop
 
 
 	<!-- ***** Header Area Start ***** -->
-	<header class="header-area header-sticky">
+	 <header id="mainHeader" class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -88,44 +88,64 @@ https://templatemo.com/tm-571-hexashop
                             <li class="scroll-to-section"><a href="#kids">레시피</a></li>
                             
                             <li class="submenu">
-                                <a href="javascript:;">회사소개</a>
-                                <ul>
-                                    <li><a href="about.html"><b>우리 SAJO는</b></a></li>
-                                    <li><a href="products.html"><b>연혁</b></a></li>
-                                    <li><a href="single-product.html"><b>경영 방침/경영 철학</b></a></li>
-                                    <li><a href="contact.html"><b>오시는 길</b></a></li>
-                                </ul>
+                                <a href="company.do">회사소개</a>
+                               
                             </li>
                             <li class="submenu">
                                 <a href="javascript:;">고객센터</a>
                                 <ul>
-                                    <li><a href="#"><b>자주 묻는 질문</b></a></li>
+                                    <li><a href="http://192.168.0.79:8280/Administrator/getIokMenuList.do"><b>자주 묻는 질문</b></a></li>
                                     <li><a href="#"><b>Q/A</b></a></li>
                                     <li><a href="#"><b>공지사항</b></a></li>
                                 </ul>
                             </li>                         <!-- session.invalidate(); -->
                             
                             <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
-                            
+                            <!-- ******************************************************************************************* -->
                             <c:choose>
                             
-                            <c:when test="${sessionScope.logName ne null}">
+                            <c:when test='${sessionScope.logName ne null && sessionScope.logType eq "판매자"}'>
+                                     
                              <li class="submenu">
                                <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
                                  <ul>
                                     <li><a href="logOut"><b>로그아웃</b></a></li>
-                                    <li><a href="#"><b>회원정보수정</b></a></li>
-                                    <li><a href="#"><b>회원탈퇴</b></a></li>
-                                    <li><a href="#"><b>구매내역</b></a></li>
+                                    <li><a href="UpdateMember"><b>회원정보수정</b></a></li>
+                                    <li><a href="memberOut"><b>회원탈퇴</b></a></li>
+                                      <li><a href="insertProduct"><b>판매등록</b></a></li>
+                                         <li><a href="iokCheck"><b>판매등록 승인여부</b></a></li>
+                                       <li><a href="sellHistory"><b>판매내역</b></a></li>
                                 </ul>
                              </li>
+                             
+                                </c:when>
+                                <c:when test='${sessionScope.logName ne null && sessionScope.logType eq "일반"}'>
+                                 <li class="submenu">
+                               <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
+                                 <ul>
+                                    <li><a href="logOut"><b>로그아웃</b></a></li>
+                                    <li><a href="UpdateMember"><b>회원정보수정</b></a></li>
+                                    <li><a href="memberOut"><b>회원탈퇴</b></a></li>
+                                    <li><a href="buyHistory"><b>구매내역</b></a></li>                                   
+                                </ul>
+                             </li>
+                                </c:when>
+                             
+                        
+                         <c:otherwise>  
+                              <li class="submenu">
+                               <a id="scroll-to-section" href="javascript:;">로그인하기</a>
+                                <ul>
+                                    <li><a href="loginForm?pageType=index"><b>일반 회원 로그인</b></a></li>
+                                    <li><a href="loginForm2"><b>판매자 로그인</b></a></li>                                 
+                                </ul>
                                 
-                            </c:when>
-                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
+                          <!--        <ul> -->
+                          <!--   <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li> -->
                             </c:otherwise>
                             
                             </c:choose>
-                            
+                                <!-- ******************************************************************************************* -->
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -144,6 +164,7 @@ https://templatemo.com/tm-571-hexashop
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="inner-content">
+					<input class="videoHidden" type="hidden" value="${url}">
 						<h2>레시피 정보</h2>
 						<span>식재료의 변신은 무궁무진! 맛있는 음식을 만들어보세요!</span>
 					</div>
@@ -154,14 +175,14 @@ https://templatemo.com/tm-571-hexashop
 	<!-- ***** Main Banner Area End ***** -->
 
 
-	<!-- ***** Product Area Starts ***** -->
+	<!-- ***** 레시피  Starts ***** -->
 	<section class="section" id="product">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="left-images">
 						<img
-							src="${pageContext.request.contextPath}/resources/images/${type}2.png"
+							src="${pageContext.request.contextPath}/resources/images/${type}2.PNG"
 							alt=""> <input type="hidden" id="type" value="${type}" />
 					</div>
 
@@ -174,6 +195,7 @@ https://templatemo.com/tm-571-hexashop
 						</c:if>
 
 						<ul class="stars">
+						<li>난이도</li>
 							<li><i class="fa fa-star"></i></li>
 							<li><i class="fa fa-star"></i></li>
 							<li><i class="fa fa-star"></i></li>
@@ -181,9 +203,10 @@ https://templatemo.com/tm-571-hexashop
 							<li><i class="fa fa-star"></i></li>
 						</ul>
 						<span>${detail}</span>
-						<div class="quote">
-							<i class="fa fa-quote-left"></i>
-							<p>${say}</p>
+						<div class="quote">		
+							<p>${say}</p>		
+							<p>레시피를 동영상으로도 준비해두었습니다</p>
+		 					<p><a class="video" href="#">자세히 보러 가기</a></p>
 						</div>
 
 					</div>
@@ -196,57 +219,68 @@ https://templatemo.com/tm-571-hexashop
 
 
 
-		<h4 class="recipeHeader">[오븐요리]제철고구마로 고구마칩 만들기</h4>
+		<h4 class="recipeHeader">${head}</h4>
 		
 		<hr />
 <!-- *********************************************************************** -->
-		<h4 class="recipe">1. 재료:고구마,감자,슈가파우더,허브솔트</h4>
-
+		<div class="recipes"><h2>재료</h2>
+		<div class="rowi">
+		<div class="left">
+		<h4>${jaryu}</h4>     
+		</div>
+		</div>
+		</div>
+		
+		<div class="recipes"><h2>부재료</h2>
+		<div class="rowi">
+		<div class="right">
+		<h4>${jaryu1}</h4>
+		</div>
+		</div>
+		</div>
+		
 		<img class="recipePicture" alt=""
 			src="${pageContext.request.contextPath}/resources/images/${type}3.PNG">
 
 		<hr />
 <!-- *********************************************************************** -->
-		<h4 class="recipe">2. 고구마는 껍질을 제거하지 말고 깨끗하게 씻어서 준비하고 감자는 껍질을 제거해서
-			준비합니다.</h4>
+		<div class="recipe"><h2>${mun1}</h2> </div>
 
 		<img class="recipePicture" alt=""
 			src="${pageContext.request.contextPath}/resources/images/${type}4.PNG">
 		<hr />
 <!-- *********************************************************************** -->
-		<h4 class="recipe">3.채칼말고 슬라이스 칼이라고 있어요 오늘은 요걸로 쉽게 만들어 볼께요.</h4>
+		<div class="recipe"><h2>${mun2}</h2></div>
 		<img class="recipePicture" alt=""
 			src="${pageContext.request.contextPath}/resources/images/${type}5.PNG">
 		<hr />
 		<!-- *********************************************************************** -->
-		<h4 class="recipe">4.슬라이스칼을 이용해서 감자를 슬라이스해줍니다.</h4>
+		<div class="recipe"><h2>${mun3}</h2> </div>
 		<img class="recipePicture" alt=""
 			src="${pageContext.request.contextPath}/resources/images/${type}6.PNG">
 		<hr />
 		<!-- *********************************************************************** -->
-		<h4 class="recipe">5.슬라이스칼로 썬 감자는 찬물에 10분정도 담구어서 전문을 빼줍니다.</h4>
+		<div class="recipe"><h2>${mun4}</h2> </div>
 		<img class="recipePicture" alt=""
 			src="${pageContext.request.contextPath}/resources/images/${type}7.PNG">
 		<hr />
 		<!-- *********************************************************************** -->
-		<h4 class="recipe">6.고구마도 슬라이스칼을 이용해서 슬라이스해줍니다.</h4>
+		<div class="recipe"><h2>${mun5}</h2> </div>
 		<img class="recipePicture" alt=""
 			src="${pageContext.request.contextPath}/resources/images/${type}8.PNG">
 		<hr />
 		<!-- *********************************************************************** -->
-		<h4 class="recipe">7.고구마도 찬물에 10분정도 담구어 전분을 빼주세요.</h4>
+		<div class="recipe"><h2>${mun6}</h2> </div>
 		<img class="recipePicture" alt=""
 			src="${pageContext.request.contextPath}/resources/images/${type}9.PNG">
 		<hr />
 		<!-- *********************************************************************** -->
-		<h4 class="recipe">8.찬물에 담구었던 감자와 고구마는 체에 걸러서 물기를 제거해주시고 남은 물기는
-			키친타올을 이용해서 남은 물기를 빼줍니다.</h4>
+		<div class="recipe"><h2>${mun7}</h2> </div>
 		<img class="recipePicture" alt=""
 			src="${pageContext.request.contextPath}/resources/images/${type}10.PNG">
 		<hr />
 		<!-- *********************************************************************** -->
-		<h4 class="recipe">9.슬라이스한 감자와 고구마를 오븐틀에 올린후 감자는 허브솔트를! 고구마는
-			슈가파우더를 뿌려줍니다.</h4>
+		<div class="recipe"><h2>${mun8}</h2> </div>
 		<img class="recipePicture" alt=""
 			src="${pageContext.request.contextPath}/resources/images/${type}11.PNG">
 		<img class="recipePicture" alt=""
@@ -256,28 +290,29 @@ https://templatemo.com/tm-571-hexashop
 		<hr />
 		<!-- *********************************************************************** -->
 
-		<h4 class="recipe">10.오븐에 넣고 200도 온도에서 15분정도 돌려줍니다. 15분후 다시뒤집어서
-			2-3분 돌려줍니다.</h4>
+		<div class="recipe"><h2>${mun9}</h2> </div>
 		<img class="recipePicture" alt=""
 			src="${pageContext.request.contextPath}/resources/images/${type}14.PNG">
 		<img class="recipePicture" alt=""
 			src="${pageContext.request.contextPath}/resources/images/${type}15.PNG">
 		<hr />
 		<!-- *********************************************************************** -->
-		<h4 class="recipe">11.오븐으로 바삭하게 구웠어요^^.</h4> 
+		<div class="recipe"><h2>${mun10}</h2>  </div>
 		<img class="recipePicture" alt=""
 			src="${pageContext.request.contextPath}/resources/images/${type}16.PNG">
 		<hr />
 	
 		<!-- *********************************************************************** -->
-		<h4 class="recipe">12.요렇게 해서 감자칩과 고구마칩이 완성이 되었어요^^</h4>
+		<div class="recipe"><h2>${mun11}</h2> </div>
 		
 		<img class="recipePictureFooter" src="${pageContext.request.contextPath}/resources/images/${type}17.PNG" alt="">
+
 	  <!-- *********************************************************************** -->
+	  
+	  
 	</section>
 
-
-	<!-- ***** Product Area Ends ***** -->
+	<!-- ***** 감자칩 레시피 Ends ***** -->
 
 	<!-- ***** Footer Start ***** -->
 	<footer>
@@ -433,6 +468,10 @@ https://templatemo.com/tm-571-hexashop
         	   <% } %>
            }); --%>
             
+           $('.video').click(function() {
+        	   
+        	   location.href = $('.videoHidden').val();
+           });
            
            
         });

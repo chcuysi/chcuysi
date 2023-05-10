@@ -53,7 +53,7 @@ https://templatemo.com/tm-571-hexashop
     
     
     <!-- ***** Header Area Start ***** -->
-   <header class="header-area header-sticky">
+  <header id="mainHeader" class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -79,44 +79,64 @@ https://templatemo.com/tm-571-hexashop
                             <li class="scroll-to-section"><a href="#kids">레시피</a></li>
                             
                             <li class="submenu">
-                                <a href="javascript:;">회사소개</a>
-                                <ul>
-                                    <li><a href="about.html"><b>우리 SAJO는</b></a></li>
-                                    <li><a href="products.html"><b>연혁</b></a></li>
-                                    <li><a href="single-product.html"><b>경영 방침/경영 철학</b></a></li>
-                                    <li><a href="contact.html"><b>오시는 길</b></a></li>
-                                </ul>
+                                <a href="company.do">회사소개</a>
+                               
                             </li>
                             <li class="submenu">
                                 <a href="javascript:;">고객센터</a>
                                 <ul>
-                                    <li><a href="#"><b>자주 묻는 질문</b></a></li>
+                                    <li><a href="http://192.168.0.79:8280/Administrator/getIokMenuList.do"><b>자주 묻는 질문</b></a></li>
                                     <li><a href="#"><b>Q/A</b></a></li>
                                     <li><a href="#"><b>공지사항</b></a></li>
                                 </ul>
                             </li>                         <!-- session.invalidate(); -->
                             
                             <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
-                            
+                            <!-- ******************************************************************************************* -->
                             <c:choose>
                             
-                            <c:when test="${sessionScope.logName ne null}">
+                            <c:when test='${sessionScope.logName ne null && sessionScope.logType eq "판매자"}'>
+                                     
                              <li class="submenu">
                                <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
                                  <ul>
                                     <li><a href="logOut"><b>로그아웃</b></a></li>
-                                    <li><a href="#"><b>회원정보수정</b></a></li>
-                                    <li><a href="#"><b>회원탈퇴</b></a></li>
-                                    <li><a href="#"><b>구매내역</b></a></li>
+                                    <li><a href="UpdateMember"><b>회원정보수정</b></a></li>
+                                    <li><a href="memberOut"><b>회원탈퇴</b></a></li>
+                                      <li><a href="insertProduct"><b>판매등록</b></a></li>
+                                         <li><a href="iokCheck"><b>판매등록 승인여부</b></a></li>
+                                       <li><a href="sellHistory"><b>판매내역</b></a></li>
                                 </ul>
                              </li>
+                             
+                                </c:when>
+                                <c:when test='${sessionScope.logName ne null && sessionScope.logType eq "일반"}'>
+                                 <li class="submenu">
+                               <a id="userLogin" href="javascript:;">${sessionScope.logName}</a>
+                                 <ul>
+                                    <li><a href="logOut"><b>로그아웃</b></a></li>
+                                    <li><a href="UpdateMember"><b>회원정보수정</b></a></li>
+                                    <li><a href="memberOut"><b>회원탈퇴</b></a></li>
+                                    <li><a href="buyHistory"><b>구매내역</b></a></li>                                   
+                                </ul>
+                             </li>
+                                </c:when>
+                             
+                        
+                         <c:otherwise>  
+                              <li class="submenu">
+                               <a id="scroll-to-section" href="javascript:;">로그인하기</a>
+                                <ul>
+                                    <li><a href="loginForm?pageType=index"><b>일반 회원 로그인</b></a></li>
+                                    <li><a href="loginForm2"><b>판매자 로그인</b></a></li>                                 
+                                </ul>
                                 
-                            </c:when>
-                            <c:otherwise>  <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
+                          <!--        <ul> -->
+                          <!--   <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li> -->
                             </c:otherwise>
                             
                             </c:choose>
-                            
+                                <!-- ******************************************************************************************* -->
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -150,26 +170,34 @@ https://templatemo.com/tm-571-hexashop
       <div class="subscribe">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
-                    <div class="section-heading">
+                <div id="loginform" class="col-lg-8">
+                    <div id="loginSectionHeader" class="section-heading">
                         <h2>로그인하여 더 많은 서비스를 이용해보세요.</h2>
                         <span>많은 고객님들이 아쉽게 버려질 위기에 처한 식재료들을 찾고 있습니다!</span>
                     </div>
-                    <form id="subscribe" action="login" method="get">
-                        <div class="row">
-                          <div class="col-lg-5">
+                    <form id="subscribe" action="loginCustomer" method="get">
+                    
+                        <div id="loginRow" class="row">
+                          <div id="loginInfo" class="col-lg-5">
                             <fieldset>
-                              <input name="id" type="text" id="id" placeholder="회원님의 ID를 입력해주세요" required>
+                           <h4 id="loginType"> 일반 회원 로그인 </h4>
+                          <input name="id" type="text" id="id" placeholder="회원님의 ID를 입력해주세요" required>
                             </fieldset>
-                          </div>
-                          <div class="col-lg-5">
+                      
+                          
                             <fieldset>
-                              <input name="password" type="text" id="password" pattern="^[0-9]*$" placeholder="회원님의 비밀번호를 입력해주세요" required>
+                          <input name="password" type="text" id="password" placeholder="회원님의 비밀번호를 입력해주세요" required>
                             </fieldset>
-                          </div>
-                          <div class="col-lg-2">
+                     
+                    
                             <fieldset>
-                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
+                              <button type="submit" id="form-submit" class="main-dark-button">로그인</button>
+                              <div class="loginMemberInsert">
+                              <a href="#">아직 계정이 없으신가요?</a>
+                              <button  id="form-submit2" class="main-dark-button">회원가입</button>
+                              </div>                                        
+                              
+                           
 
 									<c:if test="${checkLogin ne null}">
 										<input type="hidden" id="checkLogin" value="${checkLogin}">
@@ -191,6 +219,15 @@ https://templatemo.com/tm-571-hexashop
 										<input type="hidden" id="moType" value="${moType}">
 									</c:if>
 									
+									
+								
+									<!-- 로그인 성공 시 이전 화면으로 전환하기 위한 값들 ***************************************************** -->
+									
+									<!-- 이미 접속 시 중복 로그인 방지 처리 -->
+									<c:if test="${Duplicate ne null}">
+										<input type="hidden" id="Duplicate" value="${Duplicate}">
+									</c:if>
+									
 								</fieldset>
                           </div>
                         </div>
@@ -200,24 +237,9 @@ https://templatemo.com/tm-571-hexashop
             
        
                               
-                <div class="col-lg-4">
-                    <div class="row">
-                        <div class="col-6">
-                            <ul>
-                                <li>본사 위치:<br><span>서울특별시 강남구 테헤란로 123-123</span></li>
-                                <li>관리자 전화번호:<br><span>010-123-4567</span></li>
-                                <li>지점 위치:<br><span>서울특별시 가산동 123-123</span></li>
-                            </ul>
-                        </div>
-                        <div class="col-6">
-                            <ul>
-                                <li>근무 시간:<br><span>오전 07:30 - 오후 9:30</span></li>
-                                <li>관리자 이메일:<br><span>sajo@sajo.com</span></li>
-                                <li>소셜 미디어:<br><span><a href="#">Facebook</a>, <a href="#">Instagram</a>, <a href="#">Behance</a>, <a href="#">Linkedin</a></span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+              
+              
+              
             </div>
         </div>
     </div>
@@ -326,6 +348,12 @@ https://templatemo.com/tm-571-hexashop
 
         $(function() {
         	
+        
+        	if( $('#Duplicate').val() != null ) {
+        		alert('이미 접속중입니다');
+        	}
+        	
+     
             var selectedClass = "";
             $("p").click(function(){
             selectedClass = $(this).attr("data-rel");
@@ -348,13 +376,13 @@ https://templatemo.com/tm-571-hexashop
             	if( $('#moPageType').val() == "single-product" ) {
             		
             		switch( $('#moType').val()  ) {
-            		case "goSingProduct" : location.href= "go"; break;
-            		case "appleSingProduct" : location.href="apple"; break;
-            		case "baeSingProduct" : location.href="bae"; break;
-            		case "bananaSingProduct" : location.href="banana"; break;
-            		case "buSingProduct" : location.href="bu"; break;
-            		case "chamSingProduct" : location.href="cham"; break;
-            		case "poteSingProduct" : location.href="pote"; break;
+            		case "goSingProduct" : location.href= "detailView?imgName=go"; break;
+            		case "appleSingProduct" : location.href="detailView?imgName=apple"; break;
+            		case "baeSingProduct" : location.href="detailView?imgName=bae"; break;
+            		case "bananaSingProduct" : location.href="detailView?imgName=banana"; break;
+            		case "buSingProduct" : location.href="detailView?imgName=bu"; break;
+            		case "chamSingProduct" : location.href="detailView?imgName=cham"; break;
+            		case "poteSingProduct" : location.href="detailView?imgName=pote"; break;
             		
             		}
             	} /* 이전 페이지 타입이   개별 상품 화면일 경우 닫는 괄호 */
@@ -363,14 +391,40 @@ https://templatemo.com/tm-571-hexashop
             	if ( $('#moPageType').val() == "index" ) {		
                         location.href="sajo";
                 } /* 이전 페이지 타입이   메인 화면일 경우 닫는 괄호 */
+                
+                
+                /* 이전 페이지 타입이  전체상품 카테고리일 경우  */
+                
+                // 미구현
+            	if ( $('#moPageType').val() == "products" ) {	
+            		location.href="products";
+            	 }
+   
+            	if ( $('#moPageType').val() == "insertProduct" ) {	
+            		location.href="insertProduct";
+            	 }
             	
+            	
+            	/*??????????????????????????????????????????????????????????????????????????????????????????????????아   괄호 개씨발 진짜 씨발 좆같네 씨발  */
+            	/*     )  <- 이거 안붙여서 오류 */
+            	/* if ( $('#mopageType').val() == "logOutType=index" ) {
+            		location.href="sajo";
+            	} */
                 
             } /*  로그인 성공 시 괄호 */
             
             if ( $('#checkLogin').val() == "실패" )  {
             	alert('로그인에 실패하셨습니다.');
+            	
             	}
            
+            
+            $('#form-submit2').click(function(evt) {
+            	evt.preventDefault();
+            	location.href = "#";
+            });
+            
+            
            
         });
 
