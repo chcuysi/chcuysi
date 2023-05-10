@@ -35,27 +35,33 @@ $(function(){
 	    // 클릭한 tr의 td값을 저장, table_detailInfo의 tr의 td에 해당 값을 넣음
 		var clickedPid = $(this).find("td:first").text();
 		$("#table_detailInfo tbody tr:first td:eq(1)").text(clickedPid);
-		var clickedPname = $(this).find("td:eq(1)").text();
-		$("#table_detailInfo tbody tr:first td:eq(3)").text(clickedPname);
-		var clickedCategory = $(this).find("td:eq(2)").text();
-		$("#table_detailInfo tbody tr:eq(1) td:eq(1)").text(clickedCategory);
-		var clickedName = $(this).find("td:eq(3)").text();
-		$("#table_detailInfo tbody tr:eq(1) td:eq(3)").text(clickedName);
-		var clickedPrice = $(this).find("td:eq(4)").text();
-		$("#table_detailInfo tbody tr:eq(2) td:eq(1)").text(clickedPrice);
-		var clickedDate = $(this).find("td:eq(5)").text();
-		$("#table_detailInfo tbody tr:eq(2) td:eq(3)").text(clickedDate);
-		var clickedWarehoused = $(this).find("td:eq(6)").text();
-		$("#table_detailInfo tbody tr:eq(3) td:eq(1)").text(clickedWarehoused);
- 		var clickedIok = $(this).find("td:eq(7)").text();
- 		$("#table_detailInfo .select_detail_non_colored option").each(function() {
+
+		var clickedCategory = $(this).find("td:eq(1)").text();
+		$("#table_detailInfo tbody tr:first td:eq(3)").text(clickedCategory);
+		
+		var clickedName = $(this).find("td:eq(2)").text();
+		$("#table_detailInfo tbody tr:eq(1) td:eq(1)").text(clickedName);
+		
+		var clickedPrice = $(this).find("td:eq(3)").text();
+		$("#table_detailInfo tbody tr:eq(1) td:eq(3)").text(clickedPrice);
+		
+		var clickedWarehoused = $(this).find("td:eq(4)").text();
+		$("#table_detailInfo tbody tr:eq(2) td:eq(1)").text(clickedWarehoused);
+		
+ 		var clickedIok = $(this).find("td:eq(5)").text();
+ 		$("#table_detailInfo .select_detail_colored option").each(function() {
    			if ($(this).val() === clickedIok) {
       			$(this).prop("selected", true);
       			return false; // 일치하는 옵션을 찾았으므로 반복문을 종료합니다.
     		}
   		});
-  		var clickedIokwhy = $(this).find("td:eq(8)").text();
-		$("#table_detailInfo tbody tr:eq(4) td:eq(1) textarea").val(clickedIokwhy);
+  		
+  		var clickedIokwhy = $(this).find("td:eq(6)").text();
+		$("#table_detailInfo tbody tr:eq(3) td:eq(1) textarea").val(clickedIokwhy);
+		
+		var clickedInum = $(this).find("td:eq(7)").text();
+		$("#table_detailInfo tbody tr:first td:eq(5)").text(clickedInum);
+		
     });
     
     //취소버튼
@@ -65,19 +71,19 @@ $(function(){
     
     //수정버튼
 	$('button.btn_modify').on('click', function() {
-		var pid = $('#table_detailInfo tr:first-child td:nth-child(2)').text(); // 선택한 테이블의 pid 값을 가져옴
+		var inum = $('#table_detailInfo tr:first-child td:nth-child(6)').text(); // 선택한 테이블의 inum 값을 가져옴
 
-  		var iok = $('table#table_detailInfo').find('tr:eq(3) td:eq(3) select').val(); // 선택한 승인여부값 가져오기
-  		$("#table_iok tr[data-pid='" + pid + "'] td:eq(7)").text(iok); // 값 대입
-  		var iokwhy = $('table#table_detailInfo').find('tr:eq(4) td:eq(1) textarea').val(); // 선택한 승인거부사유값 가져오기
-  		$("#table_iok tr[data-pid='" + pid + "'] td:eq(8)").val(iokwhy); // 값 대입
+  		var iok = $('table#table_detailInfo').find('tr:eq(2) td:eq(3) select').val(); // 선택한 승인여부값 가져오기
+  		$("#table_iok tr[data-inum='" + inum + "'] td:eq(5)").text(iok); // 값 대입
+  		var iokwhy = $('table#table_detailInfo').find('tr:eq(3) td:eq(1) textarea').val(); // 선택한 승인거부사유값 가져오기
+  		$("#table_iok tr[data-inum='" + inum + "'] td:eq(6)").val(iokwhy); // 값 대입
   		
  
   		
   		$.ajax({
     		type: 'post',
-    		url: 'getIokMenuList.do/' + pid,
-    		data: { pid: pid, iok: iok, iokwhy: iokwhy},
+    		url: 'getIokMenuList.do/' + inum,
+    		data: { inum: inum, iok: iok, iokwhy: iokwhy},
 	  		success: function(result) {
 	  			location.reload();
       			$('form#detailInfo_iok').css('display', 'none');
@@ -432,6 +438,8 @@ $(function(){
       			return false; // 일치하는 옵션을 찾았으므로 반복문을 종료합니다.
     		}
   		});
+  		var clickedMoutwhy = $(this).find("td:eq(7)").text();
+		$("#table_detailMember tbody tr:eq(4) td:eq(1) textarea").val(clickedMoutwhy);
     });
     
     //취소버튼
@@ -440,7 +448,28 @@ $(function(){
     });
     
     //수정버튼
-    
+    $('button.btn_modify').on('click', function() {
+		var mnum = $('#table_detailMember tr:first-child td:nth-child(2)').text(); // 선택한 테이블의 mnum 값을 가져옴
+  		var mout = $('table#table_detailMember').find('tr:eq(3) td:eq(1) select').val(); // 선택한 일반회원탈퇴여부 가져오기
+  		$("#table_member tr[data-mnum='" + mnum + "'] td:eq(6)").text(mout); // 값 대입
+  		
+		var moutwhy = $('table#table_detailMember').find('tr:eq(4) td:eq(1) textarea').val(); // 선택한 탈퇴사유값 가져오기
+  		$("#table_member tr[data-mnum='" + mnum + "'] td:eq(7)").val(moutwhy); // 값 대입
+ 		
+  		$.ajax({
+    		type: 'post',
+    		url: 'getMemberMenuList.do/' + mnum,
+    		data: { mnum: mnum, mout: mout, moutwhy: moutwhy },
+	  		success: function(result) {
+	  			location.reload();
+      			$('form#detailInfo_member').css('display', 'none');
+    		},
+    		error: function(err) {
+      			alert('오류가 발생했습니다.');
+      			console.log(err);
+    		}
+  		});
+    });
     
     
      //************ 판매자회원****************
@@ -479,6 +508,8 @@ $(function(){
       			return false; // 일치하는 옵션을 찾았으므로 반복문을 종료합니다.
     		}
   		});
+  		var clickedPoutwhy = $(this).find("td:eq(7)").text();
+		$("#table_detailPsale tbody tr:eq(4) td:eq(1) textarea").val(clickedPoutwhy);
     });
     
     //취소버튼
@@ -487,5 +518,27 @@ $(function(){
     });
     
     //수정버튼
+    $('button.btn_modify').on('click', function() {
+		var pnum = $('#table_detailPsale tr:first-child td:nth-child(2)').text(); // 선택한 테이블의 pnum 값을 가져옴
+  		var pout = $('table#table_detailPsale').find('tr:eq(3) td:eq(1) select').val(); // 선택한 일반회원탈퇴여부 가져오기
+  		$("#table_psale tr[data-pnum='" + pnum + "'] td:eq(6)").text(pout); // 값 대입
+  		
+		var poutwhy = $('table#table_detailPsale').find('tr:eq(4) td:eq(1) textarea').val(); // 선택한 탈퇴사유값 가져오기
+  		$("#table_psale tr[data-pnum='" + pnum + "'] td:eq(7)").val(poutwhy); // 값 대입
+ 		
+  		$.ajax({
+    		type: 'post',
+    		url: 'getPsaleMenuList.do/' + pnum,
+    		data: { pnum: pnum, pout: pout, poutwhy: poutwhy },
+	  		success: function(result) {
+	  			location.reload();
+      			$('form#detailInfo_psale').css('display', 'none');
+    		},
+    		error: function(err) {
+      			alert('오류가 발생했습니다.');
+      			console.log(err);
+    		}
+  		});
+    });
 
 });

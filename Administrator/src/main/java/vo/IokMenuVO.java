@@ -3,30 +3,23 @@ package vo;
 public class IokMenuVO {
 	
     private String pid;
-    private String pname;
     private String category;
     private String category2;
     private String name;
     private String name2;
     private int price;
-    private String startdate;
-    private String enddate;
     private int warehoused;
     private String iok;
     private String iokwhy;
     private String products_number;
+    private long num;
+    private String inum;
     
 	public String getPid() {
 		return pid;
 	}
 	public void setPid(String pid) {
 		this.pid = pid;
-	}
-	public String getPname() {
-		return pname;
-	}
-	public void setPname(String pname) {
-		this.pname = pname;
 	}
 	public String getCategory() {
 		return category;
@@ -58,18 +51,6 @@ public class IokMenuVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getStartdate() {
-		return startdate;
-	}
-	public void setStartdate(String startdate) {
-		this.startdate = startdate;
-	}
-	public String getEnddate() {
-		return enddate;
-	}
-	public void setEnddate(String enddate) {
-		this.enddate = enddate;
-	}
 	public int getWarehoused() {
 		return warehoused;
 	}
@@ -95,7 +76,13 @@ public class IokMenuVO {
 		this.products_number = products_number;
 	}
 	
-
+	public String getInum() {
+		return inum;
+	}
+	public void setInum(String inum) {
+		this.inum = inum;
+	}
+	
     // getter, setter, 생성자 생략
 
     

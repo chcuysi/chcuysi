@@ -33,23 +33,21 @@ public class IokMenuController {	// 판매승인 컨트롤러
 	public void getIokMenuList(IokMenuVO ivo, Model m) {
 		HashMap map = new HashMap();
 		map.put("pid", ivo.getPid());
-		map.put("pname", ivo.getPname());
 		map.put("pcategory", ivo.getCategory());
 		map.put("pcategory2", ivo.getCategory2());
 		map.put("name", ivo.getName());
 		map.put("name2", ivo.getName2());
 		map.put("price", ivo.getPrice());
-		map.put("startdate", ivo.getStartdate());
-		map.put("enddate", ivo.getEnddate());
 		map.put("warehoused", ivo.getWarehoused());
 		map.put("iok", ivo.getIok());	 
 		map.put("iokwhy", ivo.getIokwhy());
+		map.put("inum", ivo.getInum());
 		
 		List<IokMenuVO> list = iokMenuService.getIokMenuList(map);
 		m.addAttribute("iokMenuList", list);
 	}
 	
-	@PostMapping("getIokMenuList.do/{pid}")
+	@PostMapping("getIokMenuList.do/{inum}")
 	@ResponseBody
 	public void updateIokMenu(@ModelAttribute("iokMenu") IokMenuVO ivo) {
 	    iokMenuService.updateIokMenu(ivo);

@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import vo.MemberMenuVO;
 import vo.PsaleMenuVO;
 
 
@@ -20,6 +21,8 @@ public class PsaleMenuDaoImpl implements PsaleMenuDao {
    public List<PsaleMenuVO> getPsaleMenuList(HashMap map) {
 	   return mybatis.selectList("PsaleMenuDao.getPsaleMenuList", map);
    }
-   
+   public void updatePsaleMenu(PsaleMenuVO psvo) {
+		mybatis.update("PsaleMenuDao.updatePsaleMenu", psvo);
+   }
 
 }

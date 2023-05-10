@@ -4,7 +4,7 @@
 <mapper namespace="CalculateMenuDao">
 
 	<select id="getCalculateMenuList" resultType="vo.CalculateMenuVO" parameterType="hashmap" >
-		select ps.pid pid, ps.pname pname, p.name name, p.name2 name2, (p.price*p.countsell) sell_total, (ps.pdcharge*p.countsell) dcharge, (p.price*p.countsell*0.15) AS ocharge, (p.price*p.countsell*0.85-ps.pdcharge*p.countsell) jungsanmoney, p.jungsan jungsan, p.jungsandate jungsandate
+		select ps.pid pid, p.name name, p.name2 name2, {p.price*(p.wearhoused-p.stock)} sell_total, (ps.pdcharge*p.countsell) dcharge, (p.price*(p.wearhoused-p.stock)*0.15) AS ocharge, (p.price*(p.wearhoused-p.stock)*0.85-ps.pdcharge*p.countsell) jungsanmoney, p.jungsan jungsan, p.jungsandate jungsandate, p.inum AS inum
     	FROM products p INNER JOIN psale ps 
     	ON p.pid = ps.pid
 	</select>  

@@ -19,5 +19,7 @@ public class MemberMenuServiceImpl implements MemberMenuService {
    public List<MemberMenuVO> getMemberMenuList(HashMap map) { 
         return memberMenuDao.getMemberMenuList(map); 
    } 
-   
+   public void updateMemberMenu(MemberMenuVO mvo) {
+		memberMenuDao.updateMemberMenu(mvo);
+	}
 }

@@ -4,7 +4,11 @@
 <mapper namespace="MemberMenuDao">
 
    <select id="getMemberMenuList" resultType="vo.MemberMenuVO" parameterType="hashmap" >
-      	select mnum, mid, maddr, mdaddr, mtel, memail, mdate, mout
+      	select mnum, mid, maddr, mdaddr, mtel, memail, mdate, mout, moutwhy
 		FROM member
    </select>  
+   	<update	id='updateMemberMenu' parameterType="vo.MemberMenuVO">
+		UPDATE member SET mout=#{mout}, moutwhy=#{moutwhy} WHERE mnum=#{mnum}
+	</update>
+   
 </mapper>

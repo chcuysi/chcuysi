@@ -2,7 +2,7 @@ package vo;
 
 public class MemberMenuVO {
 	
-    private int mnum;
+    private String mnum;
     private String mid;
     private String maddr;
     private String mdaddr;
@@ -10,11 +10,12 @@ public class MemberMenuVO {
     private String memail;
     private String mdate;
     private String mout;
+    private String moutwhy;
     
-	public int getMnum() {
+	public String getMnum() {
 		return mnum;
 	}
-	public void setMnum(int mnum) {
+	public void setMnum(String mnum) {
 		this.mnum = mnum;
 	}
 	public String getMid() {
@@ -60,6 +61,11 @@ public class MemberMenuVO {
 		this.mout = mout;
 	}
 
-    
+	public String getMoutwhy() {
+		return moutwhy;
+	}
+	public void setMoutwhy(String moutwhy) {
+		this.moutwhy = moutwhy;
+	}
     
 }

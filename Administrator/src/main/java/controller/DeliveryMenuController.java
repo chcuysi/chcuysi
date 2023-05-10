@@ -23,7 +23,7 @@ public class DeliveryMenuController {
 
     @RequestMapping("getDeliveryMenuList.do")
     public void getDeliveryMenuList(DeliveryMenuVO dvo, Model m) {
-        HashMap<String, Object> map = new HashMap<>();
+        HashMap map = new HashMap();
         map.put("dnum", dvo.getDnum());
         map.put("onum", dvo.getOnum());
         map.put("daddr", dvo.getDaddr());

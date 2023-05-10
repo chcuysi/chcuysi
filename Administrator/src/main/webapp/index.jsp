@@ -9,7 +9,7 @@
 
 		<h1>관리자화면</h1>
 		<hr>
-		<br> <a href="getIokMenuList.do">글 목록 바로가기</a>
+		<br> <a href="getMemberMenuList.do">글 목록 바로가기</a>
 
 </body>
 </html>

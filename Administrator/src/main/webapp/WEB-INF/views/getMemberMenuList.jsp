@@ -98,8 +98,9 @@
 		                       <td>${memberMenu.maddr} ${memberMenu.mdaddr}</td>		                       
 		                       <td>${memberMenu.mtel}</td>
 		                       <td>${memberMenu.memail}</td>
-		                       <td>${memberMenu.mdate}</td>
+		                       <td>${memberMenu.mdate.substring(0, 10)}</td>
 		                       <td>${memberMenu.mout}</td>
+		                       <td style="display: none;">${memberMenu.moutwhy}</td>
 		                   </tr>
 		              	 </c:forEach>
                 </tbody>

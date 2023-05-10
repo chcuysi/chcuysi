@@ -81,12 +81,10 @@
               <table id="table_iok" class="table table-striped table-bordered templatemo-user-table">
                 <thead>
                   <tr>
-                    <td><a href="" class="white-text templatemo-sort-by">판매자번호<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">판매자<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">판매자ID<span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">카테고리<span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">상품명<span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">판매가<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">판매기간<span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">입고수량<span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">승인여부<span class="caret"></span></a></td>
                   </tr>
@@ -95,14 +93,13 @@
                 	<c:forEach items="${iokMenuList}" var="iokMenu">
                   		<tr>
 		                    <td>${iokMenu.pid}</td>
-		                    <td>${iokMenu.pname}</td>
 		                    <td>${iokMenu.category} > ${iokMenu.category2}</td>
 		                    <td>${iokMenu.name} ${iokMenu.name2}</td>
 		                    <td>${iokMenu.price}원</td>
-		                    <td>${iokMenu.startdate.substring(0, 10)} ~ ${iokMenu.enddate.substring(0, 10)}</td>
 		                    <td>${iokMenu.warehoused}</td>
 		                    <td>${iokMenu.iok}</td>
 		                    <td style="display: none;">${iokMenu.iokwhy}</td>
+		                    <td style="display: none;">${iokMenu.inum}</td>		                    
                   		</tr>
                   	</c:forEach> 
                 </tbody>
@@ -138,32 +135,27 @@
 					<tr>
 						<td><a class="white-text templatemo-sort-by">판매자번호</a></td>
                     	<td></td>
-                    	<td><a class="white-text templatemo-sort-by">판매자</a></td>
-                    	<td></td>
-                  	</tr>
-                  	<tr>
                     	<td><a class="white-text templatemo-sort-by">카테고리</a></td>
                     	<td></td>
-                    	<td><a class="white-text templatemo-sort-by">상품명</a></td>
-                    	<td></td>
+                    	<td style="display: none;"><a class="white-text templatemo-sort-by">inum</a></td>
+                    	<td style="display: none;"></td>
                   	</tr>
                   	<tr>
-                    	<td><a class="white-text templatemo-sort-by">판매가</a></td>
+                    	<td><a class="white-text templatemo-sort-by">상품명</a></td>
                     	<td></td>
-                    	<td><a class="white-text templatemo-sort-by">판매기간</a></td>
+                    	<td><a class="white-text templatemo-sort-by">판매가</a></td>
                     	<td></td>
                   	</tr>
                   	<tr>
                     	<td><a class="white-text templatemo-sort-by">입고수량</a></td>
                     	<td></td>
                     	<td><a class="white-text templatemo-sort-by">승인여부</a></td>
-                    	<td style="position: relative;">             
-                  			<select class="select_detail_non_colored">
-                    			<option value="O">O</option>
-                    			<option value="X">X</option>   
-                    			<option value="-">-</option>                   
+                    	<td style="position: relative;">
+                    		<select class="select_detail_colored">
+                    			<option value="000">000</option>
+                    			<option value="111">111</option>   
 	                  		</select>
-                  		</td>
+                    	</td>
                   	</tr>
                   	<tr>
                     	<td style="vertical-align: middle;" height='200px'><a class="white-text templatemo-sort-by">승인거부사유</a></td>

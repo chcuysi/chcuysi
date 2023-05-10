@@ -10,4 +10,6 @@ import vo.MemberMenuVO;
 public interface MemberMenuDao {
    
    public List<MemberMenuVO> getMemberMenuList(HashMap map);
+   public void updateMemberMenu(MemberMenuVO mvo);
+   
 }

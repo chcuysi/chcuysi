@@ -20,6 +20,8 @@ public class MemberMenuDaoImpl implements MemberMenuDao {
    public List<MemberMenuVO> getMemberMenuList(HashMap map) {
 	   return mybatis.selectList("MemberMenuDao.getMemberMenuList", map);
    }
-   
+   public void updateMemberMenu(MemberMenuVO mvo) {
+		mybatis.update("MemberMenuDao.updateMemberMenu", mvo);
+	}
 
 }

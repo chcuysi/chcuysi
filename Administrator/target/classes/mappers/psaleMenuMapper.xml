@@ -4,7 +4,10 @@
 <mapper namespace="PsaleMenuDao">
 
    <select id="getPsaleMenuList" resultType="vo.PsaleMenuVO" parameterType="hashmap" >
-      	select pnum, pid, paddr, pdaddr, ptel, pemail, pdate, pout
+      	select pnum, pid, paddr, pdaddr, ptel, pemail, pdate, pout, poutwhy
 		FROM psale
    </select>  
+   	<update	id='updatePsaleMenu' parameterType="vo.PsaleMenuVO">
+		UPDATE psale SET pout=#{pout}, poutwhy=#{poutwhy} WHERE pnum=#{pnum}
+	</update>
 </mapper>

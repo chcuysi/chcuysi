@@ -10,6 +10,7 @@ public class PsaleMenuVO {
     private String pemail;
     private String pdate;
     private String pout;
+    private String poutwhy;
     
 	public int getPnum() {
 		return pnum;
@@ -58,6 +59,12 @@ public class PsaleMenuVO {
 	}
 	public void setPout(String pout) {
 		this.pout = pout;
+	}
+	public String getPoutwhy() {
+		return poutwhy;
+	}
+	public void setPoutwhy(String poutwhy) {
+		this.poutwhy = poutwhy;
 	}
     
     

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dao.PsaleMenuDaoImpl;
+import vo.MemberMenuVO;
 import vo.PsaleMenuVO;
 
 @Service("psaleMenuService")
@@ -19,5 +20,7 @@ public class PsaleMenuServiceImpl implements PsaleMenuService {
    public List<PsaleMenuVO> getPsaleMenuList(HashMap map) { 
         return psaleMenuDao.getPsaleMenuList(map); 
    } 
-   
+   public void updatePsaleMenu(PsaleMenuVO psvo) {
+		psaleMenuDao.updatePsaleMenu(psvo);
+	}
 }

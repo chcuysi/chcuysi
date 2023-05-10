@@ -12,6 +12,7 @@ public class CalculateMenuVO {
     private int jungsanmoney;
     private String jungsan;
     private String jungsandate;
+    private String inum;
     
 	public String getPid() {
 		return pid;
@@ -73,5 +74,12 @@ public class CalculateMenuVO {
 	public void setJungsandate(String jungsandate) {
 		this.jungsandate = jungsandate;
 	}
+	public String getInum() {
+		return inum;
+	}
+	public void setInum(String inum) {
+		this.inum = inum;
+	}
+	
     
 }

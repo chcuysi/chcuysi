@@ -35,6 +35,7 @@ public class CalculateMenuController {	// 판매승인 컨트롤러
 			map.put("jungsanmoney", cvo.getJungsanmoney());
 			map.put("jungsan", cvo.getJungsan());
 			map.put("jungsandate", cvo.getJungsandate());		
+			map.put("inum", cvo.getInum());
 			
 			List<CalculateMenuVO> list = calculateMenuService.getCalculateMenuList(map);
 			m.addAttribute("calculateMenuList", list);

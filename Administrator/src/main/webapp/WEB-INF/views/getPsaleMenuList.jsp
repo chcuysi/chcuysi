@@ -100,6 +100,7 @@
 		                       <td>${psaleMenu.pemail}</td>
 		                       <td>${psaleMenu.pdate}</td>
 		                       <td>${psaleMenu.pout}</td>
+		                       <td style="display: none;">${psaleMenu.poutwhy}</td>
 		                   </tr>
 		              	 </c:forEach>
                 </tbody>
