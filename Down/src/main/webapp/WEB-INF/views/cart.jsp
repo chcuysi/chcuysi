@@ -170,7 +170,7 @@ https://templatemo.com/tm-571-hexashop
     <!-- ***** Product Area Starts ***** -->
    <!--********************************************************************** 장바구니 세션**************************************************************************** -->
    
-   <c:forEach items="${products}" var="i">
+   <c:forEach items="${sessionScope.products}" var="i">
     <section class="section" id="product">
         <div class="container">
             <div class="row">
@@ -213,9 +213,9 @@ https://templatemo.com/tm-571-hexashop
                         </div>
                         <div class="right-content">
                             <div class="quantity buttons_added">
-                            
+                            <input class="iCount2" type="hidden" value="${i.iCount2}">
                              <input type="button" value="-" class="minus">
-                                <input type="number" step="1" min="1" max="" name="iCount2" value="${i.iCount}" title="Qty" class="input-text qty text" size="4" pattern="" inputmode="" readonly="readonly">
+                              <input type="number" step="1" min="1" max="${i.iCount2}" name="iCount2" value="${i.iCount}" title="Qty" class="input-text qty text" size="4" pattern="" inputmode="" readonly="readonly">
                             <input type="button" value="+" class="plus">
                             </div>
                         </div>
@@ -228,11 +228,9 @@ https://templatemo.com/tm-571-hexashop
             </div>
             </div>
         </div>
+           <hr/>
     </section>
-    
-    <hr/>
-    
-    
+
     </c:forEach>
     <!--********************************************************************** 장바구니 세션**************************************************************************** -->
     
@@ -364,14 +362,14 @@ https://templatemo.com/tm-571-hexashop
             
             
             
-            
+            /* ************************************************************************************************************************** */
             $('#buy').click(function(evt) {
             	evt.preventDefault();
 
             	window.open("http://localhost:8082/Down/buy","","width=500, height=500, left=700, top=200");
             	
             });
-            
+            /* ************************************************************************************************************************** */
            $('.deleteProduct').click(function(evt) {
         	   
         			evt.preventDefault();
@@ -396,9 +394,11 @@ https://templatemo.com/tm-571-hexashop
         		   
         		   $(this).parents('#product').hide();
            });
-           
+           /* ************************************************************************************************************************** */
            $('.plus').click(function() {
-        	   
+        	   if( $(this).prev().val() == $(this).prev().prev().prev().val()  ) {
+        		 
+           	} else {
         	  var param = { param : $(this).prev().val(), param2 : $(this).parents('.quantity-content').next().find('.deleteProduct').attr('id')  };
         	  
         	  $.ajax({
@@ -411,11 +411,14 @@ https://templatemo.com/tm-571-hexashop
 			        	              alert('err');
 			                                     }
                    });
-        	  
-           })
-           
+           	}
+           });
+               /* ************************************************************************************************************************** */
             $('.minus').click(function() {
         	   
+            	if( $(this).next().val() == '1' ) {
+            		
+            	} else {
         	  var param = { param : $(this).next().val(), param2 : $(this).parents('.quantity-content').next().find('.deleteProduct').attr('id')  };
         	  
         	  $.ajax({
@@ -428,11 +431,11 @@ https://templatemo.com/tm-571-hexashop
 			        	              alert('err');
 			                                     }
                    });
-        	  
-           })
+            	}
+           });
+           /* ************************************************************************************************************************** */ 	
             	
-            	
-           
+          
             
             
         });

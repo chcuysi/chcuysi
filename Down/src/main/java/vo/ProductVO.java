@@ -34,6 +34,7 @@ public class ProductVO {
 	private String pdate;
 	
 	
+	
     MultipartFile file;
 	
 	

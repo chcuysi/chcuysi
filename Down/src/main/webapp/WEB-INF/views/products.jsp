@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +88,17 @@ https://templatemo.com/tm-571-hexashop
                                 </ul>
                             </li>                         <!-- session.invalidate(); -->
                             
-                            <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
+                          <c:if test="${sessionScope.logType eq '일반'}">
+                            <c:choose> 
+                            <c:when test="${sessionScope.products ne null}">
+                            <c:set value="${sessionScope.products}" var="i"></c:set>
+                            <li class="scroll-to-section"><a href="cart2">장바구니 [ <b class="cartCount">${fn:length(i)}</b> ]</a></li>
+                            </c:when>
+                            <c:otherwise>
+                            <li class="scroll-to-section"><a href="cart2">장바구니 [ 0 ]</a></li>
+                            </c:otherwise>
+                            </c:choose>
+                            </c:if>
                             <!-- ******************************************************************************************* -->
                             <c:choose>
                             
@@ -454,43 +465,40 @@ https://templatemo.com/tm-571-hexashop
                 
             });
             
-            $('.cart').click(function() {
+            $('.cart').click(function(evt) {
             	
             	 <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "판매자" ) {      %>
-                 
             		if ( confirm('판매자는 이용할 수 없는 서비스입니다. 일반 계정으로 로그인 하시겠습니까?.')  ) {
-            		
             		 location.href="logOut?pageType=index";
-            		
             		}else { 
-            		
             			 location.href="#";
             		}
-            
             	<% } %>
-            	
-            	
-            	
+
             	 <% if(session.getAttribute("logName") == null ) { %> 
           	   if(confirm('장바구니에 담기 위해선 로그인이 필요합니다. 로그인 하시겠습니까?') )
           	   {
           		   location.href="loginForm?pageType=products&type="+$(this).find('#type').val();
           	   }else { location.href="#"; }
           	   <% } %>
-          	   
           	   <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "일반"  ) { %> 
-          	   if( confirm("상품을 장바구니에 담았습니다. 장바구니로 이동하시겠습니까?"))
-          	   {
-          		   location.href="cart?pageType=products&type="+$(this).find('#type').val();
-          		   
-          	   }else {
-          		   
-          		   if( confirm("이전 화면으로 돌아가시겠습니까?"))
-              	   {
-          			   location.href="sajo";
-              	   }
-          	   
-          	   }
+          	   evt.preventDefault();
+          	 var param = { param : $(this).find('#type').val() };
+      		 //ajax..
+      		  $.ajax({
+			         type : 'get',
+			         data : param,
+			         url  : 'cart',
+			      success : function(redata){
+			    	  var num = parseInt( $('.cartCount').text() );
+			    	  num += 1; 
+			    	  $('.cartCount').text( num );
+			      },
+			        error : function(err){
+			        	              alert('err');
+			                            }
+                });
+
           	   <% } %>
             	
             });
@@ -610,9 +618,9 @@ https://templatemo.com/tm-571-hexashop
               	   $('#Category3').css('display','none');
               	   $('#Category4').css('display','none');
                 } 	 
+          /* ************************************************************************************************************************** */
             
-            
-
+         
             
         });
 

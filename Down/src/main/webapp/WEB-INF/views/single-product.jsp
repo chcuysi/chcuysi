@@ -380,9 +380,24 @@ https://templatemo.com/tm-571-hexashop
         	   <% } %>
         	   
         	   <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "일반" ) { %> 
+        	   
+        	   var param = { param : $(this).find('#type').val() , param2 : $('input[type="number"]').val() };
+        		 //ajax..
+        		  $.ajax({
+  			         type : 'get',
+  			         data : param,
+  			         url  : 'cart',
+  			      success : function(redata){
+  			      },
+  			        error : function(err){
+  			        	              alert('err');
+  			                                     }
+                  });
+        		 
+        		 
         	   if( confirm("상품을 장바구니에 담으시겠습니까?"))
         	   {
-        		   location.href="cart?type="+$('#type').val()+"&Count="+$('input[type="number"]').val();
+        		  /*  location.href="cart?type="+$('#type').val()+"&Count="+$('input[type="number"]').val(); */
         		   
         	   }else {
         		   
