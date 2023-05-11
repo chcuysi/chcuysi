@@ -11,6 +11,6 @@ public interface ReviewService {
 
 	public List<ReviewVO> showReview();
 	
-
+	public void updateReview(ReviewVO vo);
 	
 }

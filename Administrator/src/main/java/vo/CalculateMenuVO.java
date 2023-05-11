@@ -2,29 +2,28 @@ package vo;
 
 public class CalculateMenuVO {
 	
-    private String pid;
-    private String pname;
-    private String name;
-    private String name2;
-    private int sell_total;
-    private int dcharge;
-    private int ocharge;
-    private int jungsanmoney;
-    private String jungsan;
-    private String jungsandate;
     private String inum;
-    
+    private String pid;
+	private String name;
+	private String name2;
+	private int sell_total;
+	private int delivery;
+	private int ocharge;
+	private int jungsanmoney;
+	private String jok;
+	private String jokdate;
+	
+	public String getInum() {
+		return inum;
+	}
+	public void setInum(String inum) {
+		this.inum = inum;
+	}
 	public String getPid() {
 		return pid;
 	}
 	public void setPid(String pid) {
 		this.pid = pid;
-	}
-	public String getPname() {
-		return pname;
-	}
-	public void setPname(String pname) {
-		this.pname = pname;
 	}
 	public String getName() {
 		return name;
@@ -44,11 +43,11 @@ public class CalculateMenuVO {
 	public void setSell_total(int sell_total) {
 		this.sell_total = sell_total;
 	}
-	public int getDcharge() {
-		return dcharge;
+	public int getDelivery() {
+		return delivery;
 	}
-	public void setDcharge(int dcharge) {
-		this.dcharge = dcharge;
+	public void setDelivery(int delivery) {
+		this.delivery = delivery;
 	}
 	public int getOcharge() {
 		return ocharge;
@@ -62,24 +61,19 @@ public class CalculateMenuVO {
 	public void setJungsanmoney(int jungsanmoney) {
 		this.jungsanmoney = jungsanmoney;
 	}
-	public String getJungsan() {
-		return jungsan;
+	public String getJok() {
+		return jok;
 	}
-	public void setJungsan(String jungsan) {
-		this.jungsan = jungsan;
+	public void setJok(String jok) {
+		this.jok = jok;
+	}	
+	public String getJokdate() {
+		return jokdate;
 	}
-	public String getJungsandate() {
-		return jungsandate;
+	public void setJokdate(String jokdate) {
+		this.jokdate = jokdate;
 	}
-	public void setJungsandate(String jungsandate) {
-		this.jungsandate = jungsandate;
-	}
-	public String getInum() {
-		return inum;
-	}
-	public void setInum(String inum) {
-		this.inum = inum;
-	}
+	
 	
     
 }

@@ -4,13 +4,15 @@
 <mapper namespace="CalculateMenuDao">
 
 	<select id="getCalculateMenuList" resultType="vo.CalculateMenuVO" parameterType="hashmap" >
-		select ps.pid pid, p.name name, p.name2 name2, {p.price*(p.wearhoused-p.stock)} sell_total, (ps.pdcharge*p.countsell) dcharge, (p.price*(p.wearhoused-p.stock)*0.15) AS ocharge, (p.price*(p.wearhoused-p.stock)*0.85-ps.pdcharge*p.countsell) jungsanmoney, p.jungsan jungsan, p.jungsandate jungsandate, p.inum AS inum
-    	FROM products p INNER JOIN psale ps 
-    	ON p.pid = ps.pid
+		SELECT p.inum AS inum, p.pid AS pid, p.name AS name, p.name2 AS name2, sum(p.price*o.icount) AS sell_total, 
+       		SUM(o.delivery) AS dcharge, sum(p.price*o.icount*0.30) AS ocharge, 
+       		SUM(o.icount*p.price*0.85 + o.delivery) AS jungsanmoney, o.jok AS jok, o.jokdate AS jokdate
+		FROM testproduct p  INNER JOIN order1 o ON p.inum = o.inum
+		GROUP BY p.inum, p.pid, p.name, p.name2, o.jok, o.jokdate
 	</select>  
 	
 	<update	id='updateCalculateMenu' parameterType="vo.CalculateMenuVO">
-		UPDATE products SET jungsan=#{jungsan}, jungsandate=#{jungsandate} WHERE pid=#{pid}
+		UPDATE order1 SET jok=#{jok}, jokdate=#{jokdate} WHERE inum=#{inum}
 	</update>
 	
 </mapper>

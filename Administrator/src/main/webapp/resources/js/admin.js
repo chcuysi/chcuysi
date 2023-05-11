@@ -114,59 +114,63 @@ $(function(){
         $('form#detailInfo_calculate').css('display', 'block');
 
 	    // 클릭한 tr의 td값을 저장, table_detailInfo의 tr의 td에 해당 값을 넣음
-		var clickedPid = $(this).find("td:first").text();
-		$("#table_detailCalculate tbody tr:first td:eq(1)").text(clickedPid);
-		var clickedPname = $(this).find("td:eq(1)").text();
-		$("#table_detailCalculate tbody tr:first td:eq(3)").text(clickedPname);
+		var clickedInum = $(this).find("td:first").text();
+		$("#table_detailCalculate tbody tr:first td:eq(1)").text(clickedInum);
+		var clickedPid = $(this).find("td:eq(1)").text();
+		$("#table_detailCalculate tbody tr:first td:eq(3)").text(clickedPid);
 		var clickedName = $(this).find("td:eq(2)").text();
 		$("#table_detailCalculate tbody tr:eq(1) td:eq(1)").text(clickedName);
-		var clickedPrice = $(this).find("td:eq(3)").text();
-		$("#table_detailCalculate tbody tr:eq(1) td:eq(3)").text(clickedPrice);
-		var clickedDprice = $(this).find("td:eq(4)").text();
-		$("#table_detailCalculate tbody tr:eq(2) td:eq(1)").text(clickedDprice);
-		var clickedCommission = $(this).find("td:eq(5)").text();
-		$("#table_detailCalculate tbody tr:eq(2) td:eq(3)").text(clickedCommission);
-		var clickedTotalCalculate = $(this).find("td:eq(6)").text();
-		$("#table_detailCalculate tbody tr:eq(3) td:eq(1)").text(clickedTotalCalculate);
-		var clickedCalculateok = $(this).find("td:eq(7)").text();
+		var clickedSell_total = $(this).find("td:eq(3)").text();
+		$("#table_detailCalculate tbody tr:eq(1) td:eq(3)").text(clickedSell_total);
+		var clickedDelivery = $(this).find("td:eq(4)").text();
+		$("#table_detailCalculate tbody tr:eq(2) td:eq(1)").text(clickedDelivery);
+		var clickedOcharge = $(this).find("td:eq(5)").text();
+		$("#table_detailCalculate tbody tr:eq(2) td:eq(3)").text(clickedOcharge);
+		var clickedJungsanmoney = $(this).find("td:eq(6)").text();
+		$("#table_detailCalculate tbody tr:eq(3) td:eq(1)").text(clickedJungsanmoney);
+		var clickedJok = $(this).find("td:eq(7)").text();
  		$("#table_detailCalculate .select_detail_non_colored option").each(function() {
-   			if ($(this).val() === clickedCalculateok) {
+   			if ($(this).val() === clickedJok) {
       			$(this).prop("selected", true);
       			return false; // 일치하는 옵션을 찾았으므로 반복문을 종료합니다.
     		}
   		});
-  		var clickedCalculateDate = $(this).find("td:eq(8)").text().slice(0, 10);
-  		$("#table_detailCalculate .select_date_colored").val(clickedCalculateDate);
+  		var clickedJokDate = $(this).find("td:eq(8)").text().slice(0, 10);
+  		$("#table_detailCalculate .select_date_colored").val(clickedJokDate);
     });
     
     //취소버튼
-    $('button.btn_cancel').click(function() {
+    $('button.btn_cancel_calculate').click(function() {
     	$('form#detailInfo_calculate').css('display', 'none');
     });
     
     //수정버튼
-    $('button.btn_modify').on('click', function() {
-		var pid = $('#table_detailCalculate tr:first-child td:nth-child(2)').text(); // 선택한 테이블의 pid 값을 가져옴
-  		var jungsan = $('table#table_detailCalculate').find('tr:eq(3) td:eq(3) select').val(); // 선택한 정산상태값 가져오기
-  		$("#table_calculate tr[data-pid='" + pid + "'] td:eq(7)").text(jungsan); // 값 대입
+    $('button.btn_modify_calculate').on('click', function() {
+		var inum = $('#table_detailCalculate tr:first-child td:nth-child(2)').text(); // 선택한 테이블의 inum 값을 가져옴
+  		var jok = $('table#table_detailCalculate').find('tr:eq(3) td:eq(3) select').val(); // 선택한 정산상태값 가져오기
+  		$("#table_calculate tr[data-inum='" + inum + "'] td:eq(7)").text(jok); // 값 대입
   		
-		var jungsandateInput = $('table#table_detailCalculate').find('tr:eq(4) td:eq(1) input');
-  		var jungsandate = jungsandateInput.val(); // 선택한 입금일값 가져오기
+		var jokdateInput = $('table#table_detailCalculate').find('tr:eq(4) td:eq(1) input');
+		var jokdate = String(jokdateInput.val());
 	  
 		  // Date 객체에서 YYYY-MM-DD 형식의 문자열로 변환
-		  if (jungsandateInput.attr('type') === 'date') {
-		    var dateObj = new Date(jungsandate);
+		/*
+		  var jokdate = jokdateInput.val(); // 선택한 입금일값 가져오기
+		
+		  if (jokdateInput.attr('type') === 'date') {
+		    var dateObj = new Date(jokdateInput);
 		    var year = dateObj.getFullYear();
 		    var month = String(dateObj.getMonth() + 1).padStart(2, '0');
 		    var day = String(dateObj.getDate()).padStart(2, '0');
-		    jungsandate = year + '-' + month + '-' + day;
-		  }
+		    jokdate = year + '-' + month + '-' + day;
+		  }*/
  		
   		$.ajax({
     		type: 'post',
-    		url: 'getCalculateMenuList.do/' + pid,
-    		data: { pid: pid, jungsan: jungsan, jungsandate: jungsandate },
-	  		success: function(result) {
+    		url: 'getCalculateMenuList.do/' + inum,
+    		data: { inum: inum, jok: jok, jokdate : jokdate },
+	  		success: function() {
+	  		alert('zz');
 	  			location.reload();
       			$('form#detailInfo_calculate').css('display', 'none');
     		},

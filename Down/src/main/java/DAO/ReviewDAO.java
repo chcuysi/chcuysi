@@ -11,4 +11,7 @@ public interface ReviewDAO {
 
 	public List<ReviewVO> showReview();
 
+	public void updateReview(ReviewVO vo);
+
+
 }

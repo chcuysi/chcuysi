@@ -115,214 +115,63 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-heading">
-                    
                    
                         <hr/>
                     
                     
                          <h1 id="CategoryHeader">${viewType}</h1>
                          <h5 id="CategorySub"></h5>
-                         
-                         
+  
                             <hr/>
                             
-                            
-                          <div id="Category">
-                          
-                          <div class="main-border-button cateborder">
-                            <a id="all" href="#">전체</a>
-                         </div>
-                         
-                        <div class="main-border-button cateborder">
-                            <a id="va" href="#">채소</a>
-                         </div>
-
-                         <div class="main-border-button cateborder">
-                              <a id="fl" href="#">과일</a>
-                         </div> 
-                    
-                         <div class="main-border-button cateborder">
-                            <a id="banana" href="#">미정</a>
-                         </div>   
-                         
+        
+                  
+                    </div> 
                     </div>
-                    <div class="container">
-            <div class="row"> 
+                </div>
+            </div>
+     
+
             <!-- ************************************************************* 리뷰 리스트 불러오기 ************************************************************************************ -->
-      <c:forEach items="${review}" var="r">
-                <div id="${r.category}" class="col-lg-4" name="${r.category2}">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                        
-                            </div>
-                         <c:choose>
-                         
-                          <c:when test="${r.frealfname ne null}">
-                            <img class="products"  width="350" height="368" src="${pageContext.request.contextPath}/resources/images/${r.frealfname}" alt="">
-                           </c:when>
-                           
-                           <c:otherwise>
-                            <img class="products"  width="350" height="368"  src="${pageContext.request.contextPath}/resources/images/${r.type2}.png" alt="">
-                       	   </c:otherwise>
-                      
-                           
-                           
-                           </c:choose>
-                        </div>
-                        <div class="down-content">
-                            <h4>${r.retitle}</h4>
-                            <span>${r.recontent}</span>            
-                        </div>
-                    </div>
-                </div>
-                
-            </c:forEach>
-                
-                <div class="col-lg-12">
-                    <div class="pagination">
-                        <ul>
-                            <li>
-                                <a href="#">1</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-                    <!-- *********************************************************************** -->
-                    <!-- <div id="Category2">
-                          
-                          <div class="main-border-button cateborder">
-                            <a id="allfl" href="#">과일전체</a>
-                         </div>
-                         
-                        <div class="main-border-button cateborder">
-                            <a id="appleBae" href="#">사과/배</a>
-                         </div>
-
-                         <div class="main-border-button cateborder">
-                              <a id="WaterCham" href="#">수박/참외</a>
-                         </div> 
-                    
-                         <div class="main-border-button cateborder">
-                            <a id="banana" href="#">미정</a>
-                         </div>   
-                         
-                    </div>
-                     ***********************************************************************
-                    <div id="Category3">
-                          
-                          <div class="main-border-button cateborder">
-                            <a id="allva" href="#">채소전체</a>
-                         </div>
-                         
-                        <div class="main-border-button cateborder">
-                            <a id="poteGo" href="#">감자/고구마</a>
-                         </div>
-
-                         <div class="main-border-button cateborder">
-                              <a id="Busut" href="#">새송이/버섯류</a>
-                         </div> 
-                    
-                         <div class="main-border-button cateborder">
-                            <a id="banana" href="#">당근/뿌리채소</a>
-                         </div>   
-                         
-                    </div>
-                     ***********************************************************************
-                    <div id="Category4">
-                          
-                          <div class="main-border-button cateborder">
-                            <a id="banana" href="#">미정</a>
-                         </div>
-                         
-                        <div class="main-border-button cateborder">
-                            <a id="banana" href="#">미정</a>
-                         </div>
-
-                         <div class="main-border-button cateborder">
-                              <a id="banana" href="#">미정</a>
-                         </div> 
-                    
-                         <div class="main-border-button cateborder">
-                            <a id="banana" href="#">미정</a>
-                         </div>   
-                         
-                    </div>  -->
-                    </div>
-                </div>
-            </div>
-      </div>
-      
-      
         <div class="container">
             <div class="row"> 
-            <!-- ************************************************************* 리뷰 리스트 불러오기 ************************************************************************************ -->
-      <c:forEach items="${review}" var="r">
-                <div id="${r.category}" class="col-lg-4" name="${r.category2}">
+      	 	<c:forEach items="${review}" var="i"> 
+                <div class="col-lg-4" >
                     <div class="item">
                         <div class="thumb">
-                            <div class="hover-content">
-                        
-                            </div>
+                            
                          <c:choose>
                          
-                          <c:when test="${r.frealfname ne null}">
-                            <img class="products"  width="350" height="368" src="${pageContext.request.contextPath}/resources/images/${r.frealfname}" alt="">
+                          <c:when test="${i.frealfname ne null}">
+                            <img class="review"  width="350" height="368" src="${pageContext.request.contextPath}/resources/images/${i.frealfname}" alt="">
                            </c:when>
                            
-                           <c:otherwise>
-                            <img class="products"  width="350" height="368"  src="${pageContext.request.contextPath}/resources/images/${r.type2}.png" alt="">
-                       </c:otherwise>
-                      
-                           
-                           
-                           </c:choose>
+                          <c:otherwise>
+                            <img class="review"  width="350" height="368"  src="${pageContext.request.contextPath}/resources/images/${i.type2}.png" alt="">
+                       </c:otherwise> 
+                           </c:choose>  
                         </div>
+                        
+                        
                         <div class="down-content">
-                            <h4>${r.retitle}</h4>
-                            <span>${r.recontent}</span>            
-                        </div>
+                        <input type="hidden" value="${i.renum}" id="renumber">
+                            <a href="#"><h4 id="form">${i.retitle}</h4></a>
+                            <span>${i.recontent}</span>
+                            <span>${i.redate}</span>
+                            
+                        </div>              
                     </div>
                 </div>
                 
             </c:forEach>
-                
-                <div class="col-lg-12">
-                    <div class="pagination">
-                        <ul>
-                            <li>
-                                <a href="#">1</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
+            <div class="left-contents">
+			 		<div class="main-border-button">
+                            <a href="reviewSave.do">리뷰 작성하러 가기</a>
+                            <a href="review.do">삭제</a>
+                        </div>
+                        
+                        </div>
         </div>
     </section>
     <!-- ***** Products Area Ends ***** -->
@@ -412,56 +261,41 @@
     <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
 	<script>
 	
-	  $(function() {
-		   var selectedClass = "";
-           $("p").click(function(){
-           selectedClass = $(this).attr("data-rel");
-           $("#portfolio").fadeTo(50, 0.1);
-               $("#portfolio div").not("."+selectedClass).fadeOut();
-           setTimeout(function() {
-             $("."+selectedClass).fadeIn();
-             $("#portfolio").fadeTo(50, 1);
-           }, 500);
-               
-           });
-		  
-
-		  
-	$('#all').click(function(event) {
-      	 event.preventDefault();
-          $('#채소').css('display','inline-block');
-      	$('#과일').css('display','inline-block');
-      	$('#CategoryHeader').text("상품 전체 목록");
-      	
-      })
-       
-       $('#va').click(function(event) {
-       	
-       	 event.preventDefault();
-           $('#채소').css('display','inline-block');
-       	$('#과일').css('display','none');
-       	$('#CategoryHeader').text("채소 목록");
-       })
-       
-       $('#fl').click(function(event) {
-       	
-       	 event.preventDefault();
-       
-       	
-       	$('#과일').css('display','inline-block');
-       	$('#채소').css('display','none');
-       	
-       	$('#CategoryHeader').text("과일 목록");     	
-
-       	 
-       	 })
-       	 
-
-       
-       
-
-       
-   });
+	
+		
+$(function() {
+	             var selectedClass = "";
+	            $("p").click(function(){
+	            selectedClass = $(this).attr("data-rel");
+	            $("#portfolio").fadeTo(50, 0.1);
+	                $("#portfolio div").not("."+selectedClass).fadeOut();
+	            setTimeout(function() {
+	              $("."+selectedClass).fadeIn();
+	              $("#portfolio").fadeTo(50, 1);
+	            }, 500);
+	                
+	            }); 
+		
+	$('#form').click(function(evt) {
+		alert('zz');
+	
+		location.href = "reviewModify.do?renum=" + $('#renumber').val() + "&mid=" + $('#mid').val();
+	
+	         });	
+	    });
+		 
+		 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 </script>
 </body>

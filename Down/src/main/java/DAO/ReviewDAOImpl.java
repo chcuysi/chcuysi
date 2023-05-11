@@ -26,5 +26,11 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return mybatis.selectList("ReviewDAO.showReview");
 	}
 
+	@Override
+	public void updateReview(ReviewVO vo) {
+		System.out.println("===> Mybatis updateReview() 호출");
+		mybatis.update("ReviewDAO.updateReview");
+	}
+
 
 }

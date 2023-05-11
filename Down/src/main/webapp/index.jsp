@@ -689,7 +689,7 @@ https://templatemo.com/tm-571-hexashop
                         <p>이 규격 외 농산물들은 맛도 영양도 다를 바 없지만, 크기가 조금 작거나 크거나 개성있다는 이유로 적절한 판로를 찾기가 어렵습니다.</p>
                         <p>판로를 찾지 못한 농산물의 상당 양은 폐기로 이어집니다. 농산물의 폐기는 온실가스를 배출해 환경을 오염시키고, 생산에 투입된 물과 비료, 노동력의 낭비로 직결돼 큰 사회적·경제적·환경적 손실입니다. 못난이 농산물을 헐값에 사들이는 관행을 깨고, 합리적인 가격으로 정산하여 건강한 생산과 남김없는 소비가 지속되도록 노력합시다.  <a rel="nofollow" href="https://paypal.me/templatemo" target="_blank">지금 바로 실천하기!</a></p>
                         <div class="main-border-button">
-                            <a href="review.do">미션 자세히 보기</a>
+                            <a href="products.html">미션 자세히 보기</a>
                         </div>
                     </div>
                 </div>
@@ -836,7 +836,7 @@ https://templatemo.com/tm-571-hexashop
                           </div>
                           <div class="col-lg-2">
                             <fieldset>
-                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
+                              <button type="submit" id="form-submit" class="main-dark-button" style="margin-top: 44px;margin-left: -633px;"><i class="fa fa-paper-plane"></i></button>
                             </fieldset>
                           </div>
                         </div>

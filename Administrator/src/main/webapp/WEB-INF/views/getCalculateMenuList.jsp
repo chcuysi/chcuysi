@@ -52,6 +52,7 @@
             <li><a href="getDeliveryMenuList.do"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
             <li><a href="salesProducts?pageType=index"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
             <li><a href="getMemberMenuList.do"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
+			<li><a href="http://192.168.0.79:8280/Down/index.jsp"><i class="fa fa-home fa-fw"></i>사용자화면</a></li>
           </ul>  
         </nav>
       </div>
@@ -81,29 +82,29 @@
               <table id="table_calculate" class="table table-striped table-bordered templatemo-user-table">
                 <thead>
                   <tr>
-                    <td><a href="" class="white-text templatemo-sort-by">판매자번호<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">판매자<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">판매물품번호<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">판매자ID<span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">상품명<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">상품판매금액<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">배송비<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">수수료<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">총판매금액<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">총배송비<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">총수수료<span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">총정산금액<span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">정산상태<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">입금일<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">정산일<span class="caret"></span></a></td>
                   </tr>
                 </thead>
                 <tbody>
                 	<c:forEach items="${calculateMenuList}" var="calculateMenu">
                   		<tr>
+		                    <td>${calculateMenu.inum}</td>
 		                    <td>${calculateMenu.pid}</td>
-		                    <td>${calculateMenu.pname}</td>
 		                    <td>${calculateMenu.name} ${calculateMenu.name2}</td>
 		                    <td>${calculateMenu.sell_total}원</td>
-		                    <td>${calculateMenu.dcharge}원</td>
+		                    <td>${calculateMenu.delivery}원</td>
 		                    <td>${calculateMenu.ocharge}원</td>
 		                    <td>${calculateMenu.jungsanmoney}원</td>
-		                    <td>${calculateMenu.jungsan}</td>
-							<td>${calculateMenu.jungsandate.substring(0, 10)}</td>
+		                    <td>${calculateMenu.jok}</td>
+							<td>${calculateMenu.jokdate.substring(0, 10)}</td>
                   		</tr>
                   	</c:forEach> 	
                 </tbody>
@@ -137,21 +138,21 @@
 			<table id="table_detailCalculate" class="table table-striped table-bordered cate_detail">
 				<tbody>
 					<tr>
-						<td><a class="white-text templatemo-sort-by">판매자번호</a></td>
+						<td><a class="white-text templatemo-sort-by">판매물품번호</a></td>
                     	<td></td>
-                    	<td><a class="white-text templatemo-sort-by">판매자</a></td>
+                    	<td><a class="white-text templatemo-sort-by">판매자ID</a></td>
                     	<td></td>
                   	</tr>
                   	<tr>
                     	<td><a class="white-text templatemo-sort-by">상품명</a></td>
                     	<td></td>
-                    	<td><a class="white-text templatemo-sort-by">상품판매금액</a></td>
+                    	<td><a class="white-text templatemo-sort-by">총판매금액</a></td>
                     	<td></td>
                   	</tr>
                   	<tr>
-                    	<td><a class="white-text templatemo-sort-by">배송비</a></td>
+                    	<td><a class="white-text templatemo-sort-by">총배송비</a></td>
                     	<td></td>
-                    	<td><a class="white-text templatemo-sort-by">수수료</a></td>
+                    	<td><a class="white-text templatemo-sort-by">총수수료</a></td>
                     	<td></td>
                   	</tr>
                   	<tr>
@@ -167,7 +168,7 @@
                   		</td>
                   	</tr>
                   	<tr>
-                    	<td style="vertical-align: middle;"><a class="white-text templatemo-sort-by">입금일</a></td>
+                    	<td style="vertical-align: middle;"><a class="white-text templatemo-sort-by">정산일</a></td>
                     	<td colspan='3'>
 							<input type='date' class="select_date_colored">
 						</td>
@@ -178,9 +179,9 @@
 	</div>
 	<div style="width:100px; text-align: center;margin:auto;display: flex;">
     	<!-- 상세정보창 내용 수정 -->
-        <button type="button" class="btn_modify">수정</button>
+        <button type="button" class="btn_modify_calculate">수정</button>
         <!-- 상세정보창 내용 수정사항 취소 -->
-	   	<button type="button" class="btn_cancel">취소</button>
+	   	<button type="button" class="btn_cancel_calculate">취소</button>
     </div>         
 </form>
         

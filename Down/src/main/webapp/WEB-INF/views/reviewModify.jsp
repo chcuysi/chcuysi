@@ -159,24 +159,21 @@ https://templatemo.com/tm-571-hexashop
 
 
     <!-- ***** Product Area Starts ***** -->
-
+ㄴㅇㄻㄴㄹㅇㄴㅇㄹ
       <div class="subscribe">
         <div class="container">
             <div class="row">
                 <div id="loginform" class="col-lg-8">
-                   
-                    <form id="reviewSave" action="reviewSave.do" method='post' enctype="multipart/form-data">
-                        <div class="row">
-                      
-                      
-                          
+                         
+                    <form id="reviewModify" action="reviewModify.do" method='post' enctype="multipart/form-data">
+                        <div class="row">    
                           <input type="hidden" name="mid" value="${sessionScope.logName}"/>
                 
                           <!-- zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz -->
                          
                           
                 		<div id="insertProduct-sectionHeading" class="section-heading">
-                        <h2>리뷰 상세 정보</h2>
+                        <h2>리뷰 수정</h2>
                         <span>리뷰 정보를 양식에 맞게 기입해주세요.</span>
                          </div> 
                     
@@ -231,7 +228,7 @@ https://templatemo.com/tm-571-hexashop
                         <span>상품 정보를 양식에 맞게 기입해주세요.</span>
                          </div> 
                    
-                          <label id="insertLabel3"><b>이미지 등록</b></label>
+                          <label id="insertLabel3"><b>이미지등록</b></label>
                          <input type="file" name="file" id="file">
                           
                           
@@ -371,9 +368,9 @@ https://templatemo.com/tm-571-hexashop
             });
  
             
-            $('#reviewSave').submit(function() {
+            $('#reviewModify').submit(function() {
             	
-            	alert('리뷰가 완료되었습니다.')
+            	alert('리뷰 수정이 완료되었습니다.')
             });
   
  

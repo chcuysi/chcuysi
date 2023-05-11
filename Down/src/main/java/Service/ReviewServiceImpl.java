@@ -26,5 +26,9 @@ public class ReviewServiceImpl implements ReviewService {
 		return ReviewDAO.showReview();  
 	}
 	
+	public void updateReview(ReviewVO vo) {
+		ReviewDAO.updateReview(vo);
+	}
+	
 	
 }

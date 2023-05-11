@@ -22,28 +22,30 @@ public class CalculateMenuController {	// 판매승인 컨트롤러
 	private CalculateMenuService calculateMenuService;
 
 		// 정산목록 찾기
-		@RequestMapping("getCalculateMenuList.do")
+		@RequestMapping("getCalculateMenuList.do") 
 		public void getCalculateMenuList(CalculateMenuVO cvo, Model m) {
 			HashMap map = new HashMap();
+			map.put("inum", cvo.getInum());
 			map.put("pid", cvo.getPid());
-			map.put("pname", cvo.getPname());
 			map.put("name", cvo.getName());
 			map.put("name2", cvo.getName2());
 			map.put("sell_total", cvo.getSell_total());
-			map.put("dcharge", cvo.getDcharge());
+			map.put("dcharge", cvo.getDelivery());
 			map.put("ocharge", cvo.getOcharge());
 			map.put("jungsanmoney", cvo.getJungsanmoney());
-			map.put("jungsan", cvo.getJungsan());
-			map.put("jungsandate", cvo.getJungsandate());		
-			map.put("inum", cvo.getInum());
+			map.put("jungsan", cvo.getJok());
+			map.put("jungsandate", cvo.getJokdate());		
 			
 			List<CalculateMenuVO> list = calculateMenuService.getCalculateMenuList(map);
 			m.addAttribute("calculateMenuList", list);
 		}
 		
-		@PostMapping("getCalculateMenuList.do/{pid}")
+		/* @ModelAttribute("calculateMenu") */
+		
 		@ResponseBody
-		public void updateCalculateMenu(@ModelAttribute("calculateMenu") CalculateMenuVO ivo) {
+		@PostMapping("getCalculateMenuList.do/{inum}")
+		public void updateCalculateMenu(CalculateMenuVO ivo) {
+		
 		    calculateMenuService.updateCalculateMenu(ivo);
 		}
 	
