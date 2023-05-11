@@ -2706,6 +2706,39 @@ display:inline;
     text-align: center;
 }
 
+.cartCount {color:red; font-size: 20px;}
+
+a#cartAlam {color:purple;
+ 	background: white;
+  	font-size: 12px;
+      margin-left: 110px;
+       margin-bottom: 20px;
+        border: solid 1px purple;
+        font-weight: 800;
+        padding: 4px 5px 4px;
+       position: absolute;
+       bottom: 30px;
+         }
+         
+         a#cartAlam2 {color:purple;
+ 	background: white;
+  	font-size: 12px;
+     
+       margin-bottom: 20px;
+        border: solid 1px purple;
+        font-weight: 800;
+        padding: 4px 5px 4px;
+       position: absolute;
+       bottom: 30px;
+      left:150px;
+        width: 230px;
+         }
+  
+         
+      .fast {
+      padding-left:5px;
+      color:red;
+      }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

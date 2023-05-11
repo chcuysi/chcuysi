@@ -48,7 +48,7 @@ select * from order1 where pid = #{pId} order by odate desc
 <insert id="insertProduct" parameterType="Product">
 INSERT INTO TESTPRODUCT 
 VALUES 
-(#{name},'Z',#{price},#{detail},#{say},#{type},#{category},#{category2},#{imgName},#{type2},'000',#{fsize},#{fname},#{frealfname},#{pid},#{iNum},#{delivery},#{iCount},sysdate)
+(#{name},'Z',#{price},#{detail},#{say},#{type},#{category},#{category2},#{imgName},#{type2},'000',#{fsize},#{fname},#{frealfname},#{pid},testproduct_seq.nextval,#{delivery},#{iCount},sysdate)
 </insert>
 
 

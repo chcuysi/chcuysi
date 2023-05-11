@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,8 +91,17 @@ https://templatemo.com/tm-571-hexashop
                                     <li><a href="#"><b>공지사항</b></a></li>
                                 </ul>
                             </li>                         <!-- session.invalidate(); -->
-                            
-                            <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
+                            <c:if test="${sessionScope.logType eq '일반'}">
+                            <c:choose> 
+                            <c:when test="${sessionScope.products ne null}">
+                            <c:set value="${sessionScope.products}" var="i"></c:set>
+                            <li class="scroll-to-section"><a href="cart2">장바구니 [ <b class="cartCount">${fn:length(i)}</b> ]</a></li>
+                            </c:when>
+                            <c:otherwise>
+                            <li class="scroll-to-section"><a href="cart2">장바구니 [ 0 ]</a></li>
+                            </c:otherwise>
+                            </c:choose>
+                            </c:if>
                             <!-- ******************************************************************************************* -->
                             <c:choose>
                             
@@ -346,6 +356,11 @@ https://templatemo.com/tm-571-hexashop
     <script>
 
         $(function() {
+        	
+        	if ( $('.iCount2').val() == "품절" ) {
+        		alert('죄송합니다. 해당 상품은 품절입니다.');
+        		history.back();
+        	}
   	
             var selectedClass = "";
             $("p").click(function(){
@@ -375,24 +390,24 @@ https://templatemo.com/tm-571-hexashop
         			evt.preventDefault();
         			
         		  var param = { param : $(this).attr('id') };
-        		  
-        		  
-        		  alert(param);
-        	
-        		  
         		   $.ajax({
   			         type : 'get',
   			         data : param,
   			         url  : 'delete',
   			      success : function(redata){
+  			    	  if( $('.cartCount').text() != '0') {
+  			    	 var num = parseInt( $('.cartCount').text() );
+			    	  num -= 1; 
+			    	  $('.cartCount').text( num );
+  			    	  }
   			      },
   			        error : function(err){
   			        	              alert('err');
   			                                     }
                       });
         		   
-        		   
         		   $(this).parents('#product').hide();
+        		  
            });
            /* ************************************************************************************************************************** */
            $('.plus').click(function() {

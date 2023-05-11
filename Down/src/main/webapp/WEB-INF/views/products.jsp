@@ -291,11 +291,13 @@ https://templatemo.com/tm-571-hexashop
                     <div class="item">
                         <div class="thumb">
                             <div class="hover-content">
+                              <a href="cart2" id="cartAlam" class="cartAlam">장바구니에 상품이 담겼어요! <b class="fast"> 바로가기</b></a>
                                 <ul>
                                     <li><a href="detailView?imgName=${i.imgName}">자세히 보기</a></li>
 
                                     <li><a class="cart" href="#"><input id="type" type="hidden" value="${i.type}"/>장바구니</a></li>
                                 </ul>
+                                
                             </div>
                          <c:choose>
                          
@@ -483,22 +485,30 @@ https://templatemo.com/tm-571-hexashop
           	   <% } %>
           	   <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "일반"  ) { %> 
           	   evt.preventDefault();
+          	   
+          	/* $(this).parents('.cartAlam').show(); */
+        	var In = $(this).parents('ul').prev();  /* .fadeIn("fast"); */
+            var Out = $(this).parents('ul').prev();  /* .fadeOut(5000); */
+          	
           	 var param = { param : $(this).find('#type').val() };
       		 //ajax..
-      		  $.ajax({
-			         type : 'get',
-			         data : param,
-			         url  : 'cart',
-			      success : function(redata){
-			    	  var num = parseInt( $('.cartCount').text() );
-			    	  num += 1; 
-			    	  $('.cartCount').text( num );
-			      },
-			        error : function(err){
-			        	              alert('err');
-			                            }
-                });
-
+      		 $.ajax({
+ 			         type : 'get',
+ 			         data : param,
+ 			         url  : 'cart',
+ 			      success : function(redata){
+ 			    	  if(redata == "ok") {
+ 			    	  var num = parseInt( $('.cartCount').text() );
+ 			    	  num += 1; 
+ 			    	  $('.cartCount').text( num );
+ 			    	  In.fadeIn("fast");
+ 			    	  Out.fadeOut(5000);
+ 			    	  } else alert("해당 상품은 품절입니다.");
+ 			      },
+ 			        error : function(err){
+ 			        	              alert('err');
+ 			                            }
+                 });
           	   <% } %>
             	
             });
@@ -620,7 +630,7 @@ https://templatemo.com/tm-571-hexashop
                 } 	 
           /* ************************************************************************************************************************** */
             
-         
+         $('.cartAlam').hide();
             
         });
 

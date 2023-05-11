@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  
   
     
@@ -79,7 +80,7 @@ https://templatemo.com/tm-571-hexashop
                             </li>
                             <li class="scroll-to-section"><a href="#kids">레시피</a></li>
                             
-                            <li class="scroll-to-section">
+                            <li class="submenu">
                                 <a href="company.do">회사소개</a>
                                
                             </li>
@@ -91,8 +92,17 @@ https://templatemo.com/tm-571-hexashop
                                     <li><a href="#"><b>공지사항</b></a></li>
                                 </ul>
                             </li>                         <!-- session.invalidate(); -->
-                            
-                            <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
+                            <c:if test="${sessionScope.logType eq '일반'}">
+                            <c:choose> 
+                            <c:when test="${sessionScope.products ne null}">
+                            <c:set value="${sessionScope.products}" var="i"></c:set>
+                            <li class="scroll-to-section"><a href="cart2">장바구니 [ <b class="cartCount">${fn:length(i)}</b> ]</a></li>
+                            </c:when>
+                            <c:otherwise>
+                            <li class="scroll-to-section"><a href="cart2">장바구니 [ 0 ]</a></li>
+                            </c:otherwise>
+                            </c:choose>
+                            </c:if>
                             <!-- ******************************************************************************************* -->
                             <c:choose>
                             
@@ -344,6 +354,7 @@ https://templatemo.com/tm-571-hexashop
                             <div class="item">
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
+                                  <a href="cart2" id="cartAlam" class="cartAlam">장바구니에 상품이 담겼어요! <b class="fast"> 바로가기</b></a>
                                         <ul>
                                             <li> <a href="detailView?imgName=apple"> 자세히 보기 </a> </li>
                                           
@@ -368,6 +379,7 @@ https://templatemo.com/tm-571-hexashop
                             <div class="item">
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
+                                     <a href="cart2" id="cartAlam" class="cartAlam">장바구니에 상품이 담겼어요! <b class="fast"> 바로가기</b></a>
                                         <ul>
                                              <li><a href="detailView?imgName=go">자세히 보기</a></li>
                                  
@@ -392,6 +404,7 @@ https://templatemo.com/tm-571-hexashop
                             <div class="item">
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
+                                     <a href="cart2" id="cartAlam" class="cartAlam">장바구니에 상품이 담겼어요! <b class="fast"> 바로가기</b></a>
                                         <ul>
                                               <li><a href="detailView?imgName=bu">자세히 보기</a></li>
                                 
@@ -416,6 +429,7 @@ https://templatemo.com/tm-571-hexashop
                             <div class="item">
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
+                                     <a href="cart2" id="cartAlam" class="cartAlam">장바구니에 상품이 담겼어요! <b class="fast"> 바로가기</b></a>
                                         <ul>
                                              <li><a href="detailView?imgName=pote">자세히 보기</a></li>
                                   
@@ -464,6 +478,7 @@ https://templatemo.com/tm-571-hexashop
                             <div class="item">
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
+                                     <a href="cart2" id="cartAlam" class="cartAlam">장바구니에 상품이 담겼어요! <b class="fast"> 바로가기</b></a>
                                         <ul>
                                     
                                              <li><a href="detailView?imgName=apple">자세히 보기</a></li>
@@ -488,6 +503,7 @@ https://templatemo.com/tm-571-hexashop
                             <div class="item">
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
+                                     <a href="cart2" id="cartAlam" class="cartAlam">장바구니에 상품이 담겼어요! <b class="fast"> 바로가기</b></a>
                                         <ul>
                                              <li><a href="detailView?imgName=bae">자세히 보기</a></li>
                                      
@@ -511,6 +527,7 @@ https://templatemo.com/tm-571-hexashop
                             <div class="item">
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
+                                     <a href="cart2" id="cartAlam" class="cartAlam">장바구니에 상품이 담겼어요! <b class="fast"> 바로가기</b></a>
                                         <ul>
                                              <li><a href="detailView?imgName=cham">자세히 보기</a></li>
                                    
@@ -534,6 +551,7 @@ https://templatemo.com/tm-571-hexashop
                             <div class="item">
                                 <div id="listView" class="thumb">
                                     <div class="hover-content">
+                                     <a href="cart2" id="cartAlam" class="cartAlam">장바구니에 상품이 담겼어요! <b class="fast"> 바로가기</b></a>
                                         <ul>
                                             <li><a href="detailView?imgName=banana">자세히 보기</a></li>
                                    
@@ -987,7 +1005,7 @@ https://templatemo.com/tm-571-hexashop
             });
             
             
-            $('.cart').click(function() {
+            $('.cart').click(function(evt) {
      
 
             	/*   세션은 자바단과  body 태그에서 인식 ,   스크립트단에선 인식 못함? */
@@ -1012,18 +1030,31 @@ https://templatemo.com/tm-571-hexashop
           	   <% } %>
           	   
           	   <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "일반" ) { %> 
-          	   if( confirm("상품을 장바구니에 담으시겠습니까?"))
-          	   {
-          		   location.href="cart?pageType=index&type="+$(this).find('#type').val();
-          		   
-          	   }else {
-          		   
-          		   if( confirm("이전 화면으로 돌아가시겠습니까?"))
-              	   {
-          			   location.href="sajo";
-              	   }
           	   
-          	   }
+          	 
+          	 evt.preventDefault();
+          	var In = $(this).parents('ul').prev();  /* .fadeIn("fast"); */
+            var Out = $(this).parents('ul').prev();  /* .fadeOut(5000); */
+           	
+           	 var param = { param : $(this).find('#type').val() };
+       		 //ajax..
+       		  $.ajax({
+ 			         type : 'get',
+ 			         data : param,
+ 			         url  : 'cart',
+ 			      success : function(redata){
+ 			    	  if(redata == "ok") {
+ 			    	  var num = parseInt( $('.cartCount').text() );
+ 			    	  num += 1; 
+ 			    	  $('.cartCount').text( num );
+ 			    	  In.fadeIn("fast");
+ 			    	  Out.fadeOut(5000);
+ 			    	  } else alert("해당 상품은 품절입니다.");
+ 			      },
+ 			        error : function(err){
+ 			        	              alert('err');
+ 			                            }
+                 });
           	   <% }    %> 
            	
      	
@@ -1037,7 +1068,7 @@ https://templatemo.com/tm-571-hexashop
             	}
             });
         	
-           
+            $('.cartAlam').hide(); 
         });
 
     </script>

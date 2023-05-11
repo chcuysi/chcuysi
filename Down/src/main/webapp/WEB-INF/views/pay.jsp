@@ -45,6 +45,7 @@
 </table>
 <hr/>
 <h4>총 결제금액 : <c:out value="${total-tax}"></c:out> 원</h4>
+<input class="total" type="hidden" value="<c:out value="${total-tax}"></c:out>">
 <hr/>
 <h2>결제정보</h2>
 <hr/>
@@ -64,11 +65,14 @@
  
  $('a').click(function(evt) {
 	 evt.preventDefault();
-	 location.href="testBuy"; 
-	 opener.location.href="sajo";
+	 location.href="testBuy?total="+$('.total').val(); 
+		 opener.location.href="AfterBuy";
 	 self.close();
  });
    
+ 
+
+ 
 
 </script>
 

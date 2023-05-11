@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     
  
     
@@ -91,8 +91,17 @@ https://templatemo.com/tm-571-hexashop
                                     <li><a href="#"><b>공지사항</b></a></li>
                                 </ul>
                             </li>                         <!-- session.invalidate(); -->
-                            
-                            <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
+                            <c:if test="${sessionScope.logType eq '일반'}">
+                            <c:choose> 
+                            <c:when test="${sessionScope.products ne null}">
+                            <c:set value="${sessionScope.products}" var="i"></c:set>
+                            <li class="scroll-to-section"><a href="cart2">장바구니 [ <b class="cartCount">${fn:length(i)}</b> ]</a></li>
+                            </c:when>
+                            <c:otherwise>
+                            <li class="scroll-to-section"><a href="cart2">장바구니 [ 0 ]</a></li>
+                            </c:otherwise>
+                            </c:choose>
+                            </c:if>
                             <!-- ******************************************************************************************* -->
                             <c:choose>
                             
@@ -227,6 +236,7 @@ https://templatemo.com/tm-571-hexashop
                     </div>
                     <div class="total">
                         <h4>총 금액: $210.00</h4>
+                     <a href="cart2" id="cartAlam2" class="cartAlam">장바구니에 상품이 담겼어요! <b class="fast"> 바로가기</b></a>
                         <div class="main-border-button"><a href="#">장바구니에 담기</a></div>
                     </div>
                 </div>
@@ -350,7 +360,7 @@ https://templatemo.com/tm-571-hexashop
             });
             
             
-           $('.main-border-button').click(function() {
+           $('.main-border-button').click(function(evt) {
         	   
         	   if ( $('.iCount').val() == 0 ) {
         		   
@@ -380,14 +390,23 @@ https://templatemo.com/tm-571-hexashop
         	   <% } %>
         	   
         	   <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "일반" ) { %> 
-        	   
-        	   var param = { param : $(this).find('#type').val() , param2 : $('input[type="number"]').val() };
+        	     evt.preventDefault();
+          	   
+             	/* $(this).parents('.cartAlam').show(); */
+             	$('#cartAlam2').fadeIn("fast");
+             	$('#cartAlam2').fadeOut(5000);
+             	
+        	   var param = { param : $('#type').val() , param2 : $('input[type="number"]').val() };
         		 //ajax..
         		  $.ajax({
   			         type : 'get',
   			         data : param,
-  			         url  : 'cart',
+  			         url  : 'detailViewCart',
   			      success : function(redata){
+  			    	  var num = parseInt( $('.cartCount').text() );
+			    	  num += 1; 
+			    	  $('.cartCount').text( num );
+			    	  
   			      },
   			        error : function(err){
   			        	              alert('err');
@@ -395,24 +414,13 @@ https://templatemo.com/tm-571-hexashop
                   });
         		 
         		 
-        	   if( confirm("상품을 장바구니에 담으시겠습니까?"))
-        	   {
-        		  /*  location.href="cart?type="+$('#type').val()+"&Count="+$('input[type="number"]').val(); */
-        		   
-        	   }else {
-        		   
-        		   if( confirm("이전 화면으로 돌아가시겠습니까?"))
-            	   {
-        			   location.href="sajo";
-            	   }
         	   
-        	   }
         	   <% } %>
         	   }
            });
            
           
-           
+           $('#cartAlam2').hide();
            
         });
 

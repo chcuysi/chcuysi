@@ -32,8 +32,8 @@ public String cart2() {
 	return "cart";
 }
 
-
-    @ResponseBody
+               //  바로  장바구니 버튼  클릭 시
+     @ResponseBody
 	@RequestMapping(value="/cart")
 	public String cart(@RequestParam("param") String param, HttpSession session,HttpServletRequest HttpServletRequest) {
 
@@ -41,10 +41,39 @@ public String cart2() {
 		System.out.println("카트 함수 실행");
 		
 		String type = param;
-		
+		 ProductVO vo = (ProductVO)service.getProduct(type);
+     if(vo.getiCount() > 0) 
+     {
 		int Count = 1;
 		if( HttpServletRequest.getParameter("Count") != null ) {
 		 Count = (Integer.parseInt(HttpServletRequest.getParameter("Count")));
+		}
+		
+		
+			List<ProductVO> list = (ArrayList<ProductVO>) session.getAttribute("products");
+   
+     String Count2 = String.valueOf(vo.getiCount());
+        vo.setiCount2(Count2);
+   
+		vo.setiCount(Count);
+		// 수량 vo에 추가해서 리스트에 넣기
+		list.add(vo);
+
+		session.setAttribute("products", list);
+		return "ok";
+     } 
+		return "";
+	}
+    //           자세히 보기 - 장바구니 버튼 클릭 시
+    @ResponseBody
+	@RequestMapping(value="/detailViewCart")
+	public String cart(@RequestParam("param") String param,@RequestParam("param2") String param2, HttpSession session,HttpServletRequest HttpServletRequest) {
+
+		String type = param;
+		
+		int Count = 1;
+		if( param2 != null ) {
+		 Count = (Integer.parseInt(param2));
 		}
 		
 		
@@ -61,6 +90,7 @@ public String cart2() {
 
 		return "";
 	}
+    
 	
 	@RequestMapping("/sellHistory")
 	public String sellHistory(Model m, HttpSession session) {
@@ -107,14 +137,17 @@ public String cart2() {
 	}
 	
 	@RequestMapping("/testBuy")
-	public String testBuy(HttpSession session) {
+	public String testBuy(HttpSession session, String total) {
+	
+		System.out.println(total + "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
 		List<ProductVO> list = (List<ProductVO>)session.getAttribute("products");
 		String logName = (String) session.getAttribute("logName");
 		service.insertOrder(list,logName);
    service.updateProductCount(list);
 		
-	
+	List<ProductVO> list2 = new ArrayList<ProductVO>();
 		session.removeAttribute("products");
+		session.setAttribute("products",list2);
 		
 		
 		return "";
@@ -135,6 +168,11 @@ public String cart2() {
 		return "buyHistory";
 	}
 	
+	@RequestMapping("AfterBuy")
+	public String AfterBuy() {
+		return "AfterBuy";
+	}
+	
 @RequestMapping("/insertProduct")
 public String insertProduct(Model apple, HttpSession session) {
 	/*
@@ -148,7 +186,7 @@ public String insertProduct(Model apple, HttpSession session) {
 
 	@RequestMapping("/sajo")
 	public String index(Model apple, HttpSession session) {
-
+         
 		System.out.println("메인 화면 전환 성공");
 		return "index";
 	}

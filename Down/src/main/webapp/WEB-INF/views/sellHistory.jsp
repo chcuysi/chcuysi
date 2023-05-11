@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     
  
     
@@ -90,8 +90,17 @@ https://templatemo.com/tm-571-hexashop
                                     <li><a href="#"><b>공지사항</b></a></li>
                                 </ul>
                             </li>                         <!-- session.invalidate(); -->
-                            
-                            <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
+                            <c:if test="${sessionScope.logType eq '일반'}">
+                            <c:choose> 
+                            <c:when test="${sessionScope.products ne null}">
+                            <c:set value="${sessionScope.products}" var="i"></c:set>
+                            <li class="scroll-to-section"><a href="cart2">장바구니 [ <b class="cartCount">${fn:length(i)}</b> ]</a></li>
+                            </c:when>
+                            <c:otherwise>
+                            <li class="scroll-to-section"><a href="cart2">장바구니 [ 0 ]</a></li>
+                            </c:otherwise>
+                            </c:choose>
+                            </c:if>
                             <!-- ******************************************************************************************* -->
                             <c:choose>
                             
