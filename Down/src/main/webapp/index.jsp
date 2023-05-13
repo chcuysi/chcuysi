@@ -56,13 +56,14 @@ https://templatemo.com/tm-571-hexashop
     
     <!-- ***** Header Area Start ***** -->
    <header id="mainHeader" class="header-area header-sticky">
+ 
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="sajo" class="logo">
-                            <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png">
+                          <a href="sajo" class="logo">
+                            <img src="${pageContext.request.contextPath}/resources/images/logo.png">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->

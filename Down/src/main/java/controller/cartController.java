@@ -39,10 +39,12 @@ public String cart2() {
 
 	
 		System.out.println("카트 함수 실행");
+		System.out.println(param);
 		
 		String type = param;
 		 ProductVO vo = (ProductVO)service.getProduct(type);
-     if(vo.getiCount() > 0) 
+		 System.out.println(vo.getDelivery());
+     if( vo.getiCount() > 0) 
      {
 		int Count = 1;
 		if( HttpServletRequest.getParameter("Count") != null ) {
@@ -54,15 +56,22 @@ public String cart2() {
    
      String Count2 = String.valueOf(vo.getiCount());
         vo.setiCount2(Count2);
-   
 		vo.setiCount(Count);
+		
+		System.out.println(vo.getiCount() * vo.getPrice());
+		if( vo.getiCount() * vo.getPrice()  > 50000 ) {
+	
+		vo.setDelivery("0");
+		}
+		
 		// 수량 vo에 추가해서 리스트에 넣기
 		list.add(vo);
 
 		session.setAttribute("products", list);
 		return "ok";
-     } 
+     } else
 		return "";
+		
 	}
     //           자세히 보기 - 장바구니 버튼 클릭 시
     @ResponseBody
@@ -226,6 +235,9 @@ public String insertProduct(Model apple, HttpSession session) {
 				  vo.setiCount(param+1);
 				  list.add(vo);
 				  list.remove(i);
+				  if(vo.getiCount() * vo.getPrice() >= 50000) {         //  구매 금액에 대한 배송비 이벤트 설정
+					  vo.setDelivery("0");
+				  }
 				  session.setAttribute("products", list);
 			  }
 		  }
@@ -236,12 +248,18 @@ public String insertProduct(Model apple, HttpSession session) {
 	  @RequestMapping("/minusCount") 
 	  public String minusCount(@RequestParam("param") Integer param,@RequestParam("param2") String param2, HttpSession session) {
 		  List<ProductVO> list = (List<ProductVO>) session.getAttribute("products");
+	
+		 
 		  for(int i=0; i<list.size(); i++) {
 			  ProductVO vo = list.get(i);
+			  ProductVO vo2 =  service.getProduct(vo.getType());
 			  if(vo.getiNum().equals(param2)) {
 				  vo.setiCount(param-1);
 				  list.add(vo);
 				  list.remove(i);
+				  if(vo.getiCount() * vo.getPrice() < 50000) {            //  구매 금액에 대한 배송비 이벤트 설정
+					  vo.setDelivery( vo2.getDelivery() );
+				  }
 				  session.setAttribute("products", list);
 			  }
 		  }

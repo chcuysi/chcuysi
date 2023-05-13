@@ -48,7 +48,48 @@ select * from order1 where pid = #{pId} order by odate desc
 <insert id="insertProduct" parameterType="Product">
 INSERT INTO TESTPRODUCT 
 VALUES 
-(#{name},'Z',#{price},#{detail},#{say},#{type},#{category},#{category2},#{imgName},#{type2},'000',#{fsize},#{fname},#{frealfname},#{pid},testproduct_seq.nextval,#{delivery},#{iCount},sysdate)
+(#{name},
+'Z',
+#{price},
+#{detail},
+#{say},
+#{type},
+#{category},
+#{category2},
+#{imgName},
+#{type2},
+'000',
+#{fsize},
+#{fname},
+#{frealfname},
+#{pid},
+testproduct_seq.nextval,
+#{delivery},
+#{iCount},
+sysdate,
+#{iCount},
+'',
+#{head},
+#{content},
+#{contentHead},
+#{delivery_Detail_head},
+#{delivery_content},
+#{save},
+#{fsize1},
+#{fname1},
+#{frealfname1}
+<if test="head2 != null">
+,#{fsize2},
+#{fname2},
+#{frealfname2},
+#{head2},
+#{content2},
+#{contentHead2},
+#{fsize3},
+#{fname3},
+#{frealfname3}
+</if>
+)
 </insert>
 
 

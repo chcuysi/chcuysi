@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-    
+ 
  
     
 <!DOCTYPE html>
@@ -189,7 +189,7 @@ https://templatemo.com/tm-571-hexashop
                     </c:when>
                    <c:otherwise>
                     <img   width="730" height="378" src="${pageContext.request.contextPath}/resources/images/${frealfname}" alt="">
-                    <input type="hidden" id="type" value="${type}"/>
+                        <input type="hidden" id="type" value="${type}"/>
                    </c:otherwise>
                    
                    </c:choose>
@@ -243,7 +243,139 @@ https://templatemo.com/tm-571-hexashop
             </div>
             </div>
         </div>
+        
+        <hr/>
+        	<h4 id="recipe">제품 상세 정보 </h4>
+        	
+        	
+       
+		<div class="section-heading2">
+                        <h2>상품 설명</h2>
+                    </div>
+			<!-- 상품 1번 상세 설명 시작 ***************************************************************************************************** -->
+		<!-- 사진 위 헤더 ********************************************************************************** -->
+		<div class="mainHeader">${vo.head}</div>
+		
+		<!--  사진 시작 *********************************************************************** -->
+         <c:choose>
+                   <c:when test="${frealfname eq null}">
+                    <div><img class="detailImage" src="${pageContext.request.contextPath}/resources/images/${type}Detail.PNG" alt=""></div>
+                  
+                    </c:when>
+
+                   <c:otherwise>
+                    <img class="detailImage"  src="${pageContext.request.contextPath}/resources/images/${vo.frealfname1}" alt="">
+             
+                   </c:otherwise>
+                   
+        </c:choose>
+        <!--  사진 끝 *********************************************************************** -->
+         <!-- 내용 ********************************************************************************************* -->
+        <c:forTokens items="${contentHead}" var="head" delims="/">
+       <div class="contentHeader"> <p><c:out value="${head}"/></p></div>
+       </c:forTokens>
+       
+       <br/>
+       
+          <div class="content">        
+<c:forTokens  var="name" items="${content}" delims="/" >
+    <p><c:out value="${name}"/></p><br/>
+</c:forTokens> </div>
+   <!-- 내용 끝 ********************************************************************************************* -->
+<!--  1번 상세 설명 끝 **************************************************************************************************************************************** -->
+	<!-- 상품 2번 상세 설명 시작 ***************************************************************************************************** -->
+<c:if test="${vo.head2 ne null}">
+	<!-- 사진 위 헤더 ********************************************************************************** -->
+		<div class="mainHeader">${vo.head2}</div>
+		
+		<!--  사진 시작 *********************************************************************** -->
+         <c:choose>
+                   <c:when test="${vo.frealfname2 eq null}">
+                    <div><img class="detailImage" src="${pageContext.request.contextPath}/resources/images/${type}Detail.PNG" alt=""></div>
+                   
+                    </c:when>
+
+                   <c:otherwise>
+                    <img class="detailImage"  src="${pageContext.request.contextPath}/resources/images/${vo.frealfname2}" alt="">
+             
+                   </c:otherwise>
+                   
+        </c:choose>
+        <!--  사진 끝 *********************************************************************** -->
+         <!-- 내용 ********************************************************************************************* -->
+        <c:forTokens items="${vo.contentHead2}" var="head" delims="/">
+       <div class="contentHeader"> <p><c:out value="${head}"/></p></div>
+       </c:forTokens>
+       
+       <br/>
+       
+          <div class="content">        
+<c:forTokens  var="name" items="${vo.content2}" delims="/" >
+    <p><c:out value="${name}"/></p><br/>
+</c:forTokens> </div>
+   <!-- 내용 끝 ********************************************************************************************* -->
+</c:if>
+<!--  2번 상세 설명 끝 **************************************************************************************************************************************** -->
+
+<!-- 상품 상세 설명 부분 끝 ***************************************************************************************************** -->
+  
+  
+        <div class="section-heading2">
+                        <h2>배송 안내</h2>
+                    </div>
+                   <c:choose>
+                   <c:when test="${vo.frealfname3 eq null}">
+                    <img class="detailImage" src="${pageContext.request.contextPath}/resources/images/${type}DetailDelivery.PNG" alt="">
+            
+                      <img class="detailImage" src="${pageContext.request.contextPath}/resources/images/${type}detail4.PNG" alt="">
+                    </c:when>
+                    
+                   <c:otherwise>
+                    <img class="detailImage"  src="${pageContext.request.contextPath}/resources/images/${vo.frealfname3}" alt="">
+               
+                   </c:otherwise>   
+                   </c:choose>
+                   
+                    <c:forTokens items="${vo.delivery_Detail_head}" var="head" delims="/"> 
+            <div class="delevery-Detail-Head"><p><c:out value="${head}"/></p></div>
+                     </c:forTokens> 
+       
+         <br/>
+       
+          <div class="content">        
+<c:forTokens  var="name" items="${vo.delivery_content}" delims="/" >
+    <p><c:out value="${name}"/></p>
+</c:forTokens> </div>
+
+
+        <div class="section-heading2">
+                        <h2>주문 전 꼭 읽어주세요!</h2>
+                    </div>
+         
+                     <c:forTokens items="${vo.save}" var="head"  delims="/"> 
+            <div class="delevery-Detail-Head"><p><c:out value="${head}"/></p></div>
+                     </c:forTokens> 
+       
+
+                    <div class="section-heading2">
+                        <h2>환불 문의</h2>
+                    </div>
+                    
+                     <img class="detailImage" alt="" src="${pageContext.request.contextPath}/resources/images/NOTICE.PNG">
     </section>
+    
+    <hr/>
+   <div class="section-heading2">
+                        <h2>상품 설명 접기</h2>
+                    </div>
+                    
+                    <div class="section-heading3">
+                        <h2>해당 상품 외 싱싱한 식재료들이 많이 있어요.
+                        좀 더 둘러보고 싶으신가요?
+                       다른 상품들 보러가기!</h2>
+                    </div>
+    <!-- ************************************************************************************************************* 상세보기 -->
+    
     <!-- ***** Product Area Ends ***** -->
     
     <!-- ***** Footer Start ***** -->
@@ -392,28 +524,30 @@ https://templatemo.com/tm-571-hexashop
         	   <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "일반" ) { %> 
         	     evt.preventDefault();
           	   
-             	/* $(this).parents('.cartAlam').show(); */
-             	$('#cartAlam2').fadeIn("fast");
-             	$('#cartAlam2').fadeOut(5000);
-             	
-        	   var param = { param : $('#type').val() , param2 : $('input[type="number"]').val() };
-        		 //ajax..
-        		  $.ajax({
-  			         type : 'get',
-  			         data : param,
-  			         url  : 'detailViewCart',
-  			      success : function(redata){
-  			    	  var num = parseInt( $('.cartCount').text() );
-			    	  num += 1; 
-			    	  $('.cartCount').text( num );
-			    	  
-  			      },
-  			        error : function(err){
-  			        	              alert('err');
-  			                                     }
-                  });
-        		 
-        		 
+	 
+        			/* $(this).parents('.cartAlam').show(); */
+             	var In = $('#cartAlam2');  /* .fadeIn("fast"); */
+                 var Out = $('#cartAlam2');  /* .fadeOut(5000); */
+               	
+               	 var param = { param : $('#type').val() , param2 : $('input[type="number"]').val() };
+           		 //ajax..
+           		 $.ajax({
+      			         type : 'get',
+      			         data : param,
+      			         url  : 'detailViewCart',
+      			      success : function(redata){
+      			    	  var num = parseInt( $('.cartCount').text() );
+      			    	  num += 1; 
+      			    	  $('.cartCount').text( num );
+      			    	  In.fadeIn("fast");
+      			    	  Out.fadeOut(5000);
+      			    	 
+      			      },
+      			        error : function(err){
+      			        	              alert('err');
+      			                            }
+                      });
+           		 
         	   
         	   <% } %>
         	   }
@@ -421,6 +555,12 @@ https://templatemo.com/tm-571-hexashop
            
           
            $('#cartAlam2').hide();
+           
+           
+           $('.section-heading3').click(function() {
+        	   
+        	   location.href = "market";
+           });
            
         });
 

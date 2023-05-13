@@ -322,11 +322,147 @@ https://templatemo.com/tm-571-hexashop
                    
                           <label id="insertLabel3"><b>이미지 등록</b></label>
                          <input type="file" name="file" id="file">
+                          <!-- 기본 정보 입력 끝 ********************************************************** -->
+                        
                           
+                          <!-- 상품 상세 설명 시작 ******************************************************************* -->
                           
-                          <div class="col-lg-2">
+                            <div id="insertProduct-sectionHeading" class="section-heading">
+                        <h2>상품 상세 정보 입력란</h2>
+                        <span>상품 정보를 양식에 맞게 기입해주세요.</span>
+                         </div> 
+                         
+                          <div class="col-lg-5">
                             <fieldset>
-                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
+                            <label  id="insertLabel"><b>핵심 문장</b></label> 
+                            <input name="head" type="text"  placeholder="핵심 키워드" value="" required>
+                            </fieldset>
+                          </div>
+                          
+                           <div id="insertProduct-sectionHeading" class="section-heading">
+                        <h2>상세 정보 이미지 등록</h2>
+                        <span>상품 정보를 양식에 맞게 기입해주세요.</span>
+                         </div> 
+                           <label id="insertLabel3"><b>이미지 등록1</b></label>
+                         <input type="file" name="fileDetail1" id="file">
+                          
+                         <div  class="col-lg-5">
+                            <fieldset>
+                            <label id="insertLabel"><b>핵심 문장2</b></label> 
+                                <input name="contentHead" type="text"  id="productSay"  placeholder="핵심 컨텐트 키워드  (*줄바꿈을 원하신다면 '/'를 끝에 입력해주세요! ) " value="" required>
+                            </fieldset>
+                          </div>
+                          
+                           <div id="insertProduct-sectionHeading" class="section-heading">
+                        <h2>상품 상세설명</h2>
+                        <span>상품 정보를 양식에 맞게 기입해주세요.</span>
+                         </div> 
+                             <div  class="col-lg-5">
+                            <fieldset>
+                            <label id="insertLabel"><b>상세 설명</b></label> 
+                            <textarea name="content" rows="10" cols="75" placeholder="상품 상세 소개  *200자 이내로 작성해주세요. (*줄바꿈을 원하신다면 '/'를 끝에 입력해주세요! )" required></textarea>
+                            </fieldset>
+                          </div>
+                          
+                          
+                              <div id="insertProduct-sectionHeading" class="section-heading">
+                        <h2>상품 상세 정보 입력란2</h2>
+                        <span>상품 정보를 양식에 맞게 기입해주세요.</span>
+                         </div> 
+                         
+                           <div class="col-lg-5">
+                            <fieldset>
+                            <label  id="insertLabel"><b>핵심 문장2-1</b></label> 
+                            <input name="head2" type="text"  id="productSay" placeholder="핵심 키워드" value="" required>
+                            </fieldset>
+                          </div>
+                          
+                           <div id="insertProduct-sectionHeading" class="section-heading">
+                        <h2>상품 상세 정보 이미지 등록2</h2>
+                        <span>상품 정보를 양식에 맞게 기입해주세요.</span>
+                         </div> 
+                         
+                              <label id="insertLabel3"><b> 이미지 등록2</b></label>
+                         <input type="file" name="fileDetail2" id="file">
+                         
+                         <div  class="col-lg-5">
+                            <fieldset>
+                            <label id="insertLabel"><b>핵심문장2-2</b></label> 
+                                <input name="contentHead2" type="text"  id="productSay" placeholder="핵심 컨텐트 키워드  (*줄바꿈을 원하신다면 '/'를 끝에 입력해주세요! ) " value="" required>
+                            </fieldset>
+                          </div>
+                          
+                          
+                           <div id="insertProduct-sectionHeading" class="section-heading">
+                        <h2>상품 상세설명2</h2>
+                        <span>상품 정보를 양식에 맞게 기입해주세요.</span>
+                         </div> 
+                         
+                             <div  class="col-lg-5">
+                            <fieldset>
+                            <label id="insertLabel"><b>상세 설명2</b></label> 
+                            <textarea name="content2" rows="10" cols="75" placeholder="상품 상세 소개  *200자 이내로 작성해주세요. (*줄바꿈을 원하신다면 '/'를 끝에 입력해주세요! )" required></textarea>
+                            </fieldset>
+                          </div>
+                          
+                          
+                          
+                          
+                        <div id="insertProduct-sectionHeading" class="section-heading">
+                        <h2>배송 정보</h2>
+                        <span>상품 정보를 양식에 맞게 기입해주세요.</span>
+                         </div>  
+                         
+                        
+                          <div class="col-lg-5">
+                            <fieldset>
+                            <label  id="insertLabel"><b>배송 정보 요약</b></label> 
+                            <input name="delivery_Detail_head" type="text"  placeholder="배송 정보 요약" value="" required>
+                            </fieldset>
+                          </div>
+                    
+                    <div id="insertProduct-sectionHeading" class="section-heading">
+                        <h2>배송 정보</h2>
+                        <span>상품 정보를 양식에 맞게 기입해주세요.</span>
+                         </div> 
+                          
+                         
+                         
+                         <div  class="col-lg-5">
+                            <fieldset>
+                            <label id="insertLabel"><b>배송 정보 상세 </b></label> 
+                      <textarea name="delivery_content" rows="10" cols="75" placeholder="필독사항  *200자 이내로 작성해주세요. (*줄바꿈을 원하신다면 '/'를 끝에 입력해주세요! )" required></textarea>  
+                            </fieldset>
+                            </div>
+                            
+                            
+                            <div id="insertProduct-sectionHeading" class="section-heading">
+                        <h2>상세 정보 이미지 등록</h2>
+                        <span>상품 정보를 양식에 맞게 기입해주세요.</span>
+                         </div> 
+                           <label id="insertLabel3"><b>이미지 등록3</b></label>
+                         <input type="file" name="fileDetail3" id="file">
+                            
+                            
+                            <div id="insertProduct-sectionHeading" class="section-heading">
+                        <h2>필독사항</h2>
+                        <span>상품 정보를 양식에 맞게 기입해주세요.</span>
+                         </div>  
+                       
+                             <div  class="col-lg-5">
+                            <fieldset>
+                            <label id="insertLabel"><b>필독 사항 </b></label> 
+                            <textarea name="save" rows="10" cols="75" placeholder="필독사항  *200자 이내로 작성해주세요. (*줄바꿈을 원하신다면 '/'를 끝에 입력해주세요! )" required></textarea>
+                            </fieldset>
+                          </div>
+                          
+                          
+ 
+                   
+                            
+                          <div class="col-lg-5">
+                            <fieldset>
+                          
                               
                             
 										<input type="hidden" id="pid" name="pid" value="${sessionScope.logName}">
@@ -358,6 +494,7 @@ https://templatemo.com/tm-571-hexashop
 								</fieldset>
                           </div>
                         </div>
+                                 <button type="submit" id="insertProductSubmit" class="main-dark-button">상품 등록하기</button>
                     </form>
                 </div>
             

@@ -44,8 +44,8 @@
 </c:forEach>
 </table>
 <hr/>
-<h4>총 결제금액 : <c:out value="${total-tax}"></c:out> 원</h4>
-<input class="total" type="hidden" value="<c:out value="${total-tax}"></c:out>">
+<h4>총 결제금액 : <c:out value="${total+tax}"></c:out> 원</h4>
+<input class="total" type="hidden" value="<c:out value="${total+tax}"></c:out>">
 <hr/>
 <h2>결제정보</h2>
 <hr/>

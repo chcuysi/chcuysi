@@ -21,6 +21,8 @@ public class productController {
 				
 		ProductVO vo = service.imgNameSearch(imgName);
 				
+		apple.addAttribute("vo", vo);
+		
 		apple.addAttribute("name", vo.getName());
 		apple.addAttribute("name2", vo.getName2());
 		apple.addAttribute("price", vo.getPrice());
@@ -29,6 +31,9 @@ public class productController {
 		apple.addAttribute("say", vo.getSay());
 		apple.addAttribute("type", vo.getType());
 		apple.addAttribute("frealfname", vo.getFrealfname());
+		apple.addAttribute("head", vo.getHead());
+		apple.addAttribute("contentHead", vo.getContentHead());
+		apple.addAttribute("content", vo.getContent());
 		
 		return "single-product";
 				
