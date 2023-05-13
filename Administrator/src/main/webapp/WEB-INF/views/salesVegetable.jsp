@@ -67,8 +67,7 @@
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
                 <li><a href="salesProducts.do">상품별 매출</a></li>
-                <li><a href="salesCategory2.do"class="active">카테고리별 매출</a></li>
-                <li><a href="salesPeriod?pageType=index">기간별 매출</a></li>
+                <li><a href="salesCategory.do"class="active">카테고리별 매출</a></li>
               </ul>  
             </nav> 
           </div>
@@ -80,14 +79,12 @@
         <!-- 그래프 -->
         <div class="templatemo-flex-row flex-content-row templatemo-overflow-hidden"> <!-- overflow hidden for iPad mini landscape view-->
             <div class="col-1 templatemo-overflow-hidden">
-              <div class="templatemo-content-widget white-bg templatemo-overflow-hidden">
-				
-				<!-- 상세정보창 내용 수정 -->
-		        <a href="salesCategory.do" class="button1">과일</a>
+            <!-- 상세정보창 내용 수정 -->
+		        <a href="salesCategory.do" class="button3">과일</a>
 		        <!-- 상세정보창 내용 수정사항 취소 -->
-		        <a href="salesVegetable.do" class="button2">채소</a>
-				
-                <div class="templatemo-flex-row flex-content-row">
+		        <a href="salesVegetable.do" class="button4">채소</a>
+              <div class="templatemo-content-widget white-bg templatemo-overflow-hidden">
+				    <div class="templatemo-flex-row flex-content-row">
                   <div class="col-1 col-lg-6 col-md-12">
                     <h2 id="selectedOption" class="text-center"></h2>
                     <div id="pie_chart_div" class="templatemo-chart"></div> <!-- Pie chart div -->

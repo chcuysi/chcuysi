@@ -67,8 +67,7 @@
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
                 <li><a href="salesProducts.do">상품별 매출</a></li>
-                <li><a href="salesVegetable.do"class="active">카테고리별 매출</a></li>
-                <li><a href="salesPeriod?pageType=index">기간별 매출</a></li>
+                <li><a href="salesCategory.do"class="active">카테고리별 매출</a></li>
               </ul>  
             </nav> 
           </div>

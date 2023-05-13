@@ -35,7 +35,7 @@
 	<div class="templatemo-sidebar">
 		<header class="templatemo-site-header">
 			<div class="logo">
-			<a class="goToIndex" href="index?pageType=index">
+			<a class="goToIndex" href="index">
          		<img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
 			</a>
           	</div>

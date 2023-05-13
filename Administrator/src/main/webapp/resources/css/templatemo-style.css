@@ -33,13 +33,12 @@ a.goToIndex:hover{
 .button1{
 	display: inline-block;
     padding: 13px 20px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
     text-decoration: none;
-    border-radius: 2px;
     margin-left: 130px;
     position: relative;
-    top: 10px;
+    top: 10.5px;
     left: -90px;
 }
 
@@ -49,12 +48,38 @@ a.goToIndex:hover{
     background-color: #087661;
     color: #fff;
     text-decoration: none;
-    border-radius: 2px;
     margin-right: -70px;
     position: relative;
-    top: 10px;
+    top: 10.5px;
     left: -93px;
 }
+
+.button3{
+	
+	display: inline-block;
+    padding: 13px 20px;
+    background-color: #862351;
+    color: #fff;
+    text-decoration: none;
+    margin-left: 130px;
+    position: relative;
+    top: 10.5px;
+    left: -90px;
+}
+
+.button4{
+	display: inline-block;
+    padding: 13px 20px;
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+    margin-right: -70px;
+    position: relative;
+    top: 10.5px;
+    left: -93px;
+}
+
+
 
 /* index */
 	
