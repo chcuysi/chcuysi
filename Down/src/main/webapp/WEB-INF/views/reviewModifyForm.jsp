@@ -156,6 +156,11 @@ https://templatemo.com/tm-571-hexashop
         </div>
     </div>
     <!-- ***** Main Banner Area End ***** -->
+<!-- ******************************************* -->
+
+
+
+
 
 
     <!-- ***** Product Area Starts ***** -->
@@ -163,32 +168,26 @@ https://templatemo.com/tm-571-hexashop
       <div class="subscribe">
         <div class="container">
             <div class="row">
-                <div id="loginform" class="col-lg-8">       
-                    <form id="reviewSave" action="reviewSave.do" method='post' enctype="multipart/form-data">
-                        <div class="row">
-                      
-                      
-                          
-                          <input type="hidden" name="mid" value="${sessionScope.logName}"/>
-                
-                          <!-- zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz -->
-                         
-                          
+                <div id="loginform" class="col-lg-8">          
+                    <form  action='modify' method='post' enctype='multipart/form-data'>
+                        <div class="row">    
+                          <input type="hidden" name="mid" value="${sessionScope.logName}"/>                		
+                          <!-- zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz -->    
                 		<div id="insertProduct-sectionHeading" class="section-heading">
-                        <h2>리뷰 상세 정보</h2>
+                        <h2>리뷰 수정</h2>
                         <span>리뷰 정보를 양식에 맞게 기입해주세요.</span>
-                         </div> 
-                    
+                         </div>  
+                                          
+                                       <input name='renum' type='hidden' value='${vo.renum}'/> 
                            <div  class="col-lg-5">
-                          
                             <fieldset>
                             <label id="insertLabel"><b>리뷰 제목</b></label> 
-                            <input name="retitle"   class="Fileimg" type="text" value="" placeholder="맛있는 후라보노" required>
+                            <input name="retitle" class="Fileimg" type="text" value="${vo.retitle}" placeholder="맛있는 후라보노" required>
                             </fieldset>
                                
                             <fieldset>
-                            <label id="insertLabel"><b>리뷰 설명</b></label> 
-                            <textarea name="recontent" rows="10" cols="75" placeholder="상품 상세 소개  *200자 이내로 작성해주세요." required></textarea>
+                            <label id="insertLabel"><b>리뷰 설명</b></label>
+                            <textarea name="recontent" id="recontent" rows="10" cols="75" placeholder="상품 상세 소개  *200자 이내로 작성해주세요." required></textarea>
                             </fieldset>
                           </div>
                           
@@ -196,7 +195,7 @@ https://templatemo.com/tm-571-hexashop
                            <div class="col-lg-5">
                             <fieldset>
                             <label  id="insertLabel"><b>리뷰 비밀번호</b></label> 
-                            <input name="repassword" type="password"  placeholder="1234" value="" required>
+                            <input name="repassword" type="password"   value="${vo.repassword}" required>
                             </fieldset>
                           </div>
                           
@@ -205,7 +204,7 @@ https://templatemo.com/tm-571-hexashop
                            <div class="col-lg-5">
                             <fieldset>
                             <label  id="insertLabel"><b>상품타입</b></label> 
-                            <input name="type" type="text"  placeholder="상품타입" value="" required>
+                            <input name="type" type="text"  placeholder="상품타입" value="${vo.type}" required>
                             </fieldset>
                           </div>
  
@@ -213,7 +212,7 @@ https://templatemo.com/tm-571-hexashop
                            <div class="col-lg-5">
                             <fieldset>
                             <label id="insertLabel"><b>imgname</b></label> 
-                            <input name="imgName"   class="Fileimg" type="text"  placeholder="상품명" value="" required>
+                            <input name="imgName"   class="Fileimg" type="text"  placeholder="" value="${vo.imgName}" required>
                             </fieldset>
                           </div>
               
@@ -221,7 +220,7 @@ https://templatemo.com/tm-571-hexashop
                            <div class="col-lg-5">
                             <fieldset>
                             <label id="insertLabel"><b>type2</b></label> 
-                            <input name="type2"   class="Fileimg" type="text" placeholder="상품명" value="" required>
+                            <input name="type2"   class="Fileimg" type="text" placeholder="상품명" value="${vo.type2}" required>
                             </fieldset>
                           </div>
    
@@ -230,14 +229,17 @@ https://templatemo.com/tm-571-hexashop
                         <span>상품 정보를 양식에 맞게 기입해주세요.</span>
                          </div> 
                    
-                          <label id="insertLabel3"><b>이미지 등록</b></label>
+                          <label id="insertLabel3"><b>이미지등록</b></label>
                          <input type="file" name="file" id="file">
                           
+                          </div>
                           
                           <div class="col-lg-2">
                             <fieldset>
+                            
+                          
                               <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
-
+							
 									<c:if test="${checkLogin ne null}">
 										<input type="hidden" id="checkLogin" value="${checkLogin}">
 									</c:if>
@@ -260,15 +262,16 @@ https://templatemo.com/tm-571-hexashop
 									
 									
 								
-									<!-- 로그인 성공 시 이전 화면으로 전환하기 위한 값들 ***************************************************** -->
+									<!-- 로그인 성공 시 이전 화면으로 전환하기 위한 값들 ******** -->
 								</fieldset>
+								 </div>
+					</form>			
                           </div>
                         </div>
-                    </form>
+                  
                 </div>           
             </div>
-        </div>
-    </div>
+
     
     
     
@@ -314,8 +317,7 @@ https://templatemo.com/tm-571-hexashop
                         <p>SAJO Company는 통신판매중개자이며, 통신판매의 당사자가 아닙니다. 상품, 상품정보, 거래에 관한 의무와 책임은 판매자에게 있습니다.</p> 
                         <p>Copyright © 2022 SAJO Co., Ltd. All Rights Reserved. </p>
           
-                      <!--  디자인 출처 기능  -->  
-                       <!--  <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">SAJO</a>-->
+                      
                         <ul>
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -356,25 +358,13 @@ https://templatemo.com/tm-571-hexashop
 
         $(function() {
         	
-     
-            var selectedClass = "";
-            $("p").click(function(){
-            selectedClass = $(this).attr("data-rel");
-            $("#portfolio").fadeTo(50, 0.1);
-                $("#portfolio div").not("."+selectedClass).fadeOut();
-            setTimeout(function() {
-              $("."+selectedClass).fadeIn();
-              $("#portfolio").fadeTo(50, 1);
-            }, 500);
-                
-            });
- 
-            
-            $('#reviewSave').submit(function() {
+         	$('#recontent').text("${vo.recontent}");
+        	
+            $('#modify').submit(function() {
             	
-            	alert('리뷰가 완료되었습니다.')
+            	alert('리뷰 수정이 완료되었습니다.')
             });
-  
+  			
  
             
  

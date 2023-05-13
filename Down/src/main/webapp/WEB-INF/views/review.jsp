@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+    
     
 <!DOCTYPE html>
 <html>
@@ -24,14 +24,14 @@
 <body>
 
 <!-- ***** Header Area Start ***** -->
-   <header id="mainHeader" class="header-area header-sticky">
+    <header id="mainHeader" class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="sajo" class="logo">
-                            <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png">
+                            <img src="${pageContext.request.contextPath}/resources/images/LOGO3.png">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -49,9 +49,8 @@
                             </li>
                             <li class="scroll-to-section"><a href="#kids">레시피</a></li>
                             
-                            <li class="submenu">
-                                <a href="company.do">회사소개</a>
-                               
+                            <li class="scroll-to-section">
+                                <a href="company.do">회사소개</a>     
                             </li>
                             <li class="submenu">
                                 <a href="javascript:;">고객센터</a>
@@ -61,17 +60,8 @@
                                     <li><a href="#"><b>공지사항</b></a></li>
                                 </ul>
                             </li>                         <!-- session.invalidate(); -->
-                            <c:if test="${sessionScope.logType eq '일반'}">
-                            <c:choose> 
-                            <c:when test="${sessionScope.products ne null}">
-                            <c:set value="${sessionScope.products}" var="i"></c:set>
-                            <li class="scroll-to-section"><a href="cart2">장바구니 [ <b class="cartCount">${fn:length(i)}</b> ]</a></li>
-                            </c:when>
-                            <c:otherwise>
-                            <li class="scroll-to-section"><a href="cart2">장바구니 [ 0 ]</a></li>
-                            </c:otherwise>
-                            </c:choose>
-                            </c:if>
+                            
+                            <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
                             <!-- ******************************************************************************************* -->
                             <c:choose>
                             
@@ -127,7 +117,6 @@
             </div>
         </div>
     </header>
-    <!-- ***** Header Area End ***** -->
     
     
     
@@ -151,172 +140,69 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-heading">
-                    
                    
                         <hr/>
                     
                     
                          <h1 id="CategoryHeader">${viewType}</h1>
                          <h5 id="CategorySub"></h5>
-                         
-                         
+  
                             <hr/>
                             
-                            
-                          <div id="Category">
-                          
-                          <div class="main-border-button cateborder">
-                            <a id="all" href="#">전체</a>
-                         </div>
-                         
-                        <div class="main-border-button cateborder">
-                            <a id="va" href="#">채소</a>
-                         </div>
-
-                         <div class="main-border-button cateborder">
-                              <a id="fl" href="#">과일</a>
-                         </div> 
-                    
-                         <div class="main-border-button cateborder">
-                            <a id="banana" href="#">미정</a>
-                         </div>   
-                         
-                    </div>
-                    <!-- *********************************************************************** -->
-                    <div id="Category2">
-                          
-                          <div class="main-border-button cateborder">
-                            <a id="allfl" href="#">과일전체</a>
-                         </div>
-                         
-                        <div class="main-border-button cateborder">
-                            <a id="appleBae" href="#">사과/배</a>
-                         </div>
-
-                         <div class="main-border-button cateborder">
-                              <a id="WaterCham" href="#">수박/참외</a>
-                         </div> 
-                    
-                         <div class="main-border-button cateborder">
-                            <a id="banana" href="#">미정</a>
-                         </div>   
-                         
-                    </div>
-                     <!-- *********************************************************************** -->
-                    <div id="Category3">
-                          
-                          <div class="main-border-button cateborder">
-                            <a id="allva" href="#">채소전체</a>
-                         </div>
-                         
-                        <div class="main-border-button cateborder">
-                            <a id="poteGo" href="#">감자/고구마</a>
-                         </div>
-
-                         <div class="main-border-button cateborder">
-                              <a id="Busut" href="#">새송이/버섯류</a>
-                         </div> 
-                    
-                         <div class="main-border-button cateborder">
-                            <a id="banana" href="#">당근/뿌리채소</a>
-                         </div>   
-                         
-                    </div>
-                     <!-- *********************************************************************** -->
-                    <div id="Category4">
-                          
-                          <div class="main-border-button cateborder">
-                            <a id="banana" href="#">미정</a>
-                         </div>
-                         
-                        <div class="main-border-button cateborder">
-                            <a id="banana" href="#">미정</a>
-                         </div>
-
-                         <div class="main-border-button cateborder">
-                              <a id="banana" href="#">미정</a>
-                         </div> 
-                    
-                         <div class="main-border-button cateborder">
-                            <a id="banana" href="#">미정</a>
-                         </div>   
-                         
+        
+                  
                     </div> 
                     </div>
                 </div>
             </div>
-      </div>
-      
-      
-        <div class="container">
-            <div class="row"> 
+     
+
             <!-- ************************************************************* 리뷰 리스트 불러오기 ************************************************************************************ -->
-      <c:forEach items="${products}" var="i">   
-      
-    
-            
-                <div id="${i.category}" class="col-lg-4" name="${i.category2}">
+        <div class="container">
+            <div class="row" id="review_list"> 
+      	 	<c:forEach items="${review}" var="i"> 
+                <div class="col-lg-4" >
                     <div class="item">
                         <div class="thumb">
                             <div class="hover-content">
-                        
+                                <input type="hidden" value="${i.renum}" id="renumber">
+                                <ul>
+                                    <li><a href="#" id="form">자세히 보기</a></li>
+                                </ul>
                             </div>
                          <c:choose>
-                         
+       
                           <c:when test="${i.frealfname ne null}">
-                            <img class="products"  width="350" height="368" src="${pageContext.request.contextPath}/resources/images/${i.frealfname}" alt="">
+                            <img class="review"  width="350" height="368" src="${pageContext.request.contextPath}/resources/images/${i.frealfname}" alt="">
                            </c:when>
                            
-                           <c:otherwise>
-                            <img class="products"  width="350" height="368"  src="${pageContext.request.contextPath}/resources/images/${i.type2}.png" alt="">
-                       </c:otherwise>
-                      
-                           
-                           
-                           </c:choose>
+                          <c:otherwise>
+                            <img class="review"  width="350" height="368"  src="${pageContext.request.contextPath}/resources/images/${i.type2}.png" alt="">
+                       </c:otherwise> 
+                           </c:choose>  
                         </div>
+                        
+                        
                         <div class="down-content">
-                            <h4>${i.name}</h4>
-                            <span>${i.price}</span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
+                            <h4>${i.retitle}</h4>
+                            <span>${i.recontent}</span>
+                            <span>${i.redate}</span>
+                            
+                        </div>              
                     </div>
                 </div>
                 
             </c:forEach>
-                
-                <div class="col-lg-12">
-                    <div class="pagination">
-                        <ul>
-                            <li>
-                                <a href="#">1</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
+            <div class="left-contents">
+			 		<div class="main-border-button">
+                            <a href="#" id="save"><input type="hidden" id="typs">리뷰 작성하러 가기</a>                          
+                        </div>
+                        
+                        </div>
         </div>
     </section>
     <!-- ***** Products Area Ends ***** -->
-	
 	
 	
 	
@@ -401,27 +287,78 @@
     <!-- Global Init -->
     <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
 	<script>
-	  
-    $('#all').click(function(event) {
-   	 event.preventDefault();
-       $('#채소').css('display','inline-block');
-   	$('#과일').css('display','inline-block');
-   	$('#CategoryHeader').text("상품 전체 리뷰 목록");
-   })
+	
+	
+		
+$(function() {
+	            
+		
+	$('#review_list').on("click","li",function(evt) {
+		alert('리뷰 자세히 보기를 클릭하셨습니다.');
+		
+		var renum =$(this).parent().parent().children().eq(0).val();
+		 location.href = "reviewModify.do?renum="+renum;
+
+	         });
+	
+	
+	$('#save').click(function () {
+		
+		/*   세션은 자바단과  body 태그에서 인식 ,   스크립트단에선 인식 못함? */
+    	 <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "판매자" ) {      %>
     
-    $('#va').click(function(event) {
-    	 event.preventDefault();
-        $('#채소').css('display','inline-block');
-    	$('#과일').css('display','none');
-    	$('#CategoryHeader').text("채소 리뷰 목록");
-    })
-    
-    $('#fl').click(function(event) {
-    	 event.preventDefault();
-    	$('#과일').css('display','inline-block');
-    	$('#채소').css('display','none');
-    	$('#CategoryHeader').text("과일 리뷰 목록");     	
-    })	
+		if ( confirm('판매자는 이용할 수 없는 서비스입니다. 일반 계정으로 로그인 하시겠습니까?.')  ) {
+		
+		 location.href="logOut?pageType=index";
+		
+		}else { 
+		
+			 location.href="#";
+		}
+
+	<% } %>
+	
+	 <% if(session.getAttribute("logName") == null ) { %> 
+ 	   if(confirm('리뷰 작성을 위해서는 로그인이 필요합니다. 로그인 하시겠습니까?') )
+ 	   {
+ 		   location.href="loginForm?pageType=index&type="+$(this).find('#type').val();
+ 	   }else { location.href="reviewSave.do"; 
+ 	   }
+ 	   <% } %>
+ 	   
+ 	   <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "일반" ) { %> 
+ 	   if( confirm("리뷰 작성 하러 가시겠습니까?"))
+ 	   {
+ 		   location.href="reviewSave.do?pageType=index&type="+$(this).find('#typs').val();
+ 		   
+ 	   }else {
+ 		   
+ 		   if( confirm("이전 화면으로 돌아가시겠습니까?"))
+     	   {
+ 			   location.href="sajo";
+     	   }
+ 	   
+ 	   }
+ 	   <% }    %> 
+		
+		
+		
+		
+		
+		
+		
+	});
+	
+	
+	
+	    });
+		 
+
+	
+	
+	
+	
+	
 
 </script>
 </body>

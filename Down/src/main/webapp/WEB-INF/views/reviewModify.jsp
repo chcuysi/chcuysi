@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
-    
- 
-    
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +12,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>Hexashop - Product Detail Page</title>
+    <title>소중한 식재료들이 담긴 고객님의 장바구니입니다</title>
 
 
     <!-- Additional CSS Files -->
@@ -37,36 +33,29 @@ https://templatemo.com/tm-571-hexashop
 
 -->
 
+<script type="text/javascript">
+
+
+</script>
     </head>
     
     <body>
     
-    <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>  
-    <!-- ***** Preloader End ***** -->
-    
-    
     <!-- ***** Header Area Start ***** -->
-   <header id="mainHeader" class="header-area header-sticky">
+    <header id="mainHeader" class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="sajo" class="logo">
-                            <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png">
+                            <img src="${pageContext.request.contextPath}/resources/images/LOGO3.png">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="sajo" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="review.do">리뷰</a></li>
+                            <li class="scroll-to-section"><a href="#men">미션</a></li>
                              <li class="submenu">
                                 <a href="javascript:;">싱싱마켓</a>
                                 <ul>
@@ -76,18 +65,15 @@ https://templatemo.com/tm-571-hexashop
                                     <li><a href="market"><b>기타</b></a></li>
                                 </ul>
                             </li>
-                            <li class="scroll-to-section"><a href="recipe">레시피</a></li>
+                            <li class="scroll-to-section"><a href="#kids">레시피</a></li>
                             
-                            <li><a href="company.do">회사소개</a>
+                            <li class="scroll-to-section">
+                                <a href="company.do">회사소개</a>     
                             </li>
-                            
-                            
-                            
-                            
                             <li class="submenu">
                                 <a href="javascript:;">고객센터</a>
                                 <ul>
-                                    <li><a href="#"><b>자주 묻는 질문</b></a></li>
+                                    <li><a href="http://192.168.0.79:8280/Administrator/getIokMenuList.do"><b>자주 묻는 질문</b></a></li>
                                     <li><a href="#"><b>Q/A</b></a></li>
                                     <li><a href="#"><b>공지사항</b></a></li>
                                 </ul>
@@ -107,7 +93,7 @@ https://templatemo.com/tm-571-hexashop
                                     <li><a href="memberOut"><b>회원탈퇴</b></a></li>
                                       <li><a href="insertProduct"><b>판매등록</b></a></li>
                                          <li><a href="iokCheck"><b>판매등록 승인여부</b></a></li>
-                                       <li><a href="#"><b>판매내역</b></a></li>
+                                       <li><a href="sellHistory"><b>판매내역</b></a></li>
                                 </ul>
                              </li>
                              
@@ -119,17 +105,26 @@ https://templatemo.com/tm-571-hexashop
                                     <li><a href="logOut"><b>로그아웃</b></a></li>
                                     <li><a href="UpdateMember"><b>회원정보수정</b></a></li>
                                     <li><a href="memberOut"><b>회원탈퇴</b></a></li>
-                                    <li><a href="#"><b>구매내역</b></a></li>                                   
+                                    <li><a href="buyHistory"><b>구매내역</b></a></li>                                   
                                 </ul>
                              </li>
                                 </c:when>
                              
                         
-                            <c:otherwise>  
-                            <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
+                         <c:otherwise>  
+                              <li class="submenu">
+                               <a id="scroll-to-section" href="javascript:;">로그인하기</a>
+                                <ul>
+                                    <li><a href="loginForm?pageType=index"><b>일반 회원 로그인</b></a></li>
+                                    <li><a href="loginForm2"><b>판매자 로그인</b></a></li>                                 
+                                </ul>
+                                
+                          <!--        <ul> -->
+                          <!--   <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li> -->
                             </c:otherwise>
                             
                             </c:choose>
+                                <!-- ******************************************************************************************* -->
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -148,8 +143,9 @@ https://templatemo.com/tm-571-hexashop
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>리뷰</h2>
-                        <span>소비자들의 생생한 리뷰를 볼 수 있는 곳</span>  
+                        <h2>리뷰</h2> 
+                        <h2>선택하신 리뷰 자세히 보기</h2>
+                       
                     </div>
                 </div>
             </div>
@@ -159,123 +155,56 @@ https://templatemo.com/tm-571-hexashop
 
 
     <!-- ***** Product Area Starts ***** -->
-
-      <div class="subscribe">
+ 
+   
+   <section class="section" id="product">
         <div class="container">
             <div class="row">
-                <div id="loginform" class="col-lg-8">       
-                    <form id="reviewSave" action="reviewSave.do" method='post' enctype="multipart/form-data">
-                        <div class="row">
-                      
-                      
-                          
-                          <input type="hidden" name="mid" value="${sessionScope.logName}"/>
+            <form action="reviewModifyForm">
+            	<input type="hidden" value="${vo.mid}" id="mid">
+               <input type="hidden" value="${vo.renum}" id="renumber">
+                <div class="col-lg-8">
+                <div class="left-images">           
                 
-                          <!-- zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz -->
-                         
-                          
-                		<div id="insertProduct-sectionHeading" class="section-heading">
-                        <h2>리뷰 상세 정보</h2>
-                        <span>리뷰 정보를 양식에 맞게 기입해주세요.</span>
-                         </div> 
-                    
-                           <div  class="col-lg-5">
-                          
-                            <fieldset>
-                            <label id="insertLabel"><b>리뷰 제목</b></label> 
-                            <input name="retitle"   class="Fileimg" type="text" value="" placeholder="맛있는 후라보노" required>
-                            </fieldset>
-                               
-                            <fieldset>
-                            <label id="insertLabel"><b>리뷰 설명</b></label> 
-                            <textarea name="recontent" rows="10" cols="75" placeholder="상품 상세 소개  *200자 이내로 작성해주세요." required></textarea>
-                            </fieldset>
-                          </div>
-                          
-                          
-                           <div class="col-lg-5">
-                            <fieldset>
-                            <label  id="insertLabel"><b>리뷰 비밀번호</b></label> 
-                            <input name="repassword" type="password"  placeholder="1234" value="" required>
-                            </fieldset>
-                          </div>
-                          
-                     
-  							
-                           <div class="col-lg-5">
-                            <fieldset>
-                            <label  id="insertLabel"><b>상품타입</b></label> 
-                            <input name="type" type="text"  placeholder="상품타입" value="" required>
-                            </fieldset>
-                          </div>
- 
-                          
-                           <div class="col-lg-5">
-                            <fieldset>
-                            <label id="insertLabel"><b>imgname</b></label> 
-                            <input name="imgName"   class="Fileimg" type="text"  placeholder="상품명" value="" required>
-                            </fieldset>
-                          </div>
-              
-                          
-                           <div class="col-lg-5">
-                            <fieldset>
-                            <label id="insertLabel"><b>type2</b></label> 
-                            <input name="type2"   class="Fileimg" type="text" placeholder="상품명" value="" required>
-                            </fieldset>
-                          </div>
-   
-                           <div id="insertProduct-sectionHeading" class="section-heading">
-                        <h2>상품 이미지 등록</h2>
-                        <span>상품 정보를 양식에 맞게 기입해주세요.</span>
-                         </div> 
+                <c:choose>
+                <c:when test="${vo.frealfname eq null}">
+                    <img   width="730" height="378" src="${pageContext.request.contextPath}/resources/images/${vo.type}.png" alt="">
+                    <input type="hidden" id="type" value="${vo.type}"/>
+                    </c:when>
+                   <c:otherwise>
+                    <img   width="730" height="378" src="${pageContext.request.contextPath}/resources/images/${vo.frealfname}" alt="">
+                    <input type="hidden" id="type" value="${vo.type}"/>
+                   </c:otherwise>
                    
-                          <label id="insertLabel3"><b>이미지 등록</b></label>
-                         <input type="file" name="file" id="file">
-                          
-                          
-                          <div class="col-lg-2">
-                            <fieldset>
-                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
-
-									<c:if test="${checkLogin ne null}">
-										<input type="hidden" id="checkLogin" value="${checkLogin}">
-									</c:if>
-
-									<c:if test="${param.pageType ne null}">
-										<input type="hidden" id="pageType" name="pageType" value="${param.pageType}">
-									</c:if>
-									
-									<c:if test="${param.type ne null}">
-										<input type="hidden" id="type" name="type" value="${param.type}">
-									</c:if>
-									
-									<c:if test="${moPageType ne null}">
-										<input type="hidden" id="moPageType" value="${moPageType}">
-									</c:if>
-									
-										<c:if test="${moType ne null}">
-										<input type="hidden" id="moType" value="${moType}">
-									</c:if>
-									
-									
-								
-									<!-- 로그인 성공 시 이전 화면으로 전환하기 위한 값들 ***************************************************** -->
-								</fieldset>
-                          </div>
-                        </div>
-                    </form>
-                </div>           
+                   </c:choose>
+                </div>
+   
             </div>
-        </div>
-    </div>
-    
-    
-    
-    
-    <!-- ***** Product Area Ends ***** -->
-    
-    <!-- ***** Footer Start ***** -->
+ 
+            <div class="col-lg-4">
+                <div class="right-content">
+                
+                </div>
+                </div>
+                    <h2 id="name">${vo.retitle}</h2>
+                     <h4 class="price">${vo.recontent}</h4><br/>
+                    <span>${vo.redate}</span>
+                    <div class="total">
+
+                        <div class="main-border-button" id="modify">
+                        <a href="#">수정 하러 가기</a></div>
+                        <div class="main-border-button" id="delete">
+                        <a href="#">리뷰 삭제 가기</a></div>
+                    </div>     
+                    </form>
+                    </div>
+                    
+                    
+                  </div>
+           
+    </section>
+   
+    <!-- **************************************************************** -->
     <footer>
         <div class="container">
             <div class="row">
@@ -314,8 +243,7 @@ https://templatemo.com/tm-571-hexashop
                         <p>SAJO Company는 통신판매중개자이며, 통신판매의 당사자가 아닙니다. 상품, 상품정보, 거래에 관한 의무와 책임은 판매자에게 있습니다.</p> 
                         <p>Copyright © 2022 SAJO Co., Ltd. All Rights Reserved. </p>
           
-                      <!--  디자인 출처 기능  -->  
-                       <!--  <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">SAJO</a>-->
+                      
                         <ul>
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -327,7 +255,7 @@ https://templatemo.com/tm-571-hexashop
             </div>
         </div>
     </footer>
-    
+    <!--********************************************************************** 하단**************************************************************************** -->
 
     <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.0.min.js"></script>
@@ -355,8 +283,6 @@ https://templatemo.com/tm-571-hexashop
     <script>
 
         $(function() {
-        	
-     
             var selectedClass = "";
             $("p").click(function(){
             selectedClass = $(this).attr("data-rel");
@@ -368,19 +294,105 @@ https://templatemo.com/tm-571-hexashop
             }, 500);
                 
             });
- 
             
-            $('#reviewSave').submit(function() {
-            	
-            	alert('리뷰가 완료되었습니다.')
-            });
-  
- 
-            
- 
-        });      
-            
+         
+            $('#modify').click(function () {
+            	/*   세션은 자바단과  body 태그에서 인식 ,   스크립트단에선 인식 못함? */
+           	 <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "판매자" ) {      %>
+           
+       		if ( confirm('판매자는 이용할 수 없는 서비스입니다. 일반 계정으로 로그인 하시겠습니까?.')  ) {
+       		
+       		 location.href="logOut?pageType=index";
+       		
+       		}else { 
+       		
+       			 location.href="#";
+       		}
+
+       	<% } %>
+       	
+       	 <% if(session.getAttribute("logName") == null ) { %> 
+        	   if(confirm('리뷰 작성을 위해서는 로그인이 필요합니다. 로그인 하시겠습니까?') )
+        	   {
+        		   location.href="loginForm?pageType=index&type="+$(this).find('#type').val();
+        	   }else { location.href="reviewModifyForm.do?renum="+${vo.renum};  }
+        	   <% } %>
+        	  
+     <%   if( session.getAttribute("logName") != null && session.getAttribute("logType") == "일반" ) { %>
+           
+     if ( $('#userLogin').text() ==  $('#mid').val()   )
+    	 {
+        	   if( confirm("수정 하러 가시겠습니까?"))
+        	   {
+        		   location.href="reviewModifyForm.do?renum="+${vo.renum};
+        		   
+        	   } else {
+        		   
+        		   if( confirm("이전 화면으로 돌아가시겠습니까?"))
+            	   {
+        			   location.href="sajo";
+            	   }
+        	   
+        	   }
+        	   } else alert('본인이 올린 리뷰가 아니라 수정이 불가능합니다.');
      
+        	   <% }    %> 
+            	
+            	
+            	
+			});
+            
+            $('#delete').click(function () {
+            	/*   세션은 자바단과  body 태그에서 인식 ,   스크립트단에선 인식 못함? */
+            	<% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "판매자" ) {      %>
+                
+           		if ( confirm('판매자는 이용할 수 없는 서비스입니다. 일반 계정으로 로그인 하시겠습니까?.')  ) {
+           		
+           		 location.href="logOut?pageType=index";
+           		
+           		}else { 
+           		
+           			 location.href="#";
+           		}
+
+           	<% } %>
+           	
+           	 <% if(session.getAttribute("logName") == null ) { %> 
+            	   if(confirm('리뷰 작성을 위해서는 로그인이 필요합니다. 로그인 하시겠습니까?') )
+            	   {
+            		   location.href="loginForm?pageType=index&type="+$(this).find('#type').val();
+            	   }else { location.href="reviewModifyForm.do?renum="+${vo.renum};  }
+            	   <% } %>
+            	  
+         <%   if( session.getAttribute("logName") != null && session.getAttribute("logType") == "일반" ) { %>
+               
+         if ( $('#userLogin').text() ==  $('#mid').val()   )
+        	 {
+            	   if( confirm("수정 하러 가시겠습니까?"))
+            	   {
+            		   location.href="reviewModifyForm.do?renum="+${vo.renum};
+            		   
+            	   } else {
+            		   
+            		   if( confirm("이전 화면으로 돌아가시겠습니까?"))
+                	   {
+            			   location.href="sajo";
+                	   }
+            	   
+            	   }
+            	   } else alert('본인이 올린 리뷰가 아니라 삭제가 불가능합니다.');
+         
+            	   <% }    %> 
+            	
+            	
+            	
+			});
+            
+            
+          
+            
+        });
+
     </script>
 
   </body>

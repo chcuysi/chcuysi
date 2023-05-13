@@ -10,20 +10,18 @@ public class ReviewVO {
 
 	
 	private String mid; // 회원 아이디
-	private String inum; // 판매 물품 번호
-	private int renum; // 리뷰 시퀀스 넘버
-	private String content; // 내용
-	private String rdate; // 리뷰 시간
-	private String rtitle; // 제목
+	private int inum; // 판매 물품 번호
+	private String renum; // 리뷰 시퀀스 넘버
+	private String recontent; // 내용
+	private String redate; // 리뷰 시간
+	private String retitle; // 제목
 	private String repassword; // 리뷰 비번
+	private String type; 
+	private String imgName;    //    상품 전체보기 (싱싱마켓)  에서   자세히보기를 클릭했을 때  어떤 상품을 자세히볼것인지에 대한 식별값
+	private String type2; 
 	
 	
-	private String name;   //  상품명
-	private String name2;  // 상품명 2
-
 	
-	private String category;// 대카테고리
-	private String category2;  // 소카테고리
 	
 	
 	private long   fsize;		// 파일크기    필요없음
@@ -38,24 +36,13 @@ public class ReviewVO {
 	public void setMid(String mid) {
 		this.mid = mid;
 	}
-	public int getRenum() {
+	public String getRenum() {
 		return renum;
 	}
-	public void setRenum(int renum) {
+	public void setRenum(String renum) {
 		this.renum = renum;
 	}
-	public String getCategory() {
-		return category;
-	}
-	public void setCategory(String category) {
-		this.category = category;
-	}
-	public String getCategory2() {
-		return category2;
-	}
-	public void setCategory2(String category2) {
-		this.category2 = category2;
-	}
+	
 	public long getFsize() {
 		return fsize;
 	}
@@ -101,47 +88,70 @@ public class ReviewVO {
 	    }
 		
 	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getName2() {
-		return name2;
-	}
-	public void setName2(String name2) {
-		this.name2 = name2;
-	}
-	public String getInum() {
-		return inum;
-	}
-	public void setInum(String inum) {
-		this.inum = inum;
-	}
-	public String getRdate() {
-		return rdate;
-	}
-	public void setRdate(String rdate) {
-		this.rdate = rdate;
-	}
-	public String getRtitle() {
-		return rtitle;
-	}
-	public void setRtitle(String rtitle) {
-		this.rtitle = rtitle;
-	}
+	
+
+	
+	
 	public String getRepassword() {
 		return repassword;
 	}
 	public void setRepassword(String repassword) {
 		this.repassword = repassword;
+	}
+	public String getRecontent() {
+		return recontent;
+	}
+	public void setRecontent(String recontent) {
+		this.recontent = recontent;
+	}
+	public String getRedate() {
+		return redate;
+	}
+	public void setRedate(String redate) {
+		this.redate = redate;
+	}
+	public String getRetitle() {
+		return retitle;
+	}
+	public void setRetitle(String retitle) {
+		this.retitle = retitle;
+	}
+	public int getInum() {
+		return inum;
+	}
+	public void setInum(int inum) {
+		this.inum = inum;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getImgName() {
+		return imgName;
+	}
+	public void setImgName(String imgName) {
+		this.imgName = imgName;
+	}
+	public String getType2() {
+		return type2;
+	}
+	public void setType2(String type2) {
+		this.type2 = type2;
+	}
+	@Override
+	public String toString() {
+		return "ReviewVO [mid=" + mid + ", inum=" + inum + ", renum=" + renum + ", recontent=" + recontent + ", redate="
+				+ redate + ", retitle=" + retitle + ", repassword=" + repassword + ", type=" + type + ", imgName="
+				+ imgName + ", type2=" + type2 + ", fsize=" + fsize + ", fname=" + fname + ", frealfname=" + frealfname
+				+ ", file=" + file + ", getMid()=" + getMid() + ", getRenum()=" + getRenum() + ", getFsize()="
+				+ getFsize() + ", getFname()=" + getFname() + ", getFrealfname()=" + getFrealfname() + ", getFile()="
+				+ getFile() + ", getRepassword()=" + getRepassword() + ", getRecontent()=" + getRecontent()
+				+ ", getRedate()=" + getRedate() + ", getRetitle()=" + getRetitle() + ", getInum()=" + getInum()
+				+ ", getType()=" + getType() + ", getImgName()=" + getImgName() + ", getType2()=" + getType2()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
 	}
 
 	

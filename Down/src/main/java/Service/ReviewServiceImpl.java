@@ -1,5 +1,7 @@
 package Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,25 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public void insertReview(ReviewVO vo) {		
 		ReviewDAO.insertReview(vo);
+	}
+
+	public List<ReviewVO> showReview() {
+		
+		return ReviewDAO.showReview();  
+	}
+	
+	public ReviewVO updateReview(String renum) {
+		 return ReviewDAO.updateReview(renum);
+	}
+
+	public void update(ReviewVO vo) {
+		ReviewDAO.update(vo);
+	}
+
+	@Override
+	public void delete(ReviewVO vo) {
+		ReviewDAO.delete(vo);
+		
 	}
 
 }

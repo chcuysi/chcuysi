@@ -56,13 +56,14 @@ https://templatemo.com/tm-571-hexashop
     
     <!-- ***** Header Area Start ***** -->
    <header id="mainHeader" class="header-area header-sticky">
+ 
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="sajo" class="logo">
-                            <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png">
+                          <a href="sajo" class="logo">
+                            <img src="${pageContext.request.contextPath}/resources/images/logo.png">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -693,49 +694,68 @@ https://templatemo.com/tm-571-hexashop
     </section>
     <!-- ***** Kids Area Ends ***** -->
 
-    <!-- ***** Explore Area Starts ***** -->
-    <section class="section" id="explore">
+    <!-- ***** Explore Area Starts *******************************************************************************리뷰 -->
+      <section class="section" id="explore">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="left-content">
-                        <h2>우리의 미션! 지속 가능한 식탁</h2>
-                        <span>소비자의 선택을 받기 위해, 그리고 대형 유통 체인 내의 관리 편의를 위해 균일하고 깨끗한 농산물들이 ‘정상품’으로 분류돼 시장으로 나오고, 나머지는 규격 외 농산물로 분류됩니다.</span>
+             <div class="col-lg-6">
+            <div class="left-content">
+                        <h2>소비자들의 살아있는 리뷰</h2>
+                        <span>소비자들의 생생하다 못해 살아있는 리뷰</span>
+                        
                         <div class="quote">
-                            <i class="fa fa-quote-left"></i><p>농산물의 폐기는 유통과 소비 모든 단계에서 사회적 손실을 야기합니다. 'SAJO'는 불필요한 낭비를 줄여 환경 보호에 기여하고, 농부의 노력에 대한 정당한 보상을 제공합니다.</p>
+                        
                         </div>
-                        <p>이 규격 외 농산물들은 맛도 영양도 다를 바 없지만, 크기가 조금 작거나 크거나 개성있다는 이유로 적절한 판로를 찾기가 어렵습니다.</p>
-                        <p>판로를 찾지 못한 농산물의 상당 양은 폐기로 이어집니다. 농산물의 폐기는 온실가스를 배출해 환경을 오염시키고, 생산에 투입된 물과 비료, 노동력의 낭비로 직결돼 큰 사회적·경제적·환경적 손실입니다. 못난이 농산물을 헐값에 사들이는 관행을 깨고, 합리적인 가격으로 정산하여 건강한 생산과 남김없는 소비가 지속되도록 노력합시다.  <a rel="nofollow" href="https://paypal.me/templatemo" target="_blank">지금 바로 실천하기!</a></p>
+                        <h2>저희 사이트를 이용하신 소비자분</h2>
+                        <h2>들의 소중한 리뷰가 담겨져 있는 곳입니다.</h2>
+                        <p>저희 사이트는 절대 회원님들의 리뷰를 지워거나 수정하지 않습니다.</p>
+                       <p>저희 사이트는 절대 회원님들에게 리뷰를 써달라고 돈을 드리는 행위는 일절 금하고 있습니다.</p> 
+           
                         <div class="main-border-button">
-                            <a href="products.html">미션 자세히 보기</a>
+                            <a href="review.do" class="reviews">리뷰 자세히 보기</a>
+                            <a href="#" class="reviewa"><input type="hidden" id="typea">리뷰 작성하러 가기</a>
                         </div>
+                         
+                        
                     </div>
-                </div>
+            </div>
+                
+                
                 <div class="col-lg-6">
                     <div class="right-content">
                         <div class="row">
                             <div class="col-lg-6">
+                          <span>소비자 아이디</span>
                                 <div class="leather">
-                                    <h4>미정</h4>
-                                    <span>남김없는 생산이 가능하도록</span>
-                                </div>
+                                    <h4>소비자가 쓴 타이틀</h4></div>
+                                    <span>소비자가 쓴 내용</span>
+                                
                             </div>
+                            
+                            
                             <div class="col-lg-6">
+                            <span>소비자 아이디</span>
                                  <div class="leather">
-                                    <h4>미정</h4>
-                                    <span>지속가능한 농법이 확산될 수 있도록</span>
+                                    <h4>소비자가 쓴 타이틀</h4>
+                                    <span>소비자가 쓴 내용</span>
                                 </div>
+                                
+                                
                             </div>
                             <div class="col-lg-6">
+                            <span>소비자 아이디</span>
                                 <div class="leather">
-                                    <h4>미정</h4>
-                                    <span>생산자와 소비자가 서로 지지하며 믿을 수 있도록</span>
+                                    <h4>소비자가 쓴 타이틀</h4>
+                                    <span>소비자가 쓴 내용</span>
                                 </div>
+                                
+                               
                             </div>
                             <div class="col-lg-6">
+                             <span>소비자 아이디</span>
                                 <div class="types">
-                                    <h4>미정</h4>
-                                    <span>친환경 생산의 확대로 지속가능한 땅을 늘려나갈 수 있도록</span>
+                                    <h4>소비자가 쓴 타이틀</h4>
+                                    <span>소비자가 쓴 내용</span>
                                 </div>
                             </div>
                         </div>
@@ -744,7 +764,8 @@ https://templatemo.com/tm-571-hexashop
             </div>
         </div>
     </section>
-    <!-- ***** Explore Area Ends ***** -->
+
+      <!-- ***** Explore Area Starts *******************************************************************************리뷰 -->
 
     <!-- ***** Social Area Starts ***** -->
     <section class="section" id="social">
@@ -1069,6 +1090,49 @@ https://templatemo.com/tm-571-hexashop
             });
         	
             $('.cartAlam').hide(); 
+            
+       /* *************************************************************************************************************************************** */     
+            $('.reviewa').click(function() {
+
+                /*   세션은 자바단과  body 태그에서 인식 ,   스크립트단에선 인식 못함? */
+                  <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "판매자" ) {      %>
+              
+               if ( confirm('판매자는 이용할 수 없는 서비스입니다. 일반 계정으로 로그인 하시겠습니까?.')  ) {
+               
+                location.href="logOut?pageType=index";
+               
+               }else { 
+               
+                   location.href="#";
+               }
+         
+            <% } %>
+            
+           <% if(session.getAttribute("logName") == null ) { %> 
+                 if(confirm('리뷰 작성을 위해서는 로그인이 필요합니다. 로그인 하시겠습니까?') )
+                 {
+                    location.href="loginForm?pageType=index&type="+$(this).find('#type').val();
+                 }else { location.href="#"; }
+                 <% } %>
+                 
+                 
+                 <% if(session.getAttribute("logName") != null && session.getAttribute("logType") == "일반" ) { %> 
+                 if( confirm("리뷰 작성 하러 가시겠습니까?"))
+                 {
+                    location.href="reviewSave.do?pageType=index&typea="+$(this).find('#typea').val();
+                    
+                 }else {
+                    
+                    if( confirm("이전 화면으로 돌아가시겠습니까?"))
+                     {
+                       location.href="sajo";
+                     }
+                 
+                 }
+                 <% }    %> 
+             }); // end 리뷰달기
+             
+             
         });
 
     </script>

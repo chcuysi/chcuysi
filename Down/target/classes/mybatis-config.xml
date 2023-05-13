@@ -9,7 +9,8 @@
 		<typeAlias alias="Product" type="vo.ProductVO" />	
 			<typeAlias alias="Member" type="vo.MemberVO" />	
 				<typeAlias alias="Psale" type="vo.PsaleVO" />	
-				<typeAlias alias="Order" type="vo.OrderVO" />		
+				<typeAlias alias="Order" type="vo.OrderVO" />	
+				<typeAlias alias="review" type="vo.ReviewVO" />
 			
 	</typeAliases>
 
