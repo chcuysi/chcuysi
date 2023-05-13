@@ -390,6 +390,7 @@ $(function(){
   		$.ajax({
     		type: 'post',
     		url: 'getRefundMenuList.do/' + onum,
+    		
     		data: { onum: onum, rok: rok, rokwhy: rokwhy },
 	  		success: function(result) {
 	  			location.reload();
@@ -401,6 +402,14 @@ $(function(){
     		}
   		});
     });
+    
+    
+    
+    
+    //*************카테고리별 매출****************
+
+   
+    
     
     
     

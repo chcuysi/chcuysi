@@ -39,6 +39,7 @@
           	</div>
 
         </header>
+        
          
          
         <div class="mobile-menu-icon">
@@ -50,7 +51,7 @@
           <ul>
             <li><a href="getIokMenuList.do"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
             <li><a href="getDeliveryMenuList.do"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
-            <li><a href="salesProducts?pageType=index"class="active"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
+            <li><a href="salesProducts.do"class="active"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
             <li><a href="getMemberMenuList.do"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
             <li><a href="http://192.168.0.79:8280/Down/index.jsp"><i class="fa fa-home fa-fw"></i>사용자화면</a></li>
           </ul>  
@@ -65,27 +66,29 @@
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
-                <li><a href="salesProducts?pageType=index">상품별 매출</a></li>
-                <li><a href="salesCategory?pageType=index"class="active">카테고리별 매출</a></li>
+                <li><a href="salesProducts.do">상품별 매출</a></li>
+                <li><a href="salesVegetable.do"class="active">카테고리별 매출</a></li>
                 <li><a href="salesPeriod?pageType=index">기간별 매출</a></li>
               </ul>  
             </nav> 
           </div>
         </div>
-        
         <!-- 메뉴 카테고리 (왼쪽메뉴 > 상단메뉴) -->
         <h2 id="category_menu"></h2>
         
         
-                <!-- 그래프 -->
+        <!-- 그래프 -->
         <div class="templatemo-flex-row flex-content-row templatemo-overflow-hidden"> <!-- overflow hidden for iPad mini landscape view-->
             <div class="col-1 templatemo-overflow-hidden">
+            <!-- 상세정보창 내용 수정 -->
+		        <a href="salesCategory.do" class="button1">과일</a>
+		        <!-- 상세정보창 내용 수정사항 취소 -->
+		        <a href="salesVegetable.do" class="button2">채소</a>
               <div class="templatemo-content-widget white-bg templatemo-overflow-hidden">
-				<select id="categorySelect" class="select_category_non_colored" style="font-size: 16px; z-index:1;">
-				  <option value="과일">과일</option>
-				  <option value="채소">채소</option>   
-				  <option value="기타">기타</option>                  
-				</select>
+
+				
+
+				
                 <div class="templatemo-flex-row flex-content-row">
                   <div class="col-1 col-lg-6 col-md-12">
                     <h2 id="selectedOption" class="text-center"></h2>
@@ -96,7 +99,16 @@
             </div>
           </div>
         
-        
+					<table style="display:none;">
+					<tbody>
+					<c:forEach items="${salesCategory}" var="salesCategory">
+		                   <tr class="table_sc">
+		                       <td>${salesCategory.category}</td>
+		                       <td>${salesCategory.category2}</td>
+		                       <td>${salesCategory.sell_total}</td>
+		                   </tr>
+		              	 </c:forEach>
+					</tbody></table>
         
         
 <footer class="text-right">
@@ -121,22 +133,28 @@
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.
-      function drawChart() {
+      // Callback that creates and populates a data table,
+// instantiates the pie chart, passes in the data and
+// draws it.
+	function drawChart() {
 
           // Create the data table.
           var data = new google.visualization.DataTable();
           data.addColumn('string', 'Topping');
           data.addColumn('number', 'Slices');
-          data.addRows([
-            ['Mushrooms', 3],
-            ['Onions', 1],
-            ['Olives', 1],
-            ['Zucchini', 1],
-            ['Pepperoni', 2]
-          ]);
+          
+          $('.table_sc').each(function() {
+        	    var fruitValue = $(this).find('td:eq(1)').text();
+        	    if (fruitValue === '사과/배') {
+          	      data.addRow(['사과/배', parseInt($(this).find('td:eq(2)').text(), 10)]);
+          	    }
+        	    if (fruitValue === '수박/참외') {
+        	      data.addRow(['수박/참외', parseInt($(this).find('td:eq(2)').text(), 10)]);
+        	    }
+        	});
 
           // Set chart options
-          var options = {'title':'How Much Pizza I Ate Last Night'};
+          var options = {'title':'과일'};
 
           // Instantiate and draw our chart, passing in some options.
           var pieChart = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
@@ -146,38 +164,31 @@
           barChart.draw(data, options);
       }
 
-      $(document).ready(function(){
-        if($.browser.mozilla) {
-          //refresh page on browser resize
-          // http://www.sitepoint.com/jquery-refresh-page-browser-resize/
-          $(window).bind('resize', function(e)
-          {
-            if (window.RT) clearTimeout(window.RT);
-            window.RT = setTimeout(function()
-            {
-              this.location.reload(false); /* false to get page from cache */
-            }, 200);
-          });      
-        } else {
-          $(window).resize(function(){
-            drawChart();
-          });  
-        }   
-        
-        const selectElement = document.getElementById("categorySelect");
-	    const h2Element = document.getElementById("selectedOption");
-
-	    selectElement.addEventListener("change", (event) => {
-	        const selectedOption = event.target.value;
-	        h2Element.innerText = selectedOption;
-	    });
-
-	    // 초기값 설정
-	    const defaultOption = selectElement.options[selectElement.selectedIndex].value;
-	    h2Element.innerText = defaultOption;
-        
-      });
+          $(document).ready(function(){
+        	  if($.browser.mozilla) {
+        	    //refresh page on browser resize
+        	    // http://www.sitepoint.com/jquery-refresh-page-browser-resize/
+        	    $(window).bind('resize', function(e) {
+        	      if (window.RT) clearTimeout(window.RT);
+        	      window.RT = setTimeout(function() {
+        	        this.location.reload(false); /* false to get page from cache */
+        	      }, 200);
+        	    });      
+        	  } else {
+        	    $(window).resize(function(){
+        	      drawChart();
+        	    });  
+        	  }   
+        	});
       
+          function redirectToLink(selectElement) {
+        	    var selectedValue = selectElement.value;
+        	    if (selectedValue) {
+        	      window.location.href = selectedValue;
+        	    }
+        	  }
+          
+          
     </script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/templatemo-script.js"></script>      <!-- Templatemo Script -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/admin.js"></script>

@@ -22,10 +22,40 @@ TABLE OF CONTENT
 body {	font-size: 13px; }
 body, .templatemo-left-nav { background: #1f2124; }
 
-/*#iframe{
-		display:none;
-	}*/
+
+a.goToIndex:hover{
 	
+	
+}
+
+
+
+.button1{
+	display: inline-block;
+    padding: 13px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 2px;
+    margin-left: 130px;
+    position: relative;
+    top: 10px;
+    left: -90px;
+}
+
+.button2{
+	display: inline-block;
+    padding: 13px 20px;
+    background-color: #087661;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 2px;
+    margin-right: -70px;
+    position: relative;
+    top: 10px;
+    left: -93px;
+}
+
 /* index */
 	
   div#screenName {

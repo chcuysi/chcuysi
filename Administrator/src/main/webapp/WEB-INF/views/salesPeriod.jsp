@@ -49,8 +49,8 @@
         <nav class="templatemo-left-nav">          
           <ul>
             <li><a href="getIokMenuList.do"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
-            <li><a href="getDeliveryMenuList.do"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
-            <li><a href="salesProducts?pageType=index"class="active"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
+            <li><a href="getRefundMenuList.do"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
+            <li><a href="salesProducts.do"class="active"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
             <li><a href="getMemberMenuList.do"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
             <li><a href="http://192.168.0.79:8280/Down/index.jsp"><i class="fa fa-home fa-fw"></i>사용자화면</a></li>
           </ul>  
@@ -65,7 +65,7 @@
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
-                <li><a href="salesProducts?pageType=index">상품별 매출</a></li>
+                <li><a href="salesProducts.do">상품별 매출</a></li>
                 <li><a href="salesCategory?pageType=index">카테고리별 매출</a></li>
                 <li><a href="salesPeriod?pageType=index"class="active">기간별 매출</a></li>
               </ul>  

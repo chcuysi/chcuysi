@@ -32,7 +32,7 @@
   <br>
   
   <div class="button-container">
-    <button id="adminButton"><a href="getMemberMenuList.do">바로가기</a></button>
+    <button id="adminButton"><a href="getIokMenuList.do">바로가기</a></button>
     <button id="userButton"><a href="http://192.168.0.79:8380/Down/index.jsp">바로가기</a></button>
   </div>
   

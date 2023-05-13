@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SalesProductsDao">
+
+	<select id="getSalesProducts" resultType="vo.SalesProductsVO" parameterType="hashmap" >
+		SELECT p.name name, p.name2 name2, p.pid pid, p.category category, p.category2 category2, sum(p.price*o.icount) AS sell_total
+			FROM testproduct p  INNER JOIN order1 o ON p.inum = o.inum
+			GROUP BY p.name, p.name2, p.pid, p.category, p.category2
+			ORDER BY sum(p.price*o.icount) DESC
+	</select> 
+</mapper>

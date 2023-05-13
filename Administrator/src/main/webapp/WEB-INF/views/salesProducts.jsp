@@ -49,8 +49,8 @@
         <nav class="templatemo-left-nav">          
           <ul>
             <li><a href="getIokMenuList.do"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
-            <li><a href="getDeliveryMenuList.do"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
-            <li><a href="salesProducts?pageType=index"class="active"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
+            <li><a href="getRefundMenuList.do"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
+            <li><a href="salesProducts.do"class="active"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
             <li><a href="getMemberMenuList.do"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
             <li><a href="http://192.168.0.79:8280/Down/index.jsp"><i class="fa fa-home fa-fw"></i>사용자화면</a></li>
           </ul>  
@@ -65,8 +65,8 @@
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
-                <li><a href="salesProducts?pageType=index" class="active">상품별 매출</a></li>
-                <li><a href="salesCategory?pageType=index">카테고리별 매출</a></li>
+                <li><a href="salesProducts.do" class="active">상품별 매출</a></li>
+                <li><a href="salesCategory.do">카테고리별 매출</a></li>
                 <li><a href="salesPeriod?pageType=index">기간별 매출</a></li>
               </ul>  
             </nav> 
@@ -93,27 +93,27 @@
         <div class="templatemo-content-container">
           <div class="templatemo-content-widget no-padding">
             <div class="panel panel-default table-responsive">
-              <table id="table_calculate" class="table table-striped table-bordered templatemo-user-table">
+              <table id="table_salesProducts" class="table table-striped table-bordered templatemo-user-table">
                 <thead>
                   <tr>
-                    <td><a href="" class="white-text templatemo-sort-by">판매물품번호<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">판매자번호<span class="caret"></span></a></td>
+					<td><a href="" class="white-text templatemo-sort-by">상품명<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">판매자ID<span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">카테고리<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">상품명<span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">판매가<span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">매출액<span class="caret"></span></a></td>
                   </tr>
                 </thead>
                 <tbody>
                 	
-                  		<tr>
-		                    <td>123456</td>
-		                    <td>13331212</td>
-		                    <td>과일 > 딸기</td>
-		                    <td>상큼한 딸기 1kg</td>
-		                    <td>10000원</td>
-		                    <td>100000000원</td>
-                  		</tr>  
+                  		<c:forEach items="${salesProducts}" var="salesProducts">
+		                   <tr>
+							   <td>${salesProducts.name}  ${salesProducts.name2}</td>
+		                       <td>${salesProducts.pid}</td>
+		                       <td>${salesProducts.category} > ${salesProducts.category2}</td>
+		                       <td>${salesProducts.price}</td>
+		                       <td>${salesProducts.sell_total}</td>
+		                   </tr>
+		              	 </c:forEach>
                   		
                 </tbody>
               </table>    
@@ -160,22 +160,23 @@
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.
+      
       function drawChart() {
 
           // Create the data table.
           var data = new google.visualization.DataTable();
+
           data.addColumn('string', 'Topping');
-          data.addColumn('number', 'Slices');
+          data.addColumn('number', '매출액');
           data.addRows([
-            ['Mushrooms', 3],
-            ['Onions', 5],
-            ['Olives', 3],
-            ['Zucchini', 1],
-            ['Pepperoni', 2]
+            [$('#table_salesProducts tr:nth-child(1) td:nth-child(1)').text(), parseInt($('#table_salesProducts tr:nth-child(1) td:nth-child(5)').text().substring(3))],
+            [$('#table_salesProducts tr:nth-child(2) td:nth-child(1)').text(), parseInt($('#table_salesProducts tr:nth-child(2) td:nth-child(5)').text())],
+            [$('#table_salesProducts tr:nth-child(3) td:nth-child(1)').text(), parseInt($('#table_salesProducts tr:nth-child(3) td:nth-child(5)').text())],
+            [$('#table_salesProducts tr:nth-child(4) td:nth-child(1)').text(), parseInt($('#table_salesProducts tr:nth-child(4) td:nth-child(5)').text())],
           ]);
 
           // Set chart options
-          var options = {'title':'매출 Top5'};
+          var options = {'title':'매출 Top4'};
 
           // Instantiate and draw our chart, passing in some options.
           var barChart = new google.visualization.BarChart(document.getElementById('bar_chart_div'));
@@ -200,6 +201,7 @@
           });  
         }   
       });
+      
       
     </script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/templatemo-script.js"></script>      <!-- Templatemo Script -->
