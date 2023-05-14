@@ -35,7 +35,9 @@
 	<div class="templatemo-sidebar">
 		<header class="templatemo-site-header">
 			<div class="logo">
+         		<a class="goToIndex" href="index">
          		<img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
+			</a>
           	</div>
 
         </header>
@@ -109,21 +111,6 @@
             </div>                          
           </div>          
           
-          <!-- 페이지 이동 버튼 -->
-          <div class="pagination-wrap">
-            <ul class="pagination">
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li class="active"><a href="#">3 <span class="sr-only">(current)</span></a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li>
-                <a href="#" aria-label="Next">
-                  <span aria-hidden="true"><i class="fa fa-play"></i></span>
-                </a>
-              </li>
-            </ul>
-          </div>
 
 <!-- 판매물품승인 테이블 클릭 시 나오는 상세정보창 -->
 <form id = 'detailInfo_member' action="updateMember"> <!-- 'updateMember.do를 줄여씀' -->
@@ -174,9 +161,9 @@
 	</div>
 	<div style="width:100px; text-align: center;margin:auto;display: flex;">
     	<!-- 상세정보창 내용 수정 -->
-        <button type="button" class="btn_modify">수정</button>
+        <button type="button" class="btn_modify_member">수정</button>
         <!-- 상세정보창 내용 수정사항 취소 -->
-	   	<button type="button" class="btn_cancel">취소</button>
+	   	<button type="button" class="btn_cancel_member">취소</button>
     </div>         
 </form>
         
@@ -184,7 +171,7 @@
         </div>
       </div>
 <footer class="text-right">
-	<p>Copyright &copy; 2084 Company Name 
+	<p>Copyright &copy; 2022 주식회사 사조  &nbsp 
 	Design: Template Mo</p>
 </footer>           
     </div>

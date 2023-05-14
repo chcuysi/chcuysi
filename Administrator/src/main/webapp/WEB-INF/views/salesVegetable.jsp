@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">  
-    <title>SAJO</title>
+    <title>매출 > 카테고리별 매출</title>
     <meta name="description" content="">
     <meta name="author" content="templatemo">
     <!-- 
@@ -35,7 +35,9 @@
 	<div class="templatemo-sidebar">
 		<header class="templatemo-site-header">
 			<div class="logo">
+         		<a class="goToIndex" href="index">
          		<img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
+			</a>
           	</div>
 
         </header>
@@ -107,7 +109,7 @@
         
         
 <footer class="text-right">
-	<p>Copyright &copy; 2084 Company Name 
+	<p>Copyright &copy; 2022 주식회사 사조  &nbsp 
 	Design: Template Mo</p>
 </footer>           
 </div>

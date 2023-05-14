@@ -3,7 +3,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Main Page</title>
+  <title>관리자화면</title>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
   <link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">

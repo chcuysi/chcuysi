@@ -65,12 +65,12 @@ $(function(){
     });
     
     //취소버튼
-    $('button.btn_cancel').click(function() {
+    $('button.btn_cancel_iok').click(function() {
     	$('form#detailInfo_iok').css('display', 'none');
     });
     
     //수정버튼
-	$('button.btn_modify').on('click', function() {
+	$('button.btn_modify_iok').on('click', function() {
 		var inum = $('#table_detailInfo tr:first-child td:nth-child(6)').text(); // 선택한 테이블의 inum 값을 가져옴
 
   		var iok = $('table#table_detailInfo').find('tr:eq(2) td:eq(3) select').val(); // 선택한 승인여부값 가져오기
@@ -170,7 +170,6 @@ $(function(){
     		url: 'getCalculateMenuList.do/' + inum,
     		data: { inum: inum, jok: jok, jokdate : jokdate },
 	  		success: function() {
-	  		alert('zz');
 	  			location.reload();
       			$('form#detailInfo_calculate').css('display', 'none');
     		},
@@ -456,12 +455,12 @@ $(function(){
     });
     
     //취소버튼
-    $('button.btn_cancel').click(function() {
+    $('button.btn_cancel_member').click(function() {
     	$('form#detailInfo_member').css('display', 'none');
     });
     
     //수정버튼
-    $('button.btn_modify').on('click', function() {
+    $('button.btn_modify_member').on('click', function() {
 		var mnum = $('#table_detailMember tr:first-child td:nth-child(2)').text(); // 선택한 테이블의 mnum 값을 가져옴
   		var mout = $('table#table_detailMember').find('tr:eq(3) td:eq(1) select').val(); // 선택한 일반회원탈퇴여부 가져오기
   		$("#table_member tr[data-mnum='" + mnum + "'] td:eq(6)").text(mout); // 값 대입
@@ -526,12 +525,12 @@ $(function(){
     });
     
     //취소버튼
-    $('button.btn_cancel').click(function() {
+    $('button.btn_cancel_psale').click(function() {
     	$('form#detailInfo_psale').css('display', 'none');
     });
     
     //수정버튼
-    $('button.btn_modify').on('click', function() {
+    $('button.btn_modify_psale').on('click', function() {
 		var pnum = $('#table_detailPsale tr:first-child td:nth-child(2)').text(); // 선택한 테이블의 pnum 값을 가져옴
   		var pout = $('table#table_detailPsale').find('tr:eq(3) td:eq(1) select').val(); // 선택한 일반회원탈퇴여부 가져오기
   		$("#table_psale tr[data-pnum='" + pnum + "'] td:eq(6)").text(pout); // 값 대입

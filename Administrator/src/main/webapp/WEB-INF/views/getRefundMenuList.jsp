@@ -35,7 +35,9 @@
 	<div class="templatemo-sidebar">
 		<header class="templatemo-site-header">
 			<div class="logo">
+         		<a class="goToIndex" href="index">
          		<img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
+			</a>
           	</div>
 
         </header>
@@ -107,22 +109,6 @@
               </table>    
             </div>                          
           </div>          
-          
-          <!-- 페이지 이동 버튼 -->
-          <div class="pagination-wrap">
-            <ul class="pagination">
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li class="active"><a href="#">3 <span class="sr-only">(current)</span></a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li>
-                <a href="#" aria-label="Next">
-                  <span aria-hidden="true"><i class="fa fa-play"></i></span>
-                </a>
-              </li>
-            </ul>
-          </div>
 
 <!-- 판매물품승인 테이블 클릭 시 나오는 상세정보창 -->
 <form id = 'detailInfo_refund' action="updateRefund"> <!-- 'updateRefund.do를 줄여씀' -->
@@ -181,7 +167,7 @@
         </div>
       </div>
 <footer class="text-right">
-	<p>Copyright &copy; 2084 Company Name 
+	<p>Copyright &copy; 2022 주식회사 사조  &nbsp
 	Design: Template Mo</p>
 </footer>           
     </div>

@@ -9,7 +9,11 @@
        		SUM(o.icount*p.price*0.85 + o.delivery) AS jungsanmoney, o.jok AS jok, o.jokdate AS jokdate
 		FROM testproduct p  INNER JOIN order1 o ON p.inum = o.inum
 		GROUP BY p.inum, p.pid, p.name, p.name2, o.jok, o.jokdate
-		ORDER BY o.jok
+		ORDER BY CASE 
+		    WHEN o.jok = '-' THEN 1
+		    WHEN o.jok = 'X' THEN 2
+		    ELSE 3
+		END, o.jokdate DESC
 	</select>  
 	
 	<update	id='updateCalculateMenu' parameterType="vo.CalculateMenuVO">
