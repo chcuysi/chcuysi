@@ -1,10 +1,12 @@
 $(function(){
 
-	// 메뉴 카테고리
+	// 좌측 메뉴에서 선택된 대카테고리명
 	var selectedMenu_left = document.querySelector(".templatemo-left-nav a.active");
+	// 위의 메뉴에서 선택된 소카테고리명
 	var selectedMenu_top = document.querySelector(".text-uppercase a.active");
-
+	// 카테고리명을 담을 곳
 	var category_menu = document.getElementById("category_menu");
+	// 대카테고리명과 소카테고리명을 담을 곳에다 담음
 	category_menu.textContent = selectedMenu_left.textContent + "   >   " + selectedMenu_top.textContent;
 	
 
@@ -27,6 +29,7 @@ $(function(){
   		highlightRow($(this));
 	});
 	
+	// 행 클릭 시 상세정보창에 값 가져옴
 	$('#table_iok tbody > tr').click(function() {
       // 클릭된 td의 값을 가져와서 변수에 저장
     	var value = $(this).text();      
@@ -35,19 +38,14 @@ $(function(){
 	    // 클릭한 tr의 td값을 저장, table_detailInfo의 tr의 td에 해당 값을 넣음
 		var clickedPid = $(this).find("td:first").text();
 		$("#table_detailInfo tbody tr:first td:eq(1)").text(clickedPid);
-
 		var clickedCategory = $(this).find("td:eq(1)").text();
 		$("#table_detailInfo tbody tr:first td:eq(3)").text(clickedCategory);
-		
 		var clickedName = $(this).find("td:eq(2)").text();
 		$("#table_detailInfo tbody tr:eq(1) td:eq(1)").text(clickedName);
-		
 		var clickedPrice = $(this).find("td:eq(3)").text();
 		$("#table_detailInfo tbody tr:eq(1) td:eq(3)").text(clickedPrice);
-		
 		var clickedWarehoused = $(this).find("td:eq(4)").text();
 		$("#table_detailInfo tbody tr:eq(2) td:eq(1)").text(clickedWarehoused);
-		
  		var clickedIok = $(this).find("td:eq(5)").text();
  		$("#table_detailInfo .select_detail_colored option").each(function() {
    			if ($(this).val() === clickedIok) {
@@ -55,14 +53,12 @@ $(function(){
       			return false; // 일치하는 옵션을 찾았으므로 반복문을 종료합니다.
     		}
   		});
-  		
   		var clickedIokwhy = $(this).find("td:eq(6)").text();
 		$("#table_detailInfo tbody tr:eq(3) td:eq(1) textarea").val(clickedIokwhy);
-		
 		var clickedInum = $(this).find("td:eq(7)").text();
 		$("#table_detailInfo tbody tr:first td:eq(5)").text(clickedInum);
 		
-    });
+    });	// end of click
     
     //취소버튼
     $('button.btn_cancel_iok').click(function() {
@@ -71,21 +67,25 @@ $(function(){
     
     //수정버튼
 	$('button.btn_modify_iok').on('click', function() {
-		var inum = $('#table_detailInfo tr:first-child td:nth-child(6)').text(); // 선택한 테이블의 inum 값을 가져옴
-
-  		var iok = $('table#table_detailInfo').find('tr:eq(2) td:eq(3) select').val(); // 선택한 승인여부값 가져오기
-  		$("#table_iok tr[data-inum='" + inum + "'] td:eq(5)").text(iok); // 값 대입
-  		var iokwhy = $('table#table_detailInfo').find('tr:eq(3) td:eq(1) textarea').val(); // 선택한 승인거부사유값 가져오기
-  		$("#table_iok tr[data-inum='" + inum + "'] td:eq(6)").val(iokwhy); // 값 대입
-  		
- 
-  		
+		// 선택한 테이블의 inum 값을 가져옴
+		var inum = $('#table_detailInfo tr:first-child td:nth-child(6)').text();
+		// 선택한 승인여부값 가져오기
+  		var iok = $('table#table_detailInfo').find('tr:eq(2) td:eq(3) select').val(); 
+		// 값 대입
+  		$("#table_iok tr[data-inum='" + inum + "'] td:eq(5)").text(iok); 
+  		// 선택한 승인거부사유값 가져오기
+  		var iokwhy = $('table#table_detailInfo').find('tr:eq(3) td:eq(1) textarea').val(); 
+		// 값 대입
+  		$("#table_iok tr[data-inum='" + inum + "'] td:eq(6)").val(iokwhy);
+  		// 수정한 값을 DB에 비동기 통신으로 넣기
   		$.ajax({
     		type: 'post',
     		url: 'getIokMenuList.do/' + inum,
     		data: { inum: inum, iok: iok, iokwhy: iokwhy},
 	  		success: function(result) {
+				// 화면 자동 새로고침
 	  			location.reload();
+	  			// 상세정보창 다시 숨기기
       			$('form#detailInfo_iok').css('display', 'none');
     		},
     		error: function(err) {
@@ -108,12 +108,13 @@ $(function(){
   		highlightRow($(this));
 	});
 	
+	// 행 클릭 시 상세정보창에 값 가져옴
 	$('#table_calculate tbody > tr').click(function() {
       // 클릭된 td의 값을 가져와서 변수에 저장
     	var value = $(this).text();      
         $('form#detailInfo_calculate').css('display', 'block');
 
-	    // 클릭한 tr의 td값을 저장, table_detailInfo의 tr의 td에 해당 값을 넣음
+	    // 클릭한 tr의 td값을 저장, table_detailCalculate의 tr의 td에 해당 값을 넣음
 		var clickedInum = $(this).find("td:first").text();
 		$("#table_detailCalculate tbody tr:first td:eq(1)").text(clickedInum);
 		var clickedPid = $(this).find("td:eq(1)").text();
@@ -137,7 +138,7 @@ $(function(){
   		});
   		var clickedJokDate = $(this).find("td:eq(8)").text().slice(0, 10);
   		$("#table_detailCalculate .select_date_colored").val(clickedJokDate);
-    });
+    });// end of click
     
     //취소버튼
     $('button.btn_cancel_calculate').click(function() {
@@ -146,31 +147,27 @@ $(function(){
     
     //수정버튼
     $('button.btn_modify_calculate').on('click', function() {
-		var inum = $('#table_detailCalculate tr:first-child td:nth-child(2)').text(); // 선택한 테이블의 inum 값을 가져옴
-  		var jok = $('table#table_detailCalculate').find('tr:eq(3) td:eq(3) select').val(); // 선택한 정산상태값 가져오기
-  		$("#table_calculate tr[data-inum='" + inum + "'] td:eq(7)").text(jok); // 값 대입
+    	// 선택한 테이블의 inum 값을 가져옴
+		var inum = $('#table_detailCalculate tr:first-child td:nth-child(2)').text();
+		// 선택한 정산상태값 가져오기
+  		var jok = $('table#table_detailCalculate').find('tr:eq(3) td:eq(3) select').val();
+		// 값 대입
+  		$("#table_calculate tr[data-inum='" + inum + "'] td:eq(7)").text(jok);
   		
+  		// 선택한 테이블의 jokdate 값을 가져옴
 		var jokdateInput = $('table#table_detailCalculate').find('tr:eq(4) td:eq(1) input');
+		// 그 값을 String형으로 형변환함
 		var jokdate = String(jokdateInput.val());
 	  
-		  // Date 객체에서 YYYY-MM-DD 형식의 문자열로 변환
-		/*
-		  var jokdate = jokdateInput.val(); // 선택한 입금일값 가져오기
-		
-		  if (jokdateInput.attr('type') === 'date') {
-		    var dateObj = new Date(jokdateInput);
-		    var year = dateObj.getFullYear();
-		    var month = String(dateObj.getMonth() + 1).padStart(2, '0');
-		    var day = String(dateObj.getDate()).padStart(2, '0');
-		    jokdate = year + '-' + month + '-' + day;
-		  }*/
- 		
+ 		// 수정한 값을 DB에 비동기 통신으로 넣기
   		$.ajax({
     		type: 'post',
     		url: 'getCalculateMenuList.do/' + inum,
     		data: { inum: inum, jok: jok, jokdate : jokdate },
 	  		success: function() {
+	  			// 화면 자동 새로고침
 	  			location.reload();
+	  			// 상세정보창 다시 숨기기
       			$('form#detailInfo_calculate').css('display', 'none');
     		},
     		error: function(err) {
@@ -180,156 +177,6 @@ $(function(){
   		});
 	});
     
-    
-    
-    
-    
-
-	//************ 배송 ****************
-
-	// 초기 로딩 시 홀수 행에는 #f9f9f9, 짝수 행에는 #ffffff 색상 적용
-	$('#table_delivery tbody > tr:odd').addClass('odd');
-	$('#table_delivery tbody > tr:even').addClass('even');
-	
-	// 행 클릭 시 색상 변경
-	$('#table_delivery tbody > tr').click(function() {
-  		highlightRow($(this));
-	});
-	
-	$('#table_delivery tbody > tr').click(function() {
-    	// 클릭된 td의 값을 가져와서 변수에 저장
-    	var value = $(this).text();      
-        $('form#detailInfo_delivery').css('display', 'block');
-
-	    // 클릭한 tr의 td값을 저장, table_detailInfo의 tr의 td에 해당 값을 넣음
-		var clickedDnum = $(this).find("td:first").text();
-		$("#table_detailDelivery tbody tr:first td:eq(1)").text(clickedDnum);
-		var clickedOnum = $(this).find("td:eq(1)").text();
-		$("#table_detailDelivery tbody tr:first td:eq(3)").text(clickedOnum);
-		var clickedDaddr = $(this).find("td:eq(2)").text();
-		$("#table_detailDelivery tbody tr:eq(1) td:eq(1)").text(clickedDaddr);
-		var clickedDok = $(this).find("td:eq(3)").text();
-		$("#table_detailDelivery .select_detail_non_colored_delivery option").each(function() {
-   			if ($(this).val() === clickedDok) {
-      			$(this).prop("selected", true);
-      			return false; // 일치하는 옵션을 찾았으므로 반복문을 종료합니다.
-    		}
-  		});
-		var clickedDdate = $(this).find("td:eq(4)").text();
-  		$("#table_detailDelivery .select_date_colored").val(clickedDdate);
-		var clickedEok = $(this).find("td:eq(5)").text();
-		$("#table_detailDelivery tbody tr:eq(2) td:eq(3)").text(clickedEok);
-		var clickedRok = $(this).find("td:eq(6)").text();
-		$("#table_detailDelivery tbody tr:eq(3) td:eq(1)").text(clickedRok);
-    });
-    
-    //취소버튼
-    $('button.btn_cancel').click(function() {
-    	$('form#detailInfo_delivery').css('display', 'none');
-    });
-    
-    //수정버튼
-    $('button.btn_modify').on('click', function() {
-		var dnum = $('#table_detailDelivery tr:first-child td:nth-child(2)').text(); // 선택한 테이블의 pid 값을 가져옴
-  		var dok = $('table#table_detailDelivery').find('tr:eq(1) td:eq(3) select').val(); // 선택한 정산상태값 가져오기
-  		$("#table_delivery tr[data-dnum='" + dnum + "'] td:eq(3)").text(dok); // 값 대입
-  		
-		var ddateInput = $('table#table_detailDelivery').find('tr:eq(2) td:eq(1) input');
-  		var ddate = ddateInput.val(); // 선택한 배송일값 가져오기
-	  
-		  // Date 객체에서 YYYY-MM-DD 형식의 문자열로 변환
-		  if (ddateInput.attr('type') === 'date') {
-		    var dateObj = new Date(ddate);
-		    var year = dateObj.getFullYear();
-		    var month = String(dateObj.getMonth() + 1).padStart(2, '0');
-		    var day = String(dateObj.getDate()).padStart(2, '0');
-		    ddate = year + '-' + month + '-' + day;
-		  }
- 		
-  		$.ajax({
-    		type: 'post',
-    		url: 'getDeliveryMenuList.do/' + dnum,
-    		data: { dnum: dnum, dok: dok, ddate: ddate },
-	  		success: function(result) {
-	  			location.reload();
-      			$('form#detailInfo_delivery').css('display', 'none');
-    		},
-    		error: function(err) {
-      			alert('오류가 발생했습니다.');
-      			console.log(err);
-    		}
-  		});
-	});
-    
-    
-    
-        //************ 교환 ****************
-
-	   // 초기 로딩 시 홀수 행에는 #f9f9f9, 짝수 행에는 #ffffff 색상 적용
-	   $('#table_exchange tbody > tr:odd').addClass('odd');
-	   $('#table_exchange tbody > tr:even').addClass('even');
-	   
-	   // 행 클릭 시 색상 변경
-	   $('#table_exchange tbody > tr').click(function() {
-	        highlightRow($(this));
-	   });
-	   
-	   $('#table_exchange tbody > tr').click(function() {
-	       // 클릭된 td의 값을 가져와서 변수에 저장
-	       var value = $(this).text();      
-	        $('form#detailInfo_exchange').css('display', 'block');
-	
-	       // 클릭한 tr의 td값을 저장, table_detailInfo의 tr의 td에 해당 값을 넣음
-	      var clickedDnum = $(this).find("td:first").text();
-	      $("#table_detailExchange tbody tr:first td:eq(1)").text(clickedDnum);
-	      var clickedOnum = $(this).find("td:eq(1)").text();
-	      $("#table_detailExchange tbody tr:first td:eq(3)").text(clickedOnum);
-	      var clickedDaddr = $(this).find("td:eq(2)").text();
-	      $("#table_detailExchange tbody tr:eq(1) td:eq(1)").text(clickedDaddr);
-	      var clickedDok = $(this).find("td:eq(3)").text();
-	      $("#table_detailExchange tbody tr:eq(1) td:eq(3)").text(clickedDok);
-	      var clickedDdate = $(this).find("td:eq(4)").text();
-	      $("#table_detailExchange tbody tr:eq(2) td:eq(1)").text(clickedDdate);
-	      var clickedEok = $(this).find("td:eq(5)").text();
-	      $("#table_detailExchange .select_detail_colored option").each(function() {
-	            if ($(this).val() === clickedEok) {
-	               $(this).prop("selected", true);
-	               return false; // 일치하는 옵션을 찾았으므로 반복문을 종료합니다.
-	          }
-	      });
-	      var clickedEokwhy = $(this).find("td:eq(6)").text();
-		  $("#table_detailExchange tbody tr:eq(3) td:eq(1) textarea").val(clickedEokwhy);
-	      
-	    });
-	    
-	    //취소버튼
-	    $('button.btn_cancel').click(function() {
-	       $('form#detailInfo_exchange').css('display', 'none');
-	    });
-	    
-	    //수정버튼
-	    $('button.btn_modify').on('click', function() {
-		var onum = $('#table_detailExchange tr:first-child td:nth-child(4)').text(); // 선택한 테이블의 onum 값을 가져옴
-  		var eok = $('table#table_detailExchange').find('tr:eq(2) td:eq(3) select').val(); // 선택한 교환여부 가져오기
-  		$("#table_exchange tr[data-onum='" + onum + "'] td:eq(5)").text(eok); // 값 대입
-  		
-		var eokwhy = $('table#table_detailExchange').find('tr:eq(3) td:eq(1) textarea').val(); // 선택한 승인거부사유값 가져오기
-  		$("#table_exchange tr[data-onum='" + onum + "'] td:eq(6)").val(eokwhy); // 값 대입
- 		
-  		$.ajax({
-    		type: 'post',
-    		url: 'getExchangeMenuList.do/' + onum,
-    		data: { onum: onum, eok: eok, eokwhy: eokwhy },
-	  		success: function(result) {
-	  			location.reload();
-      			$('form#detailInfo_exchange').css('display', 'none');
-    		},
-    		error: function(err) {
-      			alert('오류가 발생했습니다.');
-      			console.log(err);
-    		}
-  		});
-	});
 	    
     
     
@@ -343,13 +190,13 @@ $(function(){
 	$('#table_refund tbody > tr').click(function() {
   		highlightRow($(this));
 	});
-	
+	// 행 클릭 시 상세정보창에 값 가져옴
 	$('#table_refund tbody > tr').click(function() {
     	// 클릭된 td의 값을 가져와서 변수에 저장
     	var value = $(this).text();      
         $('form#detailInfo_refund').css('display', 'block');
 
-	    // 클릭한 tr의 td값을 저장, table_detailInfo의 tr의 td에 해당 값을 넣음
+	    // 클릭한 tr의 td값을 저장, table_detailRefund의 tr의 td에 해당 값을 넣음
 		var clickedDnum = $(this).find("td:first").text();
 		$("#table_detailRefund tbody tr:first td:eq(1)").text(clickedDnum);
 		var clickedOnum = $(this).find("td:eq(1)").text();
@@ -370,7 +217,7 @@ $(function(){
   		var clickedRokwhy = $(this).find("td:eq(6)").text();
 	$("#table_detailRefund tbody tr:eq(3) td:eq(1) textarea").val(clickedRokwhy);
 		
-    });
+    });	// end of click
     
     //취소버튼
     $('button.btn_cancel').click(function() {
@@ -379,20 +226,25 @@ $(function(){
     
     //수정버튼
     $('button.btn_modify').on('click', function() {
-		var onum = $('#table_detailRefund tr:first-child td:nth-child(4)').text(); // 선택한 테이블의 onum 값을 가져옴
-  		var rok = $('table#table_detailRefund').find('tr:eq(2) td:eq(3) select').val(); // 선택한 환불여부 가져오기
-  		$("#table_refund tr[data-onum='" + onum + "'] td:eq(5)").text(rok); // 값 대입
-  		
-		var rokwhy = $('table#table_detailRefund').find('tr:eq(3) td:eq(1) textarea').val(); // 선택한 승인거부사유값 가져오기
-  		$("#table_refund tr[data-onum='" + onum + "'] td:eq(6)").val(rokwhy); // 값 대입
- 		
+    	// 선택한 테이블의 onum 값을 가져옴
+		var onum = $('#table_detailRefund tr:first-child td:nth-child(4)').text();
+		// 선택한 환불여부 가져오기
+  		var rok = $('table#table_detailRefund').find('tr:eq(2) td:eq(3) select').val();
+		// 값 대입
+  		$("#table_refund tr[data-onum='" + onum + "'] td:eq(5)").text(rok);
+  		// 선택한 승인거부사유값 가져오기
+		var rokwhy = $('table#table_detailRefund').find('tr:eq(3) td:eq(1) textarea').val(); 
+		// 값 대입
+  		$("#table_refund tr[data-onum='" + onum + "'] td:eq(6)").val(rokwhy); 
+ 		// 수정한 값을 DB에 비동기 통신으로 넣기
   		$.ajax({
     		type: 'post',
     		url: 'getRefundMenuList.do/' + onum,
-    		
     		data: { onum: onum, rok: rok, rokwhy: rokwhy },
 	  		success: function(result) {
+	  			// 화면 자동 새로고침
 	  			location.reload();
+	  			// 상세정보창 다시 숨기기
       			$('form#detailInfo_refund').css('display', 'none');
     		},
     		error: function(err) {
@@ -401,14 +253,6 @@ $(function(){
     		}
   		});
     });
-    
-    
-    
-    
-    //*************카테고리별 매출****************
-
-   
-    
     
     
     
@@ -424,13 +268,13 @@ $(function(){
 	$('#table_member tbody > tr').click(function() {
   		highlightRow($(this));
 	});
-	
+	// 행 클릭 시 상세정보창에 값 가져옴
 	$('#table_member tbody > tr').click(function() {
-      // 클릭된 td의 값을 가져와서 변수에 저장
+      	// 클릭된 td의 값을 가져와서 변수에 저장
     	var value = $(this).text();      
         $('form#detailInfo_member').css('display', 'block');
 
-	    // 클릭한 tr의 td값을 저장, table_detailInfo의 tr의 td에 해당 값을 넣음
+	    // 클릭한 tr의 td값을 저장, table_detailMember의 tr의 td에 해당 값을 넣음
 		var clickedMnum = $(this).find("td:first").text();
 		$("#table_detailMember tbody tr:first td:eq(1)").text(clickedMnum);
 		var clickedMid = $(this).find("td:eq(1)").text();
@@ -461,19 +305,25 @@ $(function(){
     
     //수정버튼
     $('button.btn_modify_member').on('click', function() {
-		var mnum = $('#table_detailMember tr:first-child td:nth-child(2)').text(); // 선택한 테이블의 mnum 값을 가져옴
-  		var mout = $('table#table_detailMember').find('tr:eq(3) td:eq(1) select').val(); // 선택한 일반회원탈퇴여부 가져오기
-  		$("#table_member tr[data-mnum='" + mnum + "'] td:eq(6)").text(mout); // 값 대입
-  		
-		var moutwhy = $('table#table_detailMember').find('tr:eq(4) td:eq(1) textarea').val(); // 선택한 탈퇴사유값 가져오기
-  		$("#table_member tr[data-mnum='" + mnum + "'] td:eq(7)").val(moutwhy); // 값 대입
- 		
+    	// 선택한 테이블의 mnum 값을 가져옴
+		var mnum = $('#table_detailMember tr:first-child td:nth-child(2)').text();
+		// 선택한 일반회원탈퇴여부 가져오기
+  		var mout = $('table#table_detailMember').find('tr:eq(3) td:eq(1) select').val(); 
+		// 값 대입
+  		$("#table_member tr[data-mnum='" + mnum + "'] td:eq(6)").text(mout);
+  		// 선택한 탈퇴사유값 가져오기
+		var moutwhy = $('table#table_detailMember').find('tr:eq(4) td:eq(1) textarea').val(); 
+		// 값 대입
+  		$("#table_member tr[data-mnum='" + mnum + "'] td:eq(7)").val(moutwhy);
+ 		// 수정한 값을 DB에 비동기 통신으로 넣기
   		$.ajax({
     		type: 'post',
     		url: 'getMemberMenuList.do/' + mnum,
     		data: { mnum: mnum, mout: mout, moutwhy: moutwhy },
 	  		success: function(result) {
+	  			// 화면 자동 새로고침
 	  			location.reload();
+	  			// 상세정보창 다시 숨기기
       			$('form#detailInfo_member').css('display', 'none');
     		},
     		error: function(err) {
@@ -495,12 +345,13 @@ $(function(){
   		highlightRow($(this));
 	});
 	
+	// 행 클릭 시 상세정보창에 값 가져옴
 	$('#table_psale tbody > tr').click(function() {
       // 클릭된 td의 값을 가져와서 변수에 저장
     	var value = $(this).text();      
         $('form#detailInfo_psale').css('display', 'block');
 
-	    // 클릭한 tr의 td값을 저장, table_detailInfo의 tr의 td에 해당 값을 넣음
+	    // 클릭한 tr의 td값을 저장, table_detailPsale의 tr의 td에 해당 값을 넣음
 		var clickedPnum = $(this).find("td:first").text();
 		$("#table_detailPsale tbody tr:first td:eq(1)").text(clickedPnum);
 		var clickedPid = $(this).find("td:eq(1)").text();
@@ -522,7 +373,7 @@ $(function(){
   		});
   		var clickedPoutwhy = $(this).find("td:eq(7)").text();
 		$("#table_detailPsale tbody tr:eq(4) td:eq(1) textarea").val(clickedPoutwhy);
-    });
+    });	// end of click
     
     //취소버튼
     $('button.btn_cancel_psale').click(function() {
@@ -531,19 +382,25 @@ $(function(){
     
     //수정버튼
     $('button.btn_modify_psale').on('click', function() {
-		var pnum = $('#table_detailPsale tr:first-child td:nth-child(2)').text(); // 선택한 테이블의 pnum 값을 가져옴
-  		var pout = $('table#table_detailPsale').find('tr:eq(3) td:eq(1) select').val(); // 선택한 일반회원탈퇴여부 가져오기
-  		$("#table_psale tr[data-pnum='" + pnum + "'] td:eq(6)").text(pout); // 값 대입
-  		
-		var poutwhy = $('table#table_detailPsale').find('tr:eq(4) td:eq(1) textarea').val(); // 선택한 탈퇴사유값 가져오기
-  		$("#table_psale tr[data-pnum='" + pnum + "'] td:eq(7)").val(poutwhy); // 값 대입
- 		
+    	// 선택한 테이블의 pnum 값을 가져옴
+		var pnum = $('#table_detailPsale tr:first-child td:nth-child(2)').text();
+		// 선택한 일반회원탈퇴여부 가져오기
+  		var pout = $('table#table_detailPsale').find('tr:eq(3) td:eq(1) select').val(); 
+		// 값 대입
+  		$("#table_psale tr[data-pnum='" + pnum + "'] td:eq(6)").text(pout);
+  		// 선택한 탈퇴사유값 가져오기
+		var poutwhy = $('table#table_detailPsale').find('tr:eq(4) td:eq(1) textarea').val();
+		// 값 대입
+  		$("#table_psale tr[data-pnum='" + pnum + "'] td:eq(7)").val(poutwhy);
+ 		// 수정한 값을 DB에 비동기 통신으로 넣기
   		$.ajax({
     		type: 'post',
     		url: 'getPsaleMenuList.do/' + pnum,
     		data: { pnum: pnum, pout: pout, poutwhy: poutwhy },
 	  		success: function(result) {
+		  		// 화면 자동 새로고침
 	  			location.reload();
+	  			// 상세정보창 다시 숨기기
       			$('form#detailInfo_psale').css('display', 'none');
     		},
     		error: function(err) {

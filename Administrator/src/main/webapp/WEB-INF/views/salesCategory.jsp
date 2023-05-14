@@ -35,9 +35,11 @@
 	<div class="templatemo-sidebar">
 		<header class="templatemo-site-header">
 			<div class="logo">
+				<!-- 로고 클릭 시 인덱스로 이동 -->
          		<a class="goToIndex" href="index">
-         		<img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
-			</a>
+         			<!-- 로고 이미지 -->
+         			<img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
+				</a>
           	</div>
 
         </header>
@@ -51,11 +53,12 @@
         <!-- 왼쪽 메뉴 탭 -->
         <nav class="templatemo-left-nav">          
           <ul>
+          <!-- 대카테고리 메뉴 링크 -->
             <li><a href="getIokMenuList.do"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
-            <li><a href="getDeliveryMenuList.do"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
+            <li><a href="getRefundMenuList.do"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
             <li><a href="salesProducts.do"class="active"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
             <li><a href="getMemberMenuList.do"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
-            <li><a href="http://192.168.0.79:8280/Down/index.jsp"><i class="fa fa-home fa-fw"></i>사용자화면</a></li>
+            <li><a href="http://192.168.0.79:8082/Down/index.jsp"><i class="fa fa-home fa-fw"></i>사용자화면</a></li>
           </ul>  
         </nav>
       </div>
@@ -67,6 +70,7 @@
         <div class="templatemo-top-nav-container">
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
+              <!-- 소카테고리 메뉴 링크 -->
               <ul class="text-uppercase">
                 <li><a href="salesProducts.do">상품별 매출</a></li>
                 <li><a href="salesCategory.do"class="active">카테고리별 매출</a></li>
@@ -81,15 +85,15 @@
         <!-- 그래프 -->
         <div class="templatemo-flex-row flex-content-row templatemo-overflow-hidden"> <!-- overflow hidden for iPad mini landscape view-->
             <div class="col-1 templatemo-overflow-hidden">
-            <!-- 상세정보창 내용 수정 -->
+	            <!-- 과일 버튼 -->
 		        <a href="salesCategory.do" class="button1">과일</a>
-		        <!-- 상세정보창 내용 수정사항 취소 -->
+		        <!-- 채소 버튼 -->
 		        <a href="salesVegetable.do" class="button2">채소</a>
+		        <!-- 기타 버튼 -->
+		        <a href="salesEtc.do" class="button5">기타</a>
+		        
               <div class="templatemo-content-widget white-bg templatemo-overflow-hidden">
-
-				
-
-				
+			
                 <div class="templatemo-flex-row flex-content-row">
                   <div class="col-1 col-lg-6 col-md-12">
                     <h2 id="selectedOption" class="text-center"></h2>
@@ -99,7 +103,7 @@
               </div>
             </div>
           </div>
-        
+        			<!-- controller에서 가져온 값들: taglib 이용한 for문으로 출력, display 숨기기 -->
 					<table style="display:none;">
 					<tbody>
 					<c:forEach items="${salesCategory}" var="salesCategory">
@@ -144,11 +148,16 @@
           data.addColumn('string', 'Topping');
           data.addColumn('number', 'Slices');
           
+          // table_sc 클래스를 가진 tr의 각 요소에 대해 반복작업
           $('.table_sc').each(function() {
+        	    // 소카테고리 값을 변수에 넣음
         	    var fruitValue = $(this).find('td:eq(1)').text();
+        	    // 그 소카테고리 값이 '사과/배'일 때
         	    if (fruitValue === '사과/배') {
+        	      // 그 소카테고리 값의 매출액 출력
           	      data.addRow(['사과/배', parseInt($(this).find('td:eq(2)').text(), 10)]);
           	    }
+        	    // ..이하 해당 작업 반복
         	    if (fruitValue === '수박/참외') {
         	      data.addRow(['수박/참외', parseInt($(this).find('td:eq(2)').text(), 10)]);
         	    }

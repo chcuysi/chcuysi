@@ -35,13 +35,14 @@
 	<div class="templatemo-sidebar">
 		<header class="templatemo-site-header">
 			<div class="logo">
+				<!-- 로고 클릭 시 인덱스로 이동 -->
          		<a class="goToIndex" href="index">
-         		<img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
-			</a>
+         			<!-- 로고 이미지 -->
+         			<img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
+				</a>
           	</div>
 
         </header>
-         
          
         <div class="mobile-menu-icon">
             <i class="fa fa-bars"></i>
@@ -50,11 +51,12 @@
         <!-- 왼쪽 메뉴 탭 -->
         <nav class="templatemo-left-nav">          
           <ul>
+          <!-- 대카테고리 메뉴 링크 -->
             <li><a href="getIokMenuList.do"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
             <li><a href="getRefundMenuList.do"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
             <li><a href="salesProducts.do"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
             <li><a href="getMemberMenuList.do" class="active"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
-            <li><a href="http://192.168.0.79:8280/Down/index.jsp"><i class="fa fa-home fa-fw"></i>사용자화면</a></li>
+            <li><a href="http://192.168.0.79:8082/Down/index.jsp"><i class="fa fa-home fa-fw"></i>사용자화면</a></li>
           </ul>  
         </nav>
       </div>
@@ -66,6 +68,7 @@
         <div class="templatemo-top-nav-container">
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
+              <!-- 소카테고리 메뉴 링크 -->
               <ul class="text-uppercase">
                 <li><a href="getMemberMenuList.do">일반회원</a></li>
                 <li><a href="getPsaleMenuList.do" class="active">판매자회원</a></li>
@@ -77,23 +80,24 @@
         <!-- 메뉴 카테고리 (왼쪽메뉴 > 상단메뉴) -->
         <h2 id="category_menu"></h2>
         
-        <!-- 판매물품승인 테이블 --> 
+        <!-- 판매자회원 테이블 --> 
         <div class="templatemo-content-container">
           <div class="templatemo-content-widget no-padding">
             <div class="panel panel-default table-responsive">
               <table id="table_psale" class="table table-striped table-bordered templatemo-user-table">
                 <thead>
                   <tr>
-                    <td><a href="" class="white-text templatemo-sort-by">회원번호<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">ID<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">주소<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">전화번호<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">이메일<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">가입일<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">탈퇴여부<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">회원번호<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">ID<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">주소<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">전화번호<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">이메일<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">가입일<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">탈퇴여부<span class="caret"></span></a></td>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody>	
+                		<!-- 각 컬럼에 상응하는 값들: taglib 이용한 for문으로 출력 -->
                   		<c:forEach items="${psaleMenuList}" var="psaleMenu">
 		                   <tr>
 		                       <td>${psaleMenu.pnum}</td>
@@ -111,7 +115,7 @@
             </div>                          
           </div>          
 
-<!-- 판매물품승인 테이블 클릭 시 나오는 상세정보창 -->
+<!-- 판매자회원 테이블 클릭 시 나오는 상세정보창 -->
 <form id = 'detailInfo_psale' action="updatePsale"> <!-- 'updatePsale.do를 줄여씀' -->
           
 <!-- 상세정보창 테이블 --> 
@@ -179,63 +183,7 @@
     <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
     <script src="https://www.google.com/jsapi"></script> <!-- Google Chart -->
-    <script>
-      /* Google Chart 
-      -------------------------------------------------------------------*/
-      // Load the Visualization API and the piechart package.
-      google.load('visualization', '1.0', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.setOnLoadCallback(drawChart); 
-      
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-
-          // Create the data table.
-          var data = new google.visualization.DataTable();
-          data.addColumn('string', 'Topping');
-          data.addColumn('number', 'Slices');
-          data.addRows([
-            ['Mushrooms', 3],
-            ['Onions', 1],
-            ['Olives', 1],
-            ['Zucchini', 1],
-            ['Pepperoni', 2]
-          ]);
-
-          // Set chart options
-          var options = {'title':'How Much Pizza I Ate Last Night'};
-
-          // Instantiate and draw our chart, passing in some options.
-          var pieChart = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
-          pieChart.draw(data, options);
-
-          var barChart = new google.visualization.BarChart(document.getElementById('bar_chart_div'));
-          barChart.draw(data, options);
-      }
-
-      $(document).ready(function(){
-        if($.browser.mozilla) {
-          //refresh page on browser resize
-          // http://www.sitepoint.com/jquery-refresh-page-browser-resize/
-          $(window).bind('resize', function(e)
-          {
-            if (window.RT) clearTimeout(window.RT);
-            window.RT = setTimeout(function()
-            {
-              this.location.reload(false); /* false to get page from cache */
-            }, 200);
-          });      
-        } else {
-          $(window).resize(function(){
-            drawChart();
-          });  
-        }   
-      });
-      
-    </script>
+    
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/templatemo-script.js"></script>      <!-- Templatemo Script -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/admin.js"></script>
 

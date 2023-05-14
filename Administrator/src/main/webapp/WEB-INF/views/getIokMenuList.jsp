@@ -35,9 +35,11 @@
 	<div class="templatemo-sidebar">
 		<header class="templatemo-site-header">
 			<div class="logo">
-			<a class="goToIndex" href="index">
-         		<img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
-			</a>
+				<!-- 로고 클릭 시 인덱스로 이동 -->
+				<a class="goToIndex" href="index">
+					<!-- 로고 이미지 -->
+         			<img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
+				</a>
           	</div>
 
         </header>
@@ -50,11 +52,12 @@
         <!-- 왼쪽 메뉴 탭 -->
         <nav class="templatemo-left-nav">          
           <ul>
+            <!-- 대카테고리 메뉴 링크 -->
             <li><a href="getIokMenuList.do" class="active"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
             <li><a href="getRefundMenuList.do"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
             <li><a href="salesProducts.do"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
             <li><a href="getMemberMenuList.do"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
-            <li><a href="http://192.168.0.79:8280/Down/index.jsp"><i class="fa fa-home fa-fw"></i>사용자화면</a></li>
+            <li><a href="http://192.168.0.79:8082/Down/index.jsp"><i class="fa fa-home fa-fw"></i>사용자화면</a></li>
           </ul>  
         </nav>
       </div>
@@ -66,6 +69,7 @@
         <div class="templatemo-top-nav-container">
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
+              <!-- 소카테고리 메뉴 링크 -->
               <ul class="text-uppercase">
                 <li><a href="getIokMenuList.do" class="active">판매승인</a></li>
                 <li><a href="getCalculateMenuList.do">정산</a></li>
@@ -84,15 +88,17 @@
               <table id="table_iok" class="table table-striped table-bordered templatemo-user-table">
                 <thead>
                   <tr>
-                    <td><a href="" class="white-text templatemo-sort-by">판매자ID<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">카테고리<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">상품명<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">판매가<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">입고수량<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">승인여부<span class="caret"></span></a></td>
+                  	<!-- 표에 사용할 컬럼명 -->
+                    <td><a class="white-text templatemo-sort-by">판매자ID<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">카테고리<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">상품명<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">판매가<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">입고수량<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">승인여부<span class="caret"></span></a></td>
                   </tr>
                 </thead>
                 <tbody>
+                	<!-- 각 컬럼에 상응하는 값들: taglib 이용한 for문으로 출력 -->
                 	<c:forEach items="${iokMenuList}" var="iokMenu">
                   		<tr>
 		                    <td>${iokMenu.pid}</td>
@@ -104,13 +110,13 @@
 		                    <td style="display: none;">${iokMenu.iokwhy}</td>
 		                    <td style="display: none;">${iokMenu.inum}</td>		                    
                   		</tr>
-                  	</c:forEach> 
+                  	</c:forEach>
                 </tbody>
-              </table>    
-            </div>                          
-          </div>          
+              </table>
+            </div>                      
+          </div>
 
-<!-- 판매물품승인 테이블 클릭 시 나오는 상세정보창 -->
+<!-- 정산 테이블 클릭 시 나오는 상세정보창 -->
 <form id = 'detailInfo_iok' action="updateIok"> <!-- 'updateIok.do를 줄여씀' -->
           
 <!-- 상세정보창 테이블 --> 
@@ -137,6 +143,7 @@
                     	<td><a class="white-text templatemo-sort-by">입고수량</a></td>
                     	<td></td>
                     	<td><a class="white-text templatemo-sort-by">승인여부</a></td>
+                    	<!-- select-option td에 넣음 -->
                     	<td style="position: relative;">
                     		<select class="select_detail_colored">
                     			<option value="000">000</option>
@@ -146,6 +153,7 @@
                   	</tr>
                   	<tr>
                     	<td style="vertical-align: middle;" height='200px'><a class="white-text templatemo-sort-by">승인거부사유</a></td>
+                    	<!-- textarea td에 넣음 -->
                     	<td height='200px' colspan='3' style="position: relative;">
 							<textarea class="text_detail_colored"></textarea>
 						</td>
@@ -175,63 +183,7 @@
     <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
     <script src="https://www.google.com/jsapi"></script> <!-- Google Chart -->
-    <script>
-      /* Google Chart 
-      -------------------------------------------------------------------*/
-      // Load the Visualization API and the piechart package.
-      google.load('visualization', '1.0', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.setOnLoadCallback(drawChart); 
-      
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-
-          // Create the data table.
-          var data = new google.visualization.DataTable();
-          data.addColumn('string', 'Topping');
-          data.addColumn('number', 'Slices');
-          data.addRows([
-            ['Mushrooms', 3],
-            ['Onions', 1],
-            ['Olives', 1],
-            ['Zucchini', 1],
-            ['Pepperoni', 2]
-          ]);
-
-          // Set chart options
-          var options = {'title':'How Much Pizza I Ate Last Night'};
-
-          // Instantiate and draw our chart, passing in some options.
-          var pieChart = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
-          pieChart.draw(data, options);
-
-          var barChart = new google.visualization.BarChart(document.getElementById('bar_chart_div'));
-          barChart.draw(data, options);
-      }
-
-      $(document).ready(function(){
-        if($.browser.mozilla) {
-          //refresh page on browser resize
-          // http://www.sitepoint.com/jquery-refresh-page-browser-resize/
-          $(window).bind('resize', function(e)
-          {
-            if (window.RT) clearTimeout(window.RT);
-            window.RT = setTimeout(function()
-            {
-              this.location.reload(false); /* false to get page from cache */
-            }, 200);
-          });      
-        } else {
-          $(window).resize(function(){
-            drawChart();
-          });  
-        }   
-      });
-      
-    </script>
+   
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/templatemo-script.js"></script>      <!-- Templatemo Script -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/admin.js"></script>
 

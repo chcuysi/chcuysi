@@ -53,7 +53,7 @@
         <!-- 왼쪽 메뉴 탭 -->
         <nav class="templatemo-left-nav">          
           <ul>
-          	<!-- 대카테고리 메뉴 링크 -->
+            <!-- 대카테고리 메뉴 링크 -->
             <li><a href="getIokMenuList.do"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
             <li><a href="getRefundMenuList.do"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
             <li><a href="salesProducts.do"class="active"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
@@ -70,7 +70,7 @@
         <div class="templatemo-top-nav-container">
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
-            <!-- 소카테고리 메뉴 링크 -->
+              <!-- 소카테고리 메뉴 링크 -->
               <ul class="text-uppercase">
                 <li><a href="salesProducts.do">상품별 매출</a></li>
                 <li><a href="salesCategory.do"class="active">카테고리별 매출</a></li>
@@ -78,9 +78,9 @@
             </nav> 
           </div>
         </div>
-        
         <!-- 메뉴 카테고리 (왼쪽메뉴 > 상단메뉴) -->
         <h2 id="category_menu"></h2>
+        
         
         <!-- 그래프 -->
         <div class="templatemo-flex-row flex-content-row templatemo-overflow-hidden"> <!-- overflow hidden for iPad mini landscape view-->
@@ -88,9 +88,9 @@
             	<!-- 과일 버튼 -->
 		        <a href="salesCategory.do" class="button3">과일</a>
 		        <!-- 채소 버튼 -->
-		        <a href="salesVegetable.do" class="button4">채소</a>
+		        <a href="salesVegetable.do" class="button2">채소</a>
 		        <!-- 기타 버튼 -->
-		        <a href="salesEtc.do" class="button5">기타</a>
+		        <a href="salesEtc.do" class="button6">기타</a>
 		        
               <div class="templatemo-content-widget white-bg templatemo-overflow-hidden">
 				    <div class="templatemo-flex-row flex-content-row">
@@ -105,11 +105,11 @@
         			<!-- controller에서 가져온 값들: taglib 이용한 for문으로 출력, display 숨기기 -->
 					<table style="display:none;">
 					<tbody>
-					<c:forEach items="${salesVegetable}" var="salesVegetable">
+					<c:forEach items="${salesEtc}" var="salesEtc">
 		                   <tr class="table_sc">
-		                       <td>${salesVegetable.category}</td>
-		                       <td>${salesVegetable.category2}</td>
-		                       <td>${salesVegetable.sell_total}</td>
+		                       <td>${salesEtc.category}</td>
+		                       <td>${salesEtc.category2}</td>
+		                       <td>${salesEtc.sell_total}</td>
 		                   </tr>
 		              	 </c:forEach>
 					</tbody></table>
@@ -147,16 +147,16 @@
           data.addColumn('string', 'Topping');
           data.addColumn('number', 'Slices');
           
-       // table_sc 클래스를 가진 tr의 각 요소에 대해 반복작업
+          // table_sc 클래스를 가진 tr의 각 요소에 대해 반복작업
           $('.table_sc').each(function() {
         		// 소카테고리 값을 변수에 넣음
         	    var vegValue = $(this).find('td:eq(1)').text();
-        	 // 그 소카테고리 값이 '새송이/버섯류'일 때
-        		if (vegValue === '새송이/버섯류') {
-        			// 그 소카테고리 값의 매출액 출력
-        			data.addRow(['새송이/버섯류', parseInt($(this).find('td:eq(2)').text(), 10)]);
+        		// 그 소카테고리 값이 '새송이/버섯류'일 때
+        	    if (vegValue === '새송이/버섯류') {
+        	    	// 그 소카테고리 값의 매출액 출력
+          	      data.addRow(['새송이/버섯류', parseInt($(this).find('td:eq(2)').text(), 10)]);
           	    }
-        		// ..이하 해당 작업 반복
+        	 	// ..이하 해당 작업 반복
         	    if (vegValue === '감자/고구마') {
         	      data.addRow(['감자/고구마', parseInt($(this).find('td:eq(2)').text(), 10)]);
         	    }
@@ -166,7 +166,7 @@
         	});
 
           // Set chart options
-          var options = {'title':'채소'};
+          var options = {'title':'기타'};
 
           // Instantiate and draw our chart, passing in some options.
           var pieChart = new google.visualization.PieChart(document.getElementById('pie_chart_div'));

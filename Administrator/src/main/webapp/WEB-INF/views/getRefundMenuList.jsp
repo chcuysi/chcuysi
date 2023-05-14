@@ -54,7 +54,7 @@
             <li><a href="getRefundMenuList.do" class="active"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
             <li><a href="salesProducts.do"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
             <li><a href="getMemberMenuList.do"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
-            <li><a href="http://192.168.0.79:8280/Down/index.jsp"><i class="fa fa-home fa-fw"></i>사용자화면</a></li>
+            <li><a href="http://192.168.0.79:8082/Down/index.jsp"><i class="fa fa-home fa-fw"></i>사용자화면</a></li>
           </ul>  
         </nav>
       </div>
@@ -67,8 +67,6 @@
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
-                <li><a href="getDeliveryMenuList.do">배송</a></li>
-                <li><a href="getExchangeMenuList.do">교환</a></li>
                 <li><a href="getRefundMenuList.do" class="active">환불</a></li>
               </ul>  
             </nav> 
@@ -85,24 +83,28 @@
               <table id="table_refund" class="table table-striped table-bordered templatemo-user-table">
                 <thead>
                   <tr>
-                    <td><a href="" class="white-text templatemo-sort-by">배송번호<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">주문번호<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">배송주소<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">배송상태<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">배송일<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">환불여부<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">주문번호<span class="caret"></span></a></td> 
+                    <td><a href="" class="white-text templatemo-sort-by">회원ID<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">상품번호<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">상품명<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">판매자ID<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">환불수량<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">배송료<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">환불일자<span class="caret"></span></a></td>                   
                   </tr>
                 </thead>
                 <tbody>
                   		<c:forEach items="${refundMenuList}" var="refundMenu">
 		                   <tr>
-		                       <td>${refundMenu.dnum}</td>
-		                       <td>${refundMenu.onum}</td>
-		                       <td>${refundMenu.daddr}</td>
-		                       <td>${refundMenu.dok}</td>
-		                       <td>${refundMenu.ddate.substring(0, 10)}</td>
-		                       <td>${refundMenu.rok}</td>
-		                       <td style="display: none;">${refundMenu.rokwhy}</td>
+		                   	   <td>${refundMenu.onum}</td>
+		                       <td>${refundMenu.mid}</td>
+		                       <td>${refundMenu.inum}</td>
+		                       <td>${refundMenu.name} ${refundMenu.name2}</td>
+		                       <td>${refundMenu.pid}</td>
+		                       <td>${refundMenu.icount}</td>
+		                       <td>${refundMenu.delivery}</td>
+		                       <td>${refundMenu.rdate.substring(0, 10)}</td>
+		                       
 		                   </tr>
 		              	 </c:forEach>
                 </tbody>
@@ -110,57 +112,11 @@
             </div>                          
           </div>          
 
-<!-- 판매물품승인 테이블 클릭 시 나오는 상세정보창 -->
+
 <form id = 'detailInfo_refund' action="updateRefund"> <!-- 'updateRefund.do를 줄여씀' -->
-          
-<!-- 상세정보창 테이블 --> 
 <div class="templatemo-content-container">
-	<div class="templatemo-content-widget no-padding">
-		<div class="panel panel-default table-responsive">
-			<table id="table_detailRefund" class="table table-striped table-bordered cate_detail">
-				<tbody>
-					<tr>
-						<td><a class="white-text templatemo-sort-by">배송번호</a></td>
-                    	<td></td>
-                    	<td><a class="white-text templatemo-sort-by">주문번호</a></td>
-                    	<td></td>
-                  	</tr>
-                  	<tr>
-                    	<td><a class="white-text templatemo-sort-by">배송주소</a></td>
-                    	<td></td>
-                    	<td><a class="white-text templatemo-sort-by">배송상태</a></td>
-                    	<td style="position: relative;">             
-                  			
-                  		</td>
-                  	</tr>
-                  	<tr>
-                    	<td style="vertical-align: middle;"><a class="white-text templatemo-sort-by">배송일</a></td>
-                    	<td><input type='date' class="select_detail_colored"></td>
-                    	<td><a class="white-text templatemo-sort-by">환불여부</a></td>
-                    	<td style="position: relative;"> 
-                    		<select class="select_detail_colored">
-                    			<option value="O">O</option>
-                    			<option value="X">X</option>   
-                    			<option value="-">-</option>                  
-	                  		</select>
-	                  	</td>
-                  	</tr>
-                  	<tr>
-                    	<td style="vertical-align: middle;" height='200px'><a class="white-text templatemo-sort-by">환불(거부)사유</a></td>
-                    	<td height='200px' colspan='3' style="position: relative;">
-							<textarea class="text_detail_non_colored"></textarea>
-						</td>
-                  	</tr>
-                </tbody>
-			</table> 
-		</div>                          
-	</div>
-	<div style="width:100px; text-align: center;margin:auto;display: flex;">
-    	<!-- 상세정보창 내용 수정 -->
-        <button type="button" class="btn_modify">수정</button>
-        <!-- 상세정보창 내용 수정사항 취소 -->
-	   	<button type="button" class="btn_cancel">취소</button>
-    </div>         
+	
+	    
 </form>
         
     
@@ -176,63 +132,6 @@
     <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
     <script src="https://www.google.com/jsapi"></script> <!-- Google Chart -->
-    <script>
-      /* Google Chart 
-      -------------------------------------------------------------------*/
-      // Load the Visualization API and the piechart package.
-      google.load('visualization', '1.0', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.setOnLoadCallback(drawChart); 
-      
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-
-          // Create the data table.
-          var data = new google.visualization.DataTable();
-          data.addColumn('string', 'Topping');
-          data.addColumn('number', 'Slices');
-          data.addRows([
-            ['Mushrooms', 3],
-            ['Onions', 1],
-            ['Olives', 1],
-            ['Zucchini', 1],
-            ['Pepperoni', 2]
-          ]);
-
-          // Set chart options
-          var options = {'title':'How Much Pizza I Ate Last Night'};
-
-          // Instantiate and draw our chart, passing in some options.
-          var pieChart = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
-          pieChart.draw(data, options);
-
-          var barChart = new google.visualization.BarChart(document.getElementById('bar_chart_div'));
-          barChart.draw(data, options);
-      }
-
-      $(document).ready(function(){
-        if($.browser.mozilla) {
-          //refresh page on browser resize
-          // http://www.sitepoint.com/jquery-refresh-page-browser-resize/
-          $(window).bind('resize', function(e)
-          {
-            if (window.RT) clearTimeout(window.RT);
-            window.RT = setTimeout(function()
-            {
-              this.location.reload(false); /* false to get page from cache */
-            }, 200);
-          });      
-        } else {
-          $(window).resize(function(){
-            drawChart();
-          });  
-        }   
-      });
-      
-    </script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/templatemo-script.js"></script>      <!-- Templatemo Script -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/admin.js"></script>
 

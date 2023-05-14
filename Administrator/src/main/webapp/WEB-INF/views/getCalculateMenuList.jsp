@@ -35,26 +35,25 @@
 	<div class="templatemo-sidebar">
 		<header class="templatemo-site-header">
 			<div class="logo">
+				<!-- 로고 클릭 시 인덱스로 이동 -->
          		<a class="goToIndex" href="index">
-         		<img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
-			</a>
+         			<!-- 로고 이미지 -->
+         			<img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
+				</a>
           	</div>
-
         </header>
-         
-         
         <div class="mobile-menu-icon">
             <i class="fa fa-bars"></i>
         </div>
-        
         <!-- 왼쪽 메뉴 탭 -->
         <nav class="templatemo-left-nav">          
           <ul>
+          <!-- 대카테고리 메뉴 링크 -->
             <li><a href="getIokMenuList.do" class="active"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
             <li><a href="getRefundMenuList.do"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
             <li><a href="salesProducts.do"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
             <li><a href="getMemberMenuList.do"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
-			<li><a href="http://192.168.0.79:8280/Down/index.jsp"><i class="fa fa-home fa-fw"></i>사용자화면</a></li>
+			<li><a href="http://192.168.0.79:8082/Down/index.jsp"><i class="fa fa-home fa-fw"></i>사용자화면</a></li>
           </ul>  
         </nav>
       </div>
@@ -66,6 +65,7 @@
         <div class="templatemo-top-nav-container">
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
+              <!-- 소카테고리 메뉴 링크 -->
               <ul class="text-uppercase">
                 <li><a href="getIokMenuList.do">판매승인</a></li>
                 <li><a href="getCalculateMenuList.do" class="active">정산</a></li>
@@ -77,25 +77,27 @@
         <!-- 메뉴 카테고리 (왼쪽메뉴 > 상단메뉴) -->
         <h2 id="category_menu"></h2>
         
-        <!-- 판매물품승인 테이블 --> 
+        <!-- 정산 테이블 --> 
         <div class="templatemo-content-container">
           <div class="templatemo-content-widget no-padding">
             <div class="panel panel-default table-responsive">
               <table id="table_calculate" class="table table-striped table-bordered templatemo-user-table">
                 <thead>
                   <tr>
-                    <td><a href="" class="white-text templatemo-sort-by">판매물품번호<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">판매자ID<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">상품명<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">총판매금액<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">총배송비<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">총수수료<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">총정산금액<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">정산상태<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">정산일<span class="caret"></span></a></td>
+                    <!-- 표에 사용할 컬럼명 -->
+                    <td><a class="white-text templatemo-sort-by">판매물품번호<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">판매자ID<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">상품명<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">총판매금액<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">총배송비<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">총수수료<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">총정산금액<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">정산상태<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">정산일<span class="caret"></span></a></td>
                   </tr>
                 </thead>
                 <tbody>
+                	<!-- 각 컬럼에 상응하는 값들: taglib 이용한 for문으로 출력 -->
                 	<c:forEach items="${calculateMenuList}" var="calculateMenu">
                   		<tr>
 		                    <td>${calculateMenu.inum}</td>
@@ -146,6 +148,7 @@
                     	<td><a class="white-text templatemo-sort-by">총정산금액</a></td>
                     	<td></td>
                     	<td><a class="white-text templatemo-sort-by">정산상태</a></td>
+                    	<!-- select-option td에 넣음 -->
                     	<td style="position: relative;">             
                   			<select class="select_detail_non_colored">
                     			<option value="O">O</option>
@@ -156,6 +159,7 @@
                   	</tr>
                   	<tr>
                     	<td style="vertical-align: middle;"><a class="white-text templatemo-sort-by">정산일</a></td>
+                    	<!-- input-date td에 넣음 -->
                     	<td colspan='3'>
 							<input type='date' class="select_date_colored">
 						</td>

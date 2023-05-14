@@ -35,7 +35,9 @@
 	<div class="templatemo-sidebar">
 		<header class="templatemo-site-header">
 			<div class="logo">
+				<!-- 로고 클릭 시 인덱스로 이동 -->
          		<a class="goToIndex" href="index">
+         		<!-- 로고 이미지 -->
          		<img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
 			</a>
           	</div>
@@ -50,11 +52,12 @@
         <!-- 왼쪽 메뉴 탭 -->
         <nav class="templatemo-left-nav">          
           <ul>
+          	<!-- 대카테고리 메뉴 링크 -->
             <li><a href="getIokMenuList.do"><i class="fa fa-sliders fa-fw"></i>판매자관리</a></li>
             <li><a href="getRefundMenuList.do"><i class="fa fa-database fa-fw"></i>주문관리</a></li>
             <li><a href="salesProducts.do"class="active"><i class="fa fa-bar-chart fa-fw"></i>매출</a></li>
             <li><a href="getMemberMenuList.do"><i class="fa fa-users fa-fw"></i>회원관리</a></li>
-            <li><a href="http://192.168.0.79:8280/Down/index.jsp"><i class="fa fa-home fa-fw"></i>사용자화면</a></li>
+            <li><a href="http://192.168.0.79:8082/Down/index.jsp"><i class="fa fa-home fa-fw"></i>사용자화면</a></li>
           </ul>  
         </nav>
       </div>
@@ -66,6 +69,7 @@
         <div class="templatemo-top-nav-container">
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
+              <!-- 소카테고리 메뉴 링크 -->
               <ul class="text-uppercase">
                 <li><a href="salesProducts.do" class="active">상품별 매출</a></li>
                 <li><a href="salesCategory.do">카테고리별 매출</a></li>
@@ -77,7 +81,7 @@
         <!-- 메뉴 카테고리 (왼쪽메뉴 > 상단메뉴) -->
         <h2 id="category_menu"></h2>
         
-        <!-- 그래프 -->
+        <!-- 매출 top4 그래프 -->
         <div class="templatemo-flex-row flex-content-row templatemo-overflow-hidden"> <!-- overflow hidden for iPad mini landscape view-->
             <div class="col-1 templatemo-overflow-hidden">
               <div class="templatemo-content-widget white-bg templatemo-overflow-hidden">
@@ -90,22 +94,23 @@
             </div>
           </div>
           
-     <!-- 판매물품승인 테이블 --> 
+     <!-- 판매자 테이블 --> 
         <div class="templatemo-content-container">
           <div class="templatemo-content-widget no-padding">
             <div class="panel panel-default table-responsive">
               <table id="table_salesProducts" class="table table-striped table-bordered templatemo-user-table">
                 <thead>
                   <tr>
-					<td><a href="" class="white-text templatemo-sort-by">상품명<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">판매자ID<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">카테고리<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">판매가<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">매출액<span class="caret"></span></a></td>
+                  	<!-- 표에 사용할 컬럼명 -->
+					<td><a class="white-text templatemo-sort-by">상품명<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">판매자ID<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">카테고리<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">판매가<span class="caret"></span></a></td>
+                    <td><a class="white-text templatemo-sort-by">매출액<span class="caret"></span></a></td>
                   </tr>
                 </thead>
                 <tbody>
-                	
+                		<!-- 각 컬럼에 상응하는 값들: taglib 이용한 for문으로 출력 -->
                   		<c:forEach items="${salesProducts}" var="salesProducts">
 		                   <tr>
 							   <td>${salesProducts.name}  ${salesProducts.name2}</td>
@@ -153,6 +158,8 @@
 
           data.addColumn('string', 'Topping');
           data.addColumn('number', '매출액');
+          
+          // 테이블에 있는 상품명과 매출액 값을 표에다 넣음 (매출액은 int형으로 변환시킴)
           data.addRows([
             [$('#table_salesProducts tr:nth-child(1) td:nth-child(1)').text(), parseInt($('#table_salesProducts tr:nth-child(1) td:nth-child(5)').text().substring(3))],
             [$('#table_salesProducts tr:nth-child(2) td:nth-child(1)').text(), parseInt($('#table_salesProducts tr:nth-child(2) td:nth-child(5)').text())],

@@ -3,14 +3,13 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="RefundMenuDao">
 
+	<!--환불 메뉴 보이기
+		1. 카테고리별 환불에 필요한 정보들 select
+ -->
    <select id="getRefundMenuList" resultType="vo.RefundMenuVO" parameterType="hashmap" >
-      SELECT d.dnum, d.onum, d.daddr, d.dok, d.ddate, r.rok, r.rokwhy
-         FROM DELIVERY d
-         LEFT JOIN REFUND r ON d.onum = r.onum
+      SELECT mid, icount, name, name2, pid, delivery, inum, rdate, onum
+         FROM return
    </select>  
    
-   <update	id='updateRefundMenu' parameterType="vo.RefundMenuVO">
-		UPDATE refund SET rok=#{rok}, rokwhy=#{rokwhy} WHERE onum=#{onum}
-	</update>
    
 </mapper>
