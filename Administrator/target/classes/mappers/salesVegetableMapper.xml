@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.SalesVegetableDao">
 
+	<!--카테고리별 매출(채소) 보이기
+		1. 카테고리별 매출(채소)에 필요한 정보들 select
+		2. INNER JOIN 사용
+		3. 카테고리를 채소로 한정, 주문건수 들어온 것들만
+		4. 각 정보들을 GROUP BY로 묶음
+		5. 나열 순서는 매출액순으로  -->
 	<select id="getSalesVegetable" resultType="vo.SalesCategoryVO" parameterType="hashmap">
 		select p.category category, p.category2 category2,sum(p.price*o.icount) AS sell_total
 		FROM testproduct p INNER JOIN order1 o ON p.inum = o.inum

@@ -2,7 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="CalculateMenuDao">
-
+	<!--정산 메뉴 보이기
+		1. 정산 메뉴에 필요한 정보들 select
+		2. INNER JOIN 사용
+		3. 각 정보들을 GROUP BY로 묶음
+		4. 나열 순서는 정산 정보에 따라, 정산일 날짜에 따라
+		  -->
 	<select id="getCalculateMenuList" resultType="vo.CalculateMenuVO" parameterType="hashmap" >
 		SELECT p.inum AS inum, p.pid AS pid, p.name AS name, p.name2 AS name2, sum(p.price*o.icount) AS sell_total, 
        		SUM(o.delivery) AS dcharge, sum(p.price*o.icount*0.30) AS ocharge, 
@@ -15,7 +20,10 @@
 		    ELSE 3
 		END, o.jokdate DESC
 	</select>  
-	
+	<!--정산 ㄴ메뉴 수정하기
+		1. 정산 메뉴 중에서 수정할 것들 SET
+		2. 선택한 것의 물품 번호에 해당하는 것만 UPDATE
+		 -->
 	<update	id='updateCalculateMenu' parameterType="vo.CalculateMenuVO">
 		UPDATE order1 SET jok=#{jok}, jokdate=#{jokdate} WHERE inum=#{inum}
 	</update>

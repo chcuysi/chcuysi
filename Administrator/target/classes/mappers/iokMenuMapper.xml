@@ -3,25 +3,20 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="IokMenuDao">
 
+	<!--판매승인 메뉴 보이기
+		1. 판매승인 메뉴에 필요한 정보들 select
+		2. INNER JOIN 사용
+		  -->
 	<select id="getIokMenuList" resultType="vo.IokMenuVO" parameterType="hashmap" >
 		select ps.pid AS pid, p.category AS category, p.category2 AS category2, p.name AS name, p.name2 AS name2, p.price AS price, p.warehoused AS warehoused, p.iok AS iok, p.iokwhy AS iokwhy, p.inum AS inum
 		from testproduct p INNER JOIN psale ps
 		ON p.pid = ps.pid
 	</select> 
-<!-- 	<select id= "selectIokPage" resultType="vo.IokMenuVO" parameterType="hashmap">
-		<![CDATA[
-			SELECT ps.pid AS pid, ps.pname AS pname, p.category AS category, p.category2 AS category2, p.name AS name, p.name2 AS name2, p.price AS price, p.startdate AS startdate, p.enddate AS enddate, p.warehoused AS warehoused, p.iok AS iok, p.iokwhy AS iokwhy
-			FROM products p FULL OUTER JOIN psale ps
-			ON p.pid = ps.pid
-			WHERE p.num IN (
-					SELECT num
-					FROM (SELECT rownum rnum, num FROM (SELECT rownum, num FROM products ORDER BY num DESC))
-					WHERE rnum>=#{startRow} AND rnum<=#{endRow}
-				)
-		]]>
-	</select> -->
 	
-	
+	<!--판매승인 메뉴 수정하기
+		1. 판매승인 메뉴 중에서 수정할 것들 SET
+		2. 선택한 것의 물품 번호에 해당하는 것만 UPDATE
+		 -->
 	<update	id='updateIokMenu' parameterType="vo.IokMenuVO">
 		UPDATE testproduct SET iok=#{iok}, iokwhy=#{iokwhy} WHERE inum=#{inum}
 	</update>

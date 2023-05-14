@@ -10,13 +10,17 @@ import org.springframework.stereotype.Repository;
 import vo.RefundMenuVO;
 import vo.SalesCategoryVO;
 
+// 카테고리별 매출(과일) 리포지토리
 @Repository("salesCategoryDao")
 public class SalesCategoryDaoImpl implements SalesCategoryDao {
    
-   @Autowired
-   private SqlSessionTemplate mybatis;
+	// 의존성 주입 - mybatis의 메소드 사용 위해
+	@Autowired
+	private SqlSessionTemplate mybatis;
 
-   public List<SalesCategoryVO> getSalesCategory(HashMap map) {
-	      return mybatis.selectList("dao.SalesCategoryDao.getSalesCategory", map);
-	   }
+	// 카테고리별 매출(과일) 메뉴 목록 가져옴 - HashMap 매개변수로 받음
+	public List<SalesCategoryVO> getSalesCategory(HashMap map) {
+		// 카테고리별 매출(과일) 메뉴 목록 반환
+		return mybatis.selectList("dao.SalesCategoryDao.getSalesCategory", map);
+	}
 }
