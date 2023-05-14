@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     
  
     
@@ -52,15 +52,15 @@ https://templatemo.com/tm-571-hexashop
     <!-- ***** Preloader End ***** -->
     
     
-    <!-- ***** Header Area Start ***** -->
-   <header id="mainHeader" class="header-area header-sticky">
+   <!-- ***** Header Area Start ***** -->
+    <header id="mainHeader" class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="sajo" class="logo">
-                            <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png">
+                            <img src="${pageContext.request.contextPath}/resources/images/logo.png">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -76,24 +76,26 @@ https://templatemo.com/tm-571-hexashop
                                     <li><a href="market"><b>기타</b></a></li>
                                 </ul>
                             </li>
-                            <li class="scroll-to-section"><a href="recipe">레시피</a></li>
+                            <li class="scroll-to-section"><a href="#kids">레시피</a></li>
                             
-                            <li><a href="company.do">회사소개</a>
+                            <li class="scroll-to-section">
+                                <a href="company.do">회사소개</a>     
                             </li>
                             
                             
-                            
-                            
-                            <li class="submenu">
-                                <a href="javascript:;">고객센터</a>
-                                <ul>
-                                    <li><a href="#"><b>자주 묻는 질문</b></a></li>
-                                    <li><a href="#"><b>Q/A</b></a></li>
-                                    <li><a href="#"><b>공지사항</b></a></li>
-                                </ul>
-                            </li>                         <!-- session.invalidate(); -->
-                            
-                            <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
+                            <c:if test="${sessionScope.logType eq '일반'}">
+                            <c:choose> 
+                            <c:when test="${sessionScope.products ne null}">
+                            <c:set value="${sessionScope.products}" var="i"></c:set>
+                            <li class="scroll-to-section"><a href="cart2">장바구니 [ <b class="cartCount">${fn:length(i)}</b> ]</a></li>
+                            </c:when>
+                            <c:otherwise>
+                            <li class="scroll-to-section"><a href="cart2">장바구니 [ 0 ]</a></li>
+                            </c:otherwise>
+                            </c:choose>
+                            </c:if>
+                            <!-- ******************************************************************************************* -->
+                          
                             <!-- ******************************************************************************************* -->
                             <c:choose>
                             
@@ -107,7 +109,7 @@ https://templatemo.com/tm-571-hexashop
                                     <li><a href="memberOut"><b>회원탈퇴</b></a></li>
                                       <li><a href="insertProduct"><b>판매등록</b></a></li>
                                          <li><a href="iokCheck"><b>판매등록 승인여부</b></a></li>
-                                       <li><a href="#"><b>판매내역</b></a></li>
+                                       <li><a href="sellHistory"><b>판매내역</b></a></li>
                                 </ul>
                              </li>
                              
@@ -119,17 +121,26 @@ https://templatemo.com/tm-571-hexashop
                                     <li><a href="logOut"><b>로그아웃</b></a></li>
                                     <li><a href="UpdateMember"><b>회원정보수정</b></a></li>
                                     <li><a href="memberOut"><b>회원탈퇴</b></a></li>
-                                    <li><a href="#"><b>구매내역</b></a></li>                                   
+                                    <li><a href="buyHistory"><b>구매내역</b></a></li>                                   
                                 </ul>
                              </li>
                                 </c:when>
                              
                         
-                            <c:otherwise>  
-                            <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li>
+                         <c:otherwise>  
+                              <li class="submenu">
+                               <a id="scroll-to-section" href="javascript:;">로그인하기</a>
+                                <ul>
+                                    <li><a href="loginForm?pageType=index"><b>일반 회원 로그인</b></a></li>
+                                    <li><a href="loginForm2"><b>판매자 로그인</b></a></li>                                 
+                                </ul>
+                                
+                          <!--        <ul> -->
+                          <!--   <li class="scroll-to-section"><a href="loginForm?pageType=index">로그인하기</a></li> -->
                             </c:otherwise>
                             
                             </c:choose>
+                                <!-- ******************************************************************************************* -->
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -140,7 +151,7 @@ https://templatemo.com/tm-571-hexashop
             </div>
         </div>
     </header>
-    <!-- ***** Header Area End ***** -->
+    
 
     <!-- ***** Main Banner Area Start ***** -->
     <div class="page-heading" id="top">
@@ -169,8 +180,8 @@ https://templatemo.com/tm-571-hexashop
         <div class="container">
             <div class="row">
                 <div id="loginform" class="col-lg-8">          
-                    <form  action='modify' method='post' enctype='multipart/form-data'>
-                        <div class="row">    
+                    <form  action="modify" method='post' enctype='multipart/form-data'>
+                        <div class="row">
                           <input type="hidden" name="mid" value="${sessionScope.logName}"/>                		
                           <!-- zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz -->    
                 		<div id="insertProduct-sectionHeading" class="section-heading">
@@ -285,7 +296,7 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-3">
                     <div class="first-item">
                         <div class="logo">
-                            <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
+                            <img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="hexashop ecommerce templatemo">
                         </div>
                          <span id="bot">통신판매업 신고번호 : 2021-화성동부-0302</span> <br/>
                          <ul>
@@ -311,13 +322,14 @@ https://templatemo.com/tm-571-hexashop
                         <li><a href="#">1:1 문의 바로가기</a></li>
                     </ul>
                 </div>
-               
+              
                 <div class="col-lg-12">
                     <div class="under-footer">
                         <p>SAJO Company는 통신판매중개자이며, 통신판매의 당사자가 아닙니다. 상품, 상품정보, 거래에 관한 의무와 책임은 판매자에게 있습니다.</p> 
                         <p>Copyright © 2022 SAJO Co., Ltd. All Rights Reserved. </p>
           
-                      
+                      <!--  디자인 출처 기능  -->  
+                       <!--  <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">SAJO</a>-->
                         <ul>
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -328,7 +340,9 @@ https://templatemo.com/tm-571-hexashop
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> 
+    
+  <!--Footer End  -->
     
 
     <!-- jQuery -->
@@ -360,9 +374,10 @@ https://templatemo.com/tm-571-hexashop
         	
          	$('#recontent').text("${vo.recontent}");
         	
-            $('#modify').submit(function() {
+            $('#form-submit').submit(function() {
             	
-            	alert('리뷰 수정이 완료되었습니다.')
+            	alert('리뷰 수정이 완료되었습니다.');
+            	
             });
   			
  

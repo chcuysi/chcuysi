@@ -23,21 +23,30 @@
 
 </head>
 <body>
+
+
+
+
+
+
+
+
 <!-- ***** Header Area Start ***** -->
    <header id="mainHeader" class="header-area header-sticky">
+ 
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="sajo" class="logo">
-                            <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png">
+                          <a href="sajo" class="logo">
+                            <img src="${pageContext.request.contextPath}/resources/images/logo.png">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="sajo" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#men">미션</a></li>
+                            <li class="scroll-to-section"><a href="review.do">리뷰</a></li>
                              <li class="submenu">
                                 <a href="javascript:;">싱싱마켓</a>
                                 <ul>
@@ -49,18 +58,11 @@
                             </li>
                             <li class="scroll-to-section"><a href="#kids">레시피</a></li>
                             
-                            <li class="submenu">
+                            <li >
                                 <a href="company.do">회사소개</a>
                                
                             </li>
-                            <li class="submenu">
-                                <a href="javascript:;">고객센터</a>
-                                <ul>
-                                    <li><a href="http://192.168.0.79:8280/Administrator/getIokMenuList.do"><b>자주 묻는 질문</b></a></li>
-                                    <li><a href="#"><b>Q/A</b></a></li>
-                                    <li><a href="#"><b>공지사항</b></a></li>
-                                </ul>
-                            </li>                         <!-- session.invalidate(); -->
+                           
                             <c:if test="${sessionScope.logType eq '일반'}">
                             <c:choose> 
                             <c:when test="${sessionScope.products ne null}">
@@ -128,17 +130,18 @@
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
- <!-- ***** Main Banner Area Start ***** -->
+    
+    <!-- ***** Main Banner Area Start ***** -->
     <div class="page-heading" id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>SOJO 회사 소개 </h2>
+                        <h2>SOJO 회사 소개</h2>
                     </div>
                 </div>
             </div>
-      </div> 
+        </div>
     </div>
     <!-- ***** Main Banner Area End ***** -->
     
@@ -217,7 +220,7 @@
                 <div class="col-lg-3">
                     <div class="first-item">
                         <div class="logo">
-                            <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
+                            <img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="hexashop ecommerce templatemo">
                         </div>
                          <span id="bot">통신판매업 신고번호 : 2021-화성동부-0302</span> <br/>
                          <ul>
@@ -262,6 +265,8 @@
             </div>
         </div>
     </footer> 
+    
+  <!--Footer End  -->
     
 
     <!-- jQuery -->

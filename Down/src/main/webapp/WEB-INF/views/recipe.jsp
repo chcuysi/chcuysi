@@ -62,20 +62,21 @@ https://templatemo.com/tm-571-hexashop
 
 
 	<!-- ***** Header Area Start ***** -->
-	 <header id="mainHeader" class="header-area header-sticky">
+   <header id="mainHeader" class="header-area header-sticky">
+ 
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="sajo" class="logo">
-                            <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png">
+                          <a href="sajo" class="logo">
+                            <img src="${pageContext.request.contextPath}/resources/images/logo.png">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="sajo" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#men">미션</a></li>
+                            <li class="scroll-to-section"><a href="review.do">리뷰</a></li>
                              <li class="submenu">
                                 <a href="javascript:;">싱싱마켓</a>
                                 <ul>
@@ -87,18 +88,11 @@ https://templatemo.com/tm-571-hexashop
                             </li>
                             <li class="scroll-to-section"><a href="#kids">레시피</a></li>
                             
-                            <li class="submenu">
+                            <li >
                                 <a href="company.do">회사소개</a>
                                
                             </li>
-                            <li class="submenu">
-                                <a href="javascript:;">고객센터</a>
-                                <ul>
-                                    <li><a href="http://192.168.0.79:8280/Administrator/getIokMenuList.do"><b>자주 묻는 질문</b></a></li>
-                                    <li><a href="#"><b>Q/A</b></a></li>
-                                    <li><a href="#"><b>공지사항</b></a></li>
-                                </ul>
-                            </li>                         <!-- session.invalidate(); -->
+                          
                             <c:if test="${sessionScope.logType eq '일반'}">
                             <c:choose> 
                             <c:when test="${sessionScope.products ne null}">
@@ -165,7 +159,7 @@ https://templatemo.com/tm-571-hexashop
             </div>
         </div>
     </header>
-	<!-- ***** Header Area End ***** -->
+    <!-- ***** Header Area End ***** -->
 
 	<!-- ***** Main Banner Area Start ***** -->
 	<div class="page-heading" id="top">
@@ -324,77 +318,59 @@ https://templatemo.com/tm-571-hexashop
 	<!-- ***** 감자칩 레시피 Ends ***** -->
 
 	<!-- ***** Footer Start ***** -->
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3">
-					<div class="first-item">
-						<div class="logo">
-							<img
-								src="${pageContext.request.contextPath}/resources/images/LOGO2.png"
-								alt="hexashop ecommerce templatemo">
-						</div>
-						<span id="bot">통신판매업 신고번호 : 2021-화성동부-0302</span> <br />
-						<ul>
-							<li><a href="#">농산물 납품 및 긴급구출 제보 : abcd@efg.com zzzz</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3">
-					<h4>SAJO Company</h4>
-					<span id="bot"> 상호명 : 주식회사 사조<br /> 공동대표 : 홍석희,고다인,윤재진,김현석<br />
-						사업자등록번호 : 572-81-02287<br /> 소재지 : 서울특별시 금천구 가산디지털로 302,
-						3층(가산동112)<br />
-					</span>
-				</div>
-				<!-- 메인페이지 제일 하단 부분 -->
-
-				<div class="col-lg-3">
-					<h4>고객센터</h4>
-					<ul>
-						<li><a href="#">전화 1588-3819</a></li>
-						<li><a href="#">결제도용신고 1588-3816</a></li>
-						<li><a href="#">1:1 문의 바로가기</a></li>
-					</ul>
-				</div>
-				<!-- 
+    <footer>
+        <div class="container">
+            <div class="row">
                 <div class="col-lg-3">
-                    <h4>Useful Links</h4>
-                    <ul>
-                        <li><a href="#">Homepage</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
+                    <div class="first-item">
+                        <div class="logo">
+                            <img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="hexashop ecommerce templatemo">
+                        </div>
+                         <span id="bot">통신판매업 신고번호 : 2021-화성동부-0302</span> <br/>
+                         <ul>
+                            <li><a href="#">농산물 납품 및 긴급구출 제보 : abcd@efg.com zzzz</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="col-lg-3">
-                    <h4>Help &amp; Information</h4>
+                <h4>SAJO Company</h4>
+               <span id="bot"> 상호명 : 주식회사 사조<br/>
+                               공동대표 : 홍석희,고다인,윤재진,김현석<br/> 
+                               사업자등록번호 : 572-81-02287<br/>
+                               소재지 : 서울특별시 금천구 가산디지털로 302, 3층(가산동112)<br/>
+               </span> 
+                 </div>
+                <!-- 메인페이지 제일 하단 부분 -->
+                
+                 <div class="col-lg-3">
+                    <h4>고객센터</h4>
                     <ul>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">FAQ's</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Tracking ID</a></li>
+                        <li><a href="#">전화 1588-3819</a></li>
+                        <li><a href="#">결제도용신고 1588-3816</a></li>
+                        <li><a href="#">1:1 문의 바로가기</a></li>
                     </ul>
-                </div> -->
-				<div class="col-lg-12">
-					<div class="under-footer">
-						<p>SAJO Company는 통신판매중개자이며, 통신판매의 당사자가 아닙니다. 상품, 상품정보, 거래에 관한
-							의무와 책임은 판매자에게 있습니다.</p>
-						<p>Copyright © 2022 SAJO Co., Ltd. All Rights Reserved.</p>
-
-						<!--  디자인 출처 기능  -->
-						<!--  <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">SAJO</a>-->
-						<ul>
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#"><i class="fa fa-behance"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
+                </div>
+              
+                <div class="col-lg-12">
+                    <div class="under-footer">
+                        <p>SAJO Company는 통신판매중개자이며, 통신판매의 당사자가 아닙니다. 상품, 상품정보, 거래에 관한 의무와 책임은 판매자에게 있습니다.</p> 
+                        <p>Copyright © 2022 SAJO Co., Ltd. All Rights Reserved. </p>
+          
+                      <!--  디자인 출처 기능  -->  
+                       <!--  <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">SAJO</a>-->
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer> 
+    
+  <!--Footer End  -->
 
 
 	<!-- jQuery -->

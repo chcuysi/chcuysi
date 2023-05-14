@@ -15,5 +15,6 @@ public interface ReviewDAO {
 
 	public void update(ReviewVO vo);
 	
-	public void delete(ReviewVO vo);
+	public void delett(ReviewVO vo);
+
 }

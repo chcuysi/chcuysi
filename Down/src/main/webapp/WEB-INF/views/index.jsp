@@ -69,7 +69,7 @@ https://templatemo.com/tm-571-hexashop
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="sajo" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#men">미션</a></li>
+                            <li class="scroll-to-section"><a href="#explore">리뷰</a></li>
                              <li class="submenu">
                                 <a href="javascript:;">싱싱마켓</a>
                                 <ul>
@@ -81,18 +81,12 @@ https://templatemo.com/tm-571-hexashop
                             </li>
                             <li class="scroll-to-section"><a href="#kids">레시피</a></li>
                             
-                            <li class="submenu">
+                            <li >
                                 <a href="company.do">회사소개</a>
                                
                             </li>
-                            <li class="submenu">
-                                <a href="javascript:;">고객센터</a>
-                                <ul>
-                                    <li><a href="http://192.168.0.79:8280/Administrator/getIokMenuList.do"><b>자주 묻는 질문</b></a></li>
-                                    <li><a href="#"><b>Q/A</b></a></li>
-                                    <li><a href="#"><b>공지사항</b></a></li>
-                                </ul>
-                            </li>                         <!-- session.invalidate(); -->
+                            
+                            
                             <c:if test="${sessionScope.logType eq '일반'}">
                             <c:choose> 
                             <c:when test="${sessionScope.products ne null}">
@@ -188,15 +182,15 @@ https://templatemo.com/tm-571-hexashop
                                 <div class="right-first-image">
                                     <div class="thumb">
                                         <div class="inner-content">
-                                            <h4>미션</h4>
-                                            <span>지구와 우리 그리고 나를 위해!</span>
+                                            <h4>리뷰</h4>
+                                            <span>소비자들의 생생하다 못해 팔딱 뛰는 리뷰가 있는 곳입니다</span>
                                         </div>
                                         <div class="hover-content">
                                             <div class="inner">
-                                                <h4>미션</h4>
-                                                <p>지구와 우리 그리고 나를 위해! 다같이 실천하는 친환경적 소비생활!</p>
+                                                <h4>리뷰</h4>
+                                                <p>사용자들의 생생한 리뷰가 담겨있는 곳입니다</p>
                                                 <div class="main-border-button">
-                                                    <a href="#">자세히 보기</a>
+                                                    <a href="#explore">자세히 보기</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -341,8 +335,8 @@ https://templatemo.com/tm-571-hexashop
             <div class="row">
                 <div class="col-lg-6">
                     <div class="section-heading">
-                        <h2>재구매율 높은 상품 리스트!</h2>
-                        <span>SAJO에서 판매된 상품들 중 재구매율이 높은 순으로 보여드리는 리스트입니다.</span>
+                        <h2>지금 먹어야 제일 맛있는 야채!</h2>
+                        <span>SAJO에서 현재 계절에 맞는 제철 야채들을 추천드립니다.</span>
                     </div>
                 </div>
             </div>
@@ -363,10 +357,10 @@ https://templatemo.com/tm-571-hexashop
                                             <li><a class="cart" href="#"><input id="type" type="hidden" value="appleSingProduct"/> 장바구니</a></li>
                                         </ul>
                                     </div>
-                                    <img src="${pageContext.request.contextPath}/resources/images/apple.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/resources/images/sang.png" alt="">
                                 </div>
                                 <div class="down-content">
-                                    <h4>유기농 못난이 꿀사과 5kg</h4>
+                                    <h4>유기농 못난 상추 1kg</h4>
                                     <span>20,000원</span>
                                     <ul class="stars">
                                         <li><i class="fa fa-star"></i></li>
@@ -723,134 +717,19 @@ https://templatemo.com/tm-571-hexashop
                 
                 <div class="col-lg-6">
                     <div class="right-content">
-                        <div class="row">
-                            <div class="col-lg-6">
-                          <span>소비자 아이디</span>
-                                <div class="leather">
-                                    <h4>소비자가 쓴 타이틀</h4></div>
-                                    <span>소비자가 쓴 내용</span>
-                                
-                            </div>
+                        
                             
-                            
-                            <div class="col-lg-6">
-                            <span>소비자 아이디</span>
-                                 <div class="leather">
-                                    <h4>소비자가 쓴 타이틀</h4>
-                                    <span>소비자가 쓴 내용</span>
-                                </div>
-                                
-                                
-                            </div>
-                            <div class="col-lg-6">
-                            <span>소비자 아이디</span>
-                                <div class="leather">
-                                    <h4>소비자가 쓴 타이틀</h4>
-                                    <span>소비자가 쓴 내용</span>
-                                </div>
-                                
-                               
-                            </div>
-                            <div class="col-lg-6">
-                             <span>소비자 아이디</span>
-                                <div class="types">
-                                    <h4>소비자가 쓴 타이틀</h4>
-                                    <span>소비자가 쓴 내용</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                            
+                         <img src="${pageContext.request.contextPath}/resources/images/review.png" alt="">
+                         
+                      
+                        
+                </div> 
             </div>
         </div>
     </section>
 
       <!-- ***** Explore Area Starts *******************************************************************************리뷰 -->
-
-    <!-- ***** Social Area Starts ***** -->
-    <section class="section" id="social">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-heading">
-                        <h2>판매 예정 상품</h2>
-                        <span>지금은 아쉽게 만날 수 없지만 곧 여러분들께 다가갈 상품들입니다.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row images">
-                <div class="col-2">
-                    <div class="thumb">
-                        <div class="icon">
-                            <a href="http://instagram.com">
-                                <h6>Fashion</h6>
-                                <i class="fa fa-instagram"></i>
-                            </a>
-                        </div>
-                        <img src="${pageContext.request.contextPath}/resources/images/missionEx2.PNG" alt="">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="thumb">
-                        <div class="icon">
-                            <a href="http://instagram.com">
-                                <h6>New</h6>
-                                <i class="fa fa-instagram"></i>
-                            </a>
-                        </div>
-                        <img src="${pageContext.request.contextPath}/resources/images/missionEx2.PNG" alt="">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="thumb">
-                        <div class="icon">
-                            <a href="http://instagram.com">
-                                <h6>Brand</h6>
-                                <i class="fa fa-instagram"></i>
-                            </a>
-                        </div>
-                        <img src="${pageContext.request.contextPath}/resources/images/missionEx2.PNG" alt="">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="thumb">
-                        <div class="icon">
-                            <a href="http://instagram.com">
-                                <h6>Makeup</h6>
-                                <i class="fa fa-instagram"></i>
-                            </a>
-                        </div>
-                        <img src="${pageContext.request.contextPath}/resources/images/missionEx2.PNG" alt="">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="thumb">
-                        <div class="icon">
-                            <a href="http://instagram.com">
-                                <h6>Leather</h6>
-                                <i class="fa fa-instagram"></i>
-                            </a>
-                        </div>
-                        <img src="${pageContext.request.contextPath}/resources/images/missionEx2.PNG" alt="">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="thumb">
-                        <div class="icon">
-                            <a href="http://instagram.com">
-                                <h6>Bag</h6>
-                                <i class="fa fa-instagram"></i>
-                            </a>
-                        </div>
-                        <img src="${pageContext.request.contextPath}/resources/images/missionEx2.PNG" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ***** Social Area Ends ***** -->
 
     <!-- ***** Subscribe Area Starts ***** -->
     <div class="subscribe">
@@ -861,7 +740,7 @@ https://templatemo.com/tm-571-hexashop
                         <h2>지금 바로 'SAJO'에 상품을 등록해보시겠어요?</h2>
                         <span>많은 고객님들이 아쉽게 버려질 위기에 처한 식재료들을 찾고 있습니다!</span>
                     </div>
-                    <form id="subscribe" action="loginSales" method="get">
+                    <form id="subscribe" action="loginSales" method="post">
                         <div class="row">
                           <div class="col-lg-5">
                             <fieldset>
@@ -870,22 +749,21 @@ https://templatemo.com/tm-571-hexashop
                           </div>
                           <div class="col-lg-5">
                             <fieldset>
-                              <input name="password" type="text" id="password" pattern="^[0-9]*$" placeholder="판매자님의 비밀번호를 입력해주세요" required="">
+                              <input name="password" type="password" id="password" pattern="^[0-9]*$" placeholder="판매자님의 비밀번호를 입력해주세요" required="">
                             </fieldset>
                           </div>
                           <div class="col-lg-2">
+                          <div class="col-lg-108">
                             <fieldset>
-                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
+                              <button type="submit" id="form-submits" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
                             </fieldset>
+                            </div>
                           </div>
                         </div>
                         
-
-										<input type="hidden" id="pageType" name="pageType" value="insertProduct"/>
+					<input type="hidden" id="pageType" name="pageType" value="insertProduct"/>
 							
-									
-									
-									
+					
                     </form>
                 </div>
                 <div class="col-lg-4">
@@ -911,14 +789,14 @@ https://templatemo.com/tm-571-hexashop
     </div>
     <!-- ***** Subscribe Area Ends ***** -->
     
-    <!-- ***** Footer Start ***** -->
+<!-- ***** Footer Start ***** -->
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
                     <div class="first-item">
                         <div class="logo">
-                            <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
+                            <img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="hexashop ecommerce templatemo">
                         </div>
                          <span id="bot">통신판매업 신고번호 : 2021-화성동부-0302</span> <br/>
                          <ul>
@@ -933,11 +811,6 @@ https://templatemo.com/tm-571-hexashop
                                사업자등록번호 : 572-81-02287<br/>
                                소재지 : 서울특별시 금천구 가산디지털로 302, 3층(가산동112)<br/>
                </span> 
-               
-               <!-- ********************************************************************************************************************** -->
-           <c:if test="${sessionScope.logName ne null}">
-			<input type="hidden" id="Duplicate" value="${Duplicate}">
-		</c:if>
                  </div>
                 <!-- 메인페이지 제일 하단 부분 -->
                 
@@ -949,25 +822,7 @@ https://templatemo.com/tm-571-hexashop
                         <li><a href="#">1:1 문의 바로가기</a></li>
                     </ul>
                 </div>
-               <!-- 
-                <div class="col-lg-3">
-                    <h4>Useful Links</h4>
-                    <ul>
-                        <li><a href="#">Homepage</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h4>Help &amp; Information</h4>
-                    <ul>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">FAQ's</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Tracking ID</a></li>
-                    </ul>
-                </div> -->
+              
                 <div class="col-lg-12">
                     <div class="under-footer">
                         <p>SAJO Company는 통신판매중개자이며, 통신판매의 당사자가 아닙니다. 상품, 상품정보, 거래에 관한 의무와 책임은 판매자에게 있습니다.</p> 
@@ -985,7 +840,9 @@ https://templatemo.com/tm-571-hexashop
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> 
+    
+  <!--Footer End  -->
     
 
     <!-- jQuery -->

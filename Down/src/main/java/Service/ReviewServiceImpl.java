@@ -35,8 +35,8 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public void delete(ReviewVO vo) {
-		ReviewDAO.delete(vo);
+	public void delett(ReviewVO vo) {
+		ReviewDAO.delett(vo);
 		
 	}
 

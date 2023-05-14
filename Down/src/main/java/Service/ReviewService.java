@@ -13,7 +13,8 @@ public interface ReviewService {
 	
 	public ReviewVO updateReview(String renum);
 	
-	public void update(ReviewVO vo);
+	public void update(ReviewVO vo); 
 	
-	public void delete(ReviewVO vo);
+	public void delett(ReviewVO vo);
+
 }

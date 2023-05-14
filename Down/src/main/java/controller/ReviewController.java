@@ -39,7 +39,7 @@ public class ReviewController {
 		public String insert(ReviewVO vo) {			
 			
 		  reviewService.insertReview(vo);
-			return "review";	
+		  return "redirect:review.do";	
 		}
 	  
 	//리뷰 상세보기  
@@ -71,22 +71,22 @@ public class ReviewController {
 	  
 	  
 	  
-	  @RequestMapping(value = "/modify", method = RequestMethod.POST)
+	  @RequestMapping(value="modify", method = RequestMethod.POST)
 	  public String show2(ReviewVO vo) {
 		  System.out.println("호출5678");
 		  System.out.println(vo.toString());
 		  reviewService.update(vo);
 		  
-		  return "review";
+		  return "redirect:review.do";
 	  }
 	  
 	  @RequestMapping("deleteTT")
 	  public String delete(ReviewVO vo) {
 		  System.out.println("호출9010");
 		  
-		  reviewService.delete(vo);
+		  reviewService.delett(vo);
 		  
-		  return "review";
+		  return "redirect:review.do";
 		  
 	  }
 	  

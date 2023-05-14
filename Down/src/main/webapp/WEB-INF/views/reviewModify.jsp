@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +42,7 @@ https://templatemo.com/tm-571-hexashop
     
     <body>
     
-    <!-- ***** Header Area Start ***** -->
+   <!-- ***** Header Area Start ***** -->
     <header id="mainHeader" class="header-area header-sticky">
         <div class="container">
             <div class="row">
@@ -49,13 +50,13 @@ https://templatemo.com/tm-571-hexashop
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="sajo" class="logo">
-                            <img src="${pageContext.request.contextPath}/resources/images/LOGO3.png">
+                            <img src="${pageContext.request.contextPath}/resources/images/logo.png">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="sajo" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#men">미션</a></li>
+                            <li class="scroll-to-section"><a href="review.do">리뷰</a></li>
                              <li class="submenu">
                                 <a href="javascript:;">싱싱마켓</a>
                                 <ul>
@@ -70,16 +71,21 @@ https://templatemo.com/tm-571-hexashop
                             <li class="scroll-to-section">
                                 <a href="company.do">회사소개</a>     
                             </li>
-                            <li class="submenu">
-                                <a href="javascript:;">고객센터</a>
-                                <ul>
-                                    <li><a href="http://192.168.0.79:8280/Administrator/getIokMenuList.do"><b>자주 묻는 질문</b></a></li>
-                                    <li><a href="#"><b>Q/A</b></a></li>
-                                    <li><a href="#"><b>공지사항</b></a></li>
-                                </ul>
-                            </li>                         <!-- session.invalidate(); -->
                             
-                            <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
+                            
+                            <c:if test="${sessionScope.logType eq '일반'}">
+                            <c:choose> 
+                            <c:when test="${sessionScope.products ne null}">
+                            <c:set value="${sessionScope.products}" var="i"></c:set>
+                            <li class="scroll-to-section"><a href="cart2">장바구니 [ <b class="cartCount">${fn:length(i)}</b> ]</a></li>
+                            </c:when>
+                            <c:otherwise>
+                            <li class="scroll-to-section"><a href="cart2">장바구니 [ 0 ]</a></li>
+                            </c:otherwise>
+                            </c:choose>
+                            </c:if>
+                            <!-- ******************************************************************************************* -->
+                          
                             <!-- ******************************************************************************************* -->
                             <c:choose>
                             
@@ -135,8 +141,7 @@ https://templatemo.com/tm-571-hexashop
             </div>
         </div>
     </header>
-    <!-- ***** Header Area End ***** -->
-
+    
     <!-- ***** Main Banner Area Start ***** -->
     <div class="page-heading" id="top">
         <div class="container">
@@ -204,14 +209,14 @@ https://templatemo.com/tm-571-hexashop
            
     </section>
    
-    <!-- **************************************************************** -->
+    <!-- ***** Footer Start ***** -->
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
                     <div class="first-item">
                         <div class="logo">
-                            <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
+                            <img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="hexashop ecommerce templatemo">
                         </div>
                          <span id="bot">통신판매업 신고번호 : 2021-화성동부-0302</span> <br/>
                          <ul>
@@ -237,13 +242,14 @@ https://templatemo.com/tm-571-hexashop
                         <li><a href="#">1:1 문의 바로가기</a></li>
                     </ul>
                 </div>
-               
+              
                 <div class="col-lg-12">
                     <div class="under-footer">
                         <p>SAJO Company는 통신판매중개자이며, 통신판매의 당사자가 아닙니다. 상품, 상품정보, 거래에 관한 의무와 책임은 판매자에게 있습니다.</p> 
                         <p>Copyright © 2022 SAJO Co., Ltd. All Rights Reserved. </p>
           
-                      
+                      <!--  디자인 출처 기능  -->  
+                       <!--  <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">SAJO</a>-->
                         <ul>
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -254,7 +260,9 @@ https://templatemo.com/tm-571-hexashop
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> 
+    
+  <!--Footer End  -->
     <!--********************************************************************** 하단**************************************************************************** -->
 
     <!-- jQuery -->
@@ -315,7 +323,7 @@ https://templatemo.com/tm-571-hexashop
         	   if(confirm('리뷰 작성을 위해서는 로그인이 필요합니다. 로그인 하시겠습니까?') )
         	   {
         		   location.href="loginForm?pageType=index&type="+$(this).find('#type').val();
-        	   }else { location.href="reviewModifyForm.do?renum="+${vo.renum};  }
+        	   }else { location.href="#";  }
         	   <% } %>
         	  
      <%   if( session.getAttribute("logName") != null && session.getAttribute("logType") == "일반" ) { %>
@@ -325,7 +333,7 @@ https://templatemo.com/tm-571-hexashop
         	   if( confirm("수정 하러 가시겠습니까?"))
         	   {
         		   location.href="reviewModifyForm.do?renum="+${vo.renum};
-        		   
+        		  
         	   } else {
         		   
         		   if( confirm("이전 화면으로 돌아가시겠습니까?"))
@@ -358,19 +366,22 @@ https://templatemo.com/tm-571-hexashop
            	<% } %>
            	
            	 <% if(session.getAttribute("logName") == null ) { %> 
-            	   if(confirm('리뷰 작성을 위해서는 로그인이 필요합니다. 로그인 하시겠습니까?') )
+            	   if(confirm('리뷰 삭제를 위해서는 로그인이 필요합니다. 로그인 하시겠습니까?') )
             	   {
             		   location.href="loginForm?pageType=index&type="+$(this).find('#type').val();
-            	   }else { location.href="reviewModifyForm.do?renum="+${vo.renum};  }
+            	   }else { 
+            		   location.href="#";  
+            		   
+            	   }
             	   <% } %>
             	  
          <%   if( session.getAttribute("logName") != null && session.getAttribute("logType") == "일반" ) { %>
                
          if ( $('#userLogin').text() ==  $('#mid').val()   )
         	 {
-            	   if( confirm("수정 하러 가시겠습니까?"))
+            	   if( confirm("삭제 하러 가시겠습니까?"))
             	   {
-            		   location.href="reviewModifyForm.do?renum="+${vo.renum};
+            		   location.href="deleteTT.do?renum="+${vo.renum};
             		   
             	   } else {
             		   

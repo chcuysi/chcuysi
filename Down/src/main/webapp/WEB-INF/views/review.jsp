@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     
     
 <!DOCTYPE html>
@@ -31,13 +32,13 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="sajo" class="logo">
-                            <img src="${pageContext.request.contextPath}/resources/images/LOGO3.png">
+                            <img src="${pageContext.request.contextPath}/resources/images/logo.png">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="sajo" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#men">미션</a></li>
+                            <li class="scroll-to-section"><a href="review.do">리뷰</a></li>
                              <li class="submenu">
                                 <a href="javascript:;">싱싱마켓</a>
                                 <ul>
@@ -47,21 +48,26 @@
                                     <li><a href="market"><b>기타</b></a></li>
                                 </ul>
                             </li>
-                            <li class="scroll-to-section"><a href="#kids">레시피</a></li>
+                            <li class="scroll-to-section"><a href="recipe.do">레시피</a></li>
                             
                             <li class="scroll-to-section">
                                 <a href="company.do">회사소개</a>     
                             </li>
-                            <li class="submenu">
-                                <a href="javascript:;">고객센터</a>
-                                <ul>
-                                    <li><a href="http://192.168.0.79:8280/Administrator/getIokMenuList.do"><b>자주 묻는 질문</b></a></li>
-                                    <li><a href="#"><b>Q/A</b></a></li>
-                                    <li><a href="#"><b>공지사항</b></a></li>
-                                </ul>
-                            </li>                         <!-- session.invalidate(); -->
                             
-                            <li class="scroll-to-section"><a href="#explore">마이페이지</a></li>
+                            
+                            <c:if test="${sessionScope.logType eq '일반'}">
+                            <c:choose> 
+                            <c:when test="${sessionScope.products ne null}">
+                            <c:set value="${sessionScope.products}" var="i"></c:set>
+                            <li class="scroll-to-section"><a href="cart2">장바구니 [ <b class="cartCount">${fn:length(i)}</b> ]</a></li>
+                            </c:when>
+                            <c:otherwise>
+                            <li class="scroll-to-section"><a href="cart2">장바구니 [ 0 ]</a></li>
+                            </c:otherwise>
+                            </c:choose>
+                            </c:if>
+                            <!-- ******************************************************************************************* -->
+                          
                             <!-- ******************************************************************************************* -->
                             <c:choose>
                             
@@ -139,18 +145,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="section-heading">
-                   
+                    <div class="section-heading">                   
                         <hr/>
-                    
-                    
+                                  
                          <h1 id="CategoryHeader">${viewType}</h1>
                          <h5 id="CategorySub"></h5>
   
                             <hr/>
-                            
-        
-                  
                     </div> 
                     </div>
                 </div>
@@ -215,7 +216,7 @@
                 <div class="col-lg-3">
                     <div class="first-item">
                         <div class="logo">
-                            <img src="${pageContext.request.contextPath}/resources/images/LOGO2.png" alt="hexashop ecommerce templatemo">
+                            <img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="hexashop ecommerce templatemo">
                         </div>
                          <span id="bot">통신판매업 신고번호 : 2021-화성동부-0302</span> <br/>
                          <ul>
@@ -298,8 +299,9 @@ $(function() {
 		
 		var renum =$(this).parent().parent().children().eq(0).val();
 		 location.href = "reviewModify.do?renum="+renum;
-
-	         });
+		 
+		//return location.href = "review.do";
+	    });
 	
 	
 	$('#save').click(function () {
@@ -322,7 +324,7 @@ $(function() {
  	   if(confirm('리뷰 작성을 위해서는 로그인이 필요합니다. 로그인 하시겠습니까?') )
  	   {
  		   location.href="loginForm?pageType=index&type="+$(this).find('#type').val();
- 	   }else { location.href="reviewSave.do"; 
+ 	   }else { location.href="#"; 
  	   }
  	   <% } %>
  	   
@@ -330,7 +332,7 @@ $(function() {
  	   if( confirm("리뷰 작성 하러 가시겠습니까?"))
  	   {
  		   location.href="reviewSave.do?pageType=index&type="+$(this).find('#typs').val();
- 		   
+ 		  
  	   }else {
  		   
  		   if( confirm("이전 화면으로 돌아가시겠습니까?"))
@@ -341,7 +343,7 @@ $(function() {
  	   }
  	   <% }    %> 
 		
-		
+ 	  
 		
 		
 		

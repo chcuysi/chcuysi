@@ -39,10 +39,10 @@ public class ReviewDAOImpl implements ReviewDAO {
 		mybatis.update("ReviewDAO.update", vo);
 	}
 
-	@Override
-	public void delete(ReviewVO vo) {
+	
+	public void delett(ReviewVO vo) {
 		System.out.println("===> Mybatis delete() 호출");		
-		mybatis.delete("ReviewDAO.delete", vo);
+		mybatis.delete("ReviewDAO.delett", vo);
 		
 	}
 
