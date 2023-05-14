@@ -1,17 +1,28 @@
 package vo;
 
+// 판매자회원 VO
 public class PsaleMenuVO {
 	
+	// 판매자회원번호
     private int pnum;
+    // 판매자회원ID
     private String pid;
+    // 판매자회원 주소
     private String paddr;
+    // 판매자회원 상세주소
     private String pdaddr;
+    // 판매자회원 전화번호
     private String ptel;
+    // 판매자회원 이메일
     private String pemail;
+    // 판매자회원 가입일
     private String pdate;
+    // 판매자회원 탈퇴여부
     private String pout;
+    // 판매자회원 탈퇴사유
     private String poutwhy;
     
+    // Getter와 Setter
 	public int getPnum() {
 		return pnum;
 	}

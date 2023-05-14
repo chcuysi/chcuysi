@@ -1,11 +1,16 @@
 package vo;
 
+// 카테고리별 매출 VO
 public class SalesCategoryVO {
 
+	// 대카테고리
 	private String category;
+	// 소카테고리
     private String category2;
+    // (카테고리별) 총매출액
     private int sell_total;
 
+    // Getter와 Setter
 	public String getCategory() {
 		return category;
 	}
@@ -25,9 +30,6 @@ public class SalesCategoryVO {
 		this.sell_total = sell_total;
 	}
 	
-    // getter, setter, 생성자 생략
-
-    
     
     
 }

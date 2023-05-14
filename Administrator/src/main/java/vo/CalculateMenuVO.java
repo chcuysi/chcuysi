@@ -1,18 +1,30 @@
 package vo;
 
+// 정산 VO
 public class CalculateMenuVO {
 	
+	// 판매물품 번호
     private String inum;
+    // 판매자 ID
     private String pid;
+    //상품명
 	private String name;
+	//상품명2
 	private String name2;
+	//총매출액
 	private int sell_total;
+	//총배송료
 	private int delivery;
+	//총수수료
 	private int ocharge;
+	//총정산액
 	private int jungsanmoney;
+	//정산여부
 	private String jok;
+	//정산일
 	private String jokdate;
 	
+	// Getter와 Setter
 	public String getInum() {
 		return inum;
 	}

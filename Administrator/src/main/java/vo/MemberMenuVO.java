@@ -1,17 +1,28 @@
 package vo;
 
+//일반회원 VO
 public class MemberMenuVO {
 	
+	// 일반회원번호
     private String mnum;
+    // 일반회원ID
     private String mid;
+    // 일반회원 주소
     private String maddr;
+    // 일반회원 상세주소
     private String mdaddr;
+    // 일반회원 전화번호
     private String mtel;
+    // 일반회원 이메일
     private String memail;
+    // 일반회원 가입일
     private String mdate;
+    // 일반회원 탈퇴여부
     private String mout;
+    // 일반회원 탈퇴사유
     private String moutwhy;
     
+    //Getter와 Setter
 	public String getMnum() {
 		return mnum;
 	}

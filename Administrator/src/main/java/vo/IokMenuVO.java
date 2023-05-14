@@ -1,20 +1,30 @@
 package vo;
 
+// 판매승인 VO
 public class IokMenuVO {
 	
+	// 판매자 ID
     private String pid;
+    // 대카테고리
     private String category;
+    // 소카테고리
     private String category2;
+    // 상품명
     private String name;
+    // 상품명2
     private String name2;
+    // 상품가격
     private int price;
+    // 입고량
     private int warehoused;
+    // 판매승인여부
     private String iok;
+    // 판매승인거부사유
     private String iokwhy;
-    private String products_number;
-    private long num;
+    // 판매물품 번호
     private String inum;
     
+    // Getter와 Setter
 	public String getPid() {
 		return pid;
 	}
@@ -69,13 +79,6 @@ public class IokMenuVO {
 	public void setIokwhy(String iokwhy) {
 		this.iokwhy = iokwhy;
 	}
-	public String getProdcuts_number() {
-		return products_number;
-	}
-	public void setProdcuts_number(String products_number) {
-		this.products_number = products_number;
-	}
-	
 	public String getInum() {
 		return inum;
 	}

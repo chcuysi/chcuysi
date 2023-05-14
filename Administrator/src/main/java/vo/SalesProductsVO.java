@@ -1,15 +1,24 @@
 package vo;
 
+// 상품별 매출 VO
 public class SalesProductsVO {
 	
+	// 판매자 ID
 	private String pid;
+	// 대카테고리
     private String category;
+    // 소카테고리
     private String category2;
+    // 상품명
     private String name;
+    // 상품명2
     private String name2;
+    // 상품가격
     private int price;
+    // (상품별) 총매출액
     private int sell_total;
 
+    // Getter와 Setter
 	public String getPid() {
 		return pid;
 	}
