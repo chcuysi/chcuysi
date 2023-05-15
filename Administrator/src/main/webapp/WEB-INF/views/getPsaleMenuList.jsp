@@ -105,7 +105,7 @@
 		                       <td>${psaleMenu.paddr} ${psaleMenu.pdaddr}</td>		                       
 		                       <td>${psaleMenu.ptel}</td>
 		                       <td>${psaleMenu.pemail}</td>
-		                       <td>${psaleMenu.pdate}</td>
+		                       <td>${psaleMenu.pdate.substring(0, 10)}</td>
 		                       <td>${psaleMenu.pout}</td>
 		                       <td style="display: none;">${psaleMenu.poutwhy}</td>
 		                   </tr>

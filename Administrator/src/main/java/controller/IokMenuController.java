@@ -46,7 +46,7 @@ public class IokMenuController {
 		map.put("iokwhy", ivo.getIokwhy());
 		map.put("inum", ivo.getInum());
 		
-		// 그 값들을 정산 메뉴 목록에 넣기(IokMenuVO에 있는 값으로 한정)
+		// 그 값들을 판매승인 메뉴 목록에 넣기(IokMenuVO에 있는 값으로 한정)
 		List<IokMenuVO> list = iokMenuService.getIokMenuList(map);
 	
 		// Model 객체에 판매승인 메뉴 목록을 추가

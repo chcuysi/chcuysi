@@ -161,10 +161,14 @@
           
           // 테이블에 있는 상품명과 매출액 값을 표에다 넣음 (매출액은 int형으로 변환시킴)
           data.addRows([
-            [$('#table_salesProducts tr:nth-child(1) td:nth-child(1)').text(), parseInt($('#table_salesProducts tr:nth-child(1) td:nth-child(5)').text().substring(3))],
-            [$('#table_salesProducts tr:nth-child(2) td:nth-child(1)').text(), parseInt($('#table_salesProducts tr:nth-child(2) td:nth-child(5)').text())],
-            [$('#table_salesProducts tr:nth-child(3) td:nth-child(1)').text(), parseInt($('#table_salesProducts tr:nth-child(3) td:nth-child(5)').text())],
-            [$('#table_salesProducts tr:nth-child(4) td:nth-child(1)').text(), parseInt($('#table_salesProducts tr:nth-child(4) td:nth-child(5)').text())],
+            [$('#table_salesProducts tr:nth-child(1) td:nth-child(1)').text(), 
+            	parseInt($('#table_salesProducts tr:nth-child(1) td:nth-child(5)').text().substring(3))],
+            [$('#table_salesProducts tr:nth-child(2) td:nth-child(1)').text(), 
+            	parseInt($('#table_salesProducts tr:nth-child(2) td:nth-child(5)').text())],
+            [$('#table_salesProducts tr:nth-child(3) td:nth-child(1)').text(), 
+            	parseInt($('#table_salesProducts tr:nth-child(3) td:nth-child(5)').text())],
+            [$('#table_salesProducts tr:nth-child(4) td:nth-child(1)').text(), 
+            	parseInt($('#table_salesProducts tr:nth-child(4) td:nth-child(5)').text())],
           ]);
 
           // Set chart options

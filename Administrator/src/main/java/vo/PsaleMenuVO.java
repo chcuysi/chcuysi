@@ -4,7 +4,7 @@ package vo;
 public class PsaleMenuVO {
 	
 	// 판매자회원번호
-    private int pnum;
+    private String pnum;
     // 판매자회원ID
     private String pid;
     // 판매자회원 주소
@@ -23,10 +23,10 @@ public class PsaleMenuVO {
     private String poutwhy;
     
     // Getter와 Setter
-	public int getPnum() {
+	public String getPnum() {
 		return pnum;
 	}
-	public void setPnum(int pnum) {
+	public void setPnum(String pnum) {
 		this.pnum = pnum;
 	}
 	public String getPid() {

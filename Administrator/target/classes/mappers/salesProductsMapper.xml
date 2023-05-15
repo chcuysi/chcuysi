@@ -9,7 +9,8 @@
 		3. 각 정보들을 GROUP BY로 묶음
 		4. 나열 순서는 매출액순으로  -->
 	<select id="getSalesProducts" resultType="vo.SalesProductsVO" parameterType="hashmap" >
-		SELECT p.name name, p.name2 name2, p.pid pid, p.category category, p.category2 category2, sum(p.price*o.icount) AS sell_total
+		SELECT p.name name, p.name2 name2, p.pid pid, p.category category
+			, p.category2 category2, sum(p.price*o.icount) AS sell_total
 			FROM testproduct p  INNER JOIN order1 o ON p.inum = o.inum
 			GROUP BY p.name, p.name2, p.pid, p.category, p.category2
 			ORDER BY sum(p.price*o.icount) DESC

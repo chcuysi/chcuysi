@@ -5,7 +5,7 @@
 
 	<!--환불 메뉴 보이기
 		1. 카테고리별 환불에 필요한 정보들 select
- -->
+ 	-->
    <select id="getRefundMenuList" resultType="vo.RefundMenuVO" parameterType="hashmap" >
       SELECT mid, icount, name, name2, pid, delivery, inum, rdate, onum
          FROM return
